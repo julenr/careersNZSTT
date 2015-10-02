@@ -30,8 +30,8 @@ class AppFooter extends React.Component {
           <div className="layout-col-3 layout-col">
             <div className="logo-title">Proudly brought to you by</div>
             <ul className="footer-logos">
-              <li className="careers-nz"><a href="http://www.careersnz.govt.nz/" className="careersnz-logo" title="Visit the Careers New Zealand home page. "><img src="../images/logos/careersnz-logo.png" width="138" height="50" alt="Careers New Zealand logo" /></a></li>
-              <li className="nz-govt"><a href="https://www.govt.nz/" title="newzealand.govt.nz - connecting you to New Zealand central and local government services."><img src="../images/logos/nz-govt-logo-large.png" width="157" height="21" alt="New Zealand Government logo" /></a></li>
+              <li className="careers-nz"><a href="http://www.careersnz.govt.nz/" className="careersnz-logo" title="Visit the Careers New Zealand home page. "><img src={require('../../assets/images/logos/careersnz-logo.png')} width="138" height="50" alt="Careers New Zealand logo" /></a></li>
+              <li className="nz-govt"><a href="https://www.govt.nz/" title="newzealand.govt.nz - connecting you to New Zealand central and local government services."><img src={require('../../assets/images/logos/nz-govt-logo-large.png')} width="157" height="21" alt="New Zealand Government logo" /></a></li>
             </ul>
           </div>
         </div>

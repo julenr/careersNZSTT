@@ -110,7 +110,7 @@ if(TARGET === 'build') {
         },
         {
           test: /\.(png|jpg|gif)$/,
-          loader: ['url?limit=25000', 'file-loader?name=fonts/[name].[ext]'],
+          loaders: ['url?limit=25000', 'file-loader?name=images/[name].[ext]'],
         },
         {
           test: /\.woff$/,
@@ -148,4 +148,3 @@ if(TARGET === 'build') {
     ]
   });
 }
-

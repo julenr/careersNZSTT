@@ -4,13 +4,13 @@
 
 .page-header { position:fixed; width:100%; left:0; top:0; z-index:11; @include gradient-left-right($skillstool_green_2, $skillstool_green_3); @include box-shadow(0, 2px, 2px, 0, rgba(0,0,0,0.2)); }
 .page-header a { color:$skillstool_green_4; text-decoration:none; }
-.page-header .home-logo { display:block; float:left; margin:em(21) 0 em(19) em(13); background:url(skills-transition-tool-logo.png) no-repeat 0 0; @include background-size(contain); width:em(112); height:em(15); text-indent:-999em; }
+.page-header .home-logo { display:block; float:left; margin:em(21) 0 em(19) em(13); background:url(../../assets/images/logos/skills-transition-tool-logo.png) no-repeat 0 0; @include background-size(contain); width:em(112); height:em(15); text-indent:-999em; }
 .page-header .careersnz-logo { display:none; }
 
 @media only screen and (min-width:800px) {
     .page-header .page-wrapper { padding:0 em(20); }
     .page-header .home-logo { width:em(215); height:em(28); margin:em(24) 0 em(25) 0; }
-    .page-header .careersnz-logo { display:block; float:left; margin:em(19) 0 0 em(31); background:url(careersnz-logo.png) no-repeat 0 0; @include background-size(contain); width:em(126); height:em(45); text-indent:-999em; }
+    .page-header .careersnz-logo { display:block; float:left; margin:em(19) 0 0 em(31); background:url(../../assets/images/logos/careersnz-logo.png) no-repeat 0 0; @include background-size(contain); width:em(126); height:em(45); text-indent:-999em; }
 }
 
 /* Header tools */

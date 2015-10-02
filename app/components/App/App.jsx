@@ -12,6 +12,18 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <div>pepe pepe pepe</div>
+        <div>pepe pepe pepe</div>
+        <div>pepe pepe pepe</div>
+        <div>pepe pepe pepe</div>
+        <div>pepe pepe pepe</div>
+        <div>pepe pepe pepe</div>
+        <div>pepe pepe pepe</div>
+        <div>pepe</div>
+        <div>pepe pepe pepe</div>
+        <div>pepe pepe pepe</div>
+        <div>pepe pepe pepe</div>
+
         <Header />
         Careers NZ Transition Tool
         <Footer />
@@ -19,6 +31,7 @@ class App extends React.Component {
         <div>pepe</div>
         <div>pepe pepe pepe</div>
         <div>pepe pepe pepe</div>
+        <img src={require('./solnet224x225.jpg')} width="80" height="80" alt="LOGOGOGOGOGOGO" />
         <div>pepe pepe pepe</div>
         <div>pepe pepe pepe</div>
         <div>pepe pepe pepe</div>

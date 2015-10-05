@@ -3,6 +3,7 @@
  */
 import './Header.scss';
 import React from 'react';
+import { Router, Route, Link } from 'react-router'
 
 class Header extends React.Component {
   render() {
@@ -16,7 +17,7 @@ class Header extends React.Component {
             <ul>
               <li className="tool-edit"><a href="#">Edit</a>
                 <ul>
-                  <li><a href="#">Edit your skills</a></li>
+                  <li><Link to="/questions">Edit your skills</Link></li>
                   <li><a href="#">Edit your preferences</a></li>
                 </ul>
               </li>

@@ -1,0 +1,245 @@
+/*
+	Careers NZ Skills Transition Tool
+	Created: 21 September 2015
+	Last updated: See GIT/SVN
+  ----------------------------------
+  SCSS MIXINS/FUNCTIONS & COLOURS
+*/
+
+
+/* ------------------------------------- 
+   COLUMNS/GRID (based on 12 equal cols)
+   ------------------------------------- 
+*/
+$margin_right:2.584%; 
+$total_cols:12; 
+
+
+/* ------------------------------------- 
+   COLOURS 
+   ------------------------------------- 
+*/
+
+/* Gray */
+$skillstool_body: #474747;
+$skillstool_gray_1: #f0eee7; /* Page background light gray (*) */
+$skillstool_beige_1: #dbd9d0; /* Page background light beige */
+$skillstool_gray_2: #a3a3a3; /* Mid gray */
+$skillstool_gray_3: #bebebe; /* Lighter mid gray */
+$skillstool_gray_4: #acaaa7; /* Another mid gray */
+$skillstool_gray_5: #ebebeb; /* Lightest gray */
+$skillstool_gray_6: #696969; /* Another darker mid gray */
+$skillstool_gray_7: #8f8f8f; /* Another darker mid gray */
+$skillstool_gray_8: #434240; /* Darker gray */ 
+$skillstool_gray_9: #252525; /* ANother darker gray */
+
+/* Green */
+$skillstool_green_1: #2ba94f; /* Primary green */
+$skillstool_green_2: #17983c; /* Darker green (text) */
+$skillstool_green_3: #89c826; /* Bright green */
+$skillstool_green_4: #304b0f; /* Dark green (text) */
+$skillstool_green_5: #95d4a7; /* Pale light green */
+
+/* Blue */
+$skillstool_blue_1: #009fda; /* Primary blue */
+$skillstool_blue_2: #0295cb; /* Darker blue */
+$skillstool_blue_3: #01b9ee; /* Light blue */
+$skillstool_blue_4: #0f3c4b; /* Very dark blue (text) */
+$skillstool_blue_5: #006a91; /* Another darker blue */
+ 
+/* Yellow */
+$skillstool_yellow_1: #f6cd0d; /* Primary yellow */
+
+/* Red */
+$skillstool_red_1: #e64322;
+
+/* Sectors */
+$sector_yellow: #fbd703;
+$sector_green: #62a444;
+$sector_blue: #00a5cb;
+$sector_purple: #5e5d9a;
+$sector_red: #c22126;
+$sector_orange: #e27a25;
+
+/* temporary - used to determine which colours to use */
+.temp-c { height:53px; padding:10px; text-align:center; padding-top:40px; margin-bottom:1em; }
+.skillstool_body { background:$skillstool_body; color:#fff; }
+.skillstool_gray_1 { background:$skillstool_gray_1; }
+.skillstool_gray_2 { background:$skillstool_gray_2; }
+.skillstool_gray_3 { background:$skillstool_gray_3; }
+.skillstool_gray_4 { background:$skillstool_gray_4; }
+.skillstool_gray_5 { background:$skillstool_gray_5; }
+.skillstool_gray_6 { background:$skillstool_gray_6; color:#fff; }
+.skillstool_gray_7 { background:$skillstool_gray_7; color:#fff; }
+.skillstool_gray_8 { background:$skillstool_gray_8; color:#fff; }
+.skillstool_gray_9 { background:$skillstool_gray_9; color:#fff; }
+.skillstool_beige_1 { background:$skillstool_beige_1; }
+.skillstool_green_1 { background:$skillstool_green_1; color:#fff; }
+.skillstool_green_2 { background:$skillstool_green_2; color:#fff; }
+.skillstool_green_3 { background:$skillstool_green_3; color:#fff; }
+.skillstool_green_4 { background:$skillstool_green_4; color:#fff; }
+.skillstool_green_5 { background:$skillstool_green_5; }
+.skillstool_blue_1 { background:$skillstool_blue_1; color:#fff; }
+.skillstool_blue_2 { background:$skillstool_blue_2; color:#fff; }
+.skillstool_blue_3 { background:$skillstool_blue_3; color:#fff; }
+.skillstool_blue_4 { background:$skillstool_blue_4; color:#fff; }
+.skillstool_blue_5 { background:$skillstool_blue_5; color:#fff; }
+.skillstool_yellow_1 { background:$skillstool_yellow_1; }
+.skillstool_red_1 { background:$skillstool_red_1; color:#fff; }
+.sector_yellow { background:$sector_yellow; }
+.sector_green { background:$sector_green; color:#fff; }
+.sector_blue { background:$sector_blue; color:#fff; }
+.sector_purple { background:$sector_purple; color:#fff; }
+.sector_red { background:$sector_red; color:#fff; }
+.sector_orange { background:$sector_orange; color:#fff; }
+
+/* ------------------------------------- 
+   FUNCTIONS
+   ------------------------------------- 
+*/
+/* Convert pixels to ems, passing pixels in only */
+@function em($px, $context: 16, $basesize: 16) {
+    @return (($px/$basesize)/($context/16))+em;
+}
+/* Generate a line height without any rounding errors 
+   (for Firefox & Chrome), passing pixels in only */
+@function lh($lineheight_in_pixels, $fontsize_in_pixels: 16) {
+    @return (round($lineheight_in_pixels)/$fontsize_in_pixels);
+}
+/* Tint colour */
+@function tint($color, $amount: 50%) {
+  @if $color == transparent { $color: rgba(white, 0); }
+  @return mix($color, white, $amount);
+}
+/* Shade colour */
+@function shade($color, $amount: 50%) {
+  @if $color == transparent { $color: rgba(white, 0); }
+  @return mix($color, black, $amount);
+}
+
+
+/* ------------------------------------- 
+   MIXINS
+   ------------------------------------- 
+*/
+@mixin gradient($startcolour, $endcolour) {
+  background: $endcolour;
+  background: -moz-linear-gradient(top,  $startcolour 0%, $endcolour 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$startcolour), color-stop(100%,$endcolour));
+  background: -webkit-linear-gradient(top,  $startcolour 0%,$endcolour 100%);
+  background: -o-linear-gradient(top,  $startcolour 0%,$endcolour 100%);
+  background: -ms-linear-gradient(top,  $startcolour 0%,$endcolour 100%);
+  background: linear-gradient(to bottom,  $startcolour 0%,$endcolour 100%);
+}
+@mixin gradient-left-right($startcolour, $endcolour) {
+  background: $endcolour; 
+  background: -moz-linear-gradient(left, $startcolour 0%, $endcolour 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,$startcolour), color-stop(100%,$endcolour)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, $startcolour 0%,$endcolour 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left, $startcolour 0%,$endcolour 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, $startcolour 0%,$endcolour 100%); /* IE10+ */
+  background: linear-gradient(to right, $startcolour 0%,$endcolour 100%); /* W3C */
+}
+@mixin box-shadow($h, $v, $blur, $radius, $color) {
+  -webkit-box-shadow:$h $v $blur $radius $color;
+  box-shadow:$h $v $blur $radius $color;
+}
+@mixin box-shadow-inset($h, $v, $blur, $radius, $color) {
+  -webkit-box-shadow:$h $v $blur $radius $color inset; 
+  box-shadow:$h $v $blur $radius $color inset;
+}
+@mixin text-shadow($h, $v, $blur, $color) {
+  text-shadow: $h $v $blur $color; 
+}
+@mixin box-sizing($type: border-box) {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+@mixin border-radius($radius) {
+  -webkit-border-radius:$radius;
+  border-radius:$radius;
+}
+@mixin background-size($coverage) {
+  -webkit-background-size:$coverage;
+  background-size:$coverage; 
+}
+@mixin border-radius-separate($topLeftRadius: 5px, $topRightRadius: 5px, $bottomLeftRadius: 5px, $bottomRightRadius: 5px) {
+  -webkit-border-top-left-radius: $topLeftRadius;
+  -webkit-border-top-right-radius: $topRightRadius;
+  -webkit-border-bottom-right-radius: $bottomRightRadius;
+  -webkit-border-bottom-left-radius: $bottomLeftRadius;
+  -moz-border-radius-topleft: $topLeftRadius;
+  -moz-border-radius-topright: $topRightRadius;
+  -moz-border-radius-bottomright: $bottomRightRadius;
+  -moz-border-radius-bottomleft: $bottomLeftRadius;
+  border-top-left-radius: $topLeftRadius;
+  border-top-right-radius: $topRightRadius;
+  border-bottom-right-radius: $bottomRightRadius;
+  border-bottom-left-radius: $bottomLeftRadius;
+}
+@mixin transition($scope: all, $time: .2s, $ease:ease-in-out, $delay:0s) {
+  -webkit-transition:$scope $time $ease $delay; 
+  -moz-transition:$scope $time $ease $delay; 
+  -o-transition:$scope $time $ease $delay; 
+  transition:$scope $time $ease $delay; 
+}
+@mixin appearance($type:none) {
+  -webkit-appearance:$type; 
+  -moz-appearance:$type;
+  appearance:$type;
+}
+@mixin filter($type:grayscale, $amount:100%) {
+  -webkit-filter: $type($amount);
+  -moz-filter: $type($amount);
+  -ms-filter: $type($amount);
+  -o-filter: $type($amount);
+  filter: $type($amount);
+}
+@mixin box-sizing($type:border-box) {
+  -webkit-box-sizing: $type;
+  -moz-box-sizing: $type;
+  box-sizing: $type;
+}
+@mixin transform-translate3d($x:0, $y:0, $z:0) {
+  -webkit-transform: translate3d($x, $y, $z);
+  -moz-transform: translate3d($x, $y, $z);
+  -ms-transform: translate3d($x, $y, $z);
+  -o-transform: translate3d($x, $y, $z);
+  transform: translate3d($x, $y, $z);
+}
+@mixin transform-perspective($amount:1000px) {
+  -webkit-transform:perspective($amount); 
+  -moz-transform:perspective($amount); 
+  -ms-transform:perspective($amount); 
+  -o-transform:perspective($amount); 
+  transform:perspective($amount); 
+}
+@mixin transform-style($type:preserve-3d) {
+  -webkit-transform-style:$type; 
+  -moz-transform-style:$type; 
+  -ms-transform-style:$type; 
+  -o-transform-style:$type; 
+  transform-style:$type; 
+}
+@mixin backface-visibility($visibility:hidden) {
+  -webkit-backface-visibility:$visibility; 
+  -moz-backface-visibility:$visibility; 
+  -ms-backface-visibility:$visibility; 
+  -o-backface-visibility:$visibility; 
+  backface-visibility:$visibility; 
+}
+@mixin transform-rotateY($degrees:0deg) {
+  -webkit-transform:rotateY($degrees);  
+  -moz-transform:rotateY($degrees); 
+  -ms-transform:rotateY($degrees); 
+  -o-transform:rotateY($degrees); 
+  transform:rotateY($degrees); 
+}
+@mixin transform-rotate($degrees:0deg) {
+  -webkit-transform:rotate($degrees);  
+  -moz-transform:rotate($degrees); 
+  -ms-transform:rotate($degrees); 
+  -o-transform:rotate($degrees); 
+  transform:rotate($degrees); 
+}

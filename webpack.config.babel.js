@@ -54,10 +54,6 @@ if(TARGET === 'start' || !TARGET) {
           include: path.resolve(ROOT_PATH, 'app')
         },
         {
-          test: /\.css$/, // Only .css files
-          loader: 'style!css'
-        },
-        {
           test: /\.(png|jpg)$/,
           loader: 'url?limit=25000',
           include: path.resolve(ROOT_PATH, 'app')
@@ -111,10 +107,6 @@ if(TARGET === 'build') {
           //loader: ExtractTextPlugin.extract('style', 'css', 'sass'),
           loaders: ['style', 'css', 'sass'],
           include: path.resolve(ROOT_PATH, 'app')
-        },
-        {
-          test: /\.css$/, // Only .css files
-          loader: 'style!css'
         },
         {
           test: /\.(png|jpg|gif)$/,

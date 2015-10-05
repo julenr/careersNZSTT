@@ -1,218 +1,4 @@
-/*
-	Careers NZ Skills Transition Tool
-	Created: 21 September 2015
-	Last updated: See GIT/SVN
-  ----------------------------------
-  SCSS MIXINS/FUNCTIONS & COLOURS
-*/
-
-/* -------------------------------------
-   COLUMNS/GRID (based on 12 equal cols)
-   -------------------------------------
-*/
-$margin_right:2.584%;
-$total_cols:12;
-
-
-/* -------------------------------------
-   COLOURS
-   -------------------------------------
-*/
-
-/* Gray */
-$skillstool_body: #474747;
-$skillstool_gray_1: #f0eee7; /* Page background light gray (*) */
-$skillstool_beige_1: #dbd9d0; /* Page background light beige */
-$skillstool_gray_2: #a3a3a3; /* Mid gray */
-$skillstool_gray_3: #bebebe; /* Lighter mid gray */
-$skillstool_gray_4: #acaaa7; /* Another mid gray */
-$skillstool_gray_5: #ebebeb; /* Lightest gray */
-$skillstool_gray_6: #696969; /* Another darker mid gray */
-$skillstool_gray_7: #8f8f8f; /* Another darker mid gray */
-$skillstool_gray_8: #434240; /* Darker gray */
-
-
-/* Green */
-$skillstool_green_1: #2ba94f; /* Primary green */
-$skillstool_green_2: #17983c; /* Darker green (text) */
-$skillstool_green_3: #89c826; /* Bright green */
-$skillstool_green_4: #304b0f; /* Dark green (text) */
-
-/* Blue */
-$skillstool_blue_1: #009fda; /* Primary blue */
-$skillstool_blue_2: #0295cb; /* Darker blue */
-$skillstool_blue_3: #01b9ee; /* Light blue */
-$skillstool_blue_4: #0f3c4b; /* Very dark blue (text) */
-
-/* Yellow */
-$skillstool_yellow_1: #f6cd0d; /* Primary yellow */
-
-/* Sectors */
-$sector-yellow: #fbd703;
-$sector-green: #62a444;
-$sector-blue: #00a5cb;
-$sector-purple: #5e5d9a;
-$sector-red: #c22126;
-$sector-orange: #e27a25;
-
-/* temporary - used to determine which colours to use */
-.temp-c { height:53px; padding:10px; text-align:center; padding-top:40px; margin-bottom:1em; }
-.skillstool_body { background:$skillstool_body; color:#fff; }
-.skillstool_gray_8 { background:$skillstool_gray_8; color:#fff; }
-.skillstool_gray_1 { background:$skillstool_gray_1; }
-.skillstool_beige_1 { background:$skillstool_beige_1; }
-.skillstool_green_1 { background:$skillstool_green_1; color:#fff; }
-.skillstool_green_2 { background:$skillstool_green_2; color:#fff; }
-.skillstool_green_3 { background:$skillstool_green_3; }
-.skillstool_blue_1 { background:$skillstool_blue_1; color:#fff; }
-.skillstool_blue_2 { background:$skillstool_blue_2; color:#fff; }
-.skillstool_blue_3 { background:$skillstool_blue_3; }
-.skillstool_yellow_1 { background:$skillstool_yellow_1; }
-
-/* -------------------------------------
-   FUNCTIONS
-   -------------------------------------
-*/
-/* Convert pixels to ems, passing pixels in only */
-@function em($px, $context: 16, $basesize: 16) {
-  @return (($px/$basesize)/($context/16))+em;
-}
-/* Generate a line height without any rounding errors
-   (for Firefox & Chrome), passing pixels in only */
-@function lh($lineheight_in_pixels, $fontsize_in_pixels: 16) {
-  @return (round($lineheight_in_pixels)/$fontsize_in_pixels);
-}
-/* Tint colour */
-@function tint($color, $amount: 50%) {
-  @if $color == transparent { $color: rgba(white, 0); }
-  @return mix($color, white, $amount);
-}
-/* Shade colour */
-@function shade($color, $amount: 50%) {
-  @if $color == transparent { $color: rgba(white, 0); }
-  @return mix($color, black, $amount);
-}
-
-
-/* -------------------------------------
-   MIXINS
-   -------------------------------------
-*/
-@mixin gradient($startcolour, $endcolour) {
-  background: $endcolour;
-  background: -moz-linear-gradient(top,  $startcolour 0%, $endcolour 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$startcolour), color-stop(100%,$endcolour));
-  background: -webkit-linear-gradient(top,  $startcolour 0%,$endcolour 100%);
-  background: -o-linear-gradient(top,  $startcolour 0%,$endcolour 100%);
-  background: -ms-linear-gradient(top,  $startcolour 0%,$endcolour 100%);
-  background: linear-gradient(to bottom,  $startcolour 0%,$endcolour 100%);
-}
-@mixin gradient-left-right($startcolour, $endcolour) {
-  background: $endcolour;
-  background: -moz-linear-gradient(left, $startcolour 0%, $endcolour 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%,$startcolour), color-stop(100%,$endcolour)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(left, $startcolour 0%,$endcolour 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(left, $startcolour 0%,$endcolour 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(left, $startcolour 0%,$endcolour 100%); /* IE10+ */
-  background: linear-gradient(to right, $startcolour 0%,$endcolour 100%); /* W3C */
-}
-@mixin box-shadow($h, $v, $blur, $radius, $color) {
-  -webkit-box-shadow:$h $v $blur $radius $color;
-  box-shadow:$h $v $blur $radius $color;
-}
-@mixin box-shadow-inset($h, $v, $blur, $radius, $color) {
-  -webkit-box-shadow:$h $v $blur $radius $color inset;
-  box-shadow:$h $v $blur $radius $color inset;
-}
-@mixin text-shadow($h, $v, $blur, $color) {
-  text-shadow: $h $v $blur $color;
-}
-@mixin box-sizing($type: border-box) {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-@mixin border-radius($radius) {
-  -webkit-border-radius:$radius;
-  border-radius:$radius;
-}
-@mixin background-size($coverage) {
-  -webkit-background-size:$coverage;
-  background-size:$coverage;
-}
-@mixin border-radius-separate($topLeftRadius: 5px, $topRightRadius: 5px, $bottomLeftRadius: 5px, $bottomRightRadius: 5px) {
-  -webkit-border-top-left-radius: $topLeftRadius;
-  -webkit-border-top-right-radius: $topRightRadius;
-  -webkit-border-bottom-right-radius: $bottomRightRadius;
-  -webkit-border-bottom-left-radius: $bottomLeftRadius;
-  -moz-border-radius-topleft: $topLeftRadius;
-  -moz-border-radius-topright: $topRightRadius;
-  -moz-border-radius-bottomright: $bottomRightRadius;
-  -moz-border-radius-bottomleft: $bottomLeftRadius;
-  border-top-left-radius: $topLeftRadius;
-  border-top-right-radius: $topRightRadius;
-  border-bottom-right-radius: $bottomRightRadius;
-  border-bottom-left-radius: $bottomLeftRadius;
-}
-@mixin transition($scope: all, $time: .2s, $ease:ease-in-out, $delay:0s) {
-  -webkit-transition:$scope $time $ease $delay;
-  -moz-transition:$scope $time $ease $delay;
-  -o-transition:$scope $time $ease $delay;
-  transition:$scope $time $ease $delay;
-}
-@mixin appearance($type:none) {
-  -webkit-appearance:$type;
-  -moz-appearance:$type;
-  appearance:$type;
-}
-@mixin filter($type:grayscale, $amount:100%) {
-  -webkit-filter: $type($amount);
-  -moz-filter: $type($amount);
-  -ms-filter: $type($amount);
-  -o-filter: $type($amount);
-  filter: $type($amount);
-}
-@mixin box-sizing($type:border-box) {
-  -webkit-box-sizing: $type;
-  -moz-box-sizing: $type;
-  box-sizing: $type;
-}
-@mixin transform-translate3d($x:0, $y:0, $z:0) {
-  -webkit-transform: translate3d($x, $y, $z);
-  -moz-transform: translate3d($x, $y, $z);
-  -ms-transform: translate3d($x, $y, $z);
-  -o-transform: translate3d($x, $y, $z);
-  transform: translate3d($x, $y, $z);
-}
-@mixin transform-perspective($amount:1000px) {
-  -webkit-transform:perspective($amount);
-  -moz-transform:perspective($amount);
-  -ms-transform:perspective($amount);
-  -o-transform:perspective($amount);
-  transform:perspective($amount);
-}
-@mixin transform-style($type:preserve-3d) {
-  -webkit-transform-style:$type;
-  -moz-transform-style:$type;
-  -ms-transform-style:$type;
-  -o-transform-style:$type;
-  transform-style:$type;
-}
-@mixin backface-visibility($visibility:hidden) {
-  -webkit-backface-visibility:$visibility;
-  -moz-backface-visibility:$visibility;
-  -ms-backface-visibility:$visibility;
-  -o-backface-visibility:$visibility;
-  backface-visibility:$visibility;
-}
-@mixin transform-rotateY($degrees:0deg) {
-  -webkit-transform:rotateY($degrees);
-  -moz-transform:rotateY($degrees);
-  -ms-transform:rotateY($degrees);
-  -o-transform:rotateY($degrees);
-  transform:rotateY($degrees);
-}
-
+@import "sass_mixins_colours";
 
 /*
   LAYOUT
@@ -268,3 +54,106 @@ body { background-color:$skillstool_gray_1; color:$skillstool_body; }
 /* Links */
 a { text-decoration:none; color:$skillstool_blue_1; }
 a:hover, a:active, a:focus { text-decoration:underline; }
+
+/*
+ MISC
+---------------------------------------
+*/
+
+/* Overlays */
+#list-changing-overlay { background:rgba(250, 250, 250, 0.92) none repeat scroll 0 0; display:block; height:100%; left:0; position:fixed; top:0; width:100%; z-index:8021; opacity:0; visibility:hidden; }
+#list-changing-overlay .overlay-liner { bottom:0; height:60%; left:0; margin:auto; overflow:visible; position:absolute; right:0; top:0; width:50%; }
+#list-changing-overlay .message { font-size:em(46); line-height:lh(51,46); color:$skillstool_blue_1; text-align:center; }
+#list-changing-overlay .message .icon-refresh { display:block; font-size:168%; margin-bottom:em(24,46); @include transform-rotate(0); }
+#list-changing-overlay.active { visibility:visible; opacity:1; @include transition(all, .5s, ease-in-out); }
+
+@media only screen and (max-width:599px) {
+  #list-changing-overlay { font-size:65%; }
+}
+
+/* Pinned elements */
+.pinned { position:fixed; width:100%; left:0; bottom:0; z-index:11; }
+
+/* Responsive - generic styles */
+.desktop, .mobile, .tablet, .print, .hide { visibility:hidden; position:absolute; left:-999em; width:1px; overflow:hidden; opacity:0; }
+@media only screen and (max-width:599px) {
+  .mobile { visibility:visible; position:inherit; left:inherit; width:inherit; overflow:inherit; opacity:1; }
+}
+@media only screen and (min-width:600px) and (max-width:799px) {
+  .tablet { visibility:visible; position:inherit; left:inherit; width:inherit; overflow:inherit; opacity:1; }
+}
+@media only screen and (min-width:800px) {
+  .desktop { visibility:visible; position:inherit; left:inherit; width:inherit; overflow:inherit; opacity:1; }
+}
+
+
+
+
+@media print {
+
+  /*
+   HIDE
+  ------------------------------------- */
+  .xxx { display:none !important; }
+
+
+  /*
+   HIDE BACKGROUND
+  ------------------------------------- */
+  .xxx { background:none !important; }
+
+
+  /*
+   SHOW
+  ------------------------------------- */
+  .print { display:block !important; }
+
+
+  /*STILL TO DO: block-taxonomies-featured */
+
+
+  /*
+   SPECIFIC PRINT STYLES
+  ------------------------------------- */
+  html { font-size:115%; }
+  body { background:#fff; color:#000; }
+
+
+  /*
+   HEADER
+  ------------------------------------- */
+
+
+  /*
+   MAIN CONTENT
+  ------------------------------------- */
+
+  /* Links */
+  a { color:#000 !important; }
+  #content a:after { content:" (https://www.careers.govt.nz" attr(href) ")"; text-decoration:underline; word-wrap:break-word; font-family:'xxx', Arial, sans-serif; }
+  #content a[href^="http://"]:after { content:" (" attr(href) ")"; }
+  #content a[href^="mailto:"]:after, #content .tag a:after, #content a.tag:after, .togglecomposite a:after { display:none; }
+  .content-wrapper .nav-sitemap a:after { display:block; }
+
+  /* Color */
+  li ul, li ol, h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, p, li, label { color:#000 !important; }
+
+  /* Typographic */
+  .content-wrapper .intro-text { font-size:115%; color:#000; }
+  .content-wrapper h1, .content-wrapper .h1 { font-size:45px; }
+  .content-wrapper h2, .content-wrapper .h2, .h2 { border-bottom:1px solid #ccc !important; color:#000 !important; }
+  #content .caption, .content-wrapper blockquote { color:#000; border:none !important; padding-left:0; padding-bottom:0; }
+
+  /* Images */
+  .figure img, .captionImage img { border:none !important; }
+  .figure.align-left img, .figure.align-right img, .captionImage.left img, .captionImage.right img { width:auto; max-width:100%; }
+
+  /* Tables */
+  .page-maincontent table { border-bottom:2px solid #000; border-left:1px solid #ccc; }
+  .page-maincontent th, .page-maincontent td { border:none; border-right:1px solid #ccc; }
+  .page-maincontent th { color:#000; border-bottom:2px solid #000; }
+
+  /* Misc */
+  .js-pageurl { font-size:14px; margin:0.75em 0 0; text-decoration:underline; }
+  .js-pageurl.last { margin:1em 0; }
+}

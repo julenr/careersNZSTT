@@ -1,0 +1,130 @@
+/*
+ QUESTIONS
+---------------------------------------
+*/
+@charset "UTF-8";
+@import "../../main.scss";
+
+
+/* Questions introduction */
+.questions-intro { background:#fff; }
+.questions-intro .page-wrapper { padding:em(50) em(15) 0; max-width:em(840); }
+.questions-intro img { float:left; width:30%; max-width:em(153); height:auto; position:relative; z-index:2; }
+.questions-intro p { font-size:em(21); line-height:lh(29,21); color:#000; margin:em(27,21) 0 em(24,21); letter-spacing:-0.025em; }
+.questions-intro .title { position:relative; }
+.questions-intro .title p { float:left; width:60%; padding:5px 0 0 4%; margin:0; }
+.questions-intro .title:after, .questions-intro .title p:after { content:""; height:1px; position:absolute; bottom:1px; left:0; right:0; border-bottom:1px solid $skillstool_green_2; z-index:1; }
+.questions-intro .title p:after { top:14%; bottom:auto; width:12%; left:20.75%; border-color:$skillstool_green_3; }
+.questions-intro strong { color:$skillstool_green_2; display:block; }
+
+@media only screen and (min-width:600px) {
+  .questions-intro .page-wrapper { padding-top:em(34); }
+  .questions-intro img { margin-bottom:em(-8); }
+  .questions-intro p { font-size:em(26); line-height:lh(36,26); }
+  .questions-intro .title p { max-width:em(554,26); padding:0; margin:em(10,26) 0 0 em(64,26); }
+  .questions-intro .title p:after { top:em(24,26); bottom:auto; width:em(56,26); left:em(152,26); }
+  .questions-intro .title:after { display:none; }
+  .questions-intro .blurb { position:absolute; max-width:em(554,26); top:em(80,26); left:em(231,26); margin:0; }
+  .questions-intro strong { display:inline; }
+}
+@media only screen and (min-width:600px) and (max-width:860px) {
+  .questions-intro { font-size:70%; }
+}
+
+/* Questions */
+.questions { max-width:em(840); min-height:em(500); margin:0 auto; padding-bottom:5em; position:relative; }
+.questions p { font-size:em(21); line-height:lh(29,21); color:#000; margin:em(8,21) 0 em(16,21); letter-spacing:-0.025em; }
+
+/* Question fields */
+.questions .fieldset { padding:em(20) 0; position:absolute; opacity:0; left:-999em; }
+.questions .fieldset.active { position:static; opacity:1; left:auto; }
+.questions .field { position:relative; min-height:em(100); }
+.questions label { font-size:em(21); line-height:lh(29,21); display:block; margin:em(10,21) 0 em(16,21); padding:em(16,21) em(25,21); @include border-radius(0 em(21,21) em(21,21) em(21,21)); color:#000; background:#fff; letter-spacing:-0.025em; }
+.questions .first-question label { color:$skillstool_blue_1; background:none; padding:0; }
+.questions .first-question .field { margin-bottom:em(10); }
+.questions input.text { font-size:em(21); line-height:1em; padding:em(14,21) em(20,21) em(12,21); width:100%; max-width:em(458,21); color:$skillstool_gray_8; background:#fff; border:1px solid $skillstool_blue_1; border-radius:em(21,21); letter-spacing:-0.025em; @include box-sizing(border-box); }
+.questions .avatar { display:none; }
+.questions .with-avatar .avatar { display:block; width:em(56); height:em(56); }
+
+@media only screen and (min-width:600px) {
+  .questions:after { content:""; position:fixed; width:100%; height:em(50); left:0; top:em(77); z-index:12; @include gradient(rgba($skillstool_gray_1,1), rgba($skillstool_gray_1,0)); }
+  .questions p { font-size:em(26); line-height:lh(29,26); margin:em(8,26) 0 em(16,26); }
+  .questions .field { overflow:hidden; }
+  .questions .first-question { padding:em(28) 0 0 em(216); }
+  .questions .first-question .field { margin-top:em(24); overflow:visible; }
+  .questions .first-question .field div.text { margin:0; }
+  .questions .first-question .submit { margin-left:0; }
+  .questions label { font-size:em(26); line-height:lh(36,26); padding:em(16,26) em(25,26); @include border-radius(0 em(21,26) em(21,26) em(21,26)); }
+  .questions .with-avatar label { margin:em(44,26) em(97,26) 0 em(137,26); }
+  .questions .with-avatar .avatar { position:absolute; left:em(26); top:0; width:em(86); height:em(86); }
+}
+
+/* Question radio/checkbox */
+.questions .radio ul { margin:em(21) 0 0; }
+.radio li { font-size:em(21); line-height:lh(29,21); margin:em(15,21) 0; padding:em(11,21) em(51,21) em(7,21); position:relative; background:#fff; color:$skillstool_blue_1; @include border-radius(em(21,21)); letter-spacing:-0.025em; cursor:pointer; }
+.radio li .icon-tick { font-size:em(17,21); display:none; color:#fff; position:absolute; left:1.1em; top:0.8em; }
+.radio .selected { background:$skillstool_blue_1; color:#fff; @include border-radius(em(21,21) 0 em(21,21) em(21,21)); }
+.radio .fade { opacity:0.5; }
+.radio .selected.fade, .radio .fade:hover, .radio .fade:focus { opacity:1; }
+.radio .selected .icon-tick { display:inline-block; }
+.radio .checkbox, .radio.inline .radio { overflow:hidden; }
+.radio .checkbox li, .radio.inline .radio li { float:left; clear:both; margin:0 0 em(15,21); }
+.radio .hide { opacity:0; position:absolute; left:-999em; }
+
+/* Unstyled radio variation (reset) */
+.radio .radio .basic, .radio .checkbox .basic { font-size:em(17); padding:0; background:none; @include border-radius(none); text-align:right; text-decoration:underline; }
+.radio .radio .basic.selected, .radio .checkbox .basic.selected, .radio .basic.selected .icon-tick { color:$skillstool_blue_1; position:static; margin-right:0.5em; outline:none; }
+
+@media only screen and (min-width:600px) {
+  .questions .text div.text { margin:em(48) em(46) 0 em(193); }
+  .questions .radio ul { margin:em(48) em(46) 0 em(193); }
+  .radio li { font-size:em(26); line-height:lh(29,26); margin:em(15,26) 0; padding:em(11,26) em(51,26) em(7,26); @include border-radius(em(21,26)); }
+  .radio .selected { @include border-radius(em(21,26) 0 em(21,26) em(21,26)); }
+  .radio li .icon-tick { font-size:em(17,26); }
+  .radio .checkbox li, .radio.inline .radio li { clear:none; margin:0 em(12,26) em(15,26) 0; }
+  .radio .radio .basic, .radio .checkbox .basic { padding-right:em(75,17); }
+  .radio.inline .radio .basic { padding:em(16,17) 0 0 em(9,17); }
+}
+
+/* Question tags */
+.questions .tags { overflow:hidden; margin:em(21) 0 0; }
+.tags .tag { font-size:em(21); line-height:lh(29,21); display:block; float:left; margin:em(7,21) em(14,21) em(7,21) 0; padding:em(5,21) em(9,21) em(5,21) em(19,21); background:#fff; color:$skillstool_blue_1; border:1px solid $skillstool_blue_1; @include border-radius(em(21,21) 0 em(21,21) em(21,21)); letter-spacing:-0.025em; cursor:pointer; }
+.tags .add-more { @include border-radius(em(21,21)); padding:em(5,21) em(25,21) em(5,21) em(12,21); }
+.tags .select-all { @include border-radius(em(21,21)); padding:em(5,21) em(25,21); }
+.tags .tag .icon-cancel-circle { margin-left:1.2em; color:$skillstool_gray_3; }
+.tags .tag .icon-plus-circle { margin-right:0.5em;  }
+.tags .tag.selected { background:$skillstool_blue_1; color:#fff; }
+.tags .tag.selected .icon-cancel-circle { color:$skillstool_blue_5; }
+
+@media only screen and (min-width:600px) {
+  .questions .tags { margin:em(41) 0 0 em(193); }
+  .tags .tag { font-size:em(26); line-height:lh(36,26); margin:em(7,26) em(14,26) em(7,26) 0; padding:em(5,26) em(9,26) em(5,26) em(19,26); @include border-radius(em(21,26) 0 em(21,26) em(21,26)); }
+  .tags .add-more { @include border-radius(em(21,26)); padding:em(5,26) em(25,26) em(5,26) em(12,26); }
+  .tags .select-all { @include border-radius(em(21,26)); padding:em(5,26) em(25,26); }
+}
+
+/* Submit/Buttons */
+.questions .submit { margin-top:em(10); position:absolute; opacity:0; left:-999em; }
+.questions .submit.active, .questions .last .submit { position:static; opacity:1; left:auto; }
+.questions .button span { margin-left:0.1em; }
+
+@media only screen and (min-width:600px) {
+  .questions .submit { margin:em(10) em(46) 0 em(193); }
+  .questions .button { font-size:em(26); padding:em(7,26) em(24,26); @include border-radius(em(21,26)); }
+}
+
+/* Questions help/error text */
+.questions .help { font-size:em(17); line-height:lh(24,17); color:$skillstool_gray_6; margin:em(15,17) 0; }
+.questions .text .text .help { margin:em(2,17); }
+.questions .error { font-size:em(21); line-height:lh(29,21); margin:em(15,21) 0; display:block; color:$skillstool_red_1; letter-spacing:-0.025em; }
+.questions .with-error input.text { border-color:$skillstool_red_1; }
+
+@media only screen and (min-width:600px) {
+  .questions .help { margin:em(32,17) 0 em(-20,17) em(193,17); }
+  .questions .text .text .help { margin:em(10,17) 0 em(15,17) em(21,17); }
+}
+
+/* Tablet */
+@media only screen and (min-width:600px) and (max-width:860px) {
+  .questions { font-size:85%; }
+}

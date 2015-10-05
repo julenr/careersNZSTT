@@ -1,0 +1,79 @@
+/*
+	Careers NZ Skills Transition Tool
+	Created: 21 September 2015
+	Last updated: See GIT/SVN
+  ----------------------------------
+	Styles for print
+
+*/
+
+/* 
+ HIDE
+------------------------------------- */
+.xxx { display:none !important; }
+
+
+/* 
+ HIDE BACKGROUND
+------------------------------------- */
+.xxx { background:none !important; }
+
+
+/* 
+ SHOW
+------------------------------------- */
+.print { display:block !important; }
+
+
+/*STILL TO DO: block-taxonomies-featured */
+
+
+/* 
+ SPECIFIC PRINT STYLES
+------------------------------------- */
+html { font-size:115%; }
+body { background:#fff; color:#000; }
+
+
+/* 
+ HEADER
+------------------------------------- */
+
+
+/* 
+ MAIN CONTENT
+------------------------------------- */
+
+/* Links */
+a { color:#000 !important; }
+#content a:after { content:" (https://www.careers.govt.nz" attr(href) ")"; text-decoration:underline; word-wrap:break-word; font-family:'xxx', Arial, sans-serif; }
+#content a[href^="http://"]:after { content:" (" attr(href) ")"; }
+#content a[href^="mailto:"]:after, #content .tag a:after, #content a.tag:after, .togglecomposite a:after { display:none; }
+.content-wrapper .nav-sitemap a:after { display:block; }
+
+/* Color */
+li ul, li ol, h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, p, li, label { color:#000 !important; }
+
+/* Typographic */
+.content-wrapper .intro-text { font-size:115%; color:#000; }
+.content-wrapper h1, .content-wrapper .h1 { font-size:45px; }
+.content-wrapper h2, .content-wrapper .h2, .h2 { border-bottom:1px solid #ccc !important; color:#000 !important; }
+#content .caption, .content-wrapper blockquote { color:#000; border:none !important; padding-left:0; padding-bottom:0; }
+
+/* Images */
+.figure img, .captionImage img { border:none !important; }
+.figure.align-left img, .figure.align-right img, .captionImage.left img, .captionImage.right img { width:auto; max-width:100%; }
+
+/* Tables */
+.page-maincontent table { border-bottom:2px solid #000; border-left:1px solid #ccc; }
+.page-maincontent th, .page-maincontent td { border:none; border-right:1px solid #ccc; }
+.page-maincontent th { color:#000; border-bottom:2px solid #000; }
+
+/* Misc */
+.js-pageurl { font-size:14px; margin:0.75em 0 0; text-decoration:underline; }
+.js-pageurl.last { margin:1em 0; }
+
+/* 
+ FOOTER
+------------------------------------- */
+

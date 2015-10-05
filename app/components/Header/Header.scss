@@ -1,6 +1,5 @@
 @charset "UTF-8";
 @import "../../main.scss";
-@import "../../fonts.scss";
 
 .page-header { position:fixed; width:100%; left:0; top:0; z-index:11; @include gradient-left-right($skillstool_green_2, $skillstool_green_3); @include box-shadow(0, 2px, 2px, 0, rgba(0,0,0,0.2)); }
 .page-header a { color:$skillstool_green_4; text-decoration:none; }

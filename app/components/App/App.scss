@@ -1,1 +1,58 @@
 @charset "UTF-8";
+@import "../../main.scss";
+
+/* Main content */
+.page-maincontent h1, .page-maincontent .h1 { font-size:em(30); line-height:1; letter-spacing:-0.025em; }
+.content-wrapper h1, .content-wrapper .h1 { font-size:em(42); line-height:lh(50,42); margin:em(14,42) 0 0; color:$skillstool_green_2; text-align:center; letter-spacing:-0.025em; }
+.content-wrapper h2, .content-wrapper .h2, .h2 { font-size:em(34); line-height:1; margin:0 0 em(15,34); clear:both; color:$skillstool_green_2; letter-spacing:-0.025em; }
+.content-wrapper h3, .content-wrapper .h3, .h3 { font-size:em(24); line-height:lh(26,24); margin:em(35,24) 0 em(8,24); letter-spacing:-0.025em; }
+.content-wrapper h4, .content-wrapper .h4, .h4 { font-size:em(18); line-height:lh(24,18); margin:0 0 em(4,18); }
+.content-wrapper h5, .content-wrapper h6, .content-wrapper .h5, .h5, .content-wrapper .h6, .h6 { font-size:em(16); line-height:lh(23); margin:0 0 em(4); }
+.content-wrapper p { font-size:em(16); line-height:lh(23); margin:0 0 em(17); }
+.content-wrapper li { font-size:em(16); line-height:lh(23); }
+.content-wrapper ul { margin:em(7) 0 em(21) em(21); list-style:none; }
+.content-wrapper ol { margin:em(7) 0 em(21) 0; list-style:none; counter-reset:section; }
+.content-wrapper ol li:before { content:counters(section, ".") ". "; counter-increment:section; display:inline-block; padding-right:em(4); }
+.content-wrapper li ul { margin:0 0 0 em(20); }
+.content-wrapper li ol { margin:0 0 0 em(32); }
+.content-wrapper li li ul { margin-left:em(25); list-style:none; }
+.content-wrapper li li ol { margin-left:em(15); }
+.content-wrapper li li { margin:0; font-size:inherit; line-height:inherit; }
+.content-wrapper ul li:before { content:"•"; display:inline-block; padding-right:em(4); margin-left:em(-10); }
+.content-wrapper li li ul li:before { content:"-"; padding-right:em(4); }
+.content-wrapper ol.list-alpha { list-style:lower-alpha; }
+.content-wrapper ol.list-roman { list-style:lower-roman; }
+.content-wrapper dl { overflow:hidden; margin:em(6) 0 em(38); }
+.content-wrapper dt { padding:em(13) 0 em(19); float:left; width:60%; line-height:lh(23); clear:left; }
+.content-wrapper dt strong { font-size:1.2em; }
+.content-wrapper dd { padding:em(13) 0 em(19); float:left; width:40%; line-height:lh(23); text-align:right; }
+
+/* Blockquotes */
+.content-wrapper blockquote { font-size:em(24); margin:em(25,24) 0 em(34,24); line-height:lh(31,24); }
+.content-wrapper blockquote p, .content-wrapper blockquote li { font-size:1em; margin:0; padding:0; line-height:inherit; }
+.content-wrapper blockquote ul, .content-wrapper blockquote ol { list-style:none; margin:0; padding:0; }
+.content-wrapper blockquote cite:before { content:"— "; display:inline; }
+
+/* Intro text/image */
+.content-wrapper .intro-image { margin:em(26) em(-15) 0; }
+.content-wrapper .intro-text { font-size:em(21); line-height:lh(27,21); margin:em(39,21) 0 em(42,21); }
+.content-wrapper .intro-text p, .content-wrapper .intro-text li { line-height:inherit; font-size:inherit; }
+
+/* Return link */
+.nav-link-back a { display:block; font-size:em(17); padding:em(20,17) em(15,17) 0; }
+.nav-link-back a:after { content:'\e814'; font-size:em(25); display:block; text-align:left; position:relative; margin-top:em(-9,25); }
+.nav-link-back a:hover, .nav-link-back a:active, .nav-link-back a:focus { text-decoration:none; color:$skillstool_body; }
+
+@media only screen and (min-width:800px) {
+  .content-wrapper h1, .content-wrapper .h1 { font-size:em(54); line-height:lh(65,54); margin-top:em(45,54); }
+  .content-wrapper h2, .content-wrapper .h2, .h2 { font-size:em(39); line-height:1; margin:0 0 em(15,39); }
+  .content-wrapper h3, .content-wrapper .h3, .h3 { font-size:em(28); line-height:1; margin:em(35,28) 0 em(15,28); }
+  .content-wrapper h4, .content-wrapper .h4, .h4 { font-size:em(21); line-height:lh(24,21); margin:0 0 em(4,21); }
+  .content-wrapper h5, .content-wrapper h6, .content-wrapper .h5, .h5, .content-wrapper .h6, .h6 { font-size:em(18); line-height:lh(24,18); margin:0 0 em(4,18); }
+  .content-wrapper p { font-size:em(18); line-height:lh(24,18); margin:0 0 em(17,18); }
+  .content-wrapper li { font-size:em(18); line-height:lh(24,18); }
+  .content-wrapper blockquote { font-size:em(26); margin:em(25,26) 0 em(34,26); line-height:lh(34,26); }
+  .content-wrapper .intro-image { margin:em(65) 0 0; }
+  .content-wrapper .intro-text { font-size:em(26); line-height:lh(34,26); margin:em(44,26) 0 em(48,26); }
+  .nav-link-back a { padding:em(27,17) 0 0; }
+}

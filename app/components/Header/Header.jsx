@@ -11,7 +11,7 @@ class Header extends React.Component {
         <div className="page-wrapper">
           <a href="/" className="home-logo" title="Return to the Change Up home page. ">Change Up</a>
           <a href="http://www.careersnz.govt.nz/" className="careersnz-logo" title="Visit the Careers New Zealand home page. ">Careers New Zealand</a>
-          <img src="skills-transition-tool-logo-print.png" width="200" className="print" alt="" />
+          <img src={require('../../assets/images/logos/skills-transition-tool-logo-print.png')} width="200" className="print" alt="" />
           <nav className="header-tools">
             <ul>
               <li className="tool-edit"><a href="#">Edit</a>

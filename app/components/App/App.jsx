@@ -4,11 +4,12 @@
 
 import './App.scss';
 import React from 'react';
+import { Provider } from 'react-redux';
 import { Router, Route, Link } from 'react-router'
+
 import Header from '../Header/Header.jsx';
 import Footer from '../Footer/Footer.jsx';
 import ProgressBar from '../ProgressBar/ProgressBar.jsx';
-import MainPage from '../MainPage/MainPage.jsx';
 
 class App extends React.Component {
   render() {

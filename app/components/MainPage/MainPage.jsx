@@ -6,36 +6,58 @@ import './MainPage.scss';
 
 import React from 'react';
 import { Router, Route, Link } from 'react-router'
+import { connect } from 'react-redux'
+// We use the same ES6 import trick to get all action creators and produce a hash like we did with
+// our reducers. If you haven't yet, go get a look at our action creator (./actions-creators.js).
+import * as actionCreators from '../../redux/action-creators'
 
+// The "connect" decorator takes, as its only parameter, a function that will select which slice of your
+// state you want to expose to your component. This function is logically called a "selector" and
+// receives 2 parameters: the state of your store and the current props of your component.
+// The props of the component are provided to handle common case like extracting a slice of your
+// state depending on a prop value (Ex: state.items[props.someID]).
+@connect((state /*, props*/) => {
+  // This is our select function that will extract from the state the data slice we want to expose
+  // through props to our component.
+  return {
+    reduxState: state,
+    frozen: state._time.frozen,
+    time: state._time.time
+  }
+})
 class MainPage extends React.Component {
-  render() {
+  onTimeButtonClick () {
+    // This button handler will dispatch an action in response to a
+    // click event from a user. We use here the dispatch function provided by @connect in a prop.
+    this.props.dispatch(actionCreators.getTime(500))
+  }
+  render () {
+
+    // Thanks to our @connect decorator, we're able to get the data previously selected through the props.
+    var { frozen, time, reduxState } = this.props
+    var attrs = {}
+
+    if (frozen) {
+      attrs = {
+        disabled: true
+      }
+    }
+
     return (
-      <div className="page-maincontent" id="content">
-        <div className="page-wrapper">
-          <div className="layout-row">
-            <div className="layout-col-8 layout-col main">
-              <h1>Statics</h1>
-              <div className="content-wrapper">
-                <h2>Templates</h2>
-                <ul>
-                  <li><Link to="questionsPage">Questions</Link></li>
-                  <li><a href="jobs.php">Jobs</a></li>
-                  <li><a href="course-detail.php">Course detail</a></li>
-                  <li><a href="general.php">General content page</a></li>
-                </ul>
-                <h2>Styleguide</h2>
-                <ul>
-                  <li><a href="blocks.php">Blocks</a></li>
-                  <li><a href="colours.php">Colours</a></li>
-                  <li><a href="icons.php">Icons</a></li>
-                  <li><a href="columns.php">Columns</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div>
+        <h1>Provider and @connect example</h1>
+        <span>
+          <b>What time is it?</b> { time ? `It is currently ${time}` : 'No idea yet...' }
+        </span>
+        <br />
+        {/* We register our button handler here and use the experimental ES7 function's binding operator "::"
+         to have our handler to be bound to the component's instance. */}
+        <button { ...attrs } onClick={::this.onTimeButtonClick}>Get time!</button>
+        <pre>
+          redux state = { JSON.stringify(reduxState, null, 2) }
+        </pre>
       </div>
-    );
+    )
   }
 }
 

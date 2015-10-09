@@ -6,22 +6,24 @@
   "main": "index.jsx",
   "scripts": {
     "start": "webpack-dev-server",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --compilers js:babel/register --require ./test/test_helper.js  --recursive",
+    "test:watch": "npm run test -- --watch",
     "build": "webpack",
     "lint": "npm run lint-js && npm run lint-css",
     "lint-js": "eslint . --ext .js --ext .jsx",
-    "lint-css": "csslint app --quiet"
+    "lint-css": "csslint src --quiet"
   },
   "keywords": [
     "React",
     "Flux",
     "JavaScript",
-    "Redux or Alt"
+    "Redux"
   ],
   "devDependencies": {
-    "babel-core": "^5.8.23",
     "babel-eslint": "^4.1.3",
     "babel-loader": "^5.3.2",
+    "chai": "^3.3.0",
+    "chai-immutable": "^1.3.0",
     "clean-webpack-plugin": "^0.1.3",
     "css-loader": "^0.17.0",
     "csslint": "^0.10.0",
@@ -32,7 +34,7 @@
     "extract-text-webpack-plugin": "^0.8.2",
     "file-loader": "^0.8.4",
     "html-webpack-plugin": "^1.6.1",
-    "node-libs-browser": "^0.5.2",
+    "mocha": "^2.3.3",
     "node-sass": "^3.3.3",
     "react-hot-loader": "^1.3.0",
     "redux-devtools": "^2.1.5",
@@ -44,13 +46,15 @@
     "webpack-merge": "^0.2.0"
   },
   "dependencies": {
+    "axios": "^0.7.0",
     "bluebird": "^2.10.2",
     "history": "^1.12.0",
+    "immutable": "^3.7.5",
     "node-uuid": "^1.4.3",
     "react": "^0.13.3",
     "react-modal": "^0.5.0",
     "react-redux": "^3.1.0",
-    "react-router": "^1.0.0-rc1",
+    "react-router": "^1.0.0-rc3",
     "redux": "^3.0.2"
   }
 }

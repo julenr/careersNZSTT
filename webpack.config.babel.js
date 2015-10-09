@@ -11,7 +11,6 @@ import merge from 'webpack-merge';
 import Clean from 'clean-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
-//import App from './app/components/App/App.jsx';
 import pkg from './package.json';
 
 const TARGET = process.env.npm_lifecycle_event;
@@ -19,7 +18,7 @@ const ROOT_PATH = path.resolve(__dirname);
 const APP_TITLE = 'Skills Transition Tool - Careers New Zealand';
 
 const common = {
-  entry: path.resolve(ROOT_PATH, 'app'),
+  entry: path.resolve(ROOT_PATH, 'src'),
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
@@ -32,10 +31,15 @@ const common = {
       {
         test: /\.jsx?$/,
         loaders: ['eslint'],
-        include: path.resolve(ROOT_PATH, 'app')
+        include: path.resolve(ROOT_PATH, 'src')
       }
     ]
-  }
+  },
+  plugins: [
+    new HtmlwebpackPlugin({
+      title: APP_TITLE
+    })
+  ]
 };
 
 if(TARGET === 'start' || !TARGET) {
@@ -46,26 +50,26 @@ if(TARGET === 'start' || !TARGET) {
         {
           test: /\.jsx?$/,
           loaders: ['react-hot', 'babel'],
-          include: path.resolve(ROOT_PATH, 'app')
+          include: path.resolve(ROOT_PATH, 'src')
         },
         {
           test: /\.scss$/,
           loaders: ['style', 'css', 'sass'],
-          include: path.resolve(ROOT_PATH, 'app')
+          include: path.resolve(ROOT_PATH, 'src')
         },
         {
           test: /\.(png|jpg)$/,
-          loader: 'url?limit=25000',
-          include: path.resolve(ROOT_PATH, 'app')
+          loader: 'url?limit=25',
+          include: path.resolve(ROOT_PATH, 'src')
         },
         {
           test: /\.woff$/,
-          loader: 'url?limit=100000',
-          include: path.resolve(ROOT_PATH, 'app')
+          loader: 'url?limit=1',
+          include: path.resolve(ROOT_PATH, 'src')
         },
         { test: /\.(ttf|eot|svg|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-          loader: "file-loader",
-          include: path.resolve(ROOT_PATH, 'app')
+          loader: 'file-loader',
+          include: path.resolve(ROOT_PATH, 'src')
         }
       ]
     },
@@ -76,10 +80,7 @@ if(TARGET === 'start' || !TARGET) {
       progress: true
     },
     plugins: [
-      new webpack.HotModuleReplacementPlugin(),
-      new HtmlwebpackPlugin({
-        title: APP_TITLE
-      })
+      new webpack.HotModuleReplacementPlugin()
     ]
   });
 }
@@ -87,7 +88,7 @@ if(TARGET === 'start' || !TARGET) {
 if(TARGET === 'build') {
   module.exports = merge(common, {
     entry: {
-      app: path.resolve(ROOT_PATH, 'app'),
+      app: path.resolve(ROOT_PATH, 'src'),
       vendor: Object.keys(pkg.dependencies)
     },
     output: {
@@ -100,32 +101,33 @@ if(TARGET === 'build') {
         {
           test: /\.jsx?$/,
           loaders: ['babel'],
-          include: path.resolve(ROOT_PATH, 'app')
+          include: path.resolve(ROOT_PATH, 'src')
         },
         {
           test: /\.scss$/,
           //loader: ExtractTextPlugin.extract('style', 'css', 'sass'),
           loaders: ['style', 'css', 'sass'],
-          include: path.resolve(ROOT_PATH, 'app')
+          include: path.resolve(ROOT_PATH, 'src')
         },
         {
-          test: /\.(png|jpg|gif)$/,
-          loaders: ['url?limit=25000', 'file-loader?name=images/[name].[ext]'],
+          test: /\.(png|jpg)$/,
+          loaders: ['file-loader?name=images/[name].[ext]'],
+          include: path.resolve(ROOT_PATH, 'src')
         },
         {
           test: /\.woff$/,
-          loaders: ['url?limit=100000', 'file-loader?name=fonts/[name].[ext]'],
-          include: path.resolve(ROOT_PATH, 'app')
+          loaders: ['file-loader?name=fonts/[name].[ext]'],
+          include: path.resolve(ROOT_PATH, 'src')
         },
         { test: /\.(ttf|eot|svg|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-          loader: "file-loader?name=fonts/[name].[ext]",
-          include: path.resolve(ROOT_PATH, 'app')
+          loader: 'file-loader?name=fonts/[name].[ext]',
+          include: path.resolve(ROOT_PATH, 'src')
         }
       ]
     },
     plugins: [
-      new ExtractTextPlugin('styles.css?[chunkhash]'),
       new Clean(['build']),
+      new ExtractTextPlugin('styles.css?[chunkhash]'),
       new webpack.optimize.CommonsChunkPlugin(
         'vendor',
         '[name].js?[chunkhash]'
@@ -140,10 +142,6 @@ if(TARGET === 'build') {
         compress: {
           warnings: false
         }
-      }),
-      new HtmlwebpackPlugin({
-        title: APP_TITLE,
-        template: path.join(__dirname, 'templates/index.tpl')
       })
     ]
   });

@@ -2,7 +2,7 @@
  * Created by jr1500 on 30/09/15.
  */
 
-import './MainPage.scss';
+import './ProviderConnect.scss';
 
 import React from 'react';
 import { Router, Route, Link } from 'react-router'
@@ -25,12 +25,12 @@ import * as actionCreators from '../../redux/action-creators'
     time: state._time.time
   }
 })
-class MainPage extends React.Component {
-  onTimeButtonClick () {
-    // This button handler will dispatch an action in response to a
-    // click event from a user. We use here the dispatch function provided by @connect in a prop.
+class ProviderConnect extends React.Component {
+
+  onTimeButtonClick = () => {
     this.props.dispatch(actionCreators.getTime(500))
   }
+
   render () {
 
     // Thanks to our @connect decorator, we're able to get the data previously selected through the props.
@@ -52,7 +52,7 @@ class MainPage extends React.Component {
         <br />
         {/* We register our button handler here and use the experimental ES7 function's binding operator "::"
          to have our handler to be bound to the component's instance. */}
-        <button { ...attrs } onClick={::this.onTimeButtonClick}>Get time!</button>
+        <button { ...attrs } onClick={this.onTimeButtonClick}>Get time!</button>
         <pre>
           redux state = { JSON.stringify(reduxState, null, 2) }
         </pre>
@@ -61,4 +61,4 @@ class MainPage extends React.Component {
   }
 }
 
-export default MainPage;
+export default ProviderConnect;

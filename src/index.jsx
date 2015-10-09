@@ -14,34 +14,45 @@ import { Provider } from 'react-redux';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
 
 // REDUX STORE
-import createStore from './redux/create-store'
+import createStore from './redux/create-store';
+import initialData from './redux/initialData';
 
 //CUSTOM COMPONENTS
 import App from './components/App/App.jsx';
 import MainPage from './components/MainPage/MainPage.jsx';
 import QuestionsPage from './components/QuestionsPage/QuestionsPage.jsx';
+import ProviderConnect from './components/ProviderConnect/ProviderConnect.jsx';
 
 // Initialize Redux store
-const store = createStore({_time: {testHash: 'anyValue'}});
 
-if(process.env.NODE_ENV === 'production') {
-  var app = document.getElementById('app');
-}
-else {
-  var app = document.createElement('div');
-  document.body.appendChild(app);
-}
+const store = createStore(
+    {
+      _time: {testHash: 'anyValue'},
+      _main: initialData
+    }
+);
+
+console.log('Initial state ', initialData);
+
+var app = document.createElement('div');
+document.body.appendChild(app);
+
+
+//React.render(<App />, app);
 
 React.render((
   <Provider store={ store }>
     { () => (
-      <Router history={createBrowserHistory()}>
+      /*{<Router history={createBrowserHistory()}>}*/
+      <Router>
         <Route path="/" component={App}>
           <IndexRoute component={MainPage} />
           <Route path="questions" component={QuestionsPage} />
+          <Route path="ProviderConnect" component={ProviderConnect} />
         </Route>
       </Router>
-      )
+    )
     }
   </Provider>
 ), app);
+

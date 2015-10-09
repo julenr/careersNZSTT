@@ -9,7 +9,6 @@ import { Router, Route, Link } from 'react-router'
 
 import Header from '../Header/Header.jsx';
 import Footer from '../Footer/Footer.jsx';
-import ProgressBar from '../ProgressBar/ProgressBar.jsx';
 
 class App extends React.Component {
   render() {
@@ -18,7 +17,6 @@ class App extends React.Component {
         <Header />
         {this.props.children || 'Welcome to Careers NZ'}
         <Footer />
-        <ProgressBar />
       </div>
     );
   }

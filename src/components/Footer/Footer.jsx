@@ -5,6 +5,7 @@
 import './Footer.scss';
 
 import React from 'react';
+import { Router, Route, Link } from 'react-router';
 
 class AppFooter extends React.Component {
   render() {
@@ -19,6 +20,7 @@ class AppFooter extends React.Component {
           <div className="layout-col-6 layout-col">
             <nav className="nav-footer">
               <ul>
+                <li><Link to="/providerconnect">Test Provider &amp; Connect</Link></li>
                 <li><a href="/">Home</a></li>
                 <li><a href="#">Contact</a></li>
                 <li><a href="#">Accessibility</a></li>

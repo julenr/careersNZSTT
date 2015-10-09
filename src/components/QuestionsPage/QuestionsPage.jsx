@@ -7,6 +7,8 @@ import './QuestionsPage.scss';
 import React from 'react';
 import { Router, Route, Link } from 'react-router'
 
+import ProgressBar from '../ProgressBar';
+
 class QuestionsPage extends React.Component {
   render() {
     return (
@@ -21,6 +23,7 @@ class QuestionsPage extends React.Component {
           <p className="blurb">This website will help you find a course and a better job based on the skills you have and the things you want from work and study.</p>
           <div className="clear"></div>
         </div>
+        <ProgressBar />
       </div>
     );
   }

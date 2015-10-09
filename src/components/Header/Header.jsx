@@ -3,7 +3,7 @@
  */
 import './Header.scss';
 import React from 'react';
-import { Router, Route, Link } from 'react-router'
+import { Router, Route, Link } from 'react-router';
 
 class Header extends React.Component {
   render() {

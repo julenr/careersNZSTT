@@ -1,11 +1,8 @@
 
 
-var initialTimeState = {};
+var initialState = {};
 
-// The reducer is named with leading "_" to avoid having: state.time.time (time twice) when reading
-// from state. So it's just a personal preference here and you may not need this depending on
-// how your reducers are named and what properties they expose in Redux's store.
-export function _time(state = initialTimeState, action = {}) {
+export function _time(state = initialState, action = {}) {
   switch (action.type) {
     case 'GET_TIME_REQUEST':
       return {
@@ -24,6 +21,14 @@ export function _time(state = initialTimeState, action = {}) {
         ...state,
         frozen: false
       };
+    default:
+      return state;
+  }
+}
+
+
+export function _main(state = initialState, action = {}) {
+  switch (action.type) {
     default:
       return state;
   }

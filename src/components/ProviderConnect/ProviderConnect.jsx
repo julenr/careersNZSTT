@@ -5,20 +5,11 @@
 import './ProviderConnect.scss';
 
 import React from 'react';
-import { Router, Route, Link } from 'react-router'
-import { connect } from 'react-redux'
-// We use the same ES6 import trick to get all action creators and produce a hash like we did with
-// our reducers. If you haven't yet, go get a look at our action creator (./actions-creators.js).
-import * as actionCreators from '../../redux/action-creators'
+import { Router, Route, Link } from 'react-router';
+import { connect } from 'react-redux';
+import * as actionCreators from '../../redux/action-creators';
 
-// The "connect" decorator takes, as its only parameter, a function that will select which slice of your
-// state you want to expose to your component. This function is logically called a "selector" and
-// receives 2 parameters: the state of your store and the current props of your component.
-// The props of the component are provided to handle common case like extracting a slice of your
-// state depending on a prop value (Ex: state.items[props.someID]).
 @connect((state /*, props*/) => {
-  // This is our select function that will extract from the state the data slice we want to expose
-  // through props to our component.
   return {
     reduxState: state,
     frozen: state._time.frozen,
@@ -32,8 +23,6 @@ class ProviderConnect extends React.Component {
   }
 
   render () {
-
-    // Thanks to our @connect decorator, we're able to get the data previously selected through the props.
     var { frozen, time, reduxState } = this.props
     var attrs = {}
 
@@ -45,14 +34,9 @@ class ProviderConnect extends React.Component {
 
     return (
       <div>
-        <h1>Provider and @connect example</h1>
-        <span>
-          <b>What time is it?</b> { time ? `It is currently ${time}` : 'No idea yet...' }
-        </span>
+        <h1>Provider and @connect</h1>
         <br />
-        {/* We register our button handler here and use the experimental ES7 function's binding operator "::"
-         to have our handler to be bound to the component's instance. */}
-        <button { ...attrs } onClick={this.onTimeButtonClick}>Get time!</button>
+        <button { ...attrs } onClick={this.onTimeButtonClick}>Get state!</button>
         <pre>
           redux state = { JSON.stringify(reduxState, null, 2) }
         </pre>

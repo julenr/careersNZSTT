@@ -1,4 +1,5 @@
 import Promise from 'bluebird';
+import axios from 'axios';
 
 export function getTime(delay = 100) {
   return {
@@ -14,6 +15,37 @@ export function getTime(delay = 100) {
           });
         }, delay);
       });
+    }
+  }
+}
+
+
+export function getInitialState() {
+  return {
+    types: ['GET_STATE_REQUEST', 'GET_STATE_SUCCESS', 'GET_STATE_FAILURE'],
+    promise: () => {
+      return axios.get('/tools/skills-transition-tool/form')
+        .then(function (response) {
+          return {data: response.data};
+        })
+        .catch(function (response) {
+          console.error('error ', response);
+        });
+    }
+  }
+}
+
+export function getContentPage() {
+  return {
+    types: ['GET_MAIN_PAGE_REQUEST', 'GET_MAIN_PAGE_SUCCESS', 'GET_MAIN_PAGE_FAILURE'],
+    promise: () => {
+      return axios.get('/tools/skills-transition-tool/content?page=demo-general-content-page-with-video')
+        .then(function (response) {
+          return {data: response.data};
+        })
+        .catch(function (response) {
+          console.error('error ', response);
+        });
     }
   }
 }

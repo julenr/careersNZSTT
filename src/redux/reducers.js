@@ -26,9 +26,49 @@ export function _time(state = initialState, action = {}) {
   }
 }
 
-
+// MAIN DATA AND QUESTIONNAIRE REDUCER
 export function _main(state = initialState, action = {}) {
   switch (action.type) {
+    case 'GET_STATE_REQUEST':
+      return {
+        ...state,
+        loading: true
+      };
+    case 'GET_STATE_SUCCESS':
+      return {
+        ...state,
+        data: action.result.data,
+        loading: false
+      };
+    case 'GET_STATE_FAILURE':
+      return {
+        ...state,
+        loading: false
+      };
+    default:
+      return state;
+  }
+}
+
+// MAIN PAGE CONTENT REDUCER
+export function _mainPage(state = initialState, action = {}) {
+  switch (action.type) {
+    case 'GET_MAIN_PAGE_REQUEST':
+      return {
+        ...state,
+        loading: true
+      };
+    case 'GET_MAIN_PAGE_SUCCESS':
+      return {
+        ...state,
+        data: action.result.data,
+        loading: false
+      };
+    case 'GET_MAIN_PAGE_FAILURE':
+      return {
+        ...state,
+        loading: false
+      };
     default:
       return state;
   }

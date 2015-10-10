@@ -15,7 +15,9 @@ import createBrowserHistory from 'history/lib/createBrowserHistory';
 
 // REDUX STORE
 import createStore from './redux/create-store';
-import initialData from './redux/initialData';
+import * as actionCreators from './redux/action-creators';
+//import initialData from './redux/initialData';
+
 
 //CUSTOM COMPONENTS
 import App from './components/App/App.jsx';
@@ -28,22 +30,33 @@ import ProviderConnect from './components/ProviderConnect/ProviderConnect.jsx';
 const store = createStore(
     {
       _time: {testHash: 'anyValue'},
-      _main: initialData
+      _mainPage: {
+        loading: false,
+        data: {
+          Title: 'title',
+          Content: 'content',
+          Intro: 'intro',
+          Video: {
+            EmbedHTML: 'embedHTML'
+          }
+        }
+      }
     }
 );
 
-console.log('Initial state ', initialData);
+store.dispatch(actionCreators.getInitialState());
+store.dispatch(actionCreators.getContentPage());
+
+console.log('Initial state ', store.getState());
 
 var app = document.createElement('div');
 document.body.appendChild(app);
 
 
-//React.render(<App />, app);
-
 React.render((
   <Provider store={ store }>
     { () => (
-      /*{<Router history={createBrowserHistory()}>}*/
+      /*{<Router history={createBrowserHistory()}>} TODO: Problems rendering in Vagrant environment*/
       <Router>
         <Route path="/" component={App}>
           <IndexRoute component={MainPage} />

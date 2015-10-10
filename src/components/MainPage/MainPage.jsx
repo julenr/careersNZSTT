@@ -5,9 +5,11 @@
 import './MainPage.scss';
 
 import React from 'react';
-import { Router, Route, Link } from 'react-router'
-import { connect } from 'react-redux'
-import * as actionCreators from '../../redux/action-creators'
+import { Router, Route, Link } from 'react-router';
+import { connect } from 'react-redux';
+import * as actionCreators from '../../redux/action-creators';
+
+import ActionPlanDrawer from '../ActionPlanDrawer/ActionPlanDrawer.jsx';
 
 @connect((state /*, props*/) => {
   return {
@@ -44,6 +46,7 @@ class MainPage extends React.Component {
             <div dangerouslySetInnerHTML={{__html: content}} />
           </section>
         </div>
+        <ActionPlanDrawer />
       </div>
     )
   }

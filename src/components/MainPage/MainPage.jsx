@@ -24,7 +24,6 @@ class MainPage extends React.Component {
   render () {
     var { title, intro, content, videoHTML, loading } = this.props;
     var attrs = {};
-    console.log(title, intro, content, loading);
     if (loading) {
       attrs = {
         disabled: true

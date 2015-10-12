@@ -1,0 +1,6 @@
+{
+  "name": "MultipleChoice",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./MultipleChoice.jsx"
+}

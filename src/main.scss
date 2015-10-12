@@ -157,3 +157,103 @@ a:hover, a:active, a:focus { text-decoration:underline; }
   .js-pageurl { font-size:14px; margin:0.75em 0 0; text-decoration:underline; }
   .js-pageurl.last { margin:1em 0; }
 }
+
+/*
+ MESSAGES
+---------------------------------------
+*/
+.message { background:$skillstool_yellow_1; }
+.message .page-wrapper { padding:em(29) em(30) em(33); text-align:center; width:75%; max-width:em(510); }
+.message .title { font-size:em(27); line-height:lh(28,27); margin:0 0 em(10,27); }
+.message p { font-size:em(17); line-height:lh(24,17); margin:0; }
+.message a { color:$skillstool_body; text-decoration:underline; }
+#javascript-disabled, #unsupported-browser { position:relative; z-index:14; }
+.js #javascript-disabled, .js #unsupported-browser { display:none; }
+
+@media only screen and (max-width:599px) {
+  .message { font-size:75%; }
+}
+
+
+/*
+ ICONS
+---------------------------------------
+*/
+
+.icon-facebook:before { content: '\e800'; } /* '' */
+.icon-plus:before { content: '\e801'; } /* '' */
+.icon-minus:before { content: '\e802'; } /* '' */
+.icon-ok:before { content: '\e803'; } /* '' */
+.icon-mail:before { content: '\e805'; } /* '' */
+.icon-help:before { content: '\e806'; } /* '' */
+.icon-tick:before { content: '\e807'; } /* '' */
+.icon-refresh:before { content: '\e808'; } /* '' */
+.icon-arrow-down:before { content: '\e809'; } /* '' */
+.icon-arrow-left:before { content: '\e80a'; } /* '' */
+.icon-arrow-right:before { content: '\e80b'; } /* '' */
+.icon-arrow-up:before { content: '\e80c'; } /* '' */
+.icon-print:before { content: '\e80d'; } /* '' */
+.icon-cross:before { content: '\e80e'; } /* '' */
+.icon-chevron-down:before { content: '\e80f'; } /* '' */
+.icon-chevron-left:before { content: '\e810'; } /* '' */
+.icon-chevron-right:before { content: '\e811'; } /* '' */
+.icon-chevron-up:before { content: '\e812'; } /* '' */
+.icon-arrow-down-long:before { content: '\e813'; } /* '' */
+.icon-arrow-left-long:before { content: '\e814'; } /* '' */
+.icon-arrow-right-long:before { content: '\e815'; } /* '' */
+.icon-arrow-up-long:before { content: '\e816'; } /* '' */
+.icon-plus-circle:before { content: '\e817'; } /* '' */
+.icon-cancel-circle:before { content: '\e818'; } /* '' */
+.icon-twitter:before { content: '\e823'; } /* '' */
+
+/*
+ TRANSITIONS
+---------------------------------------
+*/
+
+.dropdown, .dropdown div, .dropdown li, .dropdown div:after, .button, button, .action-plan .plan-button, input[type=submit], .field .text, .field textarea, .action-card-status, .action-card-button, .action-card.plan, .card-actions, .careers-card, .progress-bar-status:before, .progress-bar li, .radio li, .questions .submit, .questions .fieldset, .tag, .button-solid { @include transition(all, .2s, ease-in-out); }
+
+
+
+
+/*
+ MISC
+---------------------------------------
+*/
+
+/* Overlays */
+#list-changing-overlay { background:rgba(250, 250, 250, 0.92) none repeat scroll 0 0; display:block; height:100%; left:0; position:fixed; top:0; width:100%; z-index:8021; opacity:0; visibility:hidden; }
+#list-changing-overlay .overlay-liner { bottom:0; height:60%; left:0; margin:auto; overflow:visible; position:absolute; right:0; top:0; width:50%; }
+#list-changing-overlay .message { font-size:em(46); line-height:lh(51,46); color:$skillstool_blue_1; text-align:center; }
+#list-changing-overlay .message .icon-refresh { display:block; font-size:168%; margin-bottom:em(24,46); @include transform-rotate(0); }
+#list-changing-overlay.active { visibility:visible; opacity:1; @include transition(all, .5s, ease-in-out); }
+
+@media only screen and (max-width:599px) {
+  #list-changing-overlay { font-size:65%; }
+}
+
+/* Pinned elements */
+.pinned { position:fixed; width:100%; left:0; bottom:0; z-index:11; }
+
+/* Responsive - generic styles */
+.desktop, .mobile, .tablet, .hide { visibility:hidden; position:absolute; left:-999em; width:1px; overflow:hidden; opacity:0; }
+.print { display:none; }
+@media only screen and (max-width:599px) {
+  .mobile { visibility:visible; position:inherit; left:inherit; width:inherit; overflow:inherit; opacity:1; }
+}
+@media only screen and (min-width:600px) and (max-width:799px) {
+  .tablet { visibility:visible; position:inherit; left:inherit; width:inherit; overflow:inherit; opacity:1; }
+}
+@media only screen and (min-width:800px) {
+  .desktop { visibility:visible; position:inherit; left:inherit; width:inherit; overflow:inherit; opacity:1; }
+}
+
+
+
+/*
+ TEMPORARY (DURING DEVELOPMENT)
+---------------------------------------
+*/
+
+.testtag { font-size:16px; line-height:lh(22,16); padding:10px; display:inline-block; background:#fff; border:1px solid #ccc; margin:10px; }
+

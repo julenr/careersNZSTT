@@ -1,0 +1,14 @@
+{
+  "name": "Questionnaire",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./Questionnaire.jsx",
+  "dependencies": {
+    "checkbutton": "0.1.0",
+    "tagbutton": "0.1.0",
+    "button": "0.1.0",
+    "label": "0.1.0",
+    "input": "0.1.0",
+    "avatar": "0.1.0"
+  }
+}

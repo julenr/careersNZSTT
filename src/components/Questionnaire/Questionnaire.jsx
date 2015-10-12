@@ -2,22 +2,62 @@
  * Created by jr1500 on 30/09/15.
  */
 
-import './QuestionsPage.scss';
+import './Questionnaire.scss';
 
 import React from 'react';
 import { Router, Route, Link } from 'react-router'
 
 import ProgressBar from '../ProgressBar';
+import MultipleChoice from './MultipleChoice/MultipleChoice';
+import Checkbutton from '../subcomponents/Checkbutton';
+import Avatar from '../subcomponents/Avatar';
 
-class QuestionsPage extends React.Component {
+class Questionnaire extends React.Component {
   render() {
+    const options = [
+      {id: 1, text: 'I want to turn my passion PEPE into a job', selected: ''},
+      {id: 2, text: 'Id like to get a better job', selected: ''},
+      {id: 3, text: 'I want to do a course', selected: 'selected'},
+      {id: 4, text: 'Its time for a change, but Im not sure what to do next.', selected: 'selected'}
+    ];
+    return (
+      <div>
+        <div className="questions-intro">
+          <div className="page-wrapper">
+            <h1 className="access">Questions</h1>
+            <div className="title">
+              <img src={require('../../assets/images/avatars/intro-avatar-1.png')} width="153" height="199" alt="John" />
+              <p><strong>Hi there, I'm John.</strong> Welcome to Change up!</p>
+              <div className="clear"></div>
+            </div>
+            <p className="blurb">This website will help you find a course and a better job based on the skills you have and the things you want from work and study.</p>
+            <div className="clear"></div>
+          </div>
+        </div>
+        <div className="page-maincontent" id="content">
+          <div className="page-wrapper">
+            <div className="questions">
+
+              <MultipleChoice options={options} value="Multiple choice — finite list."/>
+              <MultipleChoice options={options} value="Multiple choice 2 — finite list."/>
+              <MultipleChoice options={options} value="Multiple choice 3— finite list."/>
+              <MultipleChoice options={options} value="Multiple choice 4 — finite list."/>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  render2() {
     return (
       <div>
       <div className="questions-intro">
         <div className="page-wrapper">
           <h1 className="access">Questions</h1>
           <div className="title">
-            <img src={require('../../assets/images/avatars/intro-avatar-1.png')} width="153" height="199" alt="John" />
+            <img className="avatar" src={require('../../assets/images/avatars/action-plan-help-avatar-1.jpg')} alt="Help assistant. " width="86" height="86" />
             <p><strong>Hi there, I'm John.</strong> Welcome to Change up!</p>
              <div className="clear"></div>
           </div>
@@ -188,4 +228,4 @@ class QuestionsPage extends React.Component {
   }
 }
 
-export default QuestionsPage;
+export default Questionnaire;

@@ -17,7 +17,7 @@ class Header extends React.Component {
             <ul>
               <li className="tool-edit"><a href="#">Edit</a>
                 <ul>
-                  <li><Link to="/questions">Edit your skills</Link></li>
+                  <li><Link to="/questionnaire">Edit your skills</Link></li>
                   <li><a href="#">Edit your preferences</a></li>
                 </ul>
               </li>

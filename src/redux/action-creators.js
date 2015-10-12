@@ -1,6 +1,8 @@
 import Promise from 'bluebird';
 import axios from 'axios';
 
+import * as fakeData from './fakeData';
+
 export function getTime(delay = 100) {
   return {
     types: ['GET_TIME_REQUEST', 'GET_TIME_SUCCESS', 'GET_TIME_FAILURE'],
@@ -29,6 +31,7 @@ export function getInitialState() {
           return {data: response.data};
         })
         .catch(function (response) {
+          return {data: fakeData.form};
           console.error('error ', response);
         });
     }
@@ -44,8 +47,27 @@ export function getContentPage() {
           return {data: response.data};
         })
         .catch(function (response) {
+          return {data: fakeData.mainData};
           console.error('error ', response);
         });
     }
   }
 }
+
+export function getFooterData() {
+  return {
+    types: ['GET_FOOTER_DATA_REQUEST', 'GET_FOOTER_DATA_SUCCESS', 'GET_FOOTER_DATA_FAILURE'],
+    promise: () => {
+      return axios.get('/tools/skills-transition-tool/container')
+        .then(function (response) {
+          return {data: response.data};
+        })
+        .catch(function (response) {
+          return {data: fakeData.footerData};
+          console.error('error ', response);
+        });
+    }
+  }
+}
+
+

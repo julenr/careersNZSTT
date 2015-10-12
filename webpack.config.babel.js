@@ -37,7 +37,8 @@ const common = {
   },
   plugins: [
     new HtmlwebpackPlugin({
-      title: APP_TITLE
+      title: APP_TITLE,
+      template: './templates/index.tpl'
     })
   ]
 };
@@ -105,8 +106,7 @@ if(TARGET === 'build') {
         },
         {
           test: /\.scss$/,
-          //loader: ExtractTextPlugin.extract('style', 'css', 'sass'),
-          loaders: ['style', 'css', 'sass'],
+          loader: ExtractTextPlugin.extract('style', 'css!sass'),
           include: path.resolve(ROOT_PATH, 'src')
         },
         {

@@ -1,9 +1,10 @@
+@charset "UTF-8";
+@import "../../main.scss";
+
 /*
  QUESTIONS
 ---------------------------------------
 */
-@charset "UTF-8";
-@import "../../main.scss";
 
 
 /* Questions introduction */
@@ -60,15 +61,15 @@
 }
 
 /* Question radio/checkbox */
-.questions .radio ul { margin:em(21) 0 0; }
-.radio li { font-size:em(21); line-height:lh(29,21); margin:em(15,21) 0; padding:em(11,21) em(51,21) em(7,21); position:relative; background:#fff; color:$skillstool_blue_1; @include border-radius(em(21,21)); letter-spacing:-0.025em; cursor:pointer; }
-.radio li .icon-tick { font-size:em(17,21); display:none; color:#fff; position:absolute; left:1.1em; top:0.8em; }
+.questions .radio .checkbox { margin:em(21) 0 0; }
+.radio .checkbox-item { font-size:em(21); line-height:lh(29,21); margin:em(15,21) 0; padding:em(11,21) em(51,21) em(7,21); position:relative; background:#fff; color:$skillstool_blue_1; @include border-radius(em(21,21)); letter-spacing:-0.025em; cursor:pointer; }
+.radio .checkbox-item .icon-tick { font-size:em(17,21); display:none; color:#fff; position:absolute; left:1.1em; top:0.8em; }
 .radio .selected { background:$skillstool_blue_1; color:#fff; @include border-radius(em(21,21) 0 em(21,21) em(21,21)); }
 .radio .fade { opacity:0.5; }
 .radio .selected.fade, .radio .fade:hover, .radio .fade:focus { opacity:1; }
 .radio .selected .icon-tick { display:inline-block; }
 .radio .checkbox, .radio.inline .radio { overflow:hidden; }
-.radio .checkbox li, .radio.inline .radio li { float:left; clear:both; margin:0 0 em(15,21); }
+.radio .checkbox .checkbox-item, .radio.inline .radio .checkbox-item { float:left; clear:both; margin:0 0 em(15,21); }
 .radio .hide { opacity:0; position:absolute; left:-999em; }
 
 /* Unstyled radio variation (reset) */
@@ -77,35 +78,26 @@
 
 @media only screen and (min-width:600px) {
   .questions .text div.text { margin:em(48) em(46) 0 em(193); }
-  .questions .radio ul { margin:em(48) em(46) 0 em(193); }
-  .radio li { font-size:em(26); line-height:lh(29,26); margin:em(15,26) 0; padding:em(11,26) em(51,26) em(7,26); @include border-radius(em(21,26)); }
+  .questions .radio .checkbox { margin:em(48) em(46) 0 em(193); }
+  .radio .checkbox-item { font-size:em(26); line-height:lh(29,26); margin:em(15,26) 0; padding:em(11,26) em(51,26) em(7,26); @include border-radius(em(21,26)); }
   .radio .selected { @include border-radius(em(21,26) 0 em(21,26) em(21,26)); }
-  .radio li .icon-tick { font-size:em(17,26); }
-  .radio .checkbox li, .radio.inline .radio li { clear:none; margin:0 em(12,26) em(15,26) 0; }
+  .radio .checkbox-item .icon-tick { font-size:em(17,26); }
+  .radio .checkbox .checkbox-item, .radio.inline .radio li { clear:none; margin:0 em(12,26) em(15,26) 0; }
   .radio .radio .basic, .radio .checkbox .basic { padding-right:em(75,17); }
   .radio.inline .radio .basic { padding:em(16,17) 0 0 em(9,17); }
 }
 
 /* Question tags */
-.questions .tags { overflow:hidden; margin:em(21) 0 0; }
-.tags .tag { font-size:em(21); line-height:lh(29,21); display:block; float:left; margin:em(7,21) em(14,21) em(7,21) 0; padding:em(5,21) em(9,21) em(5,21) em(19,21); background:#fff; color:$skillstool_blue_1; border:1px solid $skillstool_blue_1; @include border-radius(em(21,21) 0 em(21,21) em(21,21)); letter-spacing:-0.025em; cursor:pointer; }
-.tags .add-more { @include border-radius(em(21,21)); padding:em(5,21) em(25,21) em(5,21) em(12,21); }
-.tags .select-all { @include border-radius(em(21,21)); padding:em(5,21) em(25,21); }
-.tags .tag .icon-cancel-circle { margin-left:1.2em; color:$skillstool_gray_3; }
-.tags .tag .icon-plus-circle { margin-right:0.5em;  }
-.tags .tag.selected { background:$skillstool_blue_1; color:#fff; }
-.tags .tag.selected .icon-cancel-circle { color:$skillstool_blue_5; }
+.questions .question-tags { overflow:hidden; margin:em(21) 0 0; }
 
 @media only screen and (min-width:600px) {
-  .questions .tags { margin:em(41) 0 0 em(193); }
-  .tags .tag { font-size:em(26); line-height:lh(36,26); margin:em(7,26) em(14,26) em(7,26) 0; padding:em(5,26) em(9,26) em(5,26) em(19,26); @include border-radius(em(21,26) 0 em(21,26) em(21,26)); }
-  .tags .add-more { @include border-radius(em(21,26)); padding:em(5,26) em(25,26) em(5,26) em(12,26); }
-  .tags .select-all { @include border-radius(em(21,26)); padding:em(5,26) em(25,26); }
+  .questions .question-tags { margin:em(41) 0 0 em(193); }
 }
 
 /* Submit/Buttons */
 .questions .submit { margin-top:em(10); position:absolute; opacity:0; left:-999em; }
 .questions .submit.active, .questions .last .submit { position:static; opacity:1; left:auto; }
+.questions .button { min-width:auto; }
 .questions .button span { margin-left:0.1em; }
 
 @media only screen and (min-width:600px) {
@@ -129,4 +121,3 @@
   .questions { font-size:85%; }
 }
 
-.avatar { @include border-radius(50%); border:2px solid #fff; }

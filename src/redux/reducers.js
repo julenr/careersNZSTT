@@ -73,3 +73,27 @@ export function _mainPage(state = initialState, action = {}) {
       return state;
   }
 }
+
+// FOOTER DATA REDUCER
+export function _footerData(state = initialState, action = {}) {
+  switch (action.type) {
+    case 'GET_FOOTER_DATA_REQUEST':
+      return {
+        ...state,
+        loading: true
+      };
+    case 'GET_FOOTER_DATA_SUCCESS':
+      return {
+        ...state,
+        data: action.result.data,
+        loading: false
+      };
+    case 'GET_FOOTER_DATA_FAILURE':
+      return {
+        ...state,
+        loading: false
+      };
+    default:
+      return state;
+  }
+}

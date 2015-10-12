@@ -9,6 +9,7 @@ import './main.scss';
 
 // REACT Dependencies
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Router, Route, Link, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
@@ -16,13 +17,11 @@ import createBrowserHistory from 'history/lib/createBrowserHistory';
 // REDUX STORE
 import createStore from './redux/create-store';
 import * as actionCreators from './redux/action-creators';
-//import initialData from './redux/initialData';
-
 
 //CUSTOM COMPONENTS
 import App from './components/App/App.jsx';
 import MainPage from './components/MainPage/MainPage.jsx';
-import QuestionsPage from './components/QuestionsPage/QuestionsPage.jsx';
+import Questionnaire from './components/Questionnaire/Questionnaire.jsx';
 import ProviderConnect from './components/ProviderConnect/ProviderConnect.jsx';
 
 // Initialize Redux store
@@ -40,32 +39,28 @@ const store = createStore(
             EmbedHTML: 'embedHTML'
           }
         }
-      }
+      },
+      _footerData: {}
     }
 );
 
 store.dispatch(actionCreators.getInitialState());
 store.dispatch(actionCreators.getContentPage());
-
-console.log('Initial state ', store.getState());
+store.dispatch(actionCreators.getFooterData());
 
 var app = document.createElement('div');
 document.body.appendChild(app);
 
-
-React.render((
+ReactDOM.render((
   <Provider store={ store }>
-    { () => (
-      /*{<Router history={createBrowserHistory()}>} TODO: Problems rendering in Vagrant environment*/
-      <Router>
-        <Route path="/" component={App}>
-          <IndexRoute component={MainPage} />
-          <Route path="questions" component={QuestionsPage} />
-          <Route path="ProviderConnect" component={ProviderConnect} />
-        </Route>
-      </Router>
-    )
-    }
+    {/*<Router history={createBrowserHistory()}> TODO: Problems rendering in Vagrant environment*/}
+    <Router>
+      <Route path="/" component={App}>
+        <IndexRoute component={MainPage} />
+        <Route path="questionnaire" component={Questionnaire} />
+        <Route path="ProviderConnect" component={ProviderConnect} />
+      </Route>
+    </Router>
   </Provider>
 ), app);
 

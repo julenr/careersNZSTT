@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html{% if(o.htmlWebpackPlugin.files.manifest) { %}
+  manifest="{%= o.htmlWebpackPlugin.files.manifest %}"{% } %}>
   <head>
     <meta charset="UTF-8">
-    <title>Skills Transition Tool - Careers New Zealand</title>
-    
-    
-    <link href="styles.css?404a35a4ba8bfbf7bd24" rel="stylesheet">
-    
+    <title>{%=o.htmlWebpackPlugin.options.title%}</title>
+    {% if (o.htmlWebpackPlugin.files.favicon) { %}
+    <link rel="shortcut icon" href="{%=o.htmlWebpackPlugin.files.favicon%}">
+    {% } %}
+    {% for (var css in o.htmlWebpackPlugin.files.css) { %}
+    <link href="{%=o.htmlWebpackPlugin.files.css[css] %}" rel="stylesheet">
+    {% } %}
     <!-- Hide Unsuported Browser or JavaScript disabled message before checking -->
     <style type="text/css">
         .hidden {display:none;}
@@ -43,10 +46,8 @@
 
 
     <div id="app"></div>
-    
-    <script src="vendor.js?a69b8309d41777a9a063"></script>
-    
-    <script src="app.js?404a35a4ba8bfbf7bd24"></script>
-    
+    {% for (var chunk in o.htmlWebpackPlugin.files.chunks) { %}
+    <script src="{%=o.htmlWebpackPlugin.files.chunks[chunk].entry %}"></script>
+    {% } %}
   </body>
 </html>

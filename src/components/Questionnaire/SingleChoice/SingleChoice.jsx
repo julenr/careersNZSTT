@@ -2,7 +2,7 @@
  * Created by jr1500 on 30/09/15.
  */
 
-import './MultipleChoice.scss';
+import './SingleChoice.scss';
 
 import React from 'react';
 import classNames from 'classnames';
@@ -11,7 +11,7 @@ import uuid from 'node-uuid';
 import Checkbutton from '../../subcomponents/Checkbutton';
 import Avatar from '../../subcomponents/Avatar';
 
-class MultipleChoice extends React.Component {
+class SingleChoice extends React.Component {
   render() {
     return (
       <div className="field radio with-avatar">
@@ -26,9 +26,9 @@ class MultipleChoice extends React.Component {
 
   renderOptions(options) {
     return (
-      <Checkbutton key={uuid.v4()} value={options.ResponseText} selected={options.selected} />
+      <Checkbutton key={uuid.v4()} value={options.ResponseText} selected={options.selected}/>
     );
   }
 }
 
-export default MultipleChoice;
+export default SingleChoice;

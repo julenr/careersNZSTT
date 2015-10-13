@@ -1,4 +1,6 @@
-export const form = {
+
+
+export const questionnaire = {
   'Application': {
     'FormID': 'ccbb12487d7d27bc3841fc7be17de1f4be95e076',
     'Endpoints': {
@@ -246,10 +248,12 @@ export const footerData = {
     'Text': 'Here is some text, it does not have any HTML in it',
     'Menu': [
       {
+        'urlTitle': '/home-image',
         'Link': 'http://careers.local/tools/skills-transition-tool/general-content-page-with-image',
         'Title': 'General Content Page - with Image'
       },
       {
+        'urlTitle': '/home-video',
         'Link': 'http://careers.local/tools/skills-transition-tool/general-content-page-with-video',
         'Title': 'General Content Page - with Video'
       }

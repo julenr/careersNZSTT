@@ -7,19 +7,27 @@ import './Questionnaire.scss';
 import React from 'react';
 import { Router, Route, Link } from 'react-router'
 
+import { connect } from 'react-redux';
+import uuid from 'node-uuid';
+import * as actionCreators from '../../redux/action-creators';
+
+import Avatar from '../subcomponents/Avatar';
 import ProgressBar from '../ProgressBar';
 import MultipleChoice from './MultipleChoice/MultipleChoice';
-import Checkbutton from '../subcomponents/Checkbutton';
-import Avatar from '../subcomponents/Avatar';
+import TextInput from './TextInput/TextInput';
+import SingleChoice from './SingleChoice/SingleChoice';
+import IntroForm from './IntroForm/IntroForm';
 
+
+@connect((state /*, props*/) => {
+  return {
+    member: state._questionnaire.data.Member,
+    questions: state._questionnaire.data.Questions
+  }
+})
 class Questionnaire extends React.Component {
   render() {
-    const options = [
-      {id: 1, text: 'I want to turn my passion PEPE into a job', selected: ''},
-      {id: 2, text: 'Id like to get a better job', selected: ''},
-      {id: 3, text: 'I want to do a course', selected: 'selected'},
-      {id: 4, text: 'Its time for a change, but Im not sure what to do next.', selected: 'selected'}
-    ];
+    var { member, questions } = this.props;
     return (
       <div>
         <div className="questions-intro">
@@ -37,17 +45,43 @@ class Questionnaire extends React.Component {
         <div className="page-maincontent" id="content">
           <div className="page-wrapper">
             <div className="questions">
-
-              <MultipleChoice options={options} value="Multiple choice — finite list."/>
-              <MultipleChoice options={options} value="Multiple choice 2 — finite list."/>
-              <MultipleChoice options={options} value="Multiple choice 3— finite list."/>
-              <MultipleChoice options={options} value="Multiple choice 4 — finite list."/>
+              <IntroForm />
+              {questions.map(this.renderQuestions)}
 
             </div>
           </div>
         </div>
+        <ProgressBar />
       </div>
     );
+  }
+  renderQuestions(question) {
+    switch ( question.QuestionType ) {
+      case 'SingleChoice':
+        return (
+          <SingleChoice key={question.ID} options={question.QuestionResponses} value={question.Description}/>
+        );
+      case 'TextInput' :
+        return (
+          <TextInput key={question.ID} options={question.QuestionResponses} value={question.Description}/>
+        );
+      case 'MultipleChoice' :
+        return (
+          <MultipleChoice key={question.ID} options={question.QuestionResponses} value={question.Description}/>
+        );
+      case 'TagCloud' :
+        return (
+          <MultipleChoice key={question.ID} options={question.QuestionResponses} value={question.Description}/>
+        );
+      case 'Typeahead' :
+        return (
+          <MultipleChoice key={question.ID} options={question.QuestionResponses} value={question.Description}/>
+        );
+      default :
+        return (
+          <MultipleChoice key={question.ID} options={question.QuestionResponses} value={question.Description}/>
+        );
+    }
   }
 
   render2() {
@@ -68,6 +102,7 @@ class Questionnaire extends React.Component {
       <div className="page-maincontent" id="content">
         <div className="page-wrapper">
           <div className="questions">
+
             <div className="fieldset first-question active">
               <p>To get started answer the question below…</p>
               <div className="field text">
@@ -80,6 +115,8 @@ class Questionnaire extends React.Component {
                   <a className="button next" href="#">Next<span className="icon-arrow-down"></span></a>
                 </div>
               </div>
+
+
               <div className="fieldset active">
                 <div className="field text with-avatar">
                   <img className="avatar" src={require('../../assets/images/avatars/action-plan-help-avatar-1.jpg')} alt="Help assistant. " width="86" height="86" />

@@ -27,20 +27,20 @@ export function _time(state = initialState, action = {}) {
 }
 
 // MAIN DATA AND QUESTIONNAIRE REDUCER
-export function _main(state = initialState, action = {}) {
+export function _questionnaire(state = initialState, action = {}) {
   switch (action.type) {
-    case 'GET_STATE_REQUEST':
+    case 'GET_QUESTIONNAIRE_REQUEST':
       return {
         ...state,
         loading: true
       };
-    case 'GET_STATE_SUCCESS':
+    case 'GET_QUESTIONNAIRE_SUCCESS':
       return {
         ...state,
         data: action.result.data,
         loading: false
       };
-    case 'GET_STATE_FAILURE':
+    case 'GET_QUESTIONNAIRE_FAILURE':
       return {
         ...state,
         loading: false

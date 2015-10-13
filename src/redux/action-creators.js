@@ -22,16 +22,16 @@ export function getTime(delay = 100) {
 }
 
 
-export function getInitialState() {
+export function getQuestionnaire() {
   return {
-    types: ['GET_STATE_REQUEST', 'GET_STATE_SUCCESS', 'GET_STATE_FAILURE'],
+    types: ['GET_QUESTIONNAIRE_REQUEST', 'GET_QUESTIONNAIRE_SUCCESS', 'GET_QUESTIONNAIRE_FAILURE'],
     promise: () => {
       return axios.get('/tools/skills-transition-tool/form')
         .then(function (response) {
           return {data: response.data};
         })
         .catch(function (response) {
-          return {data: fakeData.form};
+          return {data: fakeData.questionnaire};
           console.error('error ', response);
         });
     }

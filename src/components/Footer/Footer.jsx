@@ -6,26 +6,41 @@ import './Footer.scss';
 
 import React from 'react';
 import { Router, Route, Link } from 'react-router';
+import { connect } from 'react-redux';
+import uuid from 'node-uuid';
+import * as actionCreators from '../../redux/action-creators';
 
+@connect((state /*, props*/) => {
+  return {
+    text: state._footerData.data.Footer.Text,
+    links: state._footerData.data.Footer.Menu,
+    loading: state._mainPage.loading
+  }
+})
 class AppFooter extends React.Component {
   render() {
+    var { text, links, loading } = this.props;
+    var attrs = {};
+    if (loading) {
+      attrs = {
+        disabled: true
+      }
+    }
     return (
       <footer className="page-footer">
         <div className="page-wrapper">
           <div className="layout-col-3 layout-col">
             <div className="site-name">
-              Name of tool is a website that helps you find a course and a better job based on the skills you have and the things you want from work and study.
+              { JSON.stringify(text, null, 2) }
             </div>
           </div>
           <div className="layout-col-6 layout-col">
             <nav className="nav-footer">
               <ul>
-                <li><Link to="/providerconnect">Test Provider &amp; Connect</Link></li>
-                <li><a href="/">Home</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Accessibility</a></li>
-                <li><a href="#">Terms &amp; Conditions</a></li>
-                <li><a href="#">Privacy</a></li>
+                <li>
+                  {links.map(this.renderLinks)}
+                  <Link to="/providerconnect">Test Provider &amp; Connect</Link>
+                </li>
               </ul>
             </nav>
           </div>
@@ -38,6 +53,12 @@ class AppFooter extends React.Component {
           </div>
         </div>
       </footer>
+    );
+  }
+
+  renderLinks(options) {
+    return (
+      <Link key={uuid.v4()} to={options.urlTitle}>{options.Title}</Link>
     );
   }
 }

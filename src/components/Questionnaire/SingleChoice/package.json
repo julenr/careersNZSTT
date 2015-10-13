@@ -1,0 +1,6 @@
+{
+  "name": "SingleChoice",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./SingleChoice.jsx"
+}

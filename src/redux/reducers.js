@@ -45,6 +45,11 @@ export function _questionnaire(state = initialState, action = {}) {
         ...state,
         loading: false
       };
+    case 'CLICK':
+      console.log(action);
+      const newState = {...state };
+      newState.data.Questions[action.questionID].QuestionResponses[action.responseID].selected = !newState.data.Questions[action.questionID].QuestionResponses[action.responseID].selected;
+      return newState;
     default:
       return state;
   }
@@ -56,18 +61,18 @@ export function _mainPage(state = initialState, action = {}) {
     case 'GET_MAIN_PAGE_REQUEST':
       return {
         ...state,
-        loading: true
+        loaded: false
       };
     case 'GET_MAIN_PAGE_SUCCESS':
       return {
         ...state,
         data: action.result.data,
-        loading: false
+        loaded: true
       };
     case 'GET_MAIN_PAGE_FAILURE':
       return {
         ...state,
-        loading: false
+        loaded: true
       };
     default:
       return state;

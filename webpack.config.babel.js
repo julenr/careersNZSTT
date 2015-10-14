@@ -34,13 +34,7 @@ const common = {
         include: path.resolve(ROOT_PATH, 'src')
       }
     ]
-  },
-  plugins: [
-    new HtmlwebpackPlugin({
-      title: APP_TITLE,
-      template: './templates/index.tpl'
-    })
-  ]
+  }
 };
 
 if(TARGET === 'start' || !TARGET) {
@@ -81,7 +75,11 @@ if(TARGET === 'start' || !TARGET) {
       progress: true
     },
     plugins: [
-      new webpack.HotModuleReplacementPlugin()
+      new webpack.HotModuleReplacementPlugin(),
+      new HtmlwebpackPlugin({
+        title: APP_TITLE,
+        template: './templates/index-develop.tpl'
+      })
     ]
   });
 }
@@ -142,6 +140,10 @@ if(TARGET === 'build') {
         compress: {
           warnings: false
         }
+      }),
+      new HtmlwebpackPlugin({
+        title: APP_TITLE,
+        template: './templates/index-production.tpl'
       })
     ]
   });

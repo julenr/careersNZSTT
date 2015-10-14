@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html{% if(o.htmlWebpackPlugin.files.manifest) { %}
+  manifest="{%= o.htmlWebpackPlugin.files.manifest %}"{% } %}>
   <head>
-    <base href="http://careers.local/skills-transition-tool/app/build/">
     <meta charset="UTF-8">
-    <title>Skills Transition Tool - Careers New Zealand</title>
-    
-    
-    <link href="styles.css?133515e5bc97e505c551" rel="stylesheet">
-    
+    <title>{%=o.htmlWebpackPlugin.options.title%}</title>
+    {% if (o.htmlWebpackPlugin.files.favicon) { %}
+    <link rel="shortcut icon" href="{%=o.htmlWebpackPlugin.files.favicon%}">
+    {% } %}
+    {% for (var css in o.htmlWebpackPlugin.files.css) { %}
+    <link href="{%=o.htmlWebpackPlugin.files.css[css] %}" rel="stylesheet">
+    {% } %}
     <!-- Hide Unsuported Browser or JavaScript disabled message before checking -->
     <style type="text/css">
         .hidden {display:none;}
@@ -20,7 +22,7 @@
      </script>
      <!-- Hide Unsuported Browser or JavaScript disabled message before checking -->
   </head>
-  <body>
+  <body data-application-id='1371'>
     <div id='noscript'>
       <div class="message" id="javascript-disabled">
         <div class="page-wrapper">
@@ -40,11 +42,12 @@
         </noscript>
       </div>
     <![endif]-->
+
+
+
     <div id="app"></div>
-    
-    <script src="vendor.js?7d233b6d922afc50e6b1"></script>
-    
-    <script src="app.js?133515e5bc97e505c551"></script>
-    
+    {% for (var chunk in o.htmlWebpackPlugin.files.chunks) { %}
+    <script src="{%=o.htmlWebpackPlugin.files.chunks[chunk].entry %}"></script>
+    {% } %}
   </body>
 </html>

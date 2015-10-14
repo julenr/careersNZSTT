@@ -6,9 +6,9 @@ import './Questionnaire.scss';
 
 import React from 'react';
 import { Router, Route, Link } from 'react-router'
+import uuid from 'node-uuid';
 
 import { connect } from 'react-redux';
-import uuid from 'node-uuid';
 import * as actionCreators from '../../redux/action-creators';
 
 import Avatar from '../subcomponents/Avatar';
@@ -45,6 +45,7 @@ class Questionnaire extends React.Component {
         <div className="page-maincontent" id="content">
           <div className="page-wrapper">
             <div className="questions">
+
               <IntroForm />
               {questions.map(this.renderQuestions)}
 
@@ -63,23 +64,23 @@ class Questionnaire extends React.Component {
         );
       case 'TextInput' :
         return (
-          <TextInput key={question.ID} options={question.QuestionResponses} value={question.Description}/>
+          <TextInput key={question.ID} id={question.ID}/>
         );
       case 'MultipleChoice' :
         return (
-          <MultipleChoice key={question.ID} options={question.QuestionResponses} value={question.Description}/>
+          <MultipleChoice key={question.ID} id={question.ID}/>
         );
       case 'TagCloud' :
         return (
-          <MultipleChoice key={question.ID} options={question.QuestionResponses} value={question.Description}/>
+          <SingleChoice key={question.ID} options={question.QuestionResponses} value={question.Description}/>
         );
       case 'Typeahead' :
         return (
-          <MultipleChoice key={question.ID} options={question.QuestionResponses} value={question.Description}/>
+          <SingleChoice key={question.ID} options={question.QuestionResponses} value={question.Description}/>
         );
       default :
         return (
-          <MultipleChoice key={question.ID} options={question.QuestionResponses} value={question.Description}/>
+          <SingleChoice key={question.ID} options={question.QuestionResponses} value={question.Description}/>
         );
     }
   }

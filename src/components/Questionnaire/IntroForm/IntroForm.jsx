@@ -21,7 +21,7 @@ class IntroForm extends React.Component {
           <div className="text">
             <input className="text" name="q1-name" id="q1-name" type="text" data-type="input" />
           </div>
-          <div className="submit">
+          <div className="submit active">
             <a className="button next" href="#">Next<span className="icon-arrow-down"></span></a>
           </div>
         </div>

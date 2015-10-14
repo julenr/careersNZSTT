@@ -2,6 +2,7 @@
 <html{% if(o.htmlWebpackPlugin.files.manifest) { %}
   manifest="{%= o.htmlWebpackPlugin.files.manifest %}"{% } %}>
   <head>
+    <base href="http://careers.local/skills-transition-tool/app/build/">
     <meta charset="UTF-8">
     <title>{%=o.htmlWebpackPlugin.options.title%}</title>
     {% if (o.htmlWebpackPlugin.files.favicon) { %}
@@ -42,9 +43,6 @@
         </noscript>
       </div>
     <![endif]-->
-
-
-
     <div id="app"></div>
     {% for (var chunk in o.htmlWebpackPlugin.files.chunks) { %}
     <script src="{%=o.htmlWebpackPlugin.files.chunks[chunk].entry %}"></script>

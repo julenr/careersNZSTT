@@ -3,6 +3,8 @@ import axios from 'axios';
 
 import * as fakeData from './fakeData';
 
+const appID = document.getElementsByTagName('body')[0].getAttribute('data-application-id');
+
 export function getTime(delay = 100) {
   return {
     types: ['GET_TIME_REQUEST', 'GET_TIME_SUCCESS', 'GET_TIME_FAILURE'],
@@ -26,7 +28,7 @@ export function getQuestionnaire() {
   return {
     types: ['GET_QUESTIONNAIRE_REQUEST', 'GET_QUESTIONNAIRE_SUCCESS', 'GET_QUESTIONNAIRE_FAILURE'],
     promise: () => {
-      return axios.get('/tools/skills-transition-tool/form')
+      return axios.get(`/api/skills-transition-tool/form/${appID}`)
         .then(function (response) {
           return {data: response.data};
         })
@@ -38,17 +40,16 @@ export function getQuestionnaire() {
   }
 }
 
-export function getContentPage() {
+export function getLinkedPagesHTML(URLSegment) {
   return {
     types: ['GET_MAIN_PAGE_REQUEST', 'GET_MAIN_PAGE_SUCCESS', 'GET_MAIN_PAGE_FAILURE'],
     promise: () => {
-      return axios.get('/tools/skills-transition-tool/content?page=demo-general-content-page-with-video')
+      return axios.get(`/api/skills-transition-tool/content/${appID}/${URLSegment}`)
         .then(function (response) {
           return {data: response.data};
         })
         .catch(function (response) {
-          return {data: fakeData.mainData};
-          console.error('error ', response);
+          return {data: fakeData.mainContentHTML};
         });
     }
   }
@@ -58,7 +59,7 @@ export function getFooterData() {
   return {
     types: ['GET_FOOTER_DATA_REQUEST', 'GET_FOOTER_DATA_SUCCESS', 'GET_FOOTER_DATA_FAILURE'],
     promise: () => {
-      return axios.get('/tools/skills-transition-tool/container')
+      return axios.get(`/api/skills-transition-tool/container/${appID}`)
         .then(function (response) {
           return {data: response.data};
         })
@@ -68,6 +69,14 @@ export function getFooterData() {
         });
     }
   }
+}
+
+export function questionClicked(questionID, responseID) {
+  return {
+      type: 'CLICK',
+      questionID,
+      responseID
+    }
 }
 
 

@@ -121,3 +121,22 @@
   .questions { font-size:85%; }
 }
 
+/*
+ FORM BUTTONS
+---------------------------------------
+*/
+
+/* Simple button */
+.button, input[type=submit], button { font-size:em(16); line-height:1; display:inline-block; min-width:em(241); padding:em(8) em(30); border:2px solid $skillstool_blue_1; background:#fff; color:$skillstool_blue_1; @include border-radius(em(21)); text-align:center; outline:none; cursor:pointer; @include box-sizing(border-box); position:relative; }
+a:hover .button, a:active .button, a:focus .button, .button:hover, .button:active, .button:focus, input[type=submit]:hover, input[type=submit]:active, input[type=submit]:focus, button:hover, button:active, button:focus { text-decoration:none; background:$skillstool_blue_1; color:#fff; }
+.button .icon-plus-circle { font-size:em(20,16); position:absolute; left:em(6,20); top:em(6,20); }
+.button .amount { color:$skillstool_body; }
+
+/* Large solid version */
+.button-solid { font-size:em(24); line-height:1em; display:inline-block; padding:em(10,24) em(20,24); min-width:em(241,24); border:none; background:$skillstool_green_1; color:#fff; @include border-radius(em(21,24)); text-align:center; outline:none; cursor:pointer; @include box-sizing(border-box); letter-spacing:-0.025em; }
+.button-solid:hover, .button-solid:active, .button-solid:focus { background:$skillstool_gray_8; text-decoration:none; }
+
+@media only screen and (min-width:600px) {
+  .button, input[type=submit], button { font-size:em(18); padding:em(9,18) em(30,18) em(6,18); @include border-radius(em(21,18)); }
+  .button .icon-plus-circle { font-size:em(20,18); }
+}

@@ -26,27 +26,31 @@ import Questionnaire from './components/Questionnaire/Questionnaire.jsx';
 import ProviderConnect from './components/ProviderConnect/ProviderConnect.jsx';
 
 // Initialize Redux store
-const store = createStore();
+const store = createStore(
+  {
+    _mainPage: {
+      loaded: false
+    }
+  }
+);
 
 // Element to attach React-DOM
-var app = document.createElement('div');
+const app = document.createElement('div');
 document.body.appendChild(app);
 
 // Retrieve initial Data from the server
 store.dispatch(actionCreators.getFooterData());
 store.dispatch(actionCreators.getQuestionnaire());
-store.dispatch(actionCreators.getContentPage());
 
 // Render the DOM when the data is allready stored
 let unsubscribe = store.subscribe(() => {
     const state = store.getState();
-    console.log('Creating router from backend data ', state);
     ReactDOM.render((
       <Provider store={ store }>
-        {/*<Router history={createBrowserHistory()}> TODO: Problems rendering in Vagrant environment*/}
-          <Router>
+        <Router history={createBrowserHistory()}>
+          { /*<Router>  TODO: Problems rendering in Vagrant-Nginx environment */}
           <Route path="/" component={App}>
-            <IndexRoute component={ProviderConnect} />
+            <IndexRoute component={Questionnaire} />
             <Route path="questionnaire" component={Questionnaire} />
             <Route path="providerconnect" component={ProviderConnect} />
             {state._footerData.data.Footer.Menu.map(renderFooter)}
@@ -59,9 +63,8 @@ let unsubscribe = store.subscribe(() => {
 );
 
 function renderFooter(route) {
-  console.log(route.url);
   return (
-    <Route key={uuid.v4()} path={route.urlTitle} component={ProviderConnect} url={route.Link}/>
+    <Route key={uuid.v4()} path={route.URLSegment} component={MainPage}/>
   );
 }
 

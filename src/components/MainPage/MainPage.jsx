@@ -12,6 +12,24 @@ import * as actionCreators from '../../redux/action-creators';
 import ActionPlanDrawer from '../ActionPlanDrawer/ActionPlanDrawer.jsx';
 
 @connect((state /*, props*/) => {
+  console.log('connect');
+  return {
+    loaded: state._mainPage.loaded
+  }
+})
+class MainPage extends React.Component {
+  render () {
+    var { loaded } = this.props;
+
+    if (loaded)
+      return <Content />;
+    else
+      return <div></div>;
+  }
+}
+
+@connect((state /*, props*/) => {
+  console.log('connect');
   return {
     title: state._mainPage.data.Title,  //TODO: Change to lowercase
     intro: state._mainPage.data.Intro,
@@ -20,7 +38,7 @@ import ActionPlanDrawer from '../ActionPlanDrawer/ActionPlanDrawer.jsx';
     loading: state._mainPage.loading
   }
 })
-class MainPage extends React.Component {
+class Content extends React.Component {
   render () {
     var { title, intro, content, videoHTML, loading } = this.props;
     var attrs = {};
@@ -34,7 +52,7 @@ class MainPage extends React.Component {
       <div className="page-maincontent" id="content">
         <div className="page-wrapper">
           <div className="nav-link-back">
-            <a href="#">Back to lorem ipsum</a>
+            <a href="#">Back</a>
           </div>
           <section className="content-wrapper">
             <h1>{ JSON.stringify(title, null, 2) }</h1>

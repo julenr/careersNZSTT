@@ -44,6 +44,7 @@ export const questionnaire = {
       'Description': 'What is your name?',
       'QuestionType': 'TextInput',
       'QuestionResponses': [],
+      'PlaceHolder': 'Tu nombre',
       'NextQuestionID': 2,
       'HasAlternative': false,
       'AlternativeText': '',
@@ -136,13 +137,19 @@ export const questionnaire = {
       'AlternativeNextQuestionID': 4,
       'Endpoint': null,
       'QuestionResponses': [{
+        'ID': 1,
         'ResponseText': 'Option 1',
+        'selected': false,
         'NextQuestionID': 7
       }, {
+        'ID': 2,
         'ResponseText': 'Option 2',
+        'selected': false,
         'NextQuestionID': 7
       }, {
+        'ID': 3,
         'ResponseText': 'Option 3 which has a really long title and may wrap to another line',
+        'selected': true,
         'NextQuestionID': 7
       }]
     }, {
@@ -156,27 +163,33 @@ export const questionnaire = {
       'AlternativeNextQuestionID': 8,
       'Endpoint': null,
       'QuestionResponses': [{
+        'ID': 0,
         'ResponseText': 'Option 1',
+        'selected': false,
         'NextQuestionID': 8
       }, {
+        'ID': 1,
         'ResponseText': 'Option 2',
+        'selected': false,
         'NextQuestionID': 8
       }, {
+        'ID': 2,
         'ResponseText': 'Option 3 which has a really long title and may wrap to another line',
+        'selected': false,
         'NextQuestionID': 8
-      }, {'ResponseText': 'Option 4', 'NextQuestionID': 8}, {
+      }, {'ID': 3, 'ResponseText': 'Option 4','selected': false, 'NextQuestionID': 8}, {
         'ResponseText': 'Option 5',
         'NextQuestionID': 8
-      }, {'ResponseText': 'Option 6', 'NextQuestionID': 8}, {
+      }, {'ID': 4,'ResponseText': 'Option 6','selected': false, 'NextQuestionID': 8}, {
         'ResponseText': 'Option 7',
         'NextQuestionID': 8
-      }, {'ResponseText': 'Option 8', 'NextQuestionID': 8}, {
+      }, {'ID': 5, 'ResponseText': 'Option 8','selected': true, 'NextQuestionID': 8}, {
         'ResponseText': 'Option 9',
         'NextQuestionID': 8
-      }, {'ResponseText': 'Option 10', 'NextQuestionID': 8}, {
+      }, {'ID': 6,'ResponseText': 'Option 10','selected': false, 'NextQuestionID': 8}, {
         'ResponseText': 'Option 11',
         'NextQuestionID': 8
-      }, {'ResponseText': 'Option 12', 'NextQuestionID': 8}]
+      }, {'ID': 7, 'ResponseText': 'Option 12','selected': false, 'NextQuestionID': 8}]
     }, {
       'ID': 8,
       'Text': 'Other unpaid job',
@@ -225,7 +238,7 @@ export const questionnaire = {
 };
 
 
-export const mainData = {
+export const mainContentHTML = {
   'Title': 'Demo General Content Page - with video',
   'FeatureType': 'Video',
   'Image': null,
@@ -248,15 +261,19 @@ export const footerData = {
     'Text': 'Here is some text, it does not have any HTML in it',
     'Menu': [
       {
-        'urlTitle': '/home-image',
-        'Link': 'http://careers.local/tools/skills-transition-tool/general-content-page-with-image',
-        'Title': 'General Content Page - with Image'
-      },
-      {
-        'urlTitle': '/home-video',
-        'Link': 'http://careers.local/tools/skills-transition-tool/general-content-page-with-video',
-        'Title': 'General Content Page - with Video'
+        'Link': 'http:\/\/careers.local\/tools\/skills-transition-tool\/demo-general-content-page-with-image\/',
+        'URLSegment': 'demo-general-content-page-with-image',
+        'Title': 'Demo General Content Page - with image'
+      }, {
+        'Link': 'http:\/\/careers.local\/tools\/skills-transition-tool\/demo-general-content-page-with-video\/',
+        'URLSegment': 'demo-general-content-page-with-video',
+        'Title': 'Demo General Content Page - with video'
       }
     ]
   }
 };
+
+      
+
+    
+    

@@ -8,7 +8,6 @@ import { Provider } from 'react-redux';
 import { Router, Route, Link } from 'react-router'
 
 import Header from '../Header/Header.jsx';
-import Footer from '../Footer/Footer.jsx';
 
 class App extends React.Component {
   render() {
@@ -16,7 +15,6 @@ class App extends React.Component {
       <div id="shell">
         <Header />
         {this.props.children || 'Welcome to Careers NZ'}
-        <Footer />
       </div>
     );
   }

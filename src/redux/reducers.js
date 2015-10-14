@@ -32,21 +32,20 @@ export function _questionnaire(state = initialState, action = {}) {
     case 'GET_QUESTIONNAIRE_REQUEST':
       return {
         ...state,
-        loading: true
+        loaded: false
       };
     case 'GET_QUESTIONNAIRE_SUCCESS':
       return {
         ...state,
         data: action.result.data,
-        loading: false
+        loaded: true
       };
     case 'GET_QUESTIONNAIRE_FAILURE':
       return {
         ...state,
-        loading: false
+        loaded: true
       };
     case 'CLICK':
-      console.log(action);
       const newState = {...state };
       newState.data.Questions[action.questionID].QuestionResponses[action.responseID].selected = !newState.data.Questions[action.questionID].QuestionResponses[action.responseID].selected;
       return newState;

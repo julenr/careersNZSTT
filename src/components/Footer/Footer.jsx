@@ -39,7 +39,7 @@ class AppFooter extends React.Component {
               <ul>
                 <li>
                   {links.map(this.renderLinks)}
-                  <Link to="/providerconnect">Test Provider &amp; Connect</Link>
+                  <Link to="/providerconnect">Get State</Link>
                 </li>
               </ul>
             </nav>

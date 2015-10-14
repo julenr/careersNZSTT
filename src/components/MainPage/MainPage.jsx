@@ -5,13 +5,15 @@
 import './MainPage.scss';
 
 import React from 'react';
+import Loader from 'react-loader';
 import { Router, Route, Link } from 'react-router';
 import { connect } from 'react-redux';
 import * as actionCreators from '../../redux/action-creators';
 
+import Footer from '../Footer/Footer.jsx';
 import ActionPlanDrawer from '../ActionPlanDrawer/ActionPlanDrawer.jsx';
 
-@connect((state /*, props*/) => {
+@connect((state) => {
   console.log('connect');
   return {
     loaded: state._mainPage.loaded
@@ -24,11 +26,15 @@ class MainPage extends React.Component {
     if (loaded)
       return <Content />;
     else
-      return <div></div>;
+      return (
+        <div>
+          <Loader loaded={loaded} />
+        </div>
+      );
   }
 }
 
-@connect((state /*, props*/) => {
+@connect((state) => {
   console.log('connect');
   return {
     title: state._mainPage.data.Title,  //TODO: Change to lowercase

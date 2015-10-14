@@ -30,6 +30,12 @@ const store = createStore(
   {
     _mainPage: {
       loaded: false
+    },
+    _footerData: {
+      loaded: false
+    },
+    _questionnaire: {
+      loaded: false
     }
   }
 );
@@ -62,6 +68,7 @@ let unsubscribe = store.subscribe(() => {
   }
 );
 
+// Render links dinamicaly from the server
 function renderFooter(route) {
   return (
     <Route key={uuid.v4()} path={route.URLSegment} component={MainPage}/>

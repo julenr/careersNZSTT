@@ -17,7 +17,7 @@ class IntroForm extends React.Component {
       <div className="fieldset first-question active">
         <p>To get started answer the question below…</p>
         <div className="field text">
-          <label for="q1-name">First up, what is your name?</label>
+          <label htmlFor="q1-name">First up, what is your name?</label>
           <div className="text">
             <input className="text" name="q1-name" id="q1-name" type="text" data-type="input" />
           </div>

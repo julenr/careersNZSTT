@@ -1,0 +1,6 @@
+{
+  "name": "EndForm",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./EndForm.jsx"
+}

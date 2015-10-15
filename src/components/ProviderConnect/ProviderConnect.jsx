@@ -19,7 +19,6 @@ import * as actionCreators from '../../redux/action-creators';
 class ProviderConnect extends React.Component {
 
   onTimeButtonClick = () => {
-    console.log('pressed');
     this.props.dispatch(actionCreators.getTime(500))
   }
 

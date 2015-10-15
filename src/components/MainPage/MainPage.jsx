@@ -14,7 +14,6 @@ import Footer from '../Footer/Footer.jsx';
 import ActionPlanDrawer from '../ActionPlanDrawer/ActionPlanDrawer.jsx';
 
 @connect((state) => {
-  console.log('connect');
   return {
     loaded: state._mainPage.loaded
   }

@@ -19,9 +19,9 @@ import MultipleChoice from './MultipleChoice/MultipleChoice';
 import TextInput from './TextInput/TextInput';
 import SingleChoice from './SingleChoice/SingleChoice';
 import IntroForm from './IntroForm/IntroForm';
+import EndForm from './EndForm/EndForm';
 
 @connect((state) => {
-  console.log('connect');
   return {
     loaded: state._questionnaire.loaded
   }
@@ -70,6 +70,7 @@ class Content extends React.Component {
 
               <IntroForm />
               {questions.map(this.renderQuestions)}
+              <EndForm />
 
             </div>
           </div>

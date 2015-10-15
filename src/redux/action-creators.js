@@ -33,8 +33,8 @@ export function getQuestionnaire() {
           return {data: response.data};
         })
         .catch(function (response) {
-          return {data: fakeData.questionnaire};
           console.error('error ', response);
+          return {data: fakeData.questionnaire};
         });
     }
   }
@@ -49,6 +49,7 @@ export function getLinkedPagesHTML(URLSegment) {
           return {data: response.data};
         })
         .catch(function (response) {
+          console.error('error ', response);
           return {data: fakeData.mainContentHTML};
         });
     }
@@ -64,8 +65,8 @@ export function getFooterData() {
           return {data: response.data};
         })
         .catch(function (response) {
-          return {data: fakeData.footerData};
           console.error('error ', response);
+          return {data: fakeData.footerData};
         });
     }
   }

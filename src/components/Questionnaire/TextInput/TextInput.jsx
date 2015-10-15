@@ -26,9 +26,9 @@ class TextInput extends React.Component {
       <div className="field radio with-avatar">
         <Avatar />
         <div className="field text">
-          <label for="q1-name">{questions.Description}</label>
+          <label htmlFor="q1-name">{questions.Description}</label>
           <div className="text">
-            <input className="text" name="q1-name" id="q1-name" type="text" data-type="input" value={questions.PlaceHolder}/>
+            <input className="text" name="q1-name" id="q1-name" type="text" data-type="input" defaultValue={questions.PlaceHolder}/>
           </div>
           <div className="submit">
             <a className="button next" href="#">Next<span className="icon-arrow-down"></span></a>

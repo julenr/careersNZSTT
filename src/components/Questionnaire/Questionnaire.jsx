@@ -60,7 +60,9 @@ class Content extends React.Component {
               <p><strong>Hi there, I'm John.</strong> Welcome to Change up!</p>
               <div className="clear"></div>
             </div>
-            <p className="blurb">This website will help you find a course and a better job based on the skills you have and the things you want from work and study.</p>
+            <p className="blurb">
+              This website will help you find a course and a better job based on the skills you have and the things you want from work and study.
+            </p>
             <div className="clear"></div>
           </div>
         </div>
@@ -70,7 +72,7 @@ class Content extends React.Component {
 
               <IntroForm />
               {questions.map(this.renderQuestions)}
-              <EndForm />
+              <EndForm name={member.Name}/>
 
             </div>
           </div>

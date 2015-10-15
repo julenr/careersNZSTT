@@ -13,9 +13,9 @@ export const questionnaire = {
     'UserID': null,
     'SessionID': 'de34dsfvm7lur0uk5psniogbr7',
     'Region': null,
-    'Name': '',
-    'Gender' : '',
-    'Ethnicity': ''
+    'Name': 'Darren',
+    'Gender' : 'Male',
+    'Ethnicity': 'Kiwi'
   },
   'Jobs': {
     'Selected': [],
@@ -44,7 +44,7 @@ export const questionnaire = {
       'Description': 'What is your name?',
       'QuestionType': 'TextInput',
       'QuestionResponses': [],
-      'PlaceHolder': 'Tu nombre',
+      'PlaceHolder': 'Your name',
       'NextQuestionID': 2,
       'HasAlternative': false,
       'AlternativeText': '',
@@ -271,6 +271,87 @@ export const footerData = {
       }
     ]
   }
+};
+
+
+export const jobsCards = {
+  'JobsCards': [
+    {
+      'Closed': false,
+      'Fliped': false,
+      'Title': 'Software Engineer',
+      'Description': 'Researches, designs, develops and maintains software systems along with hardware development for medical, scientific, and industrial purposes.',
+      'Interests': 'Gardening; Helping people; Cars.',
+      'WorkConditions': 'Flexible hours; Business hours; Inside; Outside; Regular hours.',
+      'VocationalPathways': 'Social and community services. Manufacturing and technology',
+      'Image': '../src/assets/images/avatars/software-engineer.jpg',
+      'SkillsMatch': 80,
+      'Interest': 70,
+      'Demand': 20,
+      'Pay': '$15–$40',
+      'PerTime': 'per hour'
+    },
+    {
+      'Closed': false,
+      'Fliped': true,
+      'Title': 'Human Resources',
+      'Description': 'Plans, directs, and/or coordinates all human resource activities and staff of an organization.',
+      'Interests': 'Gardening; Helping people; Cars.',
+      'WorkConditions': 'Flexible hours; Business hours; Inside; Outside; Regular hours.',
+      'VocationalPathways': 'Social and community services. Manufacturing and technology',
+      'Image': '../src/assets/images/avatars/human-resources.jpg',
+      'SkillsMatch': 10,
+      'Interest': 40,
+      'Demand': 30,
+      'Pay': '$120–$140',
+      'PerTime': 'per hour'
+    },
+    {
+      'Closed': false,
+      'Fliped': false,
+      'Title': 'Dental Hygienist',
+      'Description': 'Assists dentists in diagnostic and therapeutic aspects of a group or private dental practice.',
+      'Interests': 'Gardening; Helping people; Cars.',
+      'WorkConditions': 'Flexible hours; Business hours; Inside; Outside; Regular hours.',
+      'VocationalPathways': 'Social and community services. Manufacturing and technology',
+      'Image': '../src/assets/images/avatars/dental-hygienist.jpg',
+      'SkillsMatch': 100,
+      'Interest': 60,
+      'Demand': 90,
+      'Pay': '$180–$340',
+      'PerTime': 'per hour'
+    },
+    {
+      'Closed': false,
+      'Fliped': false,
+      'Title': 'Landscape gardener',
+      'Description': 'Landscape gardeners design, develop, maintain and remodel gardens and landscapes.',
+      'Interests': 'Gardening; Helping people; Cars.',
+      'WorkConditions': 'Flexible hours; Business hours; Inside; Outside; Regular hours.',
+      'VocationalPathways': 'Social and community services. Manufacturing and technology',
+      'Image': '../src/assets/images/avatars/placeholder-630x399-job.jpg',
+      'SkillsMatch': 80,
+      'Interest': 30,
+      'Demand': 20,
+      'Pay': '$110–$140',
+      'PerTime': 'per hour'
+    },
+    {
+      'Closed': false,
+      'Fliped': false,
+      'Title': 'Financial Planner',
+      'Description': 'Related to careers in portfolio management, the financial planner offers a broad range of services aimed at assisting individuals in managing and planning their financial future.',
+      'Interests': 'Gardening; Helping people; Cars.',
+      'WorkConditions': 'Flexible hours; Business hours; Inside; Outside; Regular hours.',
+      'VocationalPathways': 'Social and community services. Manufacturing and technology',
+      'Image': '../src/assets/images/avatars/financial-planner.jpg',
+      'SkillsMatch': 20,
+      'Interest': 50,
+      'Demand': 90,
+      'Pay': '$150–$240',
+      'PerTime': 'per hour'
+    }
+  ]
 };
 
       

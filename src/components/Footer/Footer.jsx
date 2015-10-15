@@ -5,7 +5,7 @@
 import './Footer.scss';
 
 import React from 'react';
-import { Router, Route, Link } from 'react-router';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import uuid from 'node-uuid';
 import * as actionCreators from '../../redux/action-creators';
@@ -71,7 +71,6 @@ class AppFooter extends React.Component {
   }
 
   linkClick = (URLSegment) => {
-    console.log('clicked link');
     this.props.dispatch(actionCreators.getLinkedPagesHTML(URLSegment));
   }
 }

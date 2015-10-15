@@ -23,6 +23,7 @@ import * as actionCreators from './redux/action-creators';
 import App from './components/App/App.jsx';
 import MainPage from './components/MainPage/MainPage.jsx';
 import Questionnaire from './components/Questionnaire/Questionnaire.jsx';
+import ListView from './components/ListView/ListView.jsx';
 import ProviderConnect from './components/ProviderConnect/ProviderConnect.jsx';
 
 // Initialize Redux store
@@ -35,6 +36,9 @@ const store = createStore(
       loaded: false
     },
     _questionnaire: {
+      loaded: false
+    },
+    _getJobs: {
       loaded: false
     }
   }
@@ -59,6 +63,7 @@ let unsubscribe = store.subscribe(() => {
             <IndexRoute component={Questionnaire} />
             <Route path="questionnaire" component={Questionnaire} />
             <Route path="providerconnect" component={ProviderConnect} />
+            <Route path="list-view" component={ListView} />
             {state._footerData.data.Footer.Menu.map(renderFooter)}
           </Route>
         </Router>

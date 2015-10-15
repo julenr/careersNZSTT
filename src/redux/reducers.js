@@ -78,6 +78,34 @@ export function _mainPage(state = initialState, action = {}) {
   }
 }
 
+// GET JOBS REDUCER
+export function _getJobs(state = initialState, action = {}) {
+  switch (action.type) {
+    case 'GET_JOBS_REQUEST':
+      return {
+        ...state,
+        loaded: false
+      };
+    case 'GET_JOBS_SUCCESS':
+      return {
+        ...state,
+        data: action.result.data,
+        loaded: true
+      };
+    case 'GET_JOBS_FAILURE':
+      return {
+        ...state,
+        loaded: true
+      };
+    case 'CLOSE_JOB_CARD':
+      const newState = {...state };
+      newState.data.JobsCards[action.jobID].Closed = true;
+      return newState;
+    default:
+      return state;
+  }
+}
+
 // FOOTER DATA REDUCER
 export function _footerData(state = initialState, action = {}) {
   switch (action.type) {

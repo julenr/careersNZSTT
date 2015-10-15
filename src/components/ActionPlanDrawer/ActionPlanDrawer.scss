@@ -5,12 +5,12 @@
 @charset "UTF-8";
 @import "../../main.scss";
 
-.action-plan { /* position:fixed; left:0; bottom:0; width:100%; z-index:11; */}
+.action-plan {position:fixed; left:0; bottom:0; width:100%; z-index:11;}
 .action-plan .page-wrapper { position:relative; }
 
 
 /* Plan header */
-.action-plan .plan-header { background:$skillstool_blue_1; }
+.action-plan .plan-header { background:$skillstool_blue_1;  height:90px }
 .action-plan .plan-help, .action-plan .plan-trigger .text { display:none; }
 .action-plan .plan-title { font-size:em(24); line-height:lh(28,24); color:#fff; text-align:center; padding:em(10,24) 0 em(9,24); cursor:pointer; }
 .action-plan .plan-count { font-size:em(15.5,24); display:block; }

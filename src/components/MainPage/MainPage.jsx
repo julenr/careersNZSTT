@@ -54,21 +54,24 @@ class Content extends React.Component {
     }
 
     return (
-      <div className="page-maincontent" id="content">
-        <div className="page-wrapper">
-          <div className="nav-link-back">
-            <a href="#">Back</a>
-          </div>
-          <section className="content-wrapper">
-            <h1>{ JSON.stringify(title, null, 2) }</h1>
-            <div className="capionImage video" dangerouslySetInnerHTML={{__html: videoHTML}} />
-            <div className="intro-text">
-              <p>{ JSON.stringify(intro, null, 2) }</p>
+      <div>
+        <div className="page-maincontent" id="content">
+          <div className="page-wrapper">
+            <div className="nav-link-back">
+              <a href="#">Back</a>
             </div>
-            <div dangerouslySetInnerHTML={{__html: content}} />
-          </section>
+            <section className="content-wrapper">
+              <h1>{ JSON.stringify(title, null, 2) }</h1>
+              <div className="capionImage video" dangerouslySetInnerHTML={{__html: videoHTML}} />
+              <div className="intro-text">
+                <p>{ JSON.stringify(intro, null, 2) }</p>
+              </div>
+              <div dangerouslySetInnerHTML={{__html: content}} />
+            </section>
+          </div>
+          <ActionPlanDrawer />
         </div>
-        <ActionPlanDrawer />
+        <Footer />
       </div>
     )
   }

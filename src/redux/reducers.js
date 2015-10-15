@@ -80,6 +80,7 @@ export function _mainPage(state = initialState, action = {}) {
 
 // GET JOBS REDUCER
 export function _getJobs(state = initialState, action = {}) {
+    let newState = {...state };
   switch (action.type) {
     case 'GET_JOBS_REQUEST':
       return {
@@ -98,8 +99,10 @@ export function _getJobs(state = initialState, action = {}) {
         loaded: true
       };
     case 'CLOSE_JOB_CARD':
-      const newState = {...state };
       newState.data.JobsCards[action.jobID].Closed = true;
+      return newState;
+    case 'FLIP_JOB_CARD':
+      newState.data.JobsCards[action.jobID].Fliped = !newState.data.JobsCards[action.jobID].Fliped;
       return newState;
     default:
       return state;

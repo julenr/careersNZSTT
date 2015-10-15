@@ -2,7 +2,6 @@
  * Created by jr1500 on 30/09/15.
  */
 
-import './App.scss';
 import React from 'react';
 import { Provider } from 'react-redux';
 import { Router, Route, Link } from 'react-router'

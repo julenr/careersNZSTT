@@ -1,0 +1,176 @@
+/*
+	Careers NZ Skills Transition Tool
+	Created: 21 September 2015
+	Last updated: See GIT/SVN
+  ----------------------------------
+	Styles for print
+
+*/
+/* SASS imports */
+@import "_sass_mixins_colours";
+
+
+/* 
+ FONTS
+------------------------------------- */
+/* Muller Black */
+.course-detail .course-summary dt, .careers-card dd { font-family:'MullerBlack', Arial, sans-serif; font-weight:bold; font-style:normal; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+
+/* 
+ HIDE
+------------------------------------- */
+.action-remove, .action-reinstate, .icon-plus-circle, .pagination .next, .pagination .previous, .icon-cancel-circle, .course-options-panel .page-wrapper:before, .progress-bar, .button, .careers-card .sectors, .icon-help, .action-skills-match, .sectors a:after, .action-flip, .action-remove, .icon-cross, .modal, .ReactModal__Overlay, .footer-logos li a img, .nav-link-back, .nav-footer, .action-plan .plan-trigger, .action-plan .plan-footer, .page-header .home-logo, .page-header .careersnz-logo, .header-tools, .action-plan.closed, .action-plan .plan-help, .course-detail .course-links { display:none !important; }
+ 
+
+/* 
+ RESETS
+------------------------------------- */
+/* Background */
+.page-header, .page-footer, .ReactModal__Overlay { background:none !important; }
+/* Shadows */
+.careers-card .card-actions, .careers-card .liner, .page-header, .action-card { -webkit-box-shadow:none; box-shadow:none; }
+
+
+/* 
+ SHOW
+------------------------------------- */
+.print { display:block !important; }
+
+
+/* 
+ SPECIFIC PRINT STYLES
+------------------------------------- */
+html { font-size:115%; }
+body { background:#fff; color:#000; }
+#shell { padding:0; }
+.page-maincontent .page-wrapper { padding:0; }
+
+
+/* 
+ HEADER
+------------------------------------- */
+.page-header .page-wrapper { padding:75px 0 27px; }
+.page-header { position:static; margin-bottom:48px; border-bottom:1px solid $skillstool_body; }
+
+
+/* 
+ MAIN CONTENT
+------------------------------------- */
+/* Links */
+#content a:after { text-decoration:underline; word-wrap:break-word; content:" (https://www.careers.govt.nz" attr(href) ")"; }
+#content a[href^="tel:"]:after, #content a[href^="http://"]:after, #content a[href^="https://"]:after, .footer-logos a[href^="http://"]:after, [href^="https://"]:after { content:" (" attr(href) ")"; }
+#content a[href^="mailto:"]:after, #content .tag a:after, #content a.tag:after, .togglecomposite a:after { display:none; }
+.content-wrapper .nav-sitemap a:after { display:block; }
+
+/* Color */
+p, li, label { color:#000 !important; } 
+
+/* Typographic */
+.content-wrapper .intro-text { font-size:115%; color:#000; }
+.page-maincontent h1, .page-maincontent .h1 { font-size:38px; }
+.content-wrapper h2, .content-wrapper .h2, .h2 { }
+#content .caption, .content-wrapper blockquote { color:#000; border:none !important; padding-left:0; padding-bottom:0; }
+
+/* Images */
+.figure img, .captionImage img { border:none !important; }
+.figure.align-left img, .figure.align-right img, .captionImage.left img, .captionImage.right img { width:auto; max-width:100%; }
+
+/* Tables */
+.page-maincontent table { border-bottom:2px solid #ccc; border-top:2px solid #ccc; border-left:1px solid #ccc; }
+.page-maincontent th, .page-maincontent td { border:none; border-right:1px solid #ccc; padding:0.5em; vertical-align:top; text-align:left; }
+.page-maincontent th { color:#000; border-bottom:2px solid #ccc; }
+
+/* Misc */
+.js-pageurl { font-size:14px; margin:0.75em 0 0; text-decoration:underline; }
+.js-pageurl.last { margin:1em 0; }
+
+/* Course detail */
+.course-detail header { padding:0; }
+.course-detail h1 { font-size:31px; }
+.course-detail .course-intro { margin:17px 0 22px; }
+.course-detail .course-summary { border:none; margin-bottom:11px; }
+.course-detail .course-summary dt, .course-detail .course-summary dd { float:left; width:25%; padding:10px 0; color:#000; border:none; }
+.course-detail .course-summary dd { width:70%; }
+
+/* Course detail panels */
+.course-panel { padding-bottom:7px; background:none !important; }
+.course-panel.jobs { /*page-break-before:always; */}
+.course-panel h2 { font-size:31px; padding:43px 0 24px; }
+.course-panel .layout-col-4 { width:31.3%; float:left; margin:0 2% 20px 0; }
+.course-panel.worried-about h3 { font-size:16px; line-height:21px; margin:0 0 12px}
+.course-panel.worried-about p { font-size:16px; line-height:21px; margin:0 0 19px; }
+.course-panel.worried-about .action-card p { font-size:inherit; line-height:inherit; margin:0; } 
+
+/* Jobs/course results pages */
+.course-options-panel { -webkit-box-shadow:none; box-shadow:none; background:none !important; }
+.course-options-panel .panel-title, .course-options-panel.courses .panel-filter, .course-options-panel.courses .panel-header, .course-options-panel .panel-header a { color:#000; }
+.course-options-panel .panel-filter { text-align:left; }
+.course-options-panel .panel-filter .select-menu-trigger { margin-bottom:0; }
+
+
+/* Action cards */
+.action-card { font-size:68%; margin-bottom:23px; }
+.action-card a:after { display:none; }
+.action-card .title { font-size:14px !important; line-height:18px !important; margin:0 !important; }
+.action-card .title a { color:#000; }
+.action-card .title .print { color:$skillstool_blue_1; }
+.action-card .action-card-button { font-size:10px; position:absolute; float:none; top:11px; right:10px; width:40px !important; height:40px !important; background:#fff !important; }
+.action-card .action-card-button .text-1 { padding-top:11px; color:#000; }
+.action-card .action-card-button .text-2 { padding-top:13px; color:#000; }
+
+/* Careers cards */
+.careers-card-wrapper { padding:2px 0 0; }
+.careers-card { font-size:90%; height:auto !important; position:static !important; transform:none !important; overflow:hidden; max-width:none !important; border:1px solid #ccc; @include border-radius(0 21px 21px 21px); padding:0 12px; @include box-sizing(border-box); margin:0 0 10px !important; width:99%; }
+.careers-card.job { width:99%; }
+.careers-card.course { border:none; }
+.careers-card.job:nth-child(even) { /*page-break-after:always; */} /* Create a page break after every second one - note: this is not reliable currently */
+.careers-card.job .card { height:auto; position:static; transform:none; transform-style:flat; backface-visibility:visible; float:left; width:50%; }
+.careers-card .liner { min-height:inherit !important; padding:0 20px !important; background:none !important; color:#000 !important; border-radius:0; }
+.careers-card .back .liner { padding:26px 20px 0 !important; }
+.careers-card header { height:auto !important; } 
+.careers-card .title { font-size:21px !important; color:$skillstool_green_2 !important; padding:24px 0 19px !important; }
+.careers-card .card-actions { font-size:14px !important; line-height:18px !important; background:none; color:$skillstool_blue_1 !important; text-align:left; padding:5px 20px 20px !important; }
+.careers-card .back .card-actions, .careers-card .back header { display:none; }
+.careers-card.job .back dl { border-top:2px dotted $skillstool_body; margin-top:10px; }
+.careers-card .back dt, .careers-card .back .description { color:#000; }
+.careers-card.job dl { float:none; width:100%; }
+.careers-card dt, .careers-card dd { font-size:14px; padding:0 0 2px; border:none; color:#000 !important; }
+.careers-card .back dt, .careers-card .back dd { padding:2px 0; }
+.careers-card dt { width:34%; }
+.careers-card dd { width:61%; }
+.careers-card .image { margin:0 12px 14px 0; }
+.careers-card .back .action-joblink-external { font-size:14px; float:none; width:auto; }
+.results-hidden .careers-card .front .liner { border:none; } 
+
+/* Progress bar */
+.progress-bar-status { text-indent:0; background:none; height:auto; position:static; margin:0; }
+.progress-bar-status:before { display:none; }
+
+/* Divider */
+.divider { border-color:$skillstool_body !important; }
+
+/* Preferences/filters */
+.course-options-panel.filters .tags { margin:0 0 1em; }
+.course-options-panel.filters .title { font-size:18px; text-align:left; }
+
+/* Tags */
+.tags .tag { font-size:16px; }
+
+/* Results page */
+.page-maincontent .results-title { padding:0; }
+.page-maincontent .results-title a:after { display:none; }
+
+/* Panel help */
+.panel-help { margin:1em 0 2em; padding:0; }
+
+
+/* 
+ FOOTER
+------------------------------------- */
+.page-footer { margin-top:51px; border-top:1px solid $skillstool_body; }
+.page-footer .page-wrapper { padding:41px 0;  }
+.page-footer .layout-col-3 { width:44%; margin-right:11%; float:left; }
+.page-footer .layout-col-3:last-child { width:35%; margin-right:0; }
+.page-footer .site-name { font-size:16px; line-height:21px; color:#000; }
+.page-footer .logo-title { font-size:18px; line-height:24px; color:#000; margin:0 0 25px; }
+.footer-logos li { margin:0 0 16px; }

@@ -96,11 +96,20 @@ export function getJobs() {
   }
 }
 
-
 export function jobClosed(jobID) {
   return {
     type: 'CLOSE_JOB_CARD',
     jobID
   }
 }
+
+export function jobCardFlip(jobID) {
+  console.log('fliped');
+  return {
+    type: 'FLIP_JOB_CARD',
+    jobID
+  }
+}
+
+
 

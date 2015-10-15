@@ -2,8 +2,6 @@
  * Created by jr1500 on 30/09/15.
  */
 
-import './ProgressBar.scss';
-
 import React from 'react';
 
 class ProgressBar extends React.Component {

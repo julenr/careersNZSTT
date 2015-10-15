@@ -2,8 +2,6 @@
  * Created by jr1500 on 30/09/15.
  */
 
-import './ListView.scss';
-
 import React from 'react';
 import Loader from 'react-loader';
 import uuid from 'node-uuid';
@@ -13,6 +11,7 @@ import * as actionCreators from '../../redux/action-creators';
 import Footer from '../Footer/Footer.jsx';
 import ActionPlanDrawer from '../ActionPlanDrawer/ActionPlanDrawer.jsx';
 import JobCard from './JobCard/JobCard';
+import ListViewHeader from './ListViewHeader/ListViewHeader';
 
 @connect((state) => {
   return {
@@ -45,6 +44,7 @@ class Content extends React.Component {
     var { jobsCards } = this.props;
     return (
       <div>
+        <ListViewHeader />
         <div className="page-maincontent">
           <div className="page-wrapper">
             <div className="careers-card-wrapper">

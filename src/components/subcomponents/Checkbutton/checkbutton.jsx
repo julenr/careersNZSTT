@@ -2,7 +2,6 @@
  * Created by jr1500 on 30/09/15.
  */
 
-import './checkbutton.scss';
 import classNames from 'classnames';
 
 import React from 'react';

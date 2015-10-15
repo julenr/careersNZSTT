@@ -3,9 +3,9 @@
  */
 
 // SASS Stylesheets
-import './normalize.scss';
-import './fonts.scss';
-import './main.scss';
+import './styles/normalize.scss';
+import './styles/fonts.scss';
+import './styles/screen.scss';
 
 // REACT Dependencies
 import React from 'react';

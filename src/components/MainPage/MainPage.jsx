@@ -2,8 +2,6 @@
  * Created by jr1500 on 30/09/15.
  */
 
-import './MainPage.scss';
-
 import React from 'react';
 import Loader from 'react-loader';
 import { Router, Route, Link } from 'react-router';

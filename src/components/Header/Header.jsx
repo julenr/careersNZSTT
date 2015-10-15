@@ -1,7 +1,6 @@
 /**
  * Created by jr1500 on 30/09/15.
  */
-import './Header.scss';
 import React from 'react';
 import { Router, Route, Link } from 'react-router';
 

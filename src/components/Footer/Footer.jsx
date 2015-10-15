@@ -2,8 +2,6 @@
  * Created by jr1500.
  */
 
-import './Footer.scss';
-
 import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';

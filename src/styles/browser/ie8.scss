@@ -1,0 +1,43 @@
+/*
+	Careers NZ Skills Transition Tool
+	Created: 21 September 2015
+	Last updated: See GIT/SVN
+  ----------------------------------
+	Styles for IE8
+
+*/
+
+/* SASS imports */
+@import "../_sass_mixins_colours";
+
+.questions-intro img { height:199px; width:153px; }
+
+/* Font fixes */
+/* Italic */
+.mullerregularitalic, em, blockquote, blockquote cite:before { font-style:normal; }
+
+/* Bold */
+.mullerextrabold, .questions .help strong, .results-subtitle strong, .careers-card.qualification dd, .header-tools li.tool-edit, .header-tools li.tool-save, .header-tools li.tool-login, .action-card-button, .careers-card .back dd, .careers-card .action-skills-match, .careers-card .action-skills-match em,
+.mullerblack, h1, .h1, h2, .h2, h3, .h3, h4, .h4, .modal .form label, .modal .tag, .select-menu-trigger, .pagination .summary, .course-options-panel.filters .tag, .button-solid, .sector-simple-list li:before, .nav-link-back, .action-plan .plan-title, .action-plan .plan-trigger, strong { font-weight:normal; }
+
+/* CSS3/Layout fixes */
+.page-header .home-logo { background-image:url(../../images/logos/skills-transition-tool-logo-ie.png); }
+.page-header .careersnz-logo { background:url(../../images/logos/careersnz-logo-ie.png); }
+  
+/* RGBA fixes */
+#list-changing-overlay { background:none url(../../images/backgrounds/background-white-ie-92.png) repeat; }
+.ReactModal__Overlay { background:none url(../../images/backgrounds/background-black-ie-70.png) repeat; }
+
+/* SVG fixes */
+
+/* Gradient fixes */
+
+/* Opacity fixes */
+
+/* Z-index fixes */
+
+/* Modal */
+
+/* CSS3 Transforms */
+.careers-card .back, .careers-card.flip .front { display:none; }
+.careers-card.flip .back { display:block; }

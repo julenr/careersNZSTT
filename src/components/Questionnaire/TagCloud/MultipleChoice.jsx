@@ -2,8 +2,6 @@
  * Created by jr1500 on 30/09/15.
  */
 
-import './MultipleChoice.scss';
-
 import React from 'react';
 import classNames from 'classnames';
 import uuid from 'node-uuid';

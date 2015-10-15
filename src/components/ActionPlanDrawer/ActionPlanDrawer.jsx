@@ -2,8 +2,6 @@
  * Created by jr1500 on 30/09/15.
  */
 
-import './ActionPlanDrawer.scss';
-
 import React from 'react';
 import { Router, Route, Link } from 'react-router';
 import { connect } from 'react-redux';

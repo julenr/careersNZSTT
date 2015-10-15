@@ -1,0 +1,36 @@
+
+
+This documents describes the modifications that must be done from the original to adapt them to React
+
+* Change fonts directory to ../assets/fonts
+
+
+
+* Temporary change Action plan drawer styles
+ .action-plan {position:fixed; left:0; bottom:0; width:100%; z-index:11;}
+ .action-plan .page-wrapper { position:relative; }
+
+
+ /* Plan header */
+ .action-plan .plan-header { background:$skillstool_blue_1; ;  height:90px }
+
+
+
+* Change in /* Question radio/checkbox */
+    li for .checkbox-item
+    ul dor .checkbox
+
+
+
+
+ASK ALAN
+
+
+IS THIS NECESSARY
+
+/*
+ ICONS
+---------------------------------------
+*/
+
+.ajax-spinner { background:url(../assets/images/icons/ajax-spinner-small.gif) no-repeat center center; display:block; height:em(16); width:100%; }

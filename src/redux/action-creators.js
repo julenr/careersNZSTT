@@ -80,6 +80,8 @@ export function questionClicked(questionID, responseID) {
     }
 }
 
+
+/* List View Actions */
 export function getListViewData() {
   return {
     types: ['GET_JOBS_REQUEST', 'GET_JOBS_SUCCESS', 'GET_JOBS_FAILURE'],
@@ -104,10 +106,15 @@ export function jobClosed(jobID) {
 }
 
 export function jobCardFlip(jobID) {
-  console.log('fliped');
   return {
     type: 'FLIP_JOB_CARD',
     jobID
+  }
+}
+
+export function undoPanelClosed() {
+  return {
+    type: 'CLOSE_UNDO_PANEL'
   }
 }
 
@@ -118,11 +125,35 @@ export function helpPanelClosed(panelID) {
   }
 }
 
-export function undoPanelClosed() {
+export function courseOptionPanelClosed() {
   return {
-    type: 'CLOSE_UNDO_PANEL'
+    type: 'CLOSE_COURSE_OPTION_PANEL'
   }
 }
+
+export function courseCardClose(courseID) {
+  return {
+    type: 'CLOSE_COURSE_CARD',
+    courseID
+  }
+}
+
+export function institutionsPanelClose(institutionID) {
+  return {
+    type: 'CLOSE_INSTITUTION_PANEL',
+    institutionID
+  }
+}
+
+export function institutionCardClose(institutionID) {
+  return {
+    type: 'CLOSE_INSTITUTION_CARD',
+    institutionID
+  }
+}
+
+
+
 
 
 

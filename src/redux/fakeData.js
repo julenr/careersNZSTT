@@ -275,34 +275,16 @@ export const footerData = {
 
 
 export const listViewData = {
-  'UndoPanel': [
-    {
-      'Closed': false,
-      'Text': 'No shift work'
-    }
-  ],
+  'UndoPanel':
+  {
+    'Closed': false,
+    'Text': 'No shift work'
+  }
+  ,
   'HelpPanels': [
     {
       'Closed': false,
       'Text': 'Here\u0027s a couple of tips to get you started',
-      'Tips': [
-        {
-          'Title': 'First tip',
-          'Text': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem'
-        },
-        {
-          'Title': 'Second tip',
-          'Text': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem'
-        },
-        {
-          'Title': 'Third tip',
-          'Text': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem'
-        }
-      ]
-    },
-    {
-      'Closed': false,
-      'Text': 'Here\u0027s another couple of tips to get you started',
       'Tips': [
         {
           'Title': 'First tip',
@@ -395,7 +377,74 @@ export const listViewData = {
       'Pay': '$150–$240',
       'PerTime': 'per hour'
     }
-  ]
+  ],
+  'CourseOptionPanel':
+  {
+    'Closed': false,
+    'Text': 'Which course suits you best?',
+    'Region': 'Northland',
+    'Courses': [
+      {
+        'Closed': false,
+        'Title': 'Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
+        'Institution': 'International College of New Zealand Limited',
+        'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
+        'VocationalPathways': [
+          'Social and community services',
+          'Manufacturing and technology'
+        ],
+        'Level': '1',
+        'LeadsTo': 'Groundsperson; Another job title; Job three'
+      },
+      {
+        'Closed': false,
+        'Title': 'Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
+        'Institution': 'International College of New Zealand Limited',
+        'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
+        'VocationalPathways': [
+          'Social and community services',
+          'Manufacturing and technology'
+        ],
+        'Level': '3',
+        'LeadsTo': 'Groundsperson; Another job title; Job three'
+      },
+      {
+        'Closed': false,
+        'Title': 'Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
+        'Institution': 'International College of New Zealand Limited',
+        'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
+        'VocationalPathways': [
+          'Social and community services',
+          'Manufacturing and technology'
+        ],
+        'Level': '5',
+        'LeadsTo': 'Groundsperson; Another job title; Job three'
+      }
+    ]
+  },
+  'InstitutionsPanel':
+  {
+    'Closed': false,
+    'Text': 'Where would you like to study?',
+    'Region': 'Northland',
+    'Institutions': [
+      {
+        'Closed': false,
+        'Title': 'Southern Institue of Technology',
+        'Location': 'Houghton Bay'
+      },
+      {
+        'Closed': false,
+        'Title': 'Southern Institue of Technology',
+        'Location': 'Houghton Bay'
+      },
+      {
+        'Closed': false,
+        'Title': 'Southern Institue of Technology',
+        'Location': 'Houghton Bay'
+      }
+    ]
+  }
 };
 
       

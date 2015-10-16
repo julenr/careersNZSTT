@@ -1,0 +1,6 @@
+{
+  "name": "CourseOptionPanel",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./CourseOptionPanel.jsx"
+}

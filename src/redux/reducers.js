@@ -110,6 +110,18 @@ export function _listViewData(state = initialState, action = {}) {
     case 'CLOSE_UNDO_PANEL':
       newState.data.UndoPanel.Closed = true;
       return newState;
+    case 'CLOSE_COURSE_OPTION_PANEL':
+      newState.data.CourseOptionPanel.Closed = true;
+      return newState;
+    case 'CLOSE_COURSE_CARD':
+      newState.data.CourseOptionPanel.Courses[action.courseID].Closed = true;
+      return newState;
+    case 'CLOSE_INSTITUTION_CARD':
+      newState.data.InstitutionsPanel.Institutions[action.institutionID].Closed = true;
+      return newState;
+    case 'CLOSE_INSTITUTION_PANEL':
+      newState.data.InstitutionsPanel.Closed = true;
+      return newState;
     default:
       return state;
   }

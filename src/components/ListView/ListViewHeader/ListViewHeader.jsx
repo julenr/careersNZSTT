@@ -31,10 +31,8 @@ class ListViewHeader extends React.Component {
             </span> suggestions based on <a href="#">your skills</a>
           </h1>
           <p className="results-subtitle"><strong>23 courses</strong> are hidden, <a href="#">edit your preferences</a></p>
-
           <UndoPanel />
           {helpPanels.map(this.renderHelpPanels)}
-
         </div>
       </div>
     );

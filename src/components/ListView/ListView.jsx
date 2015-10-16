@@ -12,6 +12,8 @@ import Footer from '../Footer/Footer.jsx';
 import ActionPlanDrawer from '../ActionPlanDrawer/ActionPlanDrawer.jsx';
 import JobCard from './JobCard/JobCard';
 import ListViewHeader from './ListViewHeader/ListViewHeader';
+import CourseOptionPanel from './CourseOptionPanel/CourseOptionPanel';
+import InstitutionsPanel from './InstitutionsPanel/InstitutionsPanel';
 
 @connect((state) => {
   return {
@@ -44,6 +46,7 @@ class Content extends React.Component {
     return (
       <div>
         <ListViewHeader />
+
         <div className="page-maincontent">
           <div className="page-wrapper">
             <div className="careers-card-wrapper">
@@ -51,6 +54,11 @@ class Content extends React.Component {
             </div>
           </div>
         </div>
+
+
+        <CourseOptionPanel />
+        <InstitutionsPanel />
+
         <Footer />
         <ActionPlanDrawer />
       </div>

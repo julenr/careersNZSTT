@@ -10,27 +10,28 @@ import * as actionCreators from '../../../redux/action-creators';
 
 @connect((state, props) => {
   return {
-    //closed: state._getJobs.data.JobsCards[props.id].Closed
+    undoPanel: state._listViewData.data.UndoPanel,
+    closed: state._listViewData.data.UndoPanel.Closed
   }
 })
 class UndoPanel extends React.Component {
 
-  clickFlip = () => {
-    //this.props.dispatch(actionCreators.jobCardFlip(this.props.id));
+  clickClose = () => {
+    this.props.dispatch(actionCreators.undoPanelClosed());
   }
 
   render() {
-    //let { jobCard, fliped, closed } = this.props;
-    //let classes = classNames( this.props.className, {
-    //  'careers-card job': true,
-    //  'careers-card job flip': fliped
-    //} );
+    let { undoPanel, closed } = this.props;
 
-    return (
-      <div>
-        UNDO PANEL
-      </div>
-    );
+    if(closed)
+      return <span />;
+    else
+      return (
+        <div className="panel-help" id="undo-panel">
+          <p className="title">You have removed preference <strong>{undoPanel.Text}</strong>. <a href="#">Undo</a>.</p>
+          <a href="#" className="action-close icon-cross" onClick={this.clickClose}>&nbsp;</a>
+        </div>
+      );
   }
 }
 

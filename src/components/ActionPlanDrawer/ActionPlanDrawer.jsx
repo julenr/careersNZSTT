@@ -18,7 +18,7 @@ class ActionPlanDrawer extends React.Component {
             <h2 className="plan-title">Your action plan <span className="plan-count"><span className="item-count">5</span> items</span></h2>
             <div className="plan-help">
               <a href="link_to_help_page_for_non_js_users" className="help-trigger">
-                <img className="avatar" src={require('../../assets/images/avatars/action-plan-help-avatar-1.jpg')} alt="Help assistant. " width="54" height="54" />
+                <img className="avatar" src={require('../../assets/images/placeholders/action-plan-help-avatar-1.jpg')} alt="Help assistant. " width="54" height="54" />
                 Need help?
               </a>
             </div>

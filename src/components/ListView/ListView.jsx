@@ -15,7 +15,7 @@ import ListViewHeader from './ListViewHeader/ListViewHeader';
 
 @connect((state) => {
   return {
-    loaded: state._getJobs.loaded
+    loaded: state._listViewData.loaded
   }
 })
 class ListView extends React.Component {
@@ -33,10 +33,9 @@ class ListView extends React.Component {
   }
 }
 
-
 @connect((state) => {
   return {
-    jobsCards: state._getJobs.data.JobsCards
+    jobsCards: state._listViewData.data.JobsCards
   }
 })
 class Content extends React.Component {
@@ -57,6 +56,7 @@ class Content extends React.Component {
       </div>
     )
   }
+
   renderJobsCards(jobCard, idx) {
     if(jobCard.Closed)
       return;

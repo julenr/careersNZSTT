@@ -10,9 +10,9 @@ import * as actionCreators from '../../../redux/action-creators';
 
 @connect((state, props) => {
   return {
-    jobCard: state._getJobs.data.JobsCards[props.id],
-    fliped: state._getJobs.data.JobsCards[props.id].Fliped,
-    closed: state._getJobs.data.JobsCards[props.id].Closed
+    jobCard: state._listViewData.data.JobsCards[props.id],
+    fliped: state._listViewData.data.JobsCards[props.id].Fliped,
+    closed: state._listViewData.data.JobsCards[props.id].Closed
   }
 })
 class JobCard extends React.Component {

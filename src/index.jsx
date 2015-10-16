@@ -3,7 +3,7 @@
  */
 
 // SASS Stylesheets
-import './styles/normalize.scss';
+import './styles/custom-normalize.scss';
 import './styles/fonts.scss';
 import './styles/screen.scss';
 
@@ -38,7 +38,7 @@ const store = createStore(
     _questionnaire: {
       loaded: false
     },
-    _getJobs: {
+    _listViewData: {
       loaded: false
     }
   }

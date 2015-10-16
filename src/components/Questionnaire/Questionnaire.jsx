@@ -54,7 +54,7 @@ class Content extends React.Component {
           <div className="page-wrapper">
             <h1 className="access">Questions</h1>
             <div className="title">
-              <img src={require('../../assets/images/avatars/intro-avatar-1.png')} width="153" height="199" alt="John" />
+              <img src={require('../../assets/images/placeholders/intro-avatar-1.png')} width="153" height="199" alt="John" />
               <p><strong>Hi there, I'm John.</strong> Welcome to Change up!</p>
               <div className="clear"></div>
             </div>

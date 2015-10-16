@@ -80,7 +80,7 @@ export function questionClicked(questionID, responseID) {
     }
 }
 
-export function getJobs() {
+export function getListViewData() {
   return {
     types: ['GET_JOBS_REQUEST', 'GET_JOBS_SUCCESS', 'GET_JOBS_FAILURE'],
     promise: () => {
@@ -90,7 +90,7 @@ export function getJobs() {
         })
         .catch(function (response) {
           console.error('error ', response);
-          return {data: fakeData.jobsCards};
+          return {data: fakeData.listViewData};
         });
     }
   }
@@ -110,6 +110,21 @@ export function jobCardFlip(jobID) {
     jobID
   }
 }
+
+export function helpPanelClosed(panelID) {
+  return {
+    type: 'CLOSE_HELP_PANEL',
+    panelID
+  }
+}
+
+export function undoPanelClosed() {
+  return {
+    type: 'CLOSE_UNDO_PANEL'
+  }
+}
+
+
 
 
 

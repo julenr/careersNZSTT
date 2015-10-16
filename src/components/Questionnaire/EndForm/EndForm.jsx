@@ -37,7 +37,7 @@ class EndForm extends React.Component {
   }
 
   linkClick = (URLSegment) => {
-    this.props.dispatch(actionCreators.getJobs());
+    this.props.dispatch(actionCreators.getListViewData());
   }
 }
 

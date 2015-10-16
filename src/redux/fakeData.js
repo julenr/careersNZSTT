@@ -274,7 +274,51 @@ export const footerData = {
 };
 
 
-export const jobsCards = {
+export const listViewData = {
+  'UndoPanel': [
+    {
+      'Closed': false,
+      'Text': 'No shift work'
+    }
+  ],
+  'HelpPanels': [
+    {
+      'Closed': false,
+      'Text': 'Here\u0027s a couple of tips to get you started',
+      'Tips': [
+        {
+          'Title': 'First tip',
+          'Text': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem'
+        },
+        {
+          'Title': 'Second tip',
+          'Text': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem'
+        },
+        {
+          'Title': 'Third tip',
+          'Text': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem'
+        }
+      ]
+    },
+    {
+      'Closed': false,
+      'Text': 'Here\u0027s another couple of tips to get you started',
+      'Tips': [
+        {
+          'Title': 'First tip',
+          'Text': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem'
+        },
+        {
+          'Title': 'Second tip',
+          'Text': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem'
+        },
+        {
+          'Title': 'Third tip',
+          'Text': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem'
+        }
+      ]
+    }
+  ],
   'JobsCards': [
     {
       'Closed': false,

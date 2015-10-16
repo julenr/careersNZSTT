@@ -53,7 +53,7 @@ if(TARGET === 'start' || !TARGET) {
           include: path.resolve(ROOT_PATH, 'src')
         },
         {
-          test: /\.(png|jpg)$/,
+          test: /\.(png|jpg|gif)$/,
           loader: 'url?limit=25',
           include: path.resolve(ROOT_PATH, 'src')
         },
@@ -108,7 +108,7 @@ if(TARGET === 'build') {
           include: path.resolve(ROOT_PATH, 'src')
         },
         {
-          test: /\.(png|jpg)$/,
+          test: /\.(png|jpg|gif)$/,
           loaders: ['file-loader?name=images/[name].[ext]'],
           include: path.resolve(ROOT_PATH, 'src')
         },

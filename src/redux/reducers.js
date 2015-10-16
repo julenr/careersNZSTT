@@ -78,8 +78,8 @@ export function _mainPage(state = initialState, action = {}) {
   }
 }
 
-// GET JOBS REDUCER
-export function _getJobs(state = initialState, action = {}) {
+// LIST VIEW REDUCER
+export function _listViewData(state = initialState, action = {}) {
     let newState = {...state };
   switch (action.type) {
     case 'GET_JOBS_REQUEST':
@@ -103,6 +103,12 @@ export function _getJobs(state = initialState, action = {}) {
       return newState;
     case 'FLIP_JOB_CARD':
       newState.data.JobsCards[action.jobID].Fliped = !newState.data.JobsCards[action.jobID].Fliped;
+      return newState;
+    case 'CLOSE_HELP_PANEL':
+      newState.data.HelpPanels[action.panelID].Closed = true;
+      return newState;
+    case 'CLOSE_UNDO_PANEL':
+      newState.data.UndoPanel.Closed = true;
       return newState;
     default:
       return state;

@@ -1,0 +1,6 @@
+{
+  "name": "HiddenCards",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./HiddenCards.jsx"
+}

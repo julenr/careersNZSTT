@@ -12,7 +12,8 @@ import * as actionCreators from '../../../redux/action-creators';
   return {
     jobCard: state._listViewData.data.JobsCards[props.id],
     fliped: state._listViewData.data.JobsCards[props.id].Fliped,
-    closed: state._listViewData.data.JobsCards[props.id].Closed
+    closed: state._listViewData.data.JobsCards[props.id].Closed,
+    hidden: props.hidden
   }
 })
 class JobCard extends React.Component {
@@ -22,16 +23,21 @@ class JobCard extends React.Component {
   }
 
   clickClose = () => {
+    this.props.dispatch(actionCreators.jobCardFlip(this.props.id));
     this.props.dispatch(actionCreators.jobClosed(this.props.id));
   }
 
+  clickOpen = () => {
+    this.props.dispatch(actionCreators.jobOpen(this.props.id));
+  }
+
   render() {
-    let { jobCard, fliped, closed } = this.props;
+    let { jobCard, fliped, closed, hidden } = this.props;
     let classes = classNames( this.props.className, {
       'careers-card job': true,
       'careers-card job flip': fliped
     } );
-    if(closed) return <span />;
+    if(closed && !this.props.hidden) return <span />;
     else
       return (
         <div>
@@ -41,7 +47,7 @@ class JobCard extends React.Component {
                 <header>
                   <h3 className="title">{jobCard.Title}</h3>
                   <a href="#" className="action-remove" onClick={this.clickClose}><span className="icon-cross"></span></a>
-                  <a href="#" className="action-reinstate" title="Show this job in my list again"><span className="icon-plus-circle"></span></a>
+                  <a href="#" className="action-reinstate" onClick={this.clickOpen} title="Show this job in my list again"><span className="icon-plus-circle"></span></a>
                   <div className="sectors">
                     <a href="#">
                       <ul>
@@ -71,7 +77,7 @@ class JobCard extends React.Component {
               </div>
               <footer>
                 <a className="card-actions" href="#">How do I train for this job?</a>
-                <a className="card-actions reinstate-card" href="#">Show this job in my list again</a>
+                <a className="card-actions reinstate-card" href="#" onClick={this.clickOpen}>Show this job in my list again</a>
               </footer>
             </div>
 

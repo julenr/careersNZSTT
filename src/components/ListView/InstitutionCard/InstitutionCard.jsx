@@ -17,14 +17,18 @@ import * as actionCreators from '../../../redux/action-creators';
 class InstitutionCard extends React.Component {
 
   clickClose = () => {
-    console.log('closed');
     this.props.dispatch(actionCreators.institutionCardClose(this.props.id));
+  }
+
+  clickOpen = () => {
+    this.props.dispatch(actionCreators.institutionCardOpen(this.props.id));
   }
 
   render() {
     let { institutionCard, closed } = this.props;
 
-    if(closed) return <span />;
+    if(closed && !this.props.hidden)
+      return <span />;
     else
       return (
         <article className="careers-card course">
@@ -33,14 +37,14 @@ class InstitutionCard extends React.Component {
               <header>
                 <h3 className="title">Southern Institue of Technology</h3>
                 <a href="#" className="action-remove" onClick={this.clickClose}><span className="icon-cross"></span></a>
-                <a href="#" className="action-reinstate" title="Show this course above"><span className="icon-plus-circle"></span></a>
+                <a href="#" className="action-reinstate" onClick={this.clickOpen} title="Show this course above"><span className="icon-plus-circle"></span></a>
               </header>
               <dl className="divider">
                 <dt>Location:</dt>
                 <dd>Houghton Bay</dd>
               </dl>
               <a className="button" href="#">View this course <span className="icon-arrow-right"></span></a>
-              <a className="button reinstate-card" href="#">Show this course above</a>
+              <a className="button reinstate-card" href="#" onClick={this.clickOpen}>Show this course above</a>
             </div>
           </div>
         </article>

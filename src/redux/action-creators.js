@@ -105,6 +105,13 @@ export function jobClosed(jobID) {
   }
 }
 
+export function jobOpen(jobID) {
+  return {
+    type: 'OPEN_JOB_CARD',
+    jobID
+  }
+}
+
 export function jobCardFlip(jobID) {
   return {
     type: 'FLIP_JOB_CARD',
@@ -138,6 +145,13 @@ export function courseCardClose(courseID) {
   }
 }
 
+export function courseCardOpen(courseID) {
+  return {
+    type: 'OPEN_COURSE_CARD',
+    courseID
+  }
+}
+
 export function institutionsPanelClose(institutionID) {
   return {
     type: 'CLOSE_INSTITUTION_PANEL',
@@ -148,6 +162,13 @@ export function institutionsPanelClose(institutionID) {
 export function institutionCardClose(institutionID) {
   return {
     type: 'CLOSE_INSTITUTION_CARD',
+    institutionID
+  }
+}
+
+export function institutionCardOpen(institutionID) {
+  return {
+    type: 'OPEN_INSTITUTION_CARD',
     institutionID
   }
 }

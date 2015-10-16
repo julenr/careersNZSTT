@@ -1,0 +1,6 @@
+{
+  "name": "Preferences",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./Preferences.jsx"
+}

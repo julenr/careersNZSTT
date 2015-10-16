@@ -101,6 +101,9 @@ export function _listViewData(state = initialState, action = {}) {
     case 'CLOSE_JOB_CARD':
       newState.data.JobsCards[action.jobID].Closed = true;
       return newState;
+    case 'OPEN_JOB_CARD':
+      newState.data.JobsCards[action.jobID].Closed = false;
+      return newState;
     case 'FLIP_JOB_CARD':
       newState.data.JobsCards[action.jobID].Fliped = !newState.data.JobsCards[action.jobID].Fliped;
       return newState;
@@ -116,8 +119,14 @@ export function _listViewData(state = initialState, action = {}) {
     case 'CLOSE_COURSE_CARD':
       newState.data.CourseOptionPanel.Courses[action.courseID].Closed = true;
       return newState;
+    case 'OPEN_COURSE_CARD':
+      newState.data.CourseOptionPanel.Courses[action.courseID].Closed = false;
+      return newState;
     case 'CLOSE_INSTITUTION_CARD':
       newState.data.InstitutionsPanel.Institutions[action.institutionID].Closed = true;
+      return newState;
+    case 'OPEN_INSTITUTION_CARD':
+      newState.data.InstitutionsPanel.Institutions[action.institutionID].Closed = false;
       return newState;
     case 'CLOSE_INSTITUTION_PANEL':
       newState.data.InstitutionsPanel.Closed = true;

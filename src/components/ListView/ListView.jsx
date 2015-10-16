@@ -14,6 +14,9 @@ import JobCard from './JobCard/JobCard';
 import ListViewHeader from './ListViewHeader/ListViewHeader';
 import CourseOptionPanel from './CourseOptionPanel/CourseOptionPanel';
 import InstitutionsPanel from './InstitutionsPanel/InstitutionsPanel';
+import Pagination from './Pagination/Pagination';
+import Preferences from './Preferences/Preferences';
+import HiddenCards from './HiddenCards/HiddenCards';
 
 @connect((state) => {
   return {
@@ -55,9 +58,11 @@ class Content extends React.Component {
           </div>
         </div>
 
-
         <CourseOptionPanel />
         <InstitutionsPanel />
+        <Pagination />
+        <Preferences />
+        <HiddenCards />
 
         <Footer />
         <ActionPlanDrawer />

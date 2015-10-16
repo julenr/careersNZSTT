@@ -24,18 +24,22 @@ import HiddenCards from './HiddenCards/HiddenCards';
   }
 })
 class ListView extends React.Component {
+
   render () {
     var { loaded } = this.props;
 
-    if (loaded)
+    if (loaded) {
       return <Content />;
-    else
+    }
+    else {
       return (
         <div>
-          <Loader loaded={loaded} />
+          <Loader loaded={loaded}/>
         </div>
       );
+    }
   }
+
 }
 
 @connect((state) => {
@@ -44,8 +48,10 @@ class ListView extends React.Component {
   }
 })
 class Content extends React.Component {
+
   render () {
     var { jobsCards } = this.props;
+
     return (
       <div>
         <ListViewHeader />
@@ -70,13 +76,12 @@ class Content extends React.Component {
     )
   }
 
-  renderJobsCards(jobCard, idx) {
-    if(jobCard.Closed)
-      return;
-    else
+  renderJobsCards = (jobCard, idx) => {
+    if(!jobCard.Closed) {
       return (
-          <JobCard key={uuid.v4()}  id={idx} />
+        <JobCard key={uuid.v4()} id={idx}/>
       );
+    }
   }
 }
 

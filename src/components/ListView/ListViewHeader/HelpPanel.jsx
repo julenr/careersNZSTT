@@ -15,9 +15,6 @@ import * as actionCreators from '../../../redux/action-creators';
   }
 })
 class HelpPanel extends React.Component {
-  clickClose = () => {
-    this.props.dispatch(actionCreators.helpPanelClosed(this.props.id));
-  }
 
   render() {
     let { helpPanel, closed } = this.props;
@@ -40,15 +37,19 @@ class HelpPanel extends React.Component {
               {helpPanel.Tips.map(this.renderTips)}
             </div>
           </div>
-          <a href="#" className="action-close icon-cross" onClick={this.clickClose}>&nbsp;</a>
+          <a href="#" className="action-close icon-cross" onClick={this.closePanel}>&nbsp;</a>
         </div>
       );
   }
 
-  renderTips(tip, idx) {
+  renderTips = (tip, idx) => {
     return (
       <p key={idx}><strong>{tip.Title} </strong>{tip.Text}</p>
     );
+  }
+
+  closePanel = () => {
+    this.props.dispatch(actionCreators.helpPanelClosed(this.props.id));
   }
 }
 

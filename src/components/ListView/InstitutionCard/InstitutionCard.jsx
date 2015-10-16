@@ -16,39 +16,49 @@ import * as actionCreators from '../../../redux/action-creators';
 })
 class InstitutionCard extends React.Component {
 
-  clickClose = () => {
-    this.props.dispatch(actionCreators.institutionCardClose(this.props.id));
-  }
-
-  clickOpen = () => {
-    this.props.dispatch(actionCreators.institutionCardOpen(this.props.id));
-  }
-
   render() {
     let { institutionCard, closed } = this.props;
 
-    if(closed && !this.props.hidden)
+    if(closed && !this.props.hidden) {
       return <span />;
-    else
+    }
+    else {
       return (
         <article className="careers-card course">
           <div className="card front">
             <div className="liner">
               <header>
-                <h3 className="title">Southern Institue of Technology</h3>
-                <a href="#" className="action-remove" onClick={this.clickClose}><span className="icon-cross"></span></a>
-                <a href="#" className="action-reinstate" onClick={this.clickOpen} title="Show this course above"><span className="icon-plus-circle"></span></a>
+                <h3 className="title">{institutionCard.Title}</h3>
+                <a href="#" className="action-remove" onClick={this.closeCard}>
+                  <span className="icon-cross"></span>
+                </a>
+                <a href="#" className="action-reinstate" onClick={this.openCard} title="Show this course above">
+                  <span className="icon-plus-circle"></span>
+                </a>
               </header>
               <dl className="divider">
                 <dt>Location:</dt>
-                <dd>Houghton Bay</dd>
+                <dd>{institutionCard.Location}</dd>
               </dl>
-              <a className="button" href="#">View this course <span className="icon-arrow-right"></span></a>
-              <a className="button reinstate-card" href="#" onClick={this.clickOpen}>Show this course above</a>
+              <a className="button" href="#">
+                View this course <span className="icon-arrow-right"></span>
+              </a>
+              <a className="button reinstate-card" href="#" onClick={this.openCard}>
+                Show this course above
+              </a>
             </div>
           </div>
         </article>
       );
+    }
+  }
+
+  closeCard = () => {
+    this.props.dispatch(actionCreators.institutionCardClose(this.props.id));
+  }
+
+  openCard = () => {
+    this.props.dispatch(actionCreators.institutionCardOpen(this.props.id));
   }
 }
 

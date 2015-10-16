@@ -8,17 +8,9 @@ import classNames from 'classnames';
 import { connect } from 'react-redux';
 import * as actionCreators from '../../../redux/action-creators';
 
-@connect((state, props) => {
-  return {
-    //undoPanel: state._listViewData.data.UndoPanel,
-    //closed: state._listViewData.data.UndoPanel.Closed
-  }
-})
 class Pagination extends React.Component {
 
   render() {
-    //let { undoPanel, closed } = this.props;
-
     return (
       <div className="page-maincontent">
         <div className="page-wrapper">

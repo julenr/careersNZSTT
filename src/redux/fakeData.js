@@ -430,18 +430,18 @@ export const listViewData = {
     'Institutions': [
       {
         'Closed': false,
-        'Title': 'Southern Institue of Technology',
+        'Title': 'Auckland University of Technology',
+        'Location': 'Auckland'
+      },
+      {
+        'Closed': false,
+        'Title': 'University of Canterbury',
         'Location': 'Houghton Bay'
       },
       {
         'Closed': false,
-        'Title': 'Southern Institue of Technology',
-        'Location': 'Houghton Bay'
-      },
-      {
-        'Closed': false,
-        'Title': 'Southern Institue of Technology',
-        'Location': 'Houghton Bay'
+        'Title': 'University of Otago',
+        'Location': 'Dunedin'
       }
     ]
   }

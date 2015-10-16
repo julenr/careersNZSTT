@@ -16,28 +16,21 @@ import * as actionCreators from '../../../redux/action-creators';
 })
 class CourseCard extends React.Component {
 
-  clickClose = () => {
-    this.props.dispatch(actionCreators.courseCardClose(this.props.id));
-  }
-
-  clickOpen = () => {
-    this.props.dispatch(actionCreators.courseCardOpen(this.props.id));
-  }
-
   render() {
     let { courseCard, closed } = this.props;
 
-    if(closed && !this.props.hidden)
+    if(closed && !this.props.hidden) {
       return <span />;
-    else
+    }
+    else {
       return (
         <article className="careers-card qualification">
           <div className="card front">
             <div className="liner">
               <header>
                 <h3 className="title">{courseCard.Title}</h3>
-                <a href="#" className="action-remove" onClick={this.clickClose}><span className="icon-cross"></span></a>
-                <a href="#" className="action-reinstate" onClick={this.clickOpen} title="Show this course in my list again"><span className="icon-plus-circle"></span></a>
+                <a href="#" className="action-remove" onClick={this.closeCard}><span className="icon-cross"></span></a>
+                <a href="#" className="action-reinstate" onClick={this.openCard} title="Show this course in my list again"><span className="icon-plus-circle"></span></a>
                 <div className="sectors">
                   <a href="#">
                     <ul>
@@ -48,8 +41,12 @@ class CourseCard extends React.Component {
                   </a>
                 </div>
               </header>
-              <p className="provider">{courseCard.Institution}</p>
-              <p className="description divider">{courseCard.Description}</p>
+              <p className="provider">
+                {courseCard.Institution}
+              </p>
+              <p className="description divider">
+                {courseCard.Description}
+              </p>
               <dl className="divider">
                 <dt>Vocational pathways: <span className="icon-help tooltip" title="This is a tooltip">&nbsp;</span></dt>
                 <dd>
@@ -65,12 +62,25 @@ class CourseCard extends React.Component {
               </dl>
             </div>
             <footer>
-              <a className="card-actions" href="#">Where can I do this course?</a>
-              <a className="card-actions reinstate-card" href="#" onClick={this.clickOpen}>Show this course in my list again</a>
+              <a className="card-actions" href="#">
+                Where can I do this course?
+              </a>
+              <a className="card-actions reinstate-card" href="#" onClick={this.openCard}>
+                Show this course in my list again
+              </a>
             </footer>
           </div>
         </article>
       );
+    }
+  }
+
+  closeCard = () => {
+    this.props.dispatch(actionCreators.courseCardClose(this.props.id));
+  }
+
+  openCard = () => {
+    this.props.dispatch(actionCreators.courseCardOpen(this.props.id));
   }
 }
 

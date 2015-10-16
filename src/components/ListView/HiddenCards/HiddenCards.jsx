@@ -12,7 +12,7 @@ import JobCard from '../JobCard/JobCard';
 import CourseCard from '../CourseCard';
 import InstitutionCard from '../InstitutionCard';
 
-@connect((state, props) => {
+@connect((state) => {
   return {
     jobsCards: state._listViewData.data.JobsCards,
     courseCards: state._listViewData.data.CourseOptionPanel.Courses,
@@ -37,32 +37,30 @@ class HiddenCards extends React.Component {
     );
   }
 
-  renderJobsCards(jobCard, idx) {
-    if(jobCard.Closed)
+  renderJobsCards = (jobCard, idx) => {
+    if(jobCard.Closed) {
       return (
         <JobCard key={idx} id={idx} hidden="true"/>
       );
-    else
-      return;
+    }
   }
 
-  renderCoursesCards(courseCard, idx) {
-    if(courseCard.Closed)
+  renderCoursesCards = (courseCard, idx) => {
+    if(courseCard.Closed) {
       return (
         <CourseCard key={idx} id={idx} hidden="true"/>
       );
-    else
-      return;
+    }
   }
 
-  renderInstitutionsCards(institutionCard, idx) {
-    if(institutionCard.Closed)
+  renderInstitutionsCards = (institutionCard, idx) => {
+    if(institutionCard.Closed) {
       return (
         <InstitutionCard key={idx} id={idx} hidden="true"/>
       );
-    else
-      return;
+    }
   }
+
 }
 
 export default HiddenCards;

@@ -10,7 +10,7 @@ import * as actionCreators from '../../../redux/action-creators';
 
 import CourseCard from '../CourseCard';
 
-@connect((state, props) => {
+@connect((state) => {
   return {
     courses: state._listViewData.data.CourseOptionPanel.Courses,
     closed: state._listViewData.data.CourseOptionPanel.Closed
@@ -18,12 +18,9 @@ import CourseCard from '../CourseCard';
 })
 class CourseOptionPanel extends React.Component {
 
-  clickClose = () => {
-    this.props.dispatch(actionCreators.courseOptionPanelClosed());
-  }
-
   render() {
     let { courses, closed } = this.props;
+
     if(closed) {
       return <span />;
     }
@@ -67,7 +64,7 @@ class CourseOptionPanel extends React.Component {
                   </ul>
                 </div>
               </div>
-              <a href="#" className="icon-cross panel-close" onClick={this.clickClose}>&nbsp;</a>
+              <a href="#" className="icon-cross panel-close" onClick={this.closePanel}>&nbsp;</a>
             </header>
             <div className="careers-card-wrapper">
               {courses.map(this.renderCoursesCards)}
@@ -78,13 +75,16 @@ class CourseOptionPanel extends React.Component {
     }
   }
 
-  renderCoursesCards(courseCard, idx) {
-    if(courseCard.Closed)
-      return;
-    else
+  renderCoursesCards = (courseCard, idx) => {
+    if(!courseCard.Closed) {
       return (
         <CourseCard key={idx} id={idx} />
       );
+    }
+  }
+
+  closePanel = () => {
+    this.props.dispatch(actionCreators.courseOptionPanelClosed());
   }
 }
 

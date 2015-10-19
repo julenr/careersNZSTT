@@ -40,11 +40,12 @@ export const questionnaire = {
   'Questions': [
     {
       'ID': 1,
-      'Text': 'Name',
-      'Description': 'What is your name?',
+      'Active': false,
+      'Text': '',
+      'Description': 'Basic text input — some text entered, with placeholder and hint/help',
       'QuestionType': 'TextInput',
       'QuestionResponses': [],
-      'PlaceHolder': 'Your name',
+      'PlaceHolder': 'Optional placeholder',
       'NextQuestionID': 2,
       'HasAlternative': false,
       'AlternativeText': '',
@@ -53,6 +54,7 @@ export const questionnaire = {
     },
     {
       'ID': 2,
+      'Active': false,
       'Text': 'Goal',
       'Description': 'What is your goal in using this tool?',
       'QuestionType': 'SingleChoice',
@@ -86,6 +88,7 @@ export const questionnaire = {
     },
     {
       'ID': 3,
+      'Active': false,
       'Text': 'Most recent job',
       'Description': 'Ok great, the best place to start is by looking at the skills you have from jobs youve held.  What is your most recent job?',
       'QuestionType': 'SingleChoice',
@@ -106,6 +109,7 @@ export const questionnaire = {
       }]
     }, {
       'ID': 4,
+      'Active': false,
       'Text': 'Skills match',
       'Description': 'Many [job-title-plural] (also known as [job-title-alias]) have the following skills, do these look about right? Note: job title alias is included if the user searched for that name, rather than the canonical one.',
       'QuestionType': 'TagCloud',
@@ -117,6 +121,7 @@ export const questionnaire = {
       'QuestionResponses': []
     }, {
       'ID': 5,
+      'Active': false,
       'Text': 'Another job',
       'Description': 'The more jobs you add the better idea we get of your skills, do you have another job to add?',
       'QuestionType': 'TagCloud',
@@ -128,6 +133,7 @@ export const questionnaire = {
       'QuestionResponses': []
     }, {
       'ID': 6,
+      'Active': false,
       'Text': 'Another job',
       'Description': 'Do you have any more jobs to add?',
       'QuestionType': 'MultipleChoice',
@@ -154,6 +160,7 @@ export const questionnaire = {
       }]
     }, {
       'ID': 7,
+      'Active': false,
       'Text': 'Unpaid jobs',
       'Description': 'Many people gain valuable skills from unpaid work, have you got experience of any of these common unpaid or voluntary jobs:',
       'QuestionType': 'MultipleChoice',
@@ -192,6 +199,7 @@ export const questionnaire = {
       }, {'ID': 7, 'ResponseText': 'Option 12','selected': false, 'NextQuestionID': 8}]
     }, {
       'ID': 8,
+      'Active': false,
       'Text': 'Other unpaid job',
       'Description': 'Which unpaid or voluntary job did you do?',
       'QuestionType': 'Typeahead',
@@ -203,6 +211,7 @@ export const questionnaire = {
       'QuestionResponses': []
     }, {
       'ID': 9,
+      'Active': false,
       'Text': 'Other unpaid job',
       'Description': 'Which unpaid or voluntary job did you do?',
       'QuestionType': 'Typeahead',
@@ -214,6 +223,7 @@ export const questionnaire = {
       'QuestionResponses': []
     }, {
       'ID': 10,
+      'Active': false,
       'Text': 'Skills match',
       'Description': 'Many [job-title-plural] (also known as `[job-title-alias]) have the following skills, would you like to have all these skills?',
       'QuestionType': 'TagCloud',
@@ -225,6 +235,7 @@ export const questionnaire = {
       'QuestionResponses': []
     }, {
       'ID': 11,
+      'Active': false,
       'Text': 'Skills match',
       'Description': 'Many [job-title-plural] (also known as [job-title-alias]) have the following skills, do these look about right? Note: job title alias is included if the user searched for that name, rather than the canonical one.',
       'QuestionType': 'TagCloud',

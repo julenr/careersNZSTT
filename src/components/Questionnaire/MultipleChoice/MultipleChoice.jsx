@@ -6,48 +6,40 @@ import React from 'react';
 import classNames from 'classnames';
 import uuid from 'node-uuid';
 
-import { connect } from 'react-redux';
-import * as actionCreators from '../../../redux/action-creators';
-
 import Checkbutton from '../../subcomponents/Checkbutton';
 import Avatar from '../../subcomponents/Avatar';
 
-@connect((state, props) => {
-  return {
-    questions: state._questionnaire.data.Questions[props.id-1]
-  }
-})
 class MultipleChoice extends React.Component {
   render() {
-    var { questions } = this.props;
+    var question = this.props.questions[this.props.id];
+    this.nextButtonActive = false;
+
     return (
       <div className="fieldset active">
         <div className="field radio with-avatar">
           <Avatar />
-          <label>{questions.Description}</label>
+          <label>{question.Description}</label>
           <div data-type="checkbox" className="checkbox">
-            {questions.QuestionResponses.map(this.renderQuestions)}
+            {question.QuestionResponses.map(this.renderResponses)}
           </div>
         </div>
 
-        <div className="submit active">
+        <div className={ classNames({'submit': true, 'submit active': this.nextButtonActive}) }>
           <a className="button next" href="#">That looks right<span className="icon-arrow-down"></span></a>
         </div>
       </div>
     );
   }
 
-  renderQuestions = (question, idx) => {
+  renderResponses = (response, idx) => {
+    if(response.selected) this.nextButtonActive = true;
     return (
-      <span key={idx} onClick={this.questionClick.bind(null, idx)}>
-        <Checkbutton key={uuid.v4()} value={question.ResponseText} selected={question.selected} />
+      <span key={idx} onClick={ () => this.props.responseClicked(this.props.id, idx)}>
+        <Checkbutton key={uuid.v4()} value={response.ResponseText} selected={response.selected} />
       </span>
     );
   }
 
-  questionClick = (idx) => {
-    this.props.dispatch(actionCreators.questionClicked(this.props.id-1, idx));
-  }
 }
 
 export default MultipleChoice;

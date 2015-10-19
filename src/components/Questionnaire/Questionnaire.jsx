@@ -8,69 +8,60 @@ import uuid from 'node-uuid';
 import Loader from 'react-loader';
 
 import { connect } from 'react-redux';
-import * as actionCreators from '../../redux/action-creators';
+import * as actionCreators from '../../redux/questionnaire-actions';
 
-import Footer from '../Footer/Footer.jsx';
+import Footer from '../Footer/Footer';
 import Avatar from '../subcomponents/Avatar';
 import ProgressBar from '../ProgressBar';
+import QuestionnaireHeader from './QuestionnaireHeader/QuestionnaireHeader';
 import MultipleChoice from './MultipleChoice/MultipleChoice';
 import TextInput from './TextInput/TextInput';
 import SingleChoice from './SingleChoice/SingleChoice';
 import IntroForm from './IntroForm/IntroForm';
 import EndForm from './EndForm/EndForm';
 
-@connect((state) => {
+
+function mapStateToProps(state) {
   return {
-    loaded: state._questionnaire.loaded
-  }
-})
+    loaded: state._questionnaire.loaded,
+    memberName: state._questionnaire.data.Member.Name,
+    questions: state._questionnaire.data.Questions,
+    refresh: state._questionnaire.refresh
+  };
+}
+
 class Questionnaire extends React.Component {
   render () {
     var { loaded } = this.props;
 
-    if(loaded)
-      return <Content />;
-    else
+    if(loaded) {
+      return <Content {...this.props} />;
+    }
+    else {
       return (
         <div>
-          <Loader loaded={loaded} />
+          <Loader loaded={loaded}/>
         </div>
       );
+    }
   }
 }
 
-@connect((state, props) => {
-  return {
-    member: state._questionnaire.data.Member,
-    questions: state._questionnaire.data.Questions
-  }
-})
 class Content extends React.Component {
   render() {
-    var { member, questions } = this.props;
+    var { questions, memberName } = this.props;
     return (
       <div>
-        <div className="questions-intro">
-          <div className="page-wrapper">
-            <h1 className="access">Questions</h1>
-            <div className="title">
-              <img src={require('../../assets/images/placeholders/intro-avatar-1.png')} width="153" height="199" alt="John" />
-              <p><strong>Hi there, I'm John.</strong> Welcome to Change up!</p>
-              <div className="clear"></div>
-            </div>
-            <p className="blurb">
-              This website will help you find a course and a better job based on the skills you have and the things you want from work and study.
-            </p>
-            <div className="clear"></div>
-          </div>
-        </div>
+
+        <QuestionnaireHeader />
+
         <div className="page-maincontent" id="content">
           <div className="page-wrapper">
             <div className="questions">
 
-              <IntroForm />
+              <IntroForm {...this.props}/>
               {questions.map(this.renderQuestions)}
-              <EndForm name={member.Name}/>
+              <EndForm name={memberName}/>
 
             </div>
           </div>
@@ -80,7 +71,7 @@ class Content extends React.Component {
       </div>
     );
   }
-  renderQuestions(question) {
+  renderQuestions = (question, idx) => {
     switch ( question.QuestionType ) {
       case 'SingleChoice':
         return (
@@ -88,11 +79,11 @@ class Content extends React.Component {
         );
       case 'TextInput' :
         return (
-          <TextInput key={question.ID} id={question.ID}/>
+          <TextInput key={question.ID} id={idx} {...this.props}/>
         );
       case 'MultipleChoice' :
         return (
-          <MultipleChoice key={question.ID} id={question.ID}/>
+          <MultipleChoice key={question.ID} id={idx} {...this.props}/>
         );
       case 'TagCloud' :
         return (
@@ -110,4 +101,8 @@ class Content extends React.Component {
   }
 }
 
-export default Questionnaire;
+export default connect(
+  mapStateToProps,
+  actionCreators
+)(Questionnaire);
+

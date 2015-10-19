@@ -30,3 +30,4 @@ class SingleChoice extends React.Component {
 }
 
 export default SingleChoice;
+

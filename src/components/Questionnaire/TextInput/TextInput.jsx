@@ -6,31 +6,39 @@ import React from 'react';
 import classNames from 'classnames';
 import uuid from 'node-uuid';
 
-import { connect } from 'react-redux';
-import * as actionCreators from '../../../redux/action-creators';
-
 import Checkbutton from '../../subcomponents/Checkbutton';
 import Avatar from '../../subcomponents/Avatar';
 
-@connect((state, props) => {
-  return {
-    questions: state._questionnaire.data.Questions[props.id-1]
-  }
-})
 class TextInput extends React.Component {
   render() {
-    var { questions } = this.props;
+    var question = this.props.questions[this.props.id];
+    let classes = classNames( this.props.className, {
+      'submit': true,
+      'submit active': question.Text
+    } );
+
     return (
-      <div className="field radio with-avatar">
-        <Avatar />
-        <div className="field text">
-          <label htmlFor="q1-name">{questions.Description}</label>
+      <div className="fieldset active">
+        <div className="field text with-avatar">
+          <Avatar />
+          <label htmlFor="q2-sample">{question.Description}</label>
+          <p className="help">An example of help text</p>
           <div className="text">
-            <input className="text" name="q1-name" id="q1-name" type="text" data-type="input" defaultValue={questions.PlaceHolder}/>
+            <input className="text"
+                   name="q2-sample"
+                   id="q2-sample"
+                   ref="inputText"
+                   onKeyUp={ () => this.props.setInputText(this.props.id, this.refs.inputText.value)}
+                   type="text"
+                   data-type="input"
+                   defaultValue={question.Text}
+                   placeholder={question.PlaceHolder}
+              />
+            <p className="help">An example of hint text in an alternate location</p>
           </div>
-          <div className="submit">
-            <a className="button next" href="#">Next<span className="icon-arrow-down"></span></a>
-          </div>
+        </div>
+        <div className={ classes }>
+          <a className="button next" href="#">Next<span className="icon-arrow-down"></span></a>
         </div>
       </div>
     );

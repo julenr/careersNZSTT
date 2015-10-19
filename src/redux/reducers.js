@@ -28,6 +28,7 @@ export function _time(state = initialState, action = {}) {
 
 // MAIN DATA AND QUESTIONNAIRE REDUCER
 export function _questionnaire(state = initialState, action = {}) {
+  let newState = {...state };
   switch (action.type) {
     case 'GET_QUESTIONNAIRE_REQUEST':
       return {
@@ -45,9 +46,16 @@ export function _questionnaire(state = initialState, action = {}) {
         ...state,
         loaded: true
       };
-    case 'CLICK':
-      const newState = {...state };
+    case 'RESPONSE_CLICKED':
       newState.data.Questions[action.questionID].QuestionResponses[action.responseID].selected = !newState.data.Questions[action.questionID].QuestionResponses[action.responseID].selected;
+      newState.refresh = !newState.refresh;
+      return newState;
+    case 'SET_INPUT_TEXT':
+      newState.data.Questions[action.questionID].Text = action.text;
+      newState.refresh = !newState.refresh;
+      return newState;
+    case 'SET_MEMBER_NAME':
+      newState.data.Member.Name = action.name;
       return newState;
     default:
       return state;

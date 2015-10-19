@@ -5,7 +5,7 @@ import * as fakeData from './fakeData';
 
 const appID = document.getElementsByTagName('body')[0].getAttribute('data-application-id');
 
-export function getTime(delay = 100) {
+export function getStateButton(delay = 100) {
   return {
     types: ['GET_TIME_REQUEST', 'GET_TIME_SUCCESS', 'GET_TIME_FAILURE'],
     promise: () => {
@@ -22,7 +22,6 @@ export function getTime(delay = 100) {
     }
   }
 }
-
 
 export function getQuestionnaire() {
   return {
@@ -72,16 +71,6 @@ export function getFooterData() {
   }
 }
 
-export function questionClicked(questionID, responseID) {
-  return {
-      type: 'CLICK',
-      questionID,
-      responseID
-    }
-}
-
-
-/* List View Actions */
 export function getListViewData() {
   return {
     types: ['GET_JOBS_REQUEST', 'GET_JOBS_SUCCESS', 'GET_JOBS_FAILURE'],
@@ -97,83 +86,6 @@ export function getListViewData() {
     }
   }
 }
-
-export function jobClosed(jobID) {
-  return {
-    type: 'CLOSE_JOB_CARD',
-    jobID
-  }
-}
-
-export function jobOpen(jobID) {
-  return {
-    type: 'OPEN_JOB_CARD',
-    jobID
-  }
-}
-
-export function jobCardFlip(jobID) {
-  return {
-    type: 'FLIP_JOB_CARD',
-    jobID
-  }
-}
-
-export function undoPanelClosed() {
-  return {
-    type: 'CLOSE_UNDO_PANEL'
-  }
-}
-
-export function helpPanelClosed(panelID) {
-  return {
-    type: 'CLOSE_HELP_PANEL',
-    panelID
-  }
-}
-
-export function courseOptionPanelClosed() {
-  return {
-    type: 'CLOSE_COURSE_OPTION_PANEL'
-  }
-}
-
-export function courseCardClose(courseID) {
-  return {
-    type: 'CLOSE_COURSE_CARD',
-    courseID
-  }
-}
-
-export function courseCardOpen(courseID) {
-  return {
-    type: 'OPEN_COURSE_CARD',
-    courseID
-  }
-}
-
-export function institutionsPanelClose(institutionID) {
-  return {
-    type: 'CLOSE_INSTITUTION_PANEL',
-    institutionID
-  }
-}
-
-export function institutionCardClose(institutionID) {
-  return {
-    type: 'CLOSE_INSTITUTION_CARD',
-    institutionID
-  }
-}
-
-export function institutionCardOpen(institutionID) {
-  return {
-    type: 'OPEN_INSTITUTION_CARD',
-    institutionID
-  }
-}
-
-
 
 
 

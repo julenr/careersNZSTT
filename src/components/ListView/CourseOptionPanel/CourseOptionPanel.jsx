@@ -6,7 +6,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { connect } from 'react-redux';
-import * as actionCreators from '../../../redux/action-creators';
+import * as actionCreators from '../../../redux/listview-actions';
 
 import CourseCard from '../CourseCard';
 

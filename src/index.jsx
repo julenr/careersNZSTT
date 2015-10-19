@@ -17,7 +17,7 @@ import uuid from 'node-uuid';
 
 // REDUX STORE
 import createStore from './redux/create-store';
-import * as actionCreators from './redux/action-creators';
+import * as actionCreators from './redux/general-actions';
 
 //CUSTOM COMPONENTS
 import App from './components/App/App.jsx';
@@ -36,7 +36,13 @@ const store = createStore(
       loaded: false
     },
     _questionnaire: {
-      loaded: false
+      refresh: false,
+      loaded: false,
+      data:
+      {
+        Member: '',
+        Questions: []
+      }
     },
     _listViewData: {
       loaded: false

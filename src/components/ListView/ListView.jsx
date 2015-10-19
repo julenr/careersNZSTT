@@ -6,7 +6,7 @@ import React from 'react';
 import Loader from 'react-loader';
 import uuid from 'node-uuid';
 import { connect } from 'react-redux';
-import * as actionCreators from '../../redux/action-creators';
+import * as actionCreators from '../../redux/listview-actions';
 
 import Footer from '../Footer/Footer.jsx';
 import ActionPlanDrawer from '../ActionPlanDrawer/ActionPlanDrawer.jsx';
@@ -83,6 +83,7 @@ class Content extends React.Component {
       );
     }
   }
+
 }
 
 export default ListView;

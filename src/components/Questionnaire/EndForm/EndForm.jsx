@@ -8,7 +8,7 @@ import classNames from 'classnames';
 import { Link } from 'react-router';
 
 import { connect } from 'react-redux';
-import * as actionCreators from '../../../redux/action-creators';
+import * as actionCreators from '../../../redux/general-actions';
 
 import Checkbutton from '../../subcomponents/Checkbutton';
 import Avatar from '../../subcomponents/Avatar';
@@ -36,7 +36,7 @@ class EndForm extends React.Component {
     );
   }
 
-  linkClick = (URLSegment) => {
+  linkClick = () => {
     this.props.dispatch(actionCreators.getListViewData());
   }
 }

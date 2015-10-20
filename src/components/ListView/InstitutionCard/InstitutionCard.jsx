@@ -29,10 +29,10 @@ class InstitutionCard extends React.Component {
             <div className="liner">
               <header>
                 <h3 className="title">{institutionCard.Title}</h3>
-                <a href="#" className="action-remove" onClick={this.closeCard}>
+                <a href="javascript: void 0" className="action-remove" onClick={this.closeCard}>
                   <span className="icon-cross"></span>
                 </a>
-                <a href="#" className="action-reinstate" onClick={this.openCard} title="Show this course above">
+                <a href="javascript: void 0" className="action-reinstate" onClick={this.openCard} title="Show this course above">
                   <span className="icon-plus-circle"></span>
                 </a>
               </header>
@@ -40,10 +40,10 @@ class InstitutionCard extends React.Component {
                 <dt>Location:</dt>
                 <dd>{institutionCard.Location}</dd>
               </dl>
-              <a className="button" href="#">
+              <a className="button" href="javascript: void 0">
                 View this course <span className="icon-arrow-right"></span>
               </a>
-              <a className="button reinstate-card" href="#" onClick={this.openCard}>
+              <a className="button reinstate-card" href="javascript: void 0" onClick={this.openCard}>
                 Show this course above
               </a>
             </div>

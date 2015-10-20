@@ -29,10 +29,10 @@ class CourseCard extends React.Component {
             <div className="liner">
               <header>
                 <h3 className="title">{courseCard.Title}</h3>
-                <a href="#" className="action-remove" onClick={this.closeCard}><span className="icon-cross"></span></a>
-                <a href="#" className="action-reinstate" onClick={this.openCard} title="Show this course in my list again"><span className="icon-plus-circle"></span></a>
+                <a href="javascript: void 0" className="action-remove" onClick={this.closeCard}><span className="icon-cross"></span></a>
+                <a href="javascript: void 0" className="action-reinstate" onClick={this.openCard} title="Show this course in my list again"><span className="icon-plus-circle"></span></a>
                 <div className="sectors">
-                  <a href="#">
+                  <a href="javascript: void 0">
                     <ul>
                       <li title="Manufacturing and technology" className="sector-yellow">Manufacturing and technology</li>
                       <li title="Construction and infrastructure" className="sector-blue">Construction and infrastructure</li>
@@ -62,10 +62,10 @@ class CourseCard extends React.Component {
               </dl>
             </div>
             <footer>
-              <a className="card-actions" href="#">
+              <a className="card-actions" href="javascript: void 0">
                 Where can I do this course?
               </a>
-              <a className="card-actions reinstate-card" href="#" onClick={this.openCard}>
+              <a className="card-actions reinstate-card" href="javascript: void 0" onClick={this.openCard}>
                 Show this course in my list again
               </a>
             </footer>

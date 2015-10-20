@@ -27,9 +27,9 @@ class UndoPanel extends React.Component {
         <div className="panel-help" id="undo-panel">
           <p className="title">
             You have removed preference <strong>{undoPanel.Text}</strong>.
-            <a href="#">Undo</a>.
+            <a href="javascript: void 0">Undo</a>.
           </p>
-          <a href="#" className="action-close icon-cross" onClick={this.closePanel}>&nbsp;</a>
+          <a href="javascript: void 0" className="action-close icon-cross" onClick={this.closePanel}>&nbsp;</a>
         </div>
       );
     }

@@ -37,7 +37,7 @@ class HelpPanel extends React.Component {
               {helpPanel.Tips.map(this.renderTips)}
             </div>
           </div>
-          <a href="#" className="action-close icon-cross" onClick={this.closePanel}>&nbsp;</a>
+          <a href="javascript: void 0" className="action-close icon-cross" onClick={this.closePanel}>&nbsp;</a>
         </div>
       );
   }

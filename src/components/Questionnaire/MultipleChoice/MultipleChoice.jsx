@@ -25,17 +25,17 @@ class MultipleChoice extends React.Component {
         </div>
 
         <div className={ classNames({'submit': true, 'submit active': this.nextButtonActive}) }>
-          <a className="button next" href="#">That looks right<span className="icon-arrow-down"></span></a>
+          <a className="button next" href="javascript:void 0">That looks right<span className="icon-arrow-down"></span></a>
         </div>
       </div>
     );
   }
 
   renderResponses = (response, idx) => {
-    if(response.selected) this.nextButtonActive = true;
+    if(response.Selected) this.nextButtonActive = true;
     return (
-      <span key={idx} onClick={ () => this.props.responseClicked(this.props.id, idx)}>
-        <Checkbutton key={uuid.v4()} value={response.ResponseText} selected={response.selected} />
+      <span key={idx} onClick={ () => this.props.responseClickedMultipleChoice(this.props.id, idx)}>
+        <Checkbutton key={uuid.v4()} value={response.ResponseText} selected={response.Selected} />
       </span>
     );
   }

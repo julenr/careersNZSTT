@@ -3,9 +3,17 @@
  */
 
 
-export function responseClicked(questionID, responseID) {
+export function responseClickedMultipleChoice(questionID, responseID) {
   return {
-    type: 'RESPONSE_CLICKED',
+    type: 'RESPONSE_CLICKED_MULTIPLE_CHOICE',
+    questionID,
+    responseID
+  }
+}
+
+export function responseClickedSingleChoice(questionID, responseID) {
+  return {
+    type: 'RESPONSE_CLICKED_SINGLE_CHOICE',
     questionID,
     responseID
   }
@@ -25,4 +33,21 @@ export function setMemberName(name) {
     name
   }
 }
+
+export function sellectAllTagCloud(questionID) {
+  return {
+    type: 'SELECT_ALL_TAG_CLOUD',
+    questionID
+  }
+}
+
+export function removeTag(questionID, tagID) {
+  console.log('removed');
+  return {
+    type: 'REMOVE_TAG',
+    questionID,
+    tagID
+  }
+}
+
 

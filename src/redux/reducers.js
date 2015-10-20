@@ -46,8 +46,13 @@ export function _questionnaire(state = initialState, action = {}) {
         ...state,
         loaded: true
       };
-    case 'RESPONSE_CLICKED':
-      newState.data.Questions[action.questionID].QuestionResponses[action.responseID].selected = !newState.data.Questions[action.questionID].QuestionResponses[action.responseID].selected;
+    case 'RESPONSE_CLICKED_MULTIPLE_CHOICE':
+      console.log('clicked m');
+      newState.data.Questions[action.questionID].QuestionResponses[action.responseID].Selected = !newState.data.Questions[action.questionID].QuestionResponses[action.responseID].Selected;
+      newState.refresh = !newState.refresh;
+      return newState;
+    case 'RESPONSE_CLICKED_SINGLE_CHOICE':
+      newState.data.Questions[action.questionID].Selected = action.responseID;
       newState.refresh = !newState.refresh;
       return newState;
     case 'SET_INPUT_TEXT':
@@ -56,6 +61,18 @@ export function _questionnaire(state = initialState, action = {}) {
       return newState;
     case 'SET_MEMBER_NAME':
       newState.data.Member.Name = action.name;
+      return newState;
+    case 'SELECT_ALL_TAG_CLOUD':
+      const allSelected = state.data.Questions[action.questionID].QuestionResponses.map((tag) => {
+        tag.Selected = true;
+        return tag;
+      });
+      newState.data.Questions[action.questionID].QuestionResponses = allSelected;
+      newState.refresh = !newState.refresh;
+      return newState;
+    case 'REMOVE_TAG':
+      console.log('clicked r');
+      newState.data.Questions[action.questionID].QuestionResponses[action.tagID].Removed = true;
       return newState;
     default:
       return state;
@@ -150,18 +167,18 @@ export function _footerData(state = initialState, action = {}) {
     case 'GET_FOOTER_DATA_REQUEST':
       return {
         ...state,
-        loading: true
+        loaded: false
       };
     case 'GET_FOOTER_DATA_SUCCESS':
       return {
         ...state,
         data: action.result.data,
-        loading: false
+        loaded: true
       };
     case 'GET_FOOTER_DATA_FAILURE':
       return {
         ...state,
-        loading: false
+        loaded: true
       };
     default:
       return state;

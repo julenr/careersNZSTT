@@ -17,6 +17,7 @@ import QuestionnaireHeader from './QuestionnaireHeader/QuestionnaireHeader';
 import MultipleChoice from './MultipleChoice/MultipleChoice';
 import TextInput from './TextInput/TextInput';
 import SingleChoice from './SingleChoice/SingleChoice';
+import TagCloud from './TagCloud/TagCloud';
 import IntroForm from './IntroForm/IntroForm';
 import EndForm from './EndForm/EndForm';
 
@@ -52,17 +53,13 @@ class Content extends React.Component {
     var { questions, memberName } = this.props;
     return (
       <div>
-
         <QuestionnaireHeader />
-
         <div className="page-maincontent" id="content">
           <div className="page-wrapper">
             <div className="questions">
-
               <IntroForm {...this.props}/>
               {questions.map(this.renderQuestions)}
               <EndForm name={memberName}/>
-
             </div>
           </div>
         </div>
@@ -73,29 +70,29 @@ class Content extends React.Component {
   }
   renderQuestions = (question, idx) => {
     switch ( question.QuestionType ) {
-      case 'SingleChoice':
-        return (
-          <SingleChoice key={question.ID} options={question.QuestionResponses} value={question.Description}/>
-        );
       case 'TextInput' :
         return (
-          <TextInput key={question.ID} id={idx} {...this.props}/>
+          <TextInput key={question.ID} id={idx} {...this.props} />
+        );
+      case 'SingleChoice':
+        return (
+          <SingleChoice key={question.ID} id={idx} {...this.props} />
         );
       case 'MultipleChoice' :
         return (
-          <MultipleChoice key={question.ID} id={idx} {...this.props}/>
+          <MultipleChoice key={question.ID} id={idx} {...this.props} />
         );
       case 'TagCloud' :
         return (
-          <SingleChoice key={question.ID} options={question.QuestionResponses} value={question.Description}/>
+          <TagCloud key={question.ID} id={idx} {...this.props} />
         );
       case 'Typeahead' :
         return (
-          <SingleChoice key={question.ID} options={question.QuestionResponses} value={question.Description}/>
+          <MultipleChoice key={question.ID} id={idx} {...this.props} />
         );
       default :
         return (
-          <SingleChoice key={question.ID} options={question.QuestionResponses} value={question.Description}/>
+          <span />
         );
     }
   }

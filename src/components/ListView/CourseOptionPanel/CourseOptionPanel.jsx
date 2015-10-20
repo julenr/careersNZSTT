@@ -32,7 +32,7 @@ class CourseOptionPanel extends React.Component {
               <h2 className="panel-title">Which course suits you best?</h2>
               <div className="panel-filter">Showing courses in
                 <div className="select-menu">
-                  <a href="#" className="select-menu-trigger">Region <span
+                  <a href="javascript: void 0" className="select-menu-trigger">Region <span
                     className="icon-arrow-down"></span></a>
                   <ul data-type="select" className="ui-menu">
                     <li tabIndex="0" value="1">Northland</li>
@@ -64,7 +64,7 @@ class CourseOptionPanel extends React.Component {
                   </ul>
                 </div>
               </div>
-              <a href="#" className="icon-cross panel-close" onClick={this.closePanel}>&nbsp;</a>
+              <a href="javascript: void 0" className="icon-cross panel-close" onClick={this.closePanel}>&nbsp;</a>
             </header>
             <div className="careers-card-wrapper">
               {courses.map(this.renderCoursesCards)}

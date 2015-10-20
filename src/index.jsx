@@ -14,6 +14,7 @@ import { Router, Route, Link, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
 import uuid from 'node-uuid';
+import Loader from 'react-loader';
 
 // REDUX STORE
 import createStore from './redux/create-store';
@@ -61,23 +62,34 @@ store.dispatch(actionCreators.getQuestionnaire());
 // Render the DOM when the data is allready stored
 let unsubscribe = store.subscribe(() => {
     const state = store.getState();
-    ReactDOM.render((
-      <Provider store={ store }>
-        <Router history={createBrowserHistory()}>
-          { /*<Router>  TODO: Problems rendering in Vagrant-Nginx environment */}
-          <Route path="/" component={App}>
-            <IndexRoute component={Questionnaire} />
-            <Route path="questionnaire" component={Questionnaire} />
-            <Route path="providerconnect" component={ProviderConnect} />
-            <Route path="list-view" component={ListView} />
-            {state._footerData.data.Footer.Menu.map(renderFooter)}
-          </Route>
-        </Router>
-      </Provider>
-    ), app);
-    unsubscribe();
+    if(state._footerData.loaded) { //Check if everything is loaded before render App
+      ReactDOM.render((
+        <Provider store={ store }>
+          <Router history={callCreateBrowserHistory()}>
+            { /*<Router>  TODO: Problems rendering in Vagrant-Nginx environment */}
+            <Route path="/" component={App}>
+              <IndexRoute component={Questionnaire} />
+              <Route path="questionnaire" component={Questionnaire} />
+              <Route path="providerconnect" component={ProviderConnect} />
+              <Route path="list-view" component={ListView} />
+              {state._footerData.data.Footer.Menu.map(renderFooter)}
+            </Route>
+          </Router>
+        </Provider>
+      ), app);
+      unsubscribe();
+    }
+    else {
+      ReactDOM.render((
+        <Loader />
+      ), app);
+    }
   }
 );
+
+function callCreateBrowserHistory() {
+  return createBrowserHistory();
+}
 
 // Render links dinamicaly from the server
 function renderFooter(route) {

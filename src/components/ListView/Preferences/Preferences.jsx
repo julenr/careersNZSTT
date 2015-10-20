@@ -42,7 +42,7 @@ class Pagination extends React.Component {
             <div className="layout-col layout-col-4">
               <p className="title">You are interested in jobs/courses this <strong>region</strong>:</p>
               <div className="select-menu">
-                <a href="#" className="select-menu-trigger">Region <span className="icon-arrow-down"></span></a>
+                <a href="javascript: void 0" className="select-menu-trigger">Region <span className="icon-arrow-down"></span></a>
                 <ul data-type="select" className="ui-menu">
                   <li tabIndex="0" value="1">Northland</li>
                   <li tabIndex="0" value="2">Auckland (North Shore)</li>
@@ -76,7 +76,7 @@ class Pagination extends React.Component {
             </div>
           </div>
           <div className="results-hidden-link">
-            <a href="#">Hidden jobs/courses <span className="icon-arrow-down-long"></span></a>
+            <a href="javascript: void 0">Hidden jobs/courses <span className="icon-arrow-down-long"></span></a>
           </div>
         </div>
       </div>

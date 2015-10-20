@@ -1,6 +1,6 @@
 {
-  "name": "MultipleChoice",
+  "name": "TagCloud",
   "version": "0.1.0",
   "private": true,
-  "main": "./MultipleChoice.jsx"
+  "main": "./TagCloud.jsx"
 }

@@ -56,7 +56,7 @@ export const questionnaire = {
       'ID': 2,
       'Active': false,
       'Text': 'Goal',
-      'Description': 'What is your goal in using this tool?',
+      'Description': 'What is your goal in using this tool? Single choice',
       'QuestionType': 'SingleChoice',
       'NextQuestionID': null,
       'HasAlternative': false,
@@ -111,14 +111,29 @@ export const questionnaire = {
       'ID': 4,
       'Active': false,
       'Text': 'Skills match',
-      'Description': 'Many [job-title-plural] (also known as [job-title-alias]) have the following skills, do these look about right? Note: job title alias is included if the user searched for that name, rather than the canonical one.',
+      'Description': 'Special questions - tag style - Job skills confirmation/edit question.',
       'QuestionType': 'TagCloud',
       'NextQuestionID': 5,
       'HasAlternative': false,
       'AlternativeText': '',
       'AlternativeNextQuestionID': null,
       'Endpoint': null,
-      'QuestionResponses': []
+      'QuestionResponses': [{
+        'ResponseText': 'Coffee making',
+        'NextQuestionID': 4
+      }, {
+        'ResponseText': 'Food safety',
+        'NextQuestionID': 4
+      }, {
+        'ResponseText': 'Skill three',
+        'NextQuestionID': 4,
+      }, {
+        'ResponseText': 'Skill four',
+        'NextQuestionID': 4
+      }, {
+        'ResponseText': 'etc',
+        'NextQuestionID': 4
+      }]
     }, {
       'ID': 5,
       'Active': false,
@@ -172,31 +187,31 @@ export const questionnaire = {
       'QuestionResponses': [{
         'ID': 0,
         'ResponseText': 'Option 1',
-        'selected': false,
+        'Selected': false,
         'NextQuestionID': 8
       }, {
         'ID': 1,
         'ResponseText': 'Option 2',
-        'selected': false,
+        'Selected': false,
         'NextQuestionID': 8
       }, {
         'ID': 2,
         'ResponseText': 'Option 3 which has a really long title and may wrap to another line',
-        'selected': false,
+        'Selected': false,
         'NextQuestionID': 8
-      }, {'ID': 3, 'ResponseText': 'Option 4','selected': false, 'NextQuestionID': 8}, {
+      }, {'ID': 3, 'ResponseText': 'Option 4','Selected': false, 'NextQuestionID': 8}, {
         'ResponseText': 'Option 5',
         'NextQuestionID': 8
-      }, {'ID': 4,'ResponseText': 'Option 6','selected': false, 'NextQuestionID': 8}, {
+      }, {'ID': 4,'ResponseText': 'Option 6','Selected': false, 'NextQuestionID': 8}, {
         'ResponseText': 'Option 7',
         'NextQuestionID': 8
-      }, {'ID': 5, 'ResponseText': 'Option 8','selected': true, 'NextQuestionID': 8}, {
+      }, {'ID': 5, 'ResponseText': 'Option 8','Selected': true, 'NextQuestionID': 8}, {
         'ResponseText': 'Option 9',
         'NextQuestionID': 8
-      }, {'ID': 6,'ResponseText': 'Option 10','selected': false, 'NextQuestionID': 8}, {
+      }, {'ID': 6,'ResponseText': 'Option 10','Selected': false, 'NextQuestionID': 8}, {
         'ResponseText': 'Option 11',
         'NextQuestionID': 8
-      }, {'ID': 7, 'ResponseText': 'Option 12','selected': false, 'NextQuestionID': 8}]
+      }, {'ID': 7, 'ResponseText': 'Option 12','Selected': false, 'NextQuestionID': 8}]
     }, {
       'ID': 8,
       'Active': false,

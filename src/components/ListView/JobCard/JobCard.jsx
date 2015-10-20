@@ -35,14 +35,14 @@ class JobCard extends React.Component {
               <div className="liner">
                 <header>
                   <h3 className="title">{jobCard.Title}</h3>
-                  <a href="#" className="action-remove" onClick={this.closeCard}><span
+                  <a href="javascript: void 0" className="action-remove" onClick={this.closeCard}><span
                     className="icon-cross"></span></a>
-                  <a href="#" className="action-reinstate" onClick={this.openCard}
+                  <a href="javascript: void 0" className="action-reinstate" onClick={this.openCard}
                      title="Show this job in my list again"><span
                     className="icon-plus-circle"></span></a>
 
                   <div className="sectors">
-                    <a href="#">
+                    <a href="javascript: void 0">
                       <ul>
                         <li title="Manufacturing and technology" className="sector-yellow">
                           Manufacturing and technology
@@ -75,13 +75,13 @@ class JobCard extends React.Component {
                     <dt>Pay:</dt>
                     <dd>{jobCard.Pay}<br/>{jobCard.PerTime}</dd>
                   </dl>
-                  <span className="action-flip" href="#" onClick={this.flipCard}>More about this job <span
-                    className="icon-refresh"></span></span>
+                  <a className="action-flip" href="javascript: void 0" onClick={this.flipCard}>More about this job <span
+                    className="icon-refresh"></span></a>
                 </div>
               </div>
               <footer>
-                <a className="card-actions" href="#">How do I train for this job?</a>
-                <a className="card-actions reinstate-card" href="#" onClick={this.openCard}>Show
+                <a className="card-actions" href="javascript: void 0">How do I train for this job?</a>
+                <a className="card-actions reinstate-card" href="javascript: void 0" onClick={this.openCard}>Show
                   this job in my list again</a>
               </footer>
             </div>
@@ -90,11 +90,11 @@ class JobCard extends React.Component {
               <div className="liner">
                 <header>
                   <h3 className="title">{jobCard.Title}</h3>
-                  <a href="#" className="action-remove" onClick={this.closeCard}><span
+                  <a href="javascript: void 0" className="action-remove" onClick={this.closeCard}><span
                     className="icon-cross"></span></a>
                 </header>
                 <div className="description">{jobCard.Description}</div>
-                <a href="#" className="action-skills-match divider">See your <em>skills match</em>
+                <a href="javascript: void 0" className="action-skills-match divider">See your <em>skills match</em>
                   for this job</a>
                 <dl>
                   <dt>Interests:</dt>
@@ -110,15 +110,15 @@ class JobCard extends React.Component {
                   </dd>
                 </dl>
                 <div className="layout-row divider">
-                  <a className="action-joblink-external" href="#">Full job info on Careers NZ
+                  <a className="action-joblink-external" href="javascript: void 0">Full job info on Careers NZ
                     website</a>
-                  <span className="action-flip" href="#" onClick={this.flipCard}>
+                  <a className="action-flip" href="javascript: void 0" onClick={this.flipCard}>
                     Go back <span className="icon-refresh"></span>
-                  </span>
+                  </a>
                 </div>
               </div>
               <footer>
-                <a className="card-actions" href="#">How do I train for this job?</a>
+                <a className="card-actions" href="javascript: void 0">How do I train for this job?</a>
               </footer>
             </div>
           </article>

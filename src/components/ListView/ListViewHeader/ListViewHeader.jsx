@@ -24,15 +24,15 @@ class ListViewHeader extends React.Component {
     return (
       <div className="page-maincontent" id="content">
         <div className="page-wrapper">
-          <h1 className="results-title"> <span className="select-menu"> <a href="#" className="select-menu-trigger">Job<span className="icon-arrow-down"></span></a>
+          <h1 className="results-title"> <span className="select-menu"> <a href="javascript: void 0" className="select-menu-trigger">Job<span className="icon-arrow-down"></span></a>
             <ul data-type="select" className="ui-menu">
               <li tabIndex="0" value="1">Job</li>
               <li tabIndex="0" value="2">Course</li>
             </ul>
-            </span> suggestions based on <a href="#">your skills</a>
+            </span> suggestions based on <a href="javascript: void 0">your skills</a>
           </h1>
           <p className="results-subtitle">
-            <strong>23 courses</strong> are hidden, <a href="#">edit your preferences</a>
+            <strong>23 courses</strong> are hidden, <a href="javascript: void 0">edit your preferences</a>
           </p>
           <UndoPanel />
           {helpPanels.map(this.renderHelpPanels)}

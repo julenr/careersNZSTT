@@ -16,7 +16,7 @@ class Pagination extends React.Component {
         <div className="page-wrapper">
           <ul className="pagination">
             <li className="summary">Showing 1-12 of 33 jobs</li>
-            <li className="next"><a href="#">See 12 more jobs/courses</a></li>
+            <li className="next"><a href="javascript: void 0">See 12 more jobs/courses</a></li>
           </ul>
         </div>
       </div>

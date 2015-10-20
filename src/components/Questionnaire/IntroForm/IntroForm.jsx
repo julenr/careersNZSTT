@@ -6,7 +6,6 @@ import React from 'react';
 import classNames from 'classnames';
 import uuid from 'node-uuid';
 
-import Checkbutton from '../../subcomponents/Checkbutton';
 import Avatar from '../../subcomponents/Avatar';
 
 class IntroForm extends React.Component {

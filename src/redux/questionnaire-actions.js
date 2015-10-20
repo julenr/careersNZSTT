@@ -27,6 +27,15 @@ export function setInputText(questionID, text) {
   }
 }
 
+export function setTypeAheadText(questionID, typeAhead) {
+  console.log(typeAhead);
+  return {
+    type: 'SET_INPUT_TEXT',
+    questionID,
+    text: typeAhead.state.entryValue
+  }
+}
+
 export function setMemberName(name) {
   return {
     type: 'SET_MEMBER_NAME',
@@ -42,7 +51,6 @@ export function sellectAllTagCloud(questionID) {
 }
 
 export function removeTag(questionID, tagID) {
-  console.log('removed');
   return {
     type: 'REMOVE_TAG',
     questionID,

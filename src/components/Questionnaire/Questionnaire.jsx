@@ -18,6 +18,7 @@ import MultipleChoice from './MultipleChoice/MultipleChoice';
 import TextInput from './TextInput/TextInput';
 import SingleChoice from './SingleChoice/SingleChoice';
 import TagCloud from './TagCloud/TagCloud';
+import InputTypeAhead from './InputTypeAhead/InputTypeAhead';
 import IntroForm from './IntroForm/IntroForm';
 import EndForm from './EndForm/EndForm';
 
@@ -88,7 +89,7 @@ class Content extends React.Component {
         );
       case 'Typeahead' :
         return (
-          <MultipleChoice key={question.ID} id={idx} {...this.props} />
+          <InputTypeAhead key={question.ID} id={idx} {...this.props} />
         );
       default :
         return (

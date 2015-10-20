@@ -215,27 +215,35 @@ export const questionnaire = {
     }, {
       'ID': 8,
       'Active': false,
-      'Text': 'Other unpaid job',
-      'Description': 'Which unpaid or voluntary job did you do?',
+      'Text': '',
+      'Description': 'Which unpaid or voluntary job did you do? TYPEAHEAD TYPE',
       'QuestionType': 'Typeahead',
       'NextQuestionID': 9,
       'HasAlternative': true,
+      'PlaceHolder' : 'Write something here',
       'AlternativeText': 'It doesnt matter',
       'AlternativeNextQuestionID': 9,
       'Endpoint': 'Jobs',
-      'QuestionResponses': []
+      'QuestionResponses': [
+        'Dentist', 'Software Developer', 'Nurse Practioner', 'Physician', 'Civil Engineer', 'Cost Estimator',
+        'Logistician', 'Pharmacist', 'Optician', 'High School Teacher', 'Loan Officer', 'HR Specialist'
+      ]
     }, {
       'ID': 9,
       'Active': false,
       'Text': 'Other unpaid job',
-      'Description': 'Which unpaid or voluntary job did you do?',
+      'Description': 'Which unpaid or voluntary job did you do? TYPEAHEAD TYPE',
       'QuestionType': 'Typeahead',
       'NextQuestionID': null,
       'HasAlternative': false,
+      'PlaceHolder' : 'Write something here',
       'AlternativeText': '',
       'AlternativeNextQuestionID': null,
       'Endpoint': 'Skills',
-      'QuestionResponses': []
+      'QuestionResponses': [
+        'Dentist', 'Software Developer', 'Nurse Practioner', 'Physician', 'Civil Engineer', 'Cost Estimator',
+        'Logistician', 'Pharmacist', 'Optician', 'High School Teacher', 'Loan Officer', 'HR Specialist'
+      ]
     }, {
       'ID': 10,
       'Active': false,

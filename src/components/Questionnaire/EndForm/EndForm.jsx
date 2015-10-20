@@ -10,7 +10,6 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import * as actionCreators from '../../../redux/general-actions';
 
-import Checkbutton from '../../subcomponents/Checkbutton';
 import Avatar from '../../subcomponents/Avatar';
 
 @connect((state, props) => {

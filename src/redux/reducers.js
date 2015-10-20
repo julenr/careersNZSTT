@@ -56,6 +56,7 @@ export function _questionnaire(state = initialState, action = {}) {
       newState.refresh = !newState.refresh;
       return newState;
     case 'SET_INPUT_TEXT':
+      console.log(action.text);
       newState.data.Questions[action.questionID].Text = action.text;
       newState.refresh = !newState.refresh;
       return newState;
@@ -71,7 +72,6 @@ export function _questionnaire(state = initialState, action = {}) {
       newState.refresh = !newState.refresh;
       return newState;
     case 'REMOVE_TAG':
-      console.log('clicked r');
       newState.data.Questions[action.questionID].QuestionResponses[action.tagID].Removed = true;
       return newState;
     default:

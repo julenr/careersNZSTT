@@ -38,23 +38,23 @@ export function helpPanelClosed(panelID) {
   }
 }
 
-export function courseOptionPanelClosed() {
+export function closeQualificationsPanel() {
   return {
-    type: 'CLOSE_COURSE_OPTION_PANEL'
+    type: 'CLOSE_QUALIFICATIONS_PANEL'
   }
 }
 
-export function courseCardClose(courseID) {
+export function closeQualificationCard(qualificationID) {
   return {
-    type: 'CLOSE_COURSE_CARD',
-    courseID
+    type: 'CLOSE_QUALIFICATION_CARD',
+    qualificationID
   }
 }
 
-export function courseCardOpen(courseID) {
+export function openQualificationCard(qualificationID) {
   return {
-    type: 'OPEN_COURSE_CARD',
-    courseID
+    type: 'OPEN_QUALIFICATION_CARD',
+    qualificationID
   }
 }
 

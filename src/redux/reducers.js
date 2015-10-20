@@ -138,14 +138,14 @@ export function _listViewData(state = initialState, action = {}) {
     case 'CLOSE_UNDO_PANEL':
       newState.data.UndoPanel.Closed = true;
       return newState;
-    case 'CLOSE_COURSE_OPTION_PANEL':
-      newState.data.CourseOptionPanel.Closed = true;
+    case 'CLOSE_QUALIFICATIONS_PANEL':
+      newState.data.QualificationsPanel.Closed = true;
       return newState;
-    case 'CLOSE_COURSE_CARD':
-      newState.data.CourseOptionPanel.Courses[action.courseID].Closed = true;
+    case 'CLOSE_QUALIFICATION_CARD':
+      newState.data.QualificationsPanel.Courses[action.qualificationID].Closed = true;
       return newState;
-    case 'OPEN_COURSE_CARD':
-      newState.data.CourseOptionPanel.Courses[action.courseID].Closed = false;
+    case 'OPEN_QUALIFICATION_CARD':
+      newState.data.QualificationsPanel.Courses[action.qualificationID].Closed = false;
       return newState;
     case 'CLOSE_INSTITUTION_CARD':
       newState.data.InstitutionsPanel.Institutions[action.institutionID].Closed = true;

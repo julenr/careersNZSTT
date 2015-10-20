@@ -13,7 +13,7 @@ export const questionnaire = {
     'UserID': null,
     'SessionID': 'de34dsfvm7lur0uk5psniogbr7',
     'Region': null,
-    'Name': 'Darren',
+    'Name': '',
     'Gender' : 'Male',
     'Ethnicity': 'Kiwi'
   },
@@ -42,7 +42,7 @@ export const questionnaire = {
       'ID': 1,
       'Active': false,
       'Text': '',
-      'Description': 'Basic text input — some text entered, with placeholder and hint/help',
+      'Description': 'BASIC TEXT INPUT QUESTION PROTOTYPE',
       'QuestionType': 'TextInput',
       'QuestionResponses': [],
       'PlaceHolder': 'Optional placeholder',
@@ -56,7 +56,7 @@ export const questionnaire = {
       'ID': 2,
       'Active': false,
       'Text': 'Goal',
-      'Description': 'What is your goal in using this tool? Single choice',
+      'Description': 'SINGLE CHOICE QUESTION PROTOTYPE',
       'QuestionType': 'SingleChoice',
       'NextQuestionID': null,
       'HasAlternative': false,
@@ -65,53 +65,31 @@ export const questionnaire = {
       'Endpoint': null,
       'QuestionResponses': [
         {
-          'ResponseText': 'Id like to find a job that uses my skills',
+          'ResponseText': 'Option 1. Single choice question prototype',
           'NextQuestionID': 3
         },
         {
-          'ResponseText': 'Id like to get ahead in my current job or industry',
+          'ResponseText': 'Option 2. Single choice question prototype',
           'NextQuestionID': 3
         },
         {
-          'ResponseText': 'I want to do a course that builds on my skills',
+          'ResponseText': 'Option 3. Single choice question prototype',
           'NextQuestionID': 3
         },
         {
-          'ResponseText': 'I want to turn my passion into a job',
+          'ResponseText': 'Option 4. Single choice question prototype',
           'NextQuestionID': 3
         },
         {
-          'ResponseText': 'I want a change, but Im not sure what to do which has a really long title and may wrap to another line',
+          'ResponseText': 'Option 5. Single choice question prototype',
           'NextQuestionID': 3
         }
       ]
-    },
-    {
+    }, {
       'ID': 3,
       'Active': false,
-      'Text': 'Most recent job',
-      'Description': 'Ok great, the best place to start is by looking at the skills you have from jobs youve held.  What is your most recent job?',
-      'QuestionType': 'SingleChoice',
-      'NextQuestionID': null,
-      'HasAlternative': true,
-      'AlternativeText': 'I dont mind',
-      'AlternativeNextQuestionID': 4,
-      'Endpoint': null,
-      'QuestionResponses': [{
-        'ResponseText': 'Look up skills associated with job',
-        'NextQuestionID': 4
-      }, {
-        'ResponseText': 'Ive never really had a job',
-        'NextQuestionID': 4
-      }, {
-        'ResponseText': 'Im not sure what to put which has a really long title and may wrap to another line',
-        'NextQuestionID': 4
-      }]
-    }, {
-      'ID': 4,
-      'Active': false,
       'Text': 'Skills match',
-      'Description': 'Special questions - tag style - Job skills confirmation/edit question.',
+      'Description': 'TAG CLOUD QUESTION PROTOTYPE',
       'QuestionType': 'TagCloud',
       'NextQuestionID': 5,
       'HasAlternative': false,
@@ -119,38 +97,26 @@ export const questionnaire = {
       'AlternativeNextQuestionID': null,
       'Endpoint': null,
       'QuestionResponses': [{
-        'ResponseText': 'Coffee making',
+        'ResponseText': 'Tag 1.',
         'NextQuestionID': 4
       }, {
-        'ResponseText': 'Food safety',
+        'ResponseText': 'Tag 2.',
         'NextQuestionID': 4
       }, {
-        'ResponseText': 'Skill three',
+        'ResponseText': 'Tag 3.',
         'NextQuestionID': 4,
       }, {
-        'ResponseText': 'Skill four',
+        'ResponseText': 'Tag 4.',
         'NextQuestionID': 4
       }, {
-        'ResponseText': 'etc',
+        'ResponseText': 'Tag 5.',
         'NextQuestionID': 4
       }]
     }, {
-      'ID': 5,
+      'ID': 4,
       'Active': false,
       'Text': 'Another job',
-      'Description': 'The more jobs you add the better idea we get of your skills, do you have another job to add?',
-      'QuestionType': 'TagCloud',
-      'NextQuestionID': 6,
-      'HasAlternative': true,
-      'AlternativeText': 'I dont mind',
-      'AlternativeNextQuestionID': 6,
-      'Endpoint': null,
-      'QuestionResponses': []
-    }, {
-      'ID': 6,
-      'Active': false,
-      'Text': 'Another job',
-      'Description': 'Do you have any more jobs to add?',
+      'Description': 'MULTIPLE CHOICE QUESTION PROTOTYPE',
       'QuestionType': 'MultipleChoice',
       'NextQuestionID': null,
       'HasAlternative': true,
@@ -159,64 +125,35 @@ export const questionnaire = {
       'Endpoint': null,
       'QuestionResponses': [{
         'ID': 1,
-        'ResponseText': 'Option 1',
+        'ResponseText': 'Option 1. Multiple choice question prototype',
         'selected': false,
         'NextQuestionID': 7
       }, {
         'ID': 2,
-        'ResponseText': 'Option 2',
+        'ResponseText': 'Option 2. Multiple choice question prototype',
         'selected': false,
         'NextQuestionID': 7
       }, {
         'ID': 3,
-        'ResponseText': 'Option 3 which has a really long title and may wrap to another line',
+        'ResponseText': 'Option 3. Multiple choice question prototype',
+        'selected': true,
+        'NextQuestionID': 7
+      }, {
+        'ID': 4,
+        'ResponseText': 'Option 4. Multiple choice question prototype',
+        'selected': true,
+        'NextQuestionID': 7
+      }, {
+        'ID': 5,
+        'ResponseText': 'Option 5. Multiple choice question prototype',
         'selected': true,
         'NextQuestionID': 7
       }]
     }, {
-      'ID': 7,
-      'Active': false,
-      'Text': 'Unpaid jobs',
-      'Description': 'Many people gain valuable skills from unpaid work, have you got experience of any of these common unpaid or voluntary jobs:',
-      'QuestionType': 'MultipleChoice',
-      'NextQuestionID': null,
-      'HasAlternative': false,
-      'AlternativeText': '',
-      'AlternativeNextQuestionID': 8,
-      'Endpoint': null,
-      'QuestionResponses': [{
-        'ID': 0,
-        'ResponseText': 'Option 1',
-        'Selected': false,
-        'NextQuestionID': 8
-      }, {
-        'ID': 1,
-        'ResponseText': 'Option 2',
-        'Selected': false,
-        'NextQuestionID': 8
-      }, {
-        'ID': 2,
-        'ResponseText': 'Option 3 which has a really long title and may wrap to another line',
-        'Selected': false,
-        'NextQuestionID': 8
-      }, {'ID': 3, 'ResponseText': 'Option 4','Selected': false, 'NextQuestionID': 8}, {
-        'ResponseText': 'Option 5',
-        'NextQuestionID': 8
-      }, {'ID': 4,'ResponseText': 'Option 6','Selected': false, 'NextQuestionID': 8}, {
-        'ResponseText': 'Option 7',
-        'NextQuestionID': 8
-      }, {'ID': 5, 'ResponseText': 'Option 8','Selected': true, 'NextQuestionID': 8}, {
-        'ResponseText': 'Option 9',
-        'NextQuestionID': 8
-      }, {'ID': 6,'ResponseText': 'Option 10','Selected': false, 'NextQuestionID': 8}, {
-        'ResponseText': 'Option 11',
-        'NextQuestionID': 8
-      }, {'ID': 7, 'ResponseText': 'Option 12','Selected': false, 'NextQuestionID': 8}]
-    }, {
-      'ID': 8,
+      'ID': 5,
       'Active': false,
       'Text': '',
-      'Description': 'Which unpaid or voluntary job did you do? TYPEAHEAD TYPE',
+      'Description': 'TYPE AHEAD  QUESTION PROTOTYPE',
       'QuestionType': 'Typeahead',
       'NextQuestionID': 9,
       'HasAlternative': true,
@@ -228,46 +165,6 @@ export const questionnaire = {
         'Dentist', 'Software Developer', 'Nurse Practioner', 'Physician', 'Civil Engineer', 'Cost Estimator',
         'Logistician', 'Pharmacist', 'Optician', 'High School Teacher', 'Loan Officer', 'HR Specialist'
       ]
-    }, {
-      'ID': 9,
-      'Active': false,
-      'Text': 'Other unpaid job',
-      'Description': 'Which unpaid or voluntary job did you do? TYPEAHEAD TYPE',
-      'QuestionType': 'Typeahead',
-      'NextQuestionID': null,
-      'HasAlternative': false,
-      'PlaceHolder' : 'Write something here',
-      'AlternativeText': '',
-      'AlternativeNextQuestionID': null,
-      'Endpoint': 'Skills',
-      'QuestionResponses': [
-        'Dentist', 'Software Developer', 'Nurse Practioner', 'Physician', 'Civil Engineer', 'Cost Estimator',
-        'Logistician', 'Pharmacist', 'Optician', 'High School Teacher', 'Loan Officer', 'HR Specialist'
-      ]
-    }, {
-      'ID': 10,
-      'Active': false,
-      'Text': 'Skills match',
-      'Description': 'Many [job-title-plural] (also known as `[job-title-alias]) have the following skills, would you like to have all these skills?',
-      'QuestionType': 'TagCloud',
-      'NextQuestionID': 11,
-      'HasAlternative': true,
-      'AlternativeText': 'It doesnt matter',
-      'AlternativeNextQuestionID': 11,
-      'Endpoint': 'Jobs',
-      'QuestionResponses': []
-    }, {
-      'ID': 11,
-      'Active': false,
-      'Text': 'Skills match',
-      'Description': 'Many [job-title-plural] (also known as [job-title-alias]) have the following skills, do these look about right? Note: job title alias is included if the user searched for that name, rather than the canonical one.',
-      'QuestionType': 'TagCloud',
-      'NextQuestionID': null,
-      'HasAlternative': false,
-      'AlternativeText': '',
-      'AlternativeNextQuestionID': null,
-      'Endpoint': 'Skills',
-      'QuestionResponses': []
     }]
 };
 
@@ -412,7 +309,7 @@ export const listViewData = {
       'PerTime': 'per hour'
     }
   ],
-  'CourseOptionPanel':
+  'QualificationsPanel':
   {
     'Closed': false,
     'Text': 'Which course suits you best?',
@@ -421,7 +318,7 @@ export const listViewData = {
       {
         'Closed': false,
         'Title': 'Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
-        'Institution': 'International College of New Zealand Limited',
+        'Institution': 'at International College of New Zealand Limited',
         'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
         'VocationalPathways': [
           'Social and community services',
@@ -433,7 +330,7 @@ export const listViewData = {
       {
         'Closed': false,
         'Title': 'Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
-        'Institution': 'International College of New Zealand Limited',
+        'Institution': 'at International College of New Zealand Limited',
         'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
         'VocationalPathways': [
           'Social and community services',
@@ -445,7 +342,7 @@ export const listViewData = {
       {
         'Closed': false,
         'Title': 'Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
-        'Institution': 'International College of New Zealand Limited',
+        'Institution': 'at International College of New Zealand Limited',
         'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
         'VocationalPathways': [
           'Social and community services',

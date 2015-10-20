@@ -9,27 +9,27 @@ import { connect } from 'react-redux';
 import * as actionCreators from '../../../redux/listview-actions';
 
 import JobCard from '../JobCard/JobCard';
-import CourseCard from '../CourseCard';
+import QualificationCard from '../QualificationCard';
 import InstitutionCard from '../InstitutionCard';
 
 @connect((state) => {
   return {
     jobsCards: state._listViewData.data.JobsCards,
-    courseCards: state._listViewData.data.CourseOptionPanel.Courses,
+    qualificationsCard: state._listViewData.data.QualificationsPanel.Courses,
     institutionsCards: state._listViewData.data.InstitutionsPanel.Institutions
   }
 })
 class HiddenCards extends React.Component {
 
   render() {
-    var { jobsCards, courseCards, institutionsCards } = this.props;
+    var { jobsCards, qualificationsCard, institutionsCards } = this.props;
 
     return (
       <div className="page-maincontent results-hidden">
         <div className="page-wrapper">
           <div className="careers-card-wrapper">
             {jobsCards.map(this.renderJobsCards)}
-            {courseCards.map(this.renderCoursesCards)}
+            {qualificationsCard.map(this.renderQualificationsCards)}
             {institutionsCards.map(this.renderInstitutionsCards)}
           </div>
         </div>
@@ -45,10 +45,10 @@ class HiddenCards extends React.Component {
     }
   }
 
-  renderCoursesCards = (courseCard, idx) => {
+  renderQualificationsCards = (courseCard, idx) => {
     if(courseCard.Closed) {
       return (
-        <CourseCard key={idx} id={idx} hidden="true"/>
+        <QualificationCard key={idx} id={idx} hidden="true"/>
       );
     }
   }

@@ -65,8 +65,8 @@ let unsubscribe = store.subscribe(() => {
     if(state._footerData.loaded) { //Check if everything is loaded before render App
       ReactDOM.render((
         <Provider store={ store }>
-          <Router history={callCreateBrowserHistory()}>
-            { /*<Router>  TODO: Problems rendering in Vagrant-Nginx environment */}
+          <Router>
+            { /*<Router history={callCreateBrowserHistory()}>  TODO: Problems rendering in Vagrant-Nginx environment */}
             <Route path="/" component={App}>
               <IndexRoute component={Questionnaire} />
               <Route path="questionnaire" component={Questionnaire} />

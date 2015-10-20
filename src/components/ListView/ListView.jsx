@@ -12,7 +12,7 @@ import Footer from '../Footer/Footer.jsx';
 import ActionPlanDrawer from '../ActionPlanDrawer/ActionPlanDrawer.jsx';
 import JobCard from './JobCard/JobCard';
 import ListViewHeader from './ListViewHeader/ListViewHeader';
-import CourseOptionPanel from './CourseOptionPanel/CourseOptionPanel';
+import QualificationsPanel from './QualificationsPanel/QualificationsPanel';
 import InstitutionsPanel from './InstitutionsPanel/InstitutionsPanel';
 import Pagination from './Pagination/Pagination';
 import Preferences from './Preferences/Preferences';
@@ -64,7 +64,7 @@ class Content extends React.Component {
           </div>
         </div>
 
-        <CourseOptionPanel />
+        <QualificationsPanel />
         <InstitutionsPanel />
         <Pagination />
         <Preferences />

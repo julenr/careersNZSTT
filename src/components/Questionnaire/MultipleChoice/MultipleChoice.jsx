@@ -4,6 +4,8 @@
 
 import React from 'react';
 import classNames from 'classnames';
+import { scrollTo } from '../../../libs/helpers';
+import uuid from 'node-uuid';
 
 import Checkbutton from '../../subcomponents/Checkbutton';
 import Avatar from '../../subcomponents/Avatar';
@@ -12,6 +14,7 @@ class MultipleChoice extends React.Component {
   render() {
     var question = this.props.questionnaire[this.props.id];
     this.nextButtonActive = false;
+    this.scrollElementID = uuid.v1();
 
     return (
       <div className="fieldset active">
@@ -26,10 +29,11 @@ class MultipleChoice extends React.Component {
         <div className={ classNames({'submit': true, 'submit active': this.nextButtonActive}) }>
           <a className="button next"
              href="javascript:void 0"
-             onClick={ () => this.props.nextQuestion(this.props.id, question.NextQuestionID)}
+             onClick={ () => this.nextClicked(question.NextQuestionID)}
             >That looks right<span className="icon-arrow-down"></span>
           </a>
         </div>
+        <span id={this.scrollElementID}></span>
       </div>
     );
   }
@@ -41,6 +45,11 @@ class MultipleChoice extends React.Component {
         <Checkbutton key={idx} value={response.ResponseText} selected={response.Selected} />
       </span>
     );
+  }
+
+  nextClicked = (nextID) => {
+    scrollTo(this.scrollElementID, -120);
+    this.props.nextQuestion(this.props.id, nextID)
   }
 
 }

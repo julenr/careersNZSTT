@@ -5,6 +5,9 @@ import './TypeAhead.scss';
 
 import React from 'react';
 import classNames from 'classnames';
+import { scrollTo } from '../../../libs/helpers';
+import uuid from 'node-uuid';
+
 var Typeahead = require('react-typeahead').Typeahead;
 
 import Avatar from '../../subcomponents/Avatar';
@@ -16,6 +19,7 @@ class InputTypeAhead extends React.Component {
       'submit': true,
       'submit active': question.Text
     } );
+    this.scrollElementID = uuid.v1();
 
     return (
       <div className="fieldset active">
@@ -45,13 +49,20 @@ class InputTypeAhead extends React.Component {
         <div className={ classes }>
           <a className="button next"
              href="javascript:void 0"
-             onClick={ () => this.props.nextQuestion(this.props.id, question.NextQuestionID)}
+             onClick={ () => this.nextClicked(question.NextQuestionID)}
             >Next<span className="icon-arrow-down"></span>
           </a>
         </div>
+        <span id={this.scrollElementID}></span>
       </div>
     );
   }
+
+  nextClicked = (nextQuestionID) => {
+    scrollTo(this.scrollElementID, -110);
+    this.props.nextQuestion(this.props.id, nextQuestionID);
+  }
+
 }
 
 export default InputTypeAhead;

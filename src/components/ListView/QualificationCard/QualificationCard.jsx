@@ -5,7 +5,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import textFitToContainer from '../../../libs/helpers.js';
+import { textFitToContainer } from '../../../libs/helpers.js';
 
 import { connect } from 'react-redux';
 import * as actionCreators from '../../../redux/listview-actions';

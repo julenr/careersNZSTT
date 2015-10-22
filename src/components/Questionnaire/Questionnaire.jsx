@@ -4,7 +4,6 @@
 
 import React from 'react';
 import { Router, Route, Link } from 'react-router'
-import uuid from 'node-uuid';
 import Loader from 'react-loader';
 
 import { connect } from 'react-redux';

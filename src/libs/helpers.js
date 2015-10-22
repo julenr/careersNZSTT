@@ -2,9 +2,15 @@
  * Created by jr1500 on 21/10/15.
  */
 
+import scrollToElement from 'scroll-to';
 
+export function scrollTo(element, offset = 0) {
+  let yPos = document.getElementById(element).getBoundingClientRect().top + document.body.scrollTop;
+  console.log(document.body.scrollTop);
+  scrollToElement(0, yPos + offset);
+}
 
-function textFitToContainer(stringText) {
+export function textFitToContainer(stringText) {
   var font_size;
   var max_font_size = 39;
   var min_font_size = 23;
@@ -28,5 +34,3 @@ function textFitToContainer(stringText) {
   return font_size;
 
 }
-
-export default textFitToContainer;

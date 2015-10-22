@@ -3,6 +3,8 @@
  */
 
 import React from 'react';
+import { scrollTo } from '../../../libs/helpers';
+import uuid from 'node-uuid';
 
 import Checkbutton from '../../subcomponents/Checkbutton';
 import Avatar from '../../subcomponents/Avatar';
@@ -10,6 +12,7 @@ import Avatar from '../../subcomponents/Avatar';
 class SingleChoice extends React.Component {
   render() {
     var question = this.props.questionnaire[this.props.id];
+    this.scrollElementID = uuid.v1();
 
     return (
       <div className="fieldset active">
@@ -20,6 +23,7 @@ class SingleChoice extends React.Component {
             {question.QuestionResponses.map(this.renderResponses)}
           </div>
         </div>
+        <span id={this.scrollElementID}></span>
       </div>
     );
   }
@@ -34,6 +38,7 @@ class SingleChoice extends React.Component {
   }
 
   onClick = (idx) => {
+    scrollTo(this.scrollElementID, -120);
     this.props.responseClickedSingleChoice(this.props.id, idx)
     this.props.nextQuestion(this.props.id, this.props.questionnaire[this.props.id].QuestionResponses[idx].NextQuestionID)
   }

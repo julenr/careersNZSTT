@@ -4,6 +4,7 @@
 
 import React from 'react';
 import classNames from 'classnames';
+import { scrollTo } from '../../../libs/helpers';
 import uuid from 'node-uuid';
 
 import Avatar from '../../subcomponents/Avatar';
@@ -17,6 +18,7 @@ class TextInput extends React.Component {
         'submit active': question.Text
       }
     );
+    this.scrollElementID = uuid.v1();
 
     return (
       <div className="fieldset active">
@@ -39,12 +41,18 @@ class TextInput extends React.Component {
         <div className={ classes }>
           <a className="button next"
              href="javascript: void 0"
-             onClick={ () => this.props.nextQuestion(this.props.id, question.NextQuestionID)}
+             onClick={ () => this.nextClicked(question.NextQuestionID)}
             >Next<span className="icon-arrow-down"></span>
           </a>
         </div>
+        <span id={this.scrollElementID}></span>
       </div>
     );
+  }
+
+  nextClicked = (nextQuestionID) => {
+    scrollTo(this.scrollElementID, -110);
+    this.props.nextQuestion(this.props.id, nextQuestionID);
   }
 
   updateTextValue = (e, id, text) => {

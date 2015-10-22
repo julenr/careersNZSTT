@@ -4,6 +4,8 @@
 
 import React from 'react';
 import classNames from 'classnames';
+import { scrollTo } from '../../../libs/helpers';
+import uuid from 'node-uuid';
 
 import Avatar from '../../subcomponents/Avatar';
 
@@ -14,6 +16,7 @@ class IntroForm extends React.Component {
       'submit': true,
       'submit active': memberName
     } );
+    this.scrollElementID = uuid.v1();
 
     return (
       <div className="fieldset first-question active">
@@ -35,15 +38,20 @@ class IntroForm extends React.Component {
           </div>
           <div className={ classes }>
             <a className="button next"
-               href="javascript: void 0"
-               onClick={ () => this.props.firstQuestion()} //Just render 1st question
-              >
-              Next<span className="icon-arrow-down"></span>
+                 onClick={ () => this.nextClicked() } //Just render 1st question
+                >
+                Next<span className="icon-arrow-down"></span>
             </a>
           </div>
         </div>
+        <span id={this.scrollElementID}></span>
       </div>
     );
+  }
+
+  nextClicked = (scrollElementID) => {
+    scrollTo(this.scrollElementID, -120);
+    this.props.firstQuestion();
   }
 
   updateMemberName = (e, name) => {

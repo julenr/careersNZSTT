@@ -69,15 +69,19 @@ export function _questionnaire(state = initialState, action = {}) {
         newState.data[entityType].Current = entityData;
         newState.data[entityType].Selected.push(entityData);
       }
+
       question.Selected = action.responseID;
       newState.data.refresh = uuid.v1();
       return newState;
     }
     case 'CLICKED_YES_NO': {
-      let entityType = newState.data.Questionnaire[action.questionID].QuestionResponses[action.responseID].EntityType;
-      let entityData = newState.data.Questionnaire[action.questionID].QuestionResponses[action.responseID].EntityData;
-      newState.data[entityType].Current = entityData;
-      newState.data[entityType].Selected.push(entityData);
+      let question = newState.data.Questionnaire[action.questionID];
+      let entityType = question.QuestionResponses[action.responseID].EntityType;
+      if(entityType !== 'None') {
+        let entityData = question.QuestionResponses[action.responseID].EntityData;
+        newState.data[entityType].Current = entityData;
+        newState.data[entityType].Selected.push(entityData);
+      }
 
       newState.data.Questionnaire[action.questionID].Selected = action.responseID;
       newState.data.refresh = uuid.v1();

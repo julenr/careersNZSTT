@@ -3,8 +3,9 @@
  */
 
 import React from 'react';
-import uuid from 'node-uuid';
 import classNames from 'classnames';
+import { scrollTo } from '../../../libs/helpers';
+import uuid from 'node-uuid';
 
 import Checkbutton from '../../subcomponents/Checkbutton';
 import Avatar from '../../subcomponents/Avatar';
@@ -12,6 +13,7 @@ import Avatar from '../../subcomponents/Avatar';
 class YesNo extends React.Component {
   render() {
     var question = this.props.questionnaire[this.props.id];
+    this.scrollElementID = uuid.v1();
 
     return (
       <div className="fieldset active">
@@ -23,6 +25,7 @@ class YesNo extends React.Component {
             <li tabIndex="0" className="basic"><span className="icon-tick"></span>I don't mind</li>
           </ul>
         </div>
+        <span id={this.scrollElementID}></span>
       </div>
     );
   }
@@ -35,18 +38,19 @@ class YesNo extends React.Component {
       }
     );
     return (
-    <li
+      <li
         className={ classes }
         tabIndex="0"
         key={idx}
-        onClick={ () => this.onClick(idx)}
+        onClick={ () => this.onClick(idx) }
       >
-      <span className="icon-tick"></span>{response.ResponseText}
-    </li>
+        <span className="icon-tick"></span>{response.ResponseText}
+      </li>
     );
   }
 
   onClick = (idx) => {
+    scrollTo(this.scrollElementID, -120);
     this.props.clickedYesNo(this.props.id, idx)
     this.props.nextQuestion(this.props.id, this.props.questionnaire[this.props.id].QuestionResponses[idx].NextQuestionID)
   }

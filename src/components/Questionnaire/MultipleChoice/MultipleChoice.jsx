@@ -4,14 +4,13 @@
 
 import React from 'react';
 import classNames from 'classnames';
-import uuid from 'node-uuid';
 
 import Checkbutton from '../../subcomponents/Checkbutton';
 import Avatar from '../../subcomponents/Avatar';
 
 class MultipleChoice extends React.Component {
   render() {
-    var question = this.props.questions[this.props.id];
+    var question = this.props.questionnaire[this.props.id];
     this.nextButtonActive = false;
 
     return (
@@ -25,7 +24,11 @@ class MultipleChoice extends React.Component {
         </div>
 
         <div className={ classNames({'submit': true, 'submit active': this.nextButtonActive}) }>
-          <a className="button next" href="javascript:void 0">That looks right<span className="icon-arrow-down"></span></a>
+          <a className="button next"
+             href="javascript:void 0"
+             onClick={ () => this.props.nextQuestion(this.props.id, question.NextQuestionID)}
+            >That looks right<span className="icon-arrow-down"></span>
+          </a>
         </div>
       </div>
     );
@@ -35,7 +38,7 @@ class MultipleChoice extends React.Component {
     if(response.Selected) this.nextButtonActive = true;
     return (
       <span key={idx} onClick={ () => this.props.responseClickedMultipleChoice(this.props.id, idx)}>
-        <Checkbutton key={uuid.v4()} value={response.ResponseText} selected={response.Selected} />
+        <Checkbutton key={idx} value={response.ResponseText} selected={response.Selected} />
       </span>
     );
   }

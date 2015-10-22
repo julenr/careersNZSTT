@@ -452,28 +452,40 @@ a:hover .button, a:active .button, a:focus .button, .button:hover, .button:activ
 }
 
 /* Question radio/checkbox */
+.questions .radio ul { margin:em(21) 0 0; }
 .questions .radio .checkbox { margin:em(21) 0 0; }
 .radio .checkbox-item { font-size:em(21); line-height:lh(29,21); margin:em(15,21) 0; padding:em(11,21) em(51,21) em(7,21); position:relative; background:#fff; color:$skillstool_blue_1; @include border-radius(em(21,21)); letter-spacing:-0.025em; cursor:pointer; }
+.radio li { font-size:em(21); line-height:lh(29,21); margin:em(15,21) 0; padding:em(11,21) em(51,21) em(7,21); position:relative; background:#fff; color:$skillstool_blue_1; @include border-radius(em(21,21)); letter-spacing:-0.025em; cursor:pointer; }
 .radio .checkbox-item .icon-tick { font-size:em(17,21); display:none; color:#fff; position:absolute; left:1.1em; top:0.8em; }
+.radio li .icon-tick { font-size:em(17,21); display:none; color:#fff; position:absolute; left:1.1em; top:0.8em; }
 .radio .selected { background:$skillstool_blue_1; color:#fff; @include border-radius(em(21,21) 0 em(21,21) em(21,21)); }
 .radio .fade { opacity:0.5; }
 .radio .selected.fade, .radio .fade:hover, .radio .fade:focus { opacity:1; }
 .radio .selected .icon-tick { display:inline-block; }
+.radio ul, .radio.inline .radio { overflow:hidden; }
 .radio .checkbox, .radio.inline .radio { overflow:hidden; }
+.radio ul li, .radio.inline .radio li { float:left; clear:both; margin:0 0 em(15,21); }
 .radio .checkbox .checkbox-item, .radio.inline .radio .checkbox-item { float:left; clear:both; margin:0 0 em(15,21); }
 .radio .hide { opacity:0; position:absolute; left:-999em; }
 
 /* Unstyled radio variation (reset) */
+.radio .radio .basic, .radio ul .basic { font-size:em(17); padding:0; background:none; @include border-radius(none); text-align:right; text-decoration:underline; }
 .radio .radio .basic, .radio .checkbox .basic { font-size:em(17); padding:0; background:none; @include border-radius(none); text-align:right; text-decoration:underline; }
+.radio .radio .basic.selected, .radio ul .basic.selected, .radio .basic.selected .icon-tick { color:$skillstool_blue_1; position:static; margin-right:0.5em; outline:none; }
 .radio .radio .basic.selected, .radio .checkbox .basic.selected, .radio .basic.selected .icon-tick { color:$skillstool_blue_1; position:static; margin-right:0.5em; outline:none; }
 
 @media only screen and (min-width:600px) {
   .questions .text div.text { margin:em(48) em(46) 0 em(193); }
+  .questions .radio ul { margin:em(48) em(46) 0 em(193); }
   .questions .radio .checkbox { margin:em(48) em(46) 0 em(193); }
+  .radio li { font-size:em(26); line-height:lh(29,26); margin:em(15,26) 0; padding:em(11,26) em(51,26) em(7,26); @include border-radius(em(21,26)); }
   .radio .checkbox-item { font-size:em(26); line-height:lh(29,26); margin:em(15,26) 0; padding:em(11,26) em(51,26) em(7,26); @include border-radius(em(21,26)); }
   .radio .selected { @include border-radius(em(21,26) 0 em(21,26) em(21,26)); }
+  .radio li .icon-tick { font-size:em(17,26); }
   .radio .checkbox-item .icon-tick { font-size:em(17,26); }
+  .radio ul li, .radio.inline .radio li { clear:none; margin:0 em(12,26) em(15,26) 0; }
   .radio .checkbox .checkbox-item, .radio.inline .radio li { clear:none; margin:0 em(12,26) em(15,26) 0; }
+  .radio .radio .basic, .radio ul .basic { padding-right:em(75,17); }
   .radio .radio .basic, .radio .checkbox .basic { padding-right:em(75,17); }
   .radio.inline .radio .basic { padding:em(16,17) 0 0 em(9,17); }
 }

@@ -3,22 +3,25 @@
  */
 
 import React from 'react';
+import uuid from 'node-uuid';
+import classNames from 'classnames';
 
 import Checkbutton from '../../subcomponents/Checkbutton';
 import Avatar from '../../subcomponents/Avatar';
 
-class SingleChoice extends React.Component {
+class YesNo extends React.Component {
   render() {
     var question = this.props.questionnaire[this.props.id];
 
     return (
       <div className="fieldset active">
-        <div className="field radio with-avatar">
+        <div className="field radio with-avatar inline">
           <Avatar />
           <label>{question.Description}</label>
-          <div data-type="radio" className="checkbox radio">
+          <ul data-type="radio" className="radio">
             {question.QuestionResponses.map(this.renderResponses)}
-          </div>
+            <li tabIndex="0" className="basic"><span className="icon-tick"></span>I don't mind</li>
+          </ul>
         </div>
       </div>
     );
@@ -26,19 +29,28 @@ class SingleChoice extends React.Component {
 
   renderResponses = (response, idx) => {
     const selected = (this.props.questionnaire[this.props.id].Selected === idx);
+    let classes = classNames(
+      {
+        'selected': selected
+      }
+    );
     return (
-      <span key={idx} onClick={ () => this.onClick(idx)}>
-        <Checkbutton key={idx} value={response.ResponseText} selected={selected} />
-      </span>
+    <li
+        className={ classes }
+        tabIndex="0"
+        key={idx}
+        onClick={ () => this.onClick(idx)}
+      >
+      <span className="icon-tick"></span>{response.ResponseText}
+    </li>
     );
   }
 
   onClick = (idx) => {
-    this.props.responseClickedSingleChoice(this.props.id, idx)
+    this.props.clickedYesNo(this.props.id, idx)
     this.props.nextQuestion(this.props.id, this.props.questionnaire[this.props.id].QuestionResponses[idx].NextQuestionID)
   }
 
 }
 
-export default SingleChoice;
-
+export default YesNo;

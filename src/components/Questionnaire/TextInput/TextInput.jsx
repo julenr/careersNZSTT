@@ -10,11 +10,13 @@ import Avatar from '../../subcomponents/Avatar';
 
 class TextInput extends React.Component {
   render() {
-    var question = this.props.questions[this.props.id];
-    let classes = classNames( this.props.className, {
-      'submit': true,
-      'submit active': question.Text
-    } );
+    var question = this.props.questionnaire[this.props.id];
+    let classes = classNames(
+      {
+        'submit': true,
+        'submit active': question.Text
+      }
+    );
 
     return (
       <div className="fieldset active">
@@ -24,10 +26,8 @@ class TextInput extends React.Component {
           <p className="help">An example of help text</p>
           <div className="text">
             <input className="text"
-                   name="q2-sample"
-                   id="q2-sample"
                    ref="inputText"
-                   onKeyUp={ () => this.props.setInputText(this.props.id, this.refs.inputText.value)}
+                   onKeyUp={ (e) => this.updateTextValue(e, this.props.id, this.refs.inputText.value) }
                    type="text"
                    data-type="input"
                    defaultValue={question.Text}
@@ -37,11 +37,20 @@ class TextInput extends React.Component {
           </div>
         </div>
         <div className={ classes }>
-          <a className="button next" href="#">Next<span className="icon-arrow-down"></span></a>
+          <a className="button next"
+             href="javascript: void 0"
+             onClick={ () => this.props.nextQuestion(this.props.id, question.NextQuestionID)}
+            >Next<span className="icon-arrow-down"></span>
+          </a>
         </div>
       </div>
     );
   }
+
+  updateTextValue = (e, id, text) => {
+    this.props.setInputText(id, this.refs.inputText.value)
+  }
+
 }
 
 export default TextInput;

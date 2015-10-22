@@ -13,11 +13,10 @@ import ReactDOM from 'react-dom';
 import { Router, Route, Link, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
-import uuid from 'node-uuid';
 import Loader from 'react-loader';
 
 // REDUX STORE
-import createStore from './redux/create-store';
+import store from './redux/create-store';
 import * as actionCreators from './redux/general-actions';
 
 //CUSTOM COMPONENTS
@@ -27,30 +26,6 @@ import Questionnaire from './components/Questionnaire/Questionnaire.jsx';
 import ListView from './components/ListView/ListView.jsx';
 import ProviderConnect from './components/ProviderConnect/ProviderConnect.jsx';
 
-// Initialize Redux store
-const store = createStore(
-  {
-    _mainPage: {
-      loaded: false
-    },
-    _footerData: {
-      loaded: false
-    },
-    _questionnaire: {
-      refresh: false,
-      loaded: false,
-      data:
-      {
-        Member: '',
-        Questions: []
-      }
-    },
-    _listViewData: {
-      loaded: false
-    }
-  }
-);
-
 // Element to attach React-DOM
 const app = document.createElement('div');
 document.body.appendChild(app);
@@ -58,6 +33,7 @@ document.body.appendChild(app);
 // Retrieve initial Data from the server
 store.dispatch(actionCreators.getFooterData());
 store.dispatch(actionCreators.getQuestionnaire());
+
 
 // Render the DOM when the data is allready stored
 let unsubscribe = store.subscribe(() => {
@@ -92,9 +68,9 @@ function callCreateBrowserHistory() {
 }
 
 // Render links dinamicaly from the server
-function renderFooter(route) {
+function renderFooter(route, idx) {
   return (
-    <Route key={uuid.v4()} path={route.URLSegment} component={MainPage}/>
+    <Route key={idx} path={route.URLSegment} component={MainPage}/>
   );
 }
 

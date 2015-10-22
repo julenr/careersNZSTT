@@ -4,13 +4,12 @@
 
 import React from 'react';
 import classNames from 'classnames';
-import uuid from 'node-uuid';
 
 import Avatar from '../../subcomponents/Avatar';
 
 class TagCloud extends React.Component {
   render() {
-    var question = this.props.questions[this.props.id];
+    var question = this.props.questionnaire[this.props.id];
     this.nextButtonActive = false;
 
     return (
@@ -32,7 +31,11 @@ class TagCloud extends React.Component {
           </div>
         </div>
         <div className={ classNames({'submit': true, 'submit active': this.nextButtonActive}) }>
-          <a className="button next" href="javascript:void 0">That looks about right<span className="icon-arrow-down"></span></a>
+          <a className="button next"
+             href="javascript:void 0"
+             onClick={ () => this.props.nextQuestion(this.props.id, question.NextQuestionID)}
+            >That looks about right<span className="icon-arrow-down"></span>
+          </a>
         </div>
       </div>
     );
@@ -40,7 +43,7 @@ class TagCloud extends React.Component {
 
   renderTags = (response, idx) => {
     if(response.Removed) {
-      return ( <span /> );
+      return ( <span key={idx} /> );
     }
     else {
       let classes = classNames( this.props.className, {
@@ -50,11 +53,11 @@ class TagCloud extends React.Component {
       if(response.Selected) this.nextButtonActive = true;
       return (
       <span key={idx} onClick={ () => this.props.responseClickedMultipleChoice(this.props.id, idx)}>
-        <span className={ classes } key={uuid.v4()} tabIndex="0" >
+        <span className={ classes } key={idx} tabIndex="0" >
           {response.ResponseText}
           <span
             className="icon-cancel-circle"
-            key={uuid.v4()}
+            key={idx}
             onClick={ () => this.props.removeTag(this.props.id, idx)}
             >
           </span>

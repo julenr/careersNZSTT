@@ -4,7 +4,6 @@
 
 import React from 'react';
 import classNames from 'classnames';
-import uuid from 'node-uuid';
 
 import Avatar from '../../subcomponents/Avatar';
 

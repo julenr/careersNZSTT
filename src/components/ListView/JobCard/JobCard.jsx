@@ -11,17 +11,17 @@ import * as actionCreators from '../../../redux/listview-actions';
 @connect((state, props) => {
   return {
     jobCard: state._listViewData.data.JobsCards[props.id],
-    fliped: state._listViewData.data.JobsCards[props.id].Fliped,
+    flipped: state._listViewData.data.JobsCards[props.id].Flipped,
     closed: state._listViewData.data.JobsCards[props.id].Closed
   }
 })
 class JobCard extends React.Component {
 
   render() {
-    let { jobCard, fliped, closed, hidden } = this.props;
+    let { jobCard, flipped, closed, hidden } = this.props;
     let classes = classNames( this.props.className, {
       'careers-card job': true,
-      'careers-card job flip': fliped
+      'careers-card job flip': flipped
     } );
 
     if(closed && !this.props.hidden) {
@@ -132,7 +132,7 @@ class JobCard extends React.Component {
   }
 
   closeCard = () => {
-    if(this.props.fliped){
+    if(this.props.flipped){
       this.flipCard();
     }
     this.props.dispatch(actionCreators.jobClosed(this.props.id));

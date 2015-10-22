@@ -5,14 +5,13 @@ import './TypeAhead.scss';
 
 import React from 'react';
 import classNames from 'classnames';
-import uuid from 'node-uuid';
 var Typeahead = require('react-typeahead').Typeahead;
 
 import Avatar from '../../subcomponents/Avatar';
 
 class InputTypeAhead extends React.Component {
   render() {
-    var question = this.props.questions[this.props.id];
+    var question = this.props.questionnaire[this.props.id];
     let classes = classNames( this.props.className, {
       'submit': true,
       'submit active': question.Text
@@ -44,7 +43,11 @@ class InputTypeAhead extends React.Component {
           </div>
         </div>
         <div className={ classes }>
-          <a className="button next" href="#">Next<span className="icon-arrow-down"></span></a>
+          <a className="button next"
+             href="javascript:void 0"
+             onClick={ () => this.props.nextQuestion(this.props.id, question.NextQuestionID)}
+            >Next<span className="icon-arrow-down"></span>
+          </a>
         </div>
       </div>
     );

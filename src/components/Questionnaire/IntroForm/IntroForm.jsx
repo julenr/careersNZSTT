@@ -4,7 +4,6 @@
 
 import React from 'react';
 import classNames from 'classnames';
-import uuid from 'node-uuid';
 
 import Avatar from '../../subcomponents/Avatar';
 
@@ -27,7 +26,7 @@ class IntroForm extends React.Component {
               name="q1-name"
               id="q1-name"
               ref="memberName"
-              onKeyUp={ () => this.updateMemberName(this.refs.memberName.value) }
+              onKeyUp={ (e) => this.updateMemberName(e, this.refs.memberName.value) }
               type="text"
               data-type="input"
               defaultValue={memberName}
@@ -35,16 +34,22 @@ class IntroForm extends React.Component {
               />
           </div>
           <div className={ classes }>
-            <a className="button next" href="#">Next<span className="icon-arrow-down"></span></a>
+            <a className="button next"
+               href="javascript: void 0"
+               onClick={ () => this.props.firstQuestion()} //Just render 1st question
+              >
+              Next<span className="icon-arrow-down"></span>
+            </a>
           </div>
         </div>
       </div>
     );
   }
 
-  updateMemberName = (name) => {
+  updateMemberName = (e, name) => {
     this.props.setMemberName(name);
   }
+
 }
 
 export default IntroForm;

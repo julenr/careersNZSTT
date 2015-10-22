@@ -19,6 +19,7 @@ import TextInput from './TextInput/TextInput';
 import SingleChoice from './SingleChoice/SingleChoice';
 import TagCloud from './TagCloud/TagCloud';
 import InputTypeAhead from './InputTypeAhead/InputTypeAhead';
+import YesNo from './YesNo/YesNo';
 import IntroForm from './IntroForm/IntroForm';
 import EndForm from './EndForm/EndForm';
 
@@ -27,8 +28,8 @@ function mapStateToProps(state) {
   return {
     loaded: state._questionnaire.loaded,
     memberName: state._questionnaire.data.Member.Name,
-    questions: state._questionnaire.data.Questions,
-    refresh: state._questionnaire.refresh
+    questionnaire: state._questionnaire.data.Questionnaire,
+    refresh: state._questionnaire.data.refresh // This value if changed somewhere triggers the component render method
   };
 }
 
@@ -42,7 +43,7 @@ class Questionnaire extends React.Component {
     else {
       return (
         <div>
-          <Loader loaded={loaded}/>
+          <Loader />
         </div>
       );
     }
@@ -51,7 +52,7 @@ class Questionnaire extends React.Component {
 
 class Content extends React.Component {
   render() {
-    var { questions, memberName } = this.props;
+    var { questionnaire, memberName } = this.props;
     return (
       <div>
         <QuestionnaireHeader />
@@ -59,8 +60,7 @@ class Content extends React.Component {
           <div className="page-wrapper">
             <div className="questions">
               <IntroForm {...this.props}/>
-              {questions.map(this.renderQuestions)}
-              <EndForm name={memberName}/>
+              {questionnaire.map(this.renderQuestions)}
             </div>
           </div>
         </div>
@@ -69,34 +69,40 @@ class Content extends React.Component {
       </div>
     );
   }
+
   renderQuestions = (question, idx) => {
     switch ( question.QuestionType ) {
       case 'TextInput' :
         return (
-          <TextInput key={question.ID} id={idx} {...this.props} />
+          <TextInput key={idx} id={idx} {...this.props} />
         );
       case 'SingleChoice':
         return (
-          <SingleChoice key={question.ID} id={idx} {...this.props} />
+          <SingleChoice key={idx} id={idx} {...this.props} />
         );
       case 'MultipleChoice' :
         return (
-          <MultipleChoice key={question.ID} id={idx} {...this.props} />
+          <MultipleChoice key={idx} id={idx} {...this.props} />
         );
       case 'TagCloud' :
         return (
-          <TagCloud key={question.ID} id={idx} {...this.props} />
+          <TagCloud key={idx} id={idx} {...this.props} />
         );
       case 'Typeahead' :
         return (
-          <InputTypeAhead key={question.ID} id={idx} {...this.props} />
+          <InputTypeAhead key={idx} id={idx} {...this.props} />
+        );
+      case 'YesNo':
+        return (
+          <YesNo key={idx} id={idx} {...this.props} />
         );
       default :
         return (
-          <span />
+          <EndForm key={idx} {...this.props}/>
         );
     }
   }
+
 }
 
 export default connect(

@@ -7,25 +7,18 @@ import classNames from 'classnames';
 
 import { Link } from 'react-router';
 
-import { connect } from 'react-redux';
 import * as actionCreators from '../../../redux/general-actions';
 
 import Avatar from '../../subcomponents/Avatar';
 
-@connect((state, props) => {
-  return {
-    member: state._questionnaire.data.Member,
-  }
-})
 class EndForm extends React.Component {
   render() {
-    var { member } = this.props;
     return (
       <div className="fieldset last active">
         <div className="field radio with-avatar">
           <Avatar />
           <label>
-            Thanks {member.Name}, we have everything we need and have made a list of jobs/courses just for you.
+            Thanks {this.props.memberName}, we have everything we need and have made a list of jobs/courses just for you.
           </label>
         </div>
         <div className="submit active">
@@ -36,7 +29,7 @@ class EndForm extends React.Component {
   }
 
   linkClick = () => {
-    this.props.dispatch(actionCreators.getListViewData());
+    this.props.getListViewData();
   }
 }
 

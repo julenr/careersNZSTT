@@ -1,7 +1,12 @@
 /**
  * Created by jr1500 on 19/10/15.
  */
+import axios from 'axios';
+import store from './create-store';
 
+import * as fakeData from './fakeData';
+
+const appID = document.getElementsByTagName('body')[0].getAttribute('data-application-id');
 
 export function responseClickedMultipleChoice(questionID, responseID) {
   return {
@@ -19,6 +24,14 @@ export function responseClickedSingleChoice(questionID, responseID) {
   }
 }
 
+export function clickedYesNo(questionID, responseID) {
+  return {
+    type: 'CLICKED_YES_NO',
+    questionID,
+    responseID
+  }
+}
+
 export function setInputText(questionID, text) {
   return {
     type: 'SET_INPUT_TEXT',
@@ -28,9 +41,8 @@ export function setInputText(questionID, text) {
 }
 
 export function setTypeAheadText(questionID, typeAhead) {
-  console.log(typeAhead);
   return {
-    type: 'SET_INPUT_TEXT',
+    type: 'SET_INPUT_TYPE_AHEAD',
     questionID,
     text: typeAhead.state.entryValue
   }
@@ -58,4 +70,35 @@ export function removeTag(questionID, tagID) {
   }
 }
 
+export function firstQuestion() {
+  return {
+    type: 'FIRST_QUESTION',
+  }
+}
+
+export function nextQuestion(questionID, nextQuestionID) {
+  return {
+    type: 'NEXT_QUESTION',
+    questionID,
+    nextQuestionID
+  }
+}
+
+export function getListViewData() {
+  return {
+    types: ['GET_JOBS_REQUEST', 'GET_JOBS_SUCCESS', 'GET_JOBS_FAILURE'],
+    promise: () => {
+      let state = store.getState();
+      let listType = state._questionnaire.data.ListType.Current;
+      return axios.post(`/api/skills-transition-tool/listview/${appID}/${listType}`)
+        .then(function (response) {
+          return {data: response.data};
+        })
+        .catch(function (response) {
+          console.error('error ', response);
+          return {data: fakeData.listViewData};
+        });
+    }
+  }
+}
 

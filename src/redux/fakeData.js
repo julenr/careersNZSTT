@@ -17,6 +17,10 @@ export const questionnaire = {
     'Gender' : 'Male',
     'Ethnicity': 'Kiwi'
   },
+  'ListType': {
+    'Selected': [],
+    'Current': null
+  },
   'Jobs': {
     'Selected': [],
     'Current': null
@@ -29,6 +33,10 @@ export const questionnaire = {
     'Selected': [],
     'Current': null
   },
+  'Qualifications': {
+    'Selected': [],
+    'Current': null
+  },
   'VocationalPathways': {
     'Selected': [],
     'Current': null
@@ -37,10 +45,11 @@ export const questionnaire = {
     'Selected': [],
     'Current': null
   },
+  'Questionnaire': [
+  ],
   'Questions': [
     {
       'ID': 1,
-      'Active': false,
       'Text': '',
       'Description': 'BASIC TEXT INPUT QUESTION PROTOTYPE',
       'QuestionType': 'TextInput',
@@ -54,7 +63,34 @@ export const questionnaire = {
     },
     {
       'ID': 2,
-      'Active': false,
+      'Text': '',
+      'Description': 'YES/NO QUESTION PROTOTYPE',
+      'QuestionType': 'YesNo',
+      'QuestionResponses': [],
+      'NextQuestionID': 3,
+      'HasAlternative': false,
+      'AlternativeText': '',
+      'AlternativeNextQuestionID': null,
+      'Endpoint': null,
+      'QuestionResponses': [
+        {
+          'ID': 0,
+          'ResponseText': 'Yes',
+          'NextQuestionID': 3,
+          'EntityType': 'ListType',
+          'EntityData': 'Job'
+        },
+        {
+          'ID': 1,
+          'ResponseText': 'No',
+          'NextQuestionID': 1,
+          'EntityType': 'ListType',
+          'EntityData': 'Course'
+        }
+      ]
+    },
+    {
+      'ID': 3,
       'Text': 'Goal',
       'Description': 'SINGLE CHOICE QUESTION PROTOTYPE',
       'QuestionType': 'SingleChoice',
@@ -65,29 +101,41 @@ export const questionnaire = {
       'Endpoint': null,
       'QuestionResponses': [
         {
-          'ResponseText': 'Option 1. Single choice question prototype',
-          'NextQuestionID': 3
+          'ID': 0,
+          'ResponseText': 'Option 1. Jumps to question prototype 1. Adds Interest: Gardening',
+          'NextQuestionID': 1,
+          'EntityType': 'Interests',
+          'EntityData': 'Gardening'
         },
         {
-          'ResponseText': 'Option 2. Single choice question prototype',
-          'NextQuestionID': 3
+          'ID': 1,
+          'ResponseText': 'Option 2. Jumps to question prototype 2. Adds Job: Waiter/Waitress',
+          'NextQuestionID': 2,
+          'EntityType': 'Jobs',
+          'EntityData': 'Waiter/Waitress'
         },
         {
-          'ResponseText': 'Option 3. Single choice question prototype',
-          'NextQuestionID': 3
+          'ID': 2,
+          'ResponseText': 'Option 3. Jumps to question prototype 4. Adds Qualification: Graduate Diploma in Professional Supervision',
+          'NextQuestionID': 4,
+          'EntityType': 'Qualifications',
+          'EntityData': 'Graduate Diploma in Professional Supervision '
         },
-        {
-          'ResponseText': 'Option 4. Single choice question prototype',
-          'NextQuestionID': 3
+        {'ID': 3,
+          'ResponseText': 'Option 4. Jumps to question prototype 5. Adds Region: Wellington',
+          'NextQuestionID': 5,
+          'EntityType': 'Regions',
+          'EntityData': 'Wellington'
         },
-        {
-          'ResponseText': 'Option 5. Single choice question prototype',
-          'NextQuestionID': 3
+        {'ID': 4,
+          'ResponseText': 'Option 5. Jumps to question prototype 6.',
+          'NextQuestionID': 6,
+          'EntityType': 'None',
+          'EntityData': ''
         }
       ]
     }, {
-      'ID': 3,
-      'Active': false,
+      'ID': 4,
       'Text': 'Skills match',
       'Description': 'TAG CLOUD QUESTION PROTOTYPE',
       'QuestionType': 'TagCloud',
@@ -98,27 +146,36 @@ export const questionnaire = {
       'Endpoint': null,
       'QuestionResponses': [{
         'ResponseText': 'Tag 1.',
-        'NextQuestionID': 4
+        'NextQuestionID': 5,
+        'EntityType': 'None',
+        'EntityData': ''
       }, {
         'ResponseText': 'Tag 2.',
-        'NextQuestionID': 4
+        'NextQuestionID': 5,
+        'EntityType': 'None',
+        'EntityData': ''
       }, {
         'ResponseText': 'Tag 3.',
-        'NextQuestionID': 4,
+        'NextQuestionID': 5,
+        'EntityType': 'None',
+        'EntityData': ''
       }, {
         'ResponseText': 'Tag 4.',
-        'NextQuestionID': 4
+        'NextQuestionID': 5,
+        'EntityType': 'None',
+        'EntityData': ''
       }, {
         'ResponseText': 'Tag 5.',
-        'NextQuestionID': 4
+        'NextQuestionID': 5,
+        'EntityType': 'None',
+        'EntityData': ''
       }]
     }, {
-      'ID': 4,
-      'Active': false,
+      'ID': 5,
       'Text': 'Another job',
       'Description': 'MULTIPLE CHOICE QUESTION PROTOTYPE',
       'QuestionType': 'MultipleChoice',
-      'NextQuestionID': null,
+      'NextQuestionID': 6,
       'HasAlternative': true,
       'AlternativeText': 'I dont mind',
       'AlternativeNextQuestionID': 4,
@@ -127,35 +184,44 @@ export const questionnaire = {
         'ID': 1,
         'ResponseText': 'Option 1. Multiple choice question prototype',
         'selected': false,
-        'NextQuestionID': 7
+        'NextQuestionID': 6,
+        'EntityType': 'Jobs',
+        'EntityData': 'Software Engineer'
       }, {
         'ID': 2,
         'ResponseText': 'Option 2. Multiple choice question prototype',
         'selected': false,
-        'NextQuestionID': 7
+        'NextQuestionID': 6,
+        'EntityType': 'None',
+        'EntityData': ''
       }, {
         'ID': 3,
         'ResponseText': 'Option 3. Multiple choice question prototype',
         'selected': true,
-        'NextQuestionID': 7
+        'NextQuestionID': 6,
+        'EntityType': 'None',
+        'EntityData': ''
       }, {
         'ID': 4,
         'ResponseText': 'Option 4. Multiple choice question prototype',
         'selected': true,
-        'NextQuestionID': 7
+        'NextQuestionID': 6,
+        'EntityType': 'None',
+        'EntityData': ''
       }, {
         'ID': 5,
         'ResponseText': 'Option 5. Multiple choice question prototype',
         'selected': true,
-        'NextQuestionID': 7
+        'NextQuestionID': 6,
+        'EntityType': 'None',
+        'EntityData': ''
       }]
     }, {
-      'ID': 5,
-      'Active': false,
+      'ID': 6,
       'Text': '',
       'Description': 'TYPE AHEAD  QUESTION PROTOTYPE',
       'QuestionType': 'Typeahead',
-      'NextQuestionID': 9,
+      'NextQuestionID': 7,
       'HasAlternative': true,
       'PlaceHolder' : 'Write something here',
       'AlternativeText': 'It doesnt matter',
@@ -165,6 +231,9 @@ export const questionnaire = {
         'Dentist', 'Software Developer', 'Nurse Practioner', 'Physician', 'Civil Engineer', 'Cost Estimator',
         'Logistician', 'Pharmacist', 'Optician', 'High School Teacher', 'Loan Officer', 'HR Specialist'
       ]
+    }, {
+      'ID': 7,
+      'QuestionType': 'EndForm'
     }]
 };
 
@@ -235,7 +304,7 @@ export const listViewData = {
   'JobsCards': [
     {
       'Closed': false,
-      'Fliped': false,
+      'Flipped': false,
       'Title': 'Software Engineer',
       'Description': 'Researches, designs, develops and maintains software systems along with hardware development for medical, scientific, and industrial purposes.',
       'Interests': 'Gardening; Helping people; Cars.',
@@ -250,7 +319,7 @@ export const listViewData = {
     },
     {
       'Closed': false,
-      'Fliped': true,
+      'Flipped': true,
       'Title': 'Human Resources',
       'Description': 'Plans, directs, and/or coordinates all human resource activities and staff of an organization.',
       'Interests': 'Gardening; Helping people; Cars.',
@@ -265,7 +334,7 @@ export const listViewData = {
     },
     {
       'Closed': false,
-      'Fliped': false,
+      'Flipped': false,
       'Title': 'Dental Hygienist',
       'Description': 'Assists dentists in diagnostic and therapeutic aspects of a group or private dental practice.',
       'Interests': 'Gardening; Helping people; Cars.',
@@ -280,7 +349,7 @@ export const listViewData = {
     },
     {
       'Closed': false,
-      'Fliped': false,
+      'Flipped': false,
       'Title': 'Landscape gardener',
       'Description': 'Landscape gardeners design, develop, maintain and remodel gardens and landscapes.',
       'Interests': 'Gardening; Helping people; Cars.',
@@ -295,7 +364,7 @@ export const listViewData = {
     },
     {
       'Closed': false,
-      'Fliped': false,
+      'Flipped': false,
       'Title': 'Financial Planner',
       'Description': 'Related to careers in portfolio management, the financial planner offers a broad range of services aimed at assisting individuals in managing and planning their financial future.',
       'Interests': 'Gardening; Helping people; Cars.',
@@ -377,8 +446,3 @@ export const listViewData = {
     ]
   }
 };
-
-      
-
-    
-    

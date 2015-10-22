@@ -71,21 +71,6 @@ export function getFooterData() {
   }
 }
 
-export function getListViewData() {
-  return {
-    types: ['GET_JOBS_REQUEST', 'GET_JOBS_SUCCESS', 'GET_JOBS_FAILURE'],
-    promise: () => {
-      return axios.get(`/api/skills-transition-tool/jobs/${appID}`)
-        .then(function (response) {
-          return {data: response.data};
-        })
-        .catch(function (response) {
-          console.error('error ', response);
-          return {data: fakeData.listViewData};
-        });
-    }
-  }
-}
 
 
 

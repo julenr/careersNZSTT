@@ -109,10 +109,10 @@ export const questionnaire = {
         },
         {
           'ID': 1,
-          'ResponseText': 'Option 2. Jumps to question prototype 2. Adds Job: Waiter/Waitress',
+          'ResponseText': 'Option 2. Jumps to question prototype 2. Adds Job: Gardener',
           'NextQuestionID': 2,
           'EntityType': 'Jobs',
-          'EntityData': 'Waiter/Waitress'
+          'EntityData': 'Gardener'
         },
         {
           'ID': 2,
@@ -124,8 +124,8 @@ export const questionnaire = {
         {'ID': 3,
           'ResponseText': 'Option 4. Jumps to question prototype 5. Adds Region: Wellington',
           'NextQuestionID': 5,
-          'EntityType': 'Regions',
-          'EntityData': 'Wellington'
+          'EntityType': 'WorkingConditions',
+          'EntityData': 'Very hard'
         },
         {'ID': 4,
           'ResponseText': 'Option 5. Jumps to question prototype 6.',
@@ -145,28 +145,23 @@ export const questionnaire = {
       'AlternativeNextQuestionID': null,
       'Endpoint': null,
       'QuestionResponses': [{
-        'ResponseText': 'Tag 1.',
-        'NextQuestionID': 5,
+        'Title': 'Tag 1.',
         'EntityType': 'None',
         'EntityData': ''
       }, {
-        'ResponseText': 'Tag 2.',
-        'NextQuestionID': 5,
+        'Title': 'Tag 2.',
         'EntityType': 'None',
         'EntityData': ''
       }, {
-        'ResponseText': 'Tag 3.',
-        'NextQuestionID': 5,
+        'Title': 'Tag 3.',
         'EntityType': 'None',
         'EntityData': ''
       }, {
-        'ResponseText': 'Tag 4.',
-        'NextQuestionID': 5,
+        'Title': 'Tag 4.',
         'EntityType': 'None',
         'EntityData': ''
       }, {
-        'ResponseText': 'Tag 5.',
-        'NextQuestionID': 5,
+        'Title': 'Tag 5.',
         'EntityType': 'None',
         'EntityData': ''
       }]
@@ -233,6 +228,38 @@ export const questionnaire = {
       ]
     }, {
       'ID': 7,
+      'Text': 'Skills match',
+      'Description': 'TAG CLOUD QUESTION PROTOTYPE',
+      'QuestionType': 'TagCloud',
+      'NextQuestionID': 8,
+      'HasAlternative': false,
+      'AlternativeText': '',
+      'AlternativeNextQuestionID': null,
+      'Endpoint': null,
+      'QuestionResponses': [{
+        'Title': 'Skill 1.',
+        'EntityType': 'None',
+        'EntityData': ''
+      }, {
+        'Title': 'Skill 2.',
+        'EntityType': 'None',
+        'EntityData': ''
+      }, {
+        'Title': 'Skill 3.',
+        'EntityType': 'None',
+        'EntityData': ''
+      }, {
+        'Title': 'Skill 4.',
+        'EntityType': 'None',
+        'EntityData': ''
+      }, {
+        'Title': 'Skill 5.',
+        'EntityType': 'None',
+        'EntityData': ''
+      }]
+    }
+    , {
+      'ID': 8,
       'QuestionType': 'EndForm'
     }]
 };
@@ -446,3 +473,37 @@ export const listViewData = {
     ]
   }
 };
+
+export const jobSkills = {
+  'Query': 'gardener',
+  'Pagination':
+    {
+      'TotalItems': 17,
+      'Start': 0,
+      'Limit': 10,
+      'CurrentPage': 1,
+      'TotalPages': 2,
+      'FirstItem': 1,
+      'LastItem': 10
+    },
+  'Results': [
+    {
+      'SkillID': 16,
+      'Title': 'Evaluate reports or designs to determine work needs.'
+    }, {'SkillID': 372, 'Title': 'Prepare chemicals for work application.'}, {
+      'SkillID': 390,
+      'Title': 'Clean facilities or sites.'
+    }, {'SkillID': 402, 'Title': 'Remove snow.'}, {
+      'SkillID': 412,
+      'Title': 'Dispose of trash or waste materials.'
+    }, {'SkillID': 408, 'Title': 'Remove debris from work sites.'}, {
+      'SkillID': 936,
+      'Title': 'Plant greenery to improve landscape appearance.'
+    }, {'SkillID': 934, 'Title': 'Cultivate lawns, turf, or gardens.'}, {
+      'SkillID': 939,
+      'Title': 'Irrigate lawns, trees, or plants.'
+    }, {'SkillID': 957, 'Title': 'Install equipment to protect or support trees.'}
+  ]
+};
+
+

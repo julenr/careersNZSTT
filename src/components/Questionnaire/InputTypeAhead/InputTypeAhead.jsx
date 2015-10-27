@@ -59,6 +59,7 @@ class InputTypeAhead extends React.Component {
   }
 
   nextClicked = (nextQuestionID) => {
+    this.props.setFinalTypeAheadText(this.props.id, this.refs.typeAhead);
     scrollTo(this.scrollElementID, -110);
     this.props.nextQuestion(this.props.id, nextQuestionID);
   }

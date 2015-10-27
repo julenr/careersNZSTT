@@ -47,20 +47,67 @@ export function _questionnaire(state = initialState, action = {}) {
         ...state,
         loaded: true
       };
+
+    case 'GET_JOB_SKILLS_REQUEST':
+      newState.data.Skills.Loading = true;
+      return newState;
+    case 'GET_JOB_SKILLS_SUCCESS':
+      newState.data.Skills.skillsTags = action.result.data;
+      newState.data.Skills.Loading = false;
+      return newState;
+    case 'GET_JOB_SKILLS_FAILURE':
+      newState.data.Skills.Loading = false;
+      return newState;
+
     case 'RESPONSE_CLICKED_MULTIPLE_CHOICE': {
-      console.log(action.questionID, '   ', action.responseID);
       let question = newState.data.Questionnaire[action.questionID];
       let entityType = question.QuestionResponses[action.responseID].EntityType;
-      if(entityType !== 'None') {
+      if (entityType !== 'None') {
         let entityData = question.QuestionResponses[action.responseID].EntityData;
         newState.data[entityType].Current = entityData;
         newState.data[entityType].Selected.push(entityData);
       }
-
       question.QuestionResponses[action.responseID].Selected = !question.QuestionResponses[action.responseID].Selected;
       newState.data.refresh = uuid.v1();
-    }
       return newState;
+    }
+
+    // TAG CLOUD ACTIONS
+    case 'RESPONSE_CLICKED_TAG_CLOUD': {
+      let question = newState.data.Questionnaire[action.questionID];
+      let skillTitle = question.QuestionResponses[action.responseID].Title;
+      newState.data.Skills.Selected.push(skillTitle);
+      newState.data.Skills.Current = skillTitle;
+      question.QuestionResponses[action.responseID].Selected = !question.QuestionResponses[action.responseID].Selected;
+      newState.data.refresh = uuid.v1();
+      return newState;
+    }
+    case 'SELECT_ALL_TAG_CLOUD': {
+      const allSelected = state.data.Questionnaire[action.questionID].QuestionResponses.map((tag) => {
+        tag.Selected = true;
+        return tag;
+      });
+      newState.data.Questionnaire[action.questionID].QuestionResponses = allSelected;
+      newState.data.refresh = uuid.v1();
+      return newState;
+    }
+    case 'REMOVE_TAG':
+      newState.data.Questionnaire[action.questionID].QuestionResponses[action.tagID].Removed = true;
+      return newState;
+    case 'DUMP_SKILLS_INTO_TAG_CLOUD_REQUEST':
+      return newState;
+    case 'DUMP_SKILLS_INTO_TAG_CLOUD_SUCCESS': {
+      let questionID = newState.data.Questionnaire.length-1;
+      Object.assign(newState.data.Questionnaire[questionID].QuestionResponses, newState.data.Skills.skillsTags);
+      newState.data.Questionnaire[questionID].Loaded = true;
+      return newState;
+    }
+    case 'DUMP_SKILLS_INTO_TAG_CLOUD_FAILURE': {
+      let questionID = newState.data.Questionnaire.length-1;
+      newState.data.Questionnaire[questionID].Loaded = true;
+      return newState;
+    }
+
     case 'RESPONSE_CLICKED_SINGLE_CHOICE': {
       let question = newState.data.Questionnaire[action.questionID];
       let entityType = question.QuestionResponses[action.responseID].EntityType;
@@ -74,6 +121,7 @@ export function _questionnaire(state = initialState, action = {}) {
       newState.data.refresh = uuid.v1();
       return newState;
     }
+
     case 'CLICKED_YES_NO': {
       let question = newState.data.Questionnaire[action.questionID];
       let entityType = question.QuestionResponses[action.responseID].EntityType;
@@ -83,7 +131,7 @@ export function _questionnaire(state = initialState, action = {}) {
         newState.data[entityType].Selected.push(entityData);
       }
 
-      newState.data.Questionnaire[action.questionID].Selected = action.responseID;
+      question.Selected = action.responseID;
       newState.data.refresh = uuid.v1();
       return newState;
     }
@@ -91,31 +139,27 @@ export function _questionnaire(state = initialState, action = {}) {
       newState.data.Questionnaire[action.questionID].Text = action.text;
       newState.data.refresh = uuid.v1();
       return newState;
+
     case 'SET_INPUT_TYPE_AHEAD':
       newState.data.Questionnaire[action.questionID].Text = action.text;
       newState.data.refresh = uuid.v1();
       return newState;
+    case 'SET_FINAL_INPUT_TYPE_AHEAD':
+      let endPoint = newState.data.Questionnaire[action.questionID].Endpoint;
+      newState.data[endPoint].Current = action.text;
+      newState.data[endPoint].Selected.push(action.text);
+      newState.data.refresh = uuid.v1();
+      return newState;
+
     case 'SET_MEMBER_NAME':
       newState.data.Member.Name = action.name;
       return newState;
-    case 'SELECT_ALL_TAG_CLOUD': {
-      const allSelected = state.data.Questionnaire[action.questionID].QuestionResponses.map((tag) => {
-        tag.Selected = true;
-        return tag;
-      });
-      newState.data.Questionnaire[action.questionID].QuestionResponses = allSelected;
-      newState.data.refresh = uuid.v1();
-      return newState;
-    }
-    case 'REMOVE_TAG':
-      newState.data.Questionnaire[action.questionID].QuestionResponses[action.tagID].Removed = true;
-      return newState;
+
     case 'FIRST_QUESTION':
       if(newState.data.Questionnaire.length) {
         console.log('the 1st question is already rendered ');
       }
       else {
-        console.log('1st question rendered ');
         newState.data.Questionnaire.push( Object.assign({}, newState.data.Questions[0] ));
         newState.data.refresh = uuid.v1();
       }
@@ -125,9 +169,10 @@ export function _questionnaire(state = initialState, action = {}) {
         console.log('the question is already rendered ', action.questionID, newState.data.Questionnaire.length);
       }
       else {
-        let questionPrototype = newState.data.Questionnaire[action.questionID].QuestionType;
-        console.log('New question rendered ', action.questionID, action.nextQuestionID-1);
-        newState.data.Questionnaire.push( Object.assign({}, newState.data.Questions[action.nextQuestionID-1] ));
+        let nextQuestionIndex = newState.data.Questions.findIndex((q) => (q.ID === action.nextQuestionID));
+        let question = Object.assign({}, newState.data.Questions[nextQuestionIndex]);
+        question.Loaded = false; // Force to load skills in tag cloud each time a Tag Cloud is created
+        newState.data.Questionnaire.push( question );
         newState.data.refresh = uuid.v1();
       }
       return newState;
@@ -241,3 +286,4 @@ export function _footerData(state = initialState, action = {}) {
       return state;
   }
 }
+

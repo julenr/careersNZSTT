@@ -7,23 +7,18 @@ import classNames from 'classnames';
 import React from 'react';
 
 class Checkbutton extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {checked: this.props.selected};
-  }
 
-  click = () => {
-    this.setState({checked: !this.state.checked});
-  }
 
   render() {
-    let classes = classNames( this.props.className, {
-      'checkbox-item': true,
-      'checkbox-item selected': this.state.checked
-    } );
+    let classes = classNames(
+      {
+        'checkbox-item': true,
+        'checkbox-item selected': this.props.selected
+      }
+    );
 
     return (
-      <span className={ classes } onClick={this.click}>
+      <span className={ classes } >
         <span className="icon-tick"></span>
         {this.props.value}
       </span>

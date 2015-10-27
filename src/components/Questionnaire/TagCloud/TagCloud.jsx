@@ -6,10 +6,41 @@ import React from 'react';
 import classNames from 'classnames';
 import { scrollTo } from '../../../libs/helpers';
 import uuid from 'node-uuid';
+import Loader from 'react-loader';
+
+import { connect } from 'react-redux';
+import * as actionCreators from '../../../redux/questionnaire-actions';
+import store from '../../../redux/create-store';
 
 import Avatar from '../../subcomponents/Avatar';
 
+function mapStateToProps(state, ownProps) {
+  return {
+    skillsLoaded: state._questionnaire.data.Questionnaire[ownProps.id].Loaded,
+  };
+}
+
 class TagCloud extends React.Component {
+  componentWillMount() {
+    store.dispatch(actionCreators.dumpSkillsIntoTagCloud());
+  }
+  render() {
+    var { skillsLoaded } = this.props;
+    console.log(skillsLoaded);
+    if(skillsLoaded) {
+      return <TagCloudContent {...this.props} />;
+    }
+    else {
+      return (
+        <div>
+          <Loader />
+        </div>
+      );
+    }
+  }
+}
+
+class TagCloudContent extends React.Component {
   render() {
     var question = this.props.questionnaire[this.props.id];
     this.nextButtonActive = false;
@@ -55,9 +86,9 @@ class TagCloud extends React.Component {
       } );
       if(response.Selected) this.nextButtonActive = true;
       return (
-      <span key={idx} onClick={ () => this.props.responseClickedMultipleChoice(this.props.id, idx)}>
+      <span key={idx} onClick={ () => this.props.responseClickedTagCloud(this.props.id, idx)}>
         <span className={ classes } key={idx} tabIndex="0" >
-          {response.ResponseText}
+          {response.Title}
           <span
             className="icon-cancel-circle"
             key={idx}
@@ -72,10 +103,12 @@ class TagCloud extends React.Component {
 
   nextClicked = (nextID) => {
     scrollTo(this.scrollElementID, -120);
-    this.props.nextQuestion(this.props.id, nextID)
+    this.props.nextQuestion(this.props.id, nextID);
   }
 
 }
 
 
-export default TagCloud;
+export default connect(
+  mapStateToProps
+)(TagCloud);

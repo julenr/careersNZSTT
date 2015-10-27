@@ -26,6 +26,8 @@ import Questionnaire from './components/Questionnaire/Questionnaire.jsx';
 import ListView from './components/ListView/ListView.jsx';
 import ProviderConnect from './components/ProviderConnect/ProviderConnect.jsx';
 
+console.clear();
+
 // Element to attach React-DOM
 const app = document.createElement('div');
 document.body.appendChild(app);
@@ -33,7 +35,6 @@ document.body.appendChild(app);
 // Retrieve initial Data from the server
 store.dispatch(actionCreators.getFooterData());
 store.dispatch(actionCreators.getQuestionnaire());
-
 
 // Render the DOM when the data is allready stored
 let unsubscribe = store.subscribe(() => {

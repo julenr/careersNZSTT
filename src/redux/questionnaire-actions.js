@@ -4,13 +4,21 @@
 import axios from 'axios';
 import store from './create-store';
 
-import * as fakeData from './fakeData';
+import * as fakeData from './fake-data';
 
 const appID = document.getElementsByTagName('body')[0].getAttribute('data-application-id');
 
 export function responseClickedMultipleChoice(questionID, responseID) {
   return {
     type: 'RESPONSE_CLICKED_MULTIPLE_CHOICE',
+    questionID,
+    responseID
+  }
+}
+
+export function responseClickedTagCloud(questionID, responseID) {
+  return {
+    type: 'RESPONSE_CLICKED_TAG_CLOUD',
     questionID,
     responseID
   }
@@ -48,6 +56,14 @@ export function setTypeAheadText(questionID, typeAhead) {
   }
 }
 
+export function setFinalTypeAheadText(questionID, typeAhead) {
+  return {
+    type: 'SET_FINAL_INPUT_TYPE_AHEAD',
+    questionID,
+    text: typeAhead.state.entryValue
+  }
+}
+
 export function setMemberName(name) {
   return {
     type: 'SET_MEMBER_NAME',
@@ -67,6 +83,24 @@ export function removeTag(questionID, tagID) {
     type: 'REMOVE_TAG',
     questionID,
     tagID
+  }
+}
+
+export function dumpSkillsIntoTagCloud() {
+  return {
+    types: ['DUMP_SKILLS_INTO_TAG_CLOUD_REQUEST', 'DUMP_SKILLS_INTO_TAG_CLOUD_SUCCESS', 'DUMP_SKILLS_INTO_TAG_CLOUD_FAILURE'],
+    promise: () => {
+      let state = store.getState();
+      return new Promise((resolve, reject) => {
+        // Just check where the skills are loaded and then copy them into tag cloud
+        const interval = setInterval(() => {
+          if(!state._questionnaire.data.Skills.Loading) {
+            clearInterval(interval);
+            resolve();
+          }
+        }, 50);
+      });
+    }
   }
 }
 

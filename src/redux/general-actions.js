@@ -1,7 +1,8 @@
 import Promise from 'bluebird';
 import axios from 'axios';
+import store from './create-store';
 
-import * as fakeData from './fakeData';
+import * as fakeData from './fake-data';
 
 const appID = document.getElementsByTagName('body')[0].getAttribute('data-application-id');
 
@@ -29,10 +30,14 @@ export function getQuestionnaire() {
     promise: () => {
       return axios.get(`/api/skills-transition-tool/form/${appID}`)
         .then(function (response) {
+          response.data.Skills.Loading = false;
+          response.data.Skills.skillsTags = [];
           return {data: response.data};
         })
         .catch(function (response) {
           console.error('error ', response);
+          fakeData.questionnaire.Skills.Loading = false;
+          fakeData.questionnaire.Skills.skillsTags = [];
           return {data: fakeData.questionnaire};
         });
     }
@@ -71,9 +76,18 @@ export function getFooterData() {
   }
 }
 
-
-
-
-
-
-
+export function currentJobChanged(newJob) {
+  return {
+    types: ['GET_JOB_SKILLS_REQUEST', 'GET_JOB_SKILLS_SUCCESS', 'GET_JOB_SKILLS_FAILURE'],
+    promise: () => {
+      return axios.get(`/api/skills-transition-tool/job-skills/${newJob}`)
+        .then(function (response) {
+          return {data: response.data};
+        })
+        .catch(function (response) {
+          console.error('error ', response);
+          return {data: Object.assign({}, fakeData.jobSkills.Results)};
+        });
+    }
+  }
+}

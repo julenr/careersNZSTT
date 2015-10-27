@@ -6,7 +6,6 @@ import scrollToElement from 'scroll-to';
 
 export function scrollTo(element, offset = 0) {
   let yPos = document.getElementById(element).getBoundingClientRect().top + document.body.scrollTop;
-  console.log(document.body.scrollTop);
   scrollToElement(0, yPos + offset);
 }
 

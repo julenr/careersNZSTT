@@ -34,18 +34,12 @@ class HelpPanel extends React.Component {
               <img src={require('../../../assets/images/placeholders/placeholder-632x430.gif')} width="316" height="215" alt="" />
             </div>
             <div className="layout-col layout-col-3">
-              {helpPanel.Tips.map(this.renderTips)}
+              <div dangerouslySetInnerHTML={{__html: helpPanel.Tips}} />
             </div>
           </div>
           <a href="javascript: void 0" className="action-close icon-cross" onClick={this.closePanel}>&nbsp;</a>
         </div>
       );
-  }
-
-  renderTips = (tip, idx) => {
-    return (
-      <p key={idx}><strong>{tip.Title} </strong>{tip.Text}</p>
-    );
   }
 
   closePanel = () => {

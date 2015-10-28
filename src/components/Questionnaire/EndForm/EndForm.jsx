@@ -22,7 +22,7 @@ class EndForm extends React.Component {
           </label>
         </div>
         <div className="submit active">
-          <Link className="button next" to="/list-view" onClick={this.linkClick}>Great, show me! <span className="icon-arrow-right"></span></Link>
+          <Link className="button next" to="/list-view" ><span onClick={this.linkClick}>Great, show me!</span><span className="icon-arrow-right"></span></Link>
         </div>
       </div>
     );

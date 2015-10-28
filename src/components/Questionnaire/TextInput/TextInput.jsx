@@ -28,6 +28,7 @@ class TextInput extends React.Component {
           <p className="help">An example of help text</p>
           <div className="text">
             <input className="text"
+                   autoFocus
                    ref="inputText"
                    onKeyUp={ (e) => this.updateTextValue(e, this.props.id, this.refs.inputText.value) }
                    type="text"
@@ -56,7 +57,12 @@ class TextInput extends React.Component {
   }
 
   updateTextValue = (e, id, text) => {
-    this.props.setInputText(id, this.refs.inputText.value)
+    if(e.key === 'Enter' && this.refs.inputText.value !== ''){
+      this.nextClicked(this.props.questionnaire[this.props.id].NextQuestionID);
+    }
+    else {
+      this.props.setInputText(id, this.refs.inputText.value)
+    }
   }
 
 }

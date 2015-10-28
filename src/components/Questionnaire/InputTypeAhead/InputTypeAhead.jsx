@@ -29,6 +29,7 @@ class InputTypeAhead extends React.Component {
           <div className="text">
             <Typeahead
               ref="typeAhead"
+              autoFocus
               customClasses={{
                 input: 'text',
                 typeahead: 'topcoat-list',
@@ -39,11 +40,15 @@ class InputTypeAhead extends React.Component {
               }}
               value={question.Text}
               placeholder={question.PlaceHolder}
-              onKeyUp={ () => this.props.setTypeAheadText(this.props.id, this.refs.typeAhead) }
-              onBlur={ () => this.props.setTypeAheadText(this.props.id, this.refs.typeAhead) }
+              onKeyUp={ () => this.KeyUp() }
+              onBlur={ () => this.KeyUp() }
               options={question.QuestionResponses}
               maxVisible={10}
               />
+
+              <a className="action-flip" href="javascript: void 0" onClick={ () => this.alternativeClicked(question.AlternativeNextQuestionID) } >
+                {question.AlternativeText}
+              </a>
           </div>
         </div>
         <div className={ classes }>
@@ -56,6 +61,18 @@ class InputTypeAhead extends React.Component {
         <span id={this.scrollElementID}></span>
       </div>
     );
+  }
+
+  KeyUp = () => {
+    this.props.setTypeAheadText(this.props.id, this.refs.typeAhead);
+    console.log(this.refs.typeAhead);
+    console.log(this.refs.typeAhead.options);
+    //this.refs.typeAhead.options = [];
+  }
+
+  alternativeClicked = (alternativeQuestionID) => {
+    scrollTo(this.scrollElementID, -110);
+    this.props.nextQuestion(this.props.id, alternativeQuestionID);
   }
 
   nextClicked = (nextQuestionID) => {

@@ -56,21 +56,21 @@ class JobCard extends React.Component {
                   </div>
                 </header>
                 <div className="image">
-                  <img src={jobCard.Image} alt="Add alt text. " width="317" height="201"/>
+                  <img src={jobCard.Image} alt={`Image for ${jobCard.Title}`} width="317" height="201"/>
                 </div>
                 <div className="layout-row">
                   <dl>
                     <dt>Skills match:</dt>
                     <dd><span
-                      className={`progress-bar-status amount-${jobCard.SkillsMatch}`}>{jobCard.SkillsMatch}%</span>
+                      className={`progress-bar-status amount-${this.roundProgressBarValues(jobCard.SkillsMatch)}`}>{jobCard.SkillsMatch}%</span>
                     </dd>
                     <dt>Interests:</dt>
                     <dd><span
-                      className={`progress-bar-status amount-${jobCard.Interest}`}>{jobCard.Interest}%</span>
+                      className={`progress-bar-status amount-${this.roundProgressBarValues(jobCard.Interest)}`}>{jobCard.Interest}%</span>
                     </dd>
                     <dt>Demand:</dt>
                     <dd><span
-                      className={`progress-bar-status amount-${jobCard.Demand}`}>{jobCard.Demand}%</span>
+                      className={`progress-bar-status amount-${this.roundProgressBarValues(jobCard.Demand)}`}>{jobCard.Demand}%</span>
                     </dd>
                     <dt>Pay:</dt>
                     <dd>{jobCard.Pay}<br/>{jobCard.PerTime}</dd>
@@ -140,6 +140,10 @@ class JobCard extends React.Component {
 
   openCard = () => {
     this.props.dispatch(actionCreators.jobOpen(this.props.id));
+  }
+
+  roundProgressBarValues = (Value) => {
+    return (Math.round(Value/10)*10);
   }
 }
 

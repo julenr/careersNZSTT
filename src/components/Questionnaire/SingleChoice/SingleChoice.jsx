@@ -3,6 +3,7 @@
  */
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { scrollTo } from '../../../libs/helpers';
 import uuid from 'node-uuid';
 
@@ -10,6 +11,11 @@ import Checkbutton from '../../subcomponents/Checkbutton';
 import Avatar from '../../subcomponents/Avatar';
 
 class SingleChoice extends React.Component {
+
+  componentDidMount(){
+    ReactDOM.findDOMNode(this.refs.option0).focus();
+  }
+
   render() {
     var question = this.props.questionnaire[this.props.id];
     this.scrollElementID = uuid.v1();
@@ -31,7 +37,11 @@ class SingleChoice extends React.Component {
   renderResponses = (response, idx) => {
     const selected = (this.props.questionnaire[this.props.id].Selected === idx);
     return (
-      <span key={idx} onClick={ () => this.onClick(idx)}>
+      <span key={idx}
+            onClick={ () => this.onClick(idx)}
+            ref={`option${idx}`}
+            tabIndex="0"
+        >
         <Checkbutton key={idx} value={response.ResponseText} selected={selected} />
       </span>
     );

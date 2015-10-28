@@ -3,6 +3,7 @@
  */
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import { scrollTo } from '../../../libs/helpers';
 import uuid from 'node-uuid';
@@ -21,12 +22,17 @@ function mapStateToProps(state, ownProps) {
 }
 
 class TagCloud extends React.Component {
+
   componentWillMount() {
     store.dispatch(actionCreators.dumpSkillsIntoTagCloud());
   }
+
+  componentDidMount(){
+    ReactDOM.findDOMNode(this.refs.option0).focus();
+  }
+
   render() {
     var { skillsLoaded } = this.props;
-    console.log(skillsLoaded);
     if(skillsLoaded) {
       return <TagCloudContent {...this.props} />;
     }
@@ -87,7 +93,7 @@ class TagCloudContent extends React.Component {
       if(response.Selected) this.nextButtonActive = true;
       return (
       <span key={idx} onClick={ () => this.props.responseClickedTagCloud(this.props.id, idx)}>
-        <span className={ classes } key={idx} tabIndex="0" >
+        <span className={ classes } key={idx} tabIndex="0" ref={`option${idx}`} >
           {response.Title}
           <span
             className="icon-cancel-circle"

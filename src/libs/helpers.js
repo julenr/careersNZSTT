@@ -9,7 +9,10 @@ export function scrollTo(element, offset = 0) {
   scrollToElement(0, yPos + offset);
 }
 
-export function textFitToContainer(stringText) {
+export function textFitToContainer(stringText = '') {
+  if(stringText === null) {
+    return 23;
+  }
   var font_size;
   var max_font_size = 39;
   var min_font_size = 23;

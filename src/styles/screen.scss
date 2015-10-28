@@ -401,7 +401,8 @@ a:hover .button, a:active .button, a:focus .button, .button:hover, .button:activ
 /* Questions introduction */
 .questions-intro { background:#fff; }
 .questions-intro .page-wrapper { padding:em(50) em(15) 0; max-width:em(840); }
-.questions-intro img { float:left; width:30%; max-width:em(153); height:auto; position:relative; z-index:2; }
+//.questions-intro img { float:left; width:30%; max-width:em(153); height:auto; position:relative; z-index:2; }
+.questions-intro img {  max-width:em(320); height:auto; position:relative; z-index:2; }
 .questions-intro p { font-size:em(21); line-height:lh(29,21); color:#000; margin:em(27,21) 0 em(24,21); letter-spacing:-0.025em; }
 .questions-intro .title { position:relative; }
 .questions-intro .title p { float:left; width:60%; padding:5px 0 0 4%; margin:0; }
@@ -411,12 +412,12 @@ a:hover .button, a:active .button, a:focus .button, .button:hover, .button:activ
 
 @media only screen and (min-width:600px) {
   .questions-intro .page-wrapper { padding-top:em(34); }
-  .questions-intro img { margin-bottom:em(-8); }
+  .questions-intro img { float:left;  }
   .questions-intro p { font-size:em(26); line-height:lh(36,26); }
   .questions-intro .title p { max-width:em(554,26); padding:0; margin:em(10,26) 0 0 em(64,26); }
   .questions-intro .title p:after { top:em(24,26); bottom:auto; width:em(56,26); left:em(152,26); }
   .questions-intro .title:after { display:none; }
-  .questions-intro .blurb { position:absolute; max-width:em(554,26); top:em(80,26); left:em(231,26); margin:0; }
+  //.questions-intro .blurb { position:absolute; max-width:em(554,26); top:em(80,26); left:em(231,26); margin:0; }
   .questions-intro strong { display:inline; }
 }
 @media only screen and (min-width:600px) and (max-width:860px) {

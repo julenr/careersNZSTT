@@ -31,7 +31,6 @@ class MainPage extends React.Component {
 }
 
 @connect((state) => {
-  console.log('connect');
   return {
     featureType: state._mainPage.data.FeatureType,
     title: state._mainPage.data.Title,

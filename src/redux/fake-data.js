@@ -17,7 +17,7 @@ export const questionnaire = {
     'Gender' : 'Male',
     'Ethnicity': 'Kiwi'
   },
-  'ListType': {
+  'ListTypes': {
     'Selected': [],
     'Current': null
   },
@@ -69,22 +69,22 @@ export const questionnaire = {
       'QuestionResponses': [],
       'NextQuestionID': 3,
       'HasAlternative': false,
-      'AlternativeText': '',
-      'AlternativeNextQuestionID': null,
+      'AlternativeText': 'I don\'t mind',
+      'AlternativeNextQuestionID': 5,
       'Endpoint': null,
       'QuestionResponses': [
         {
           'ID': 0,
           'ResponseText': 'Yes',
           'NextQuestionID': 3,
-          'EntityType': 'ListType',
+          'EntityType': 'ListTypes',
           'EntityData': 'Job'
         },
         {
           'ID': 1,
           'ResponseText': 'No',
           'NextQuestionID': 1,
-          'EntityType': 'ListType',
+          'EntityType': 'ListTypes',
           'EntityData': 'Course'
         }
       ]
@@ -117,7 +117,7 @@ export const questionnaire = {
         {
           'ID': 2,
           'ResponseText': 'Option 3. Jumps to question prototype 4. Adds Qualification: Graduate Diploma in Professional Supervision',
-          'NextQuestionID': 4,
+          'NextQuestionID': 5,
           'EntityType': 'Qualifications',
           'EntityData': 'Graduate Diploma in Professional Supervision '
         },
@@ -135,44 +135,13 @@ export const questionnaire = {
         }
       ]
     }, {
-      'ID': 4,
-      'Text': 'Skills match',
-      'Description': 'TAG CLOUD QUESTION PROTOTYPE',
-      'QuestionType': 'TagCloud',
-      'NextQuestionID': 5,
-      'HasAlternative': false,
-      'AlternativeText': '',
-      'AlternativeNextQuestionID': null,
-      'Endpoint': null,
-      'QuestionResponses': [{
-        'Title': 'Tag 1.',
-        'EntityType': 'None',
-        'EntityData': ''
-      }, {
-        'Title': 'Tag 2.',
-        'EntityType': 'None',
-        'EntityData': ''
-      }, {
-        'Title': 'Tag 3.',
-        'EntityType': 'None',
-        'EntityData': ''
-      }, {
-        'Title': 'Tag 4.',
-        'EntityType': 'None',
-        'EntityData': ''
-      }, {
-        'Title': 'Tag 5.',
-        'EntityType': 'None',
-        'EntityData': ''
-      }]
-    }, {
       'ID': 5,
       'Text': 'Another job',
       'Description': 'MULTIPLE CHOICE QUESTION PROTOTYPE',
       'QuestionType': 'MultipleChoice',
       'NextQuestionID': 6,
       'HasAlternative': true,
-      'AlternativeText': 'I dont mind',
+      'AlternativeText': 'I don\'t mind',
       'AlternativeNextQuestionID': 4,
       'Endpoint': null,
       'QuestionResponses': [{
@@ -219,8 +188,8 @@ export const questionnaire = {
       'NextQuestionID': 7,
       'HasAlternative': true,
       'PlaceHolder' : 'Write something here',
-      'AlternativeText': 'It doesnt matter',
-      'AlternativeNextQuestionID': 9,
+      'AlternativeText': 'I don\'t have any other jobs to add',
+      'AlternativeNextQuestionID': 8,
       'Endpoint': 'Jobs',
       'QuestionResponses': [
         'Dentist', 'Software Developer', 'Nurse Practioner', 'Physician', 'Civil Engineer', 'Cost Estimator',
@@ -312,20 +281,7 @@ export const listViewData = {
     {
       'Closed': false,
       'Text': 'Here\u0027s a couple of tips to get you started',
-      'Tips': [
-        {
-          'Title': 'First tip',
-          'Text': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem'
-        },
-        {
-          'Title': 'Second tip',
-          'Text': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem'
-        },
-        {
-          'Title': 'Third tip',
-          'Text': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem'
-        }
-      ]
+      'Tips': '<p><strong>First tip</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem.</p><p><strong>Second tip</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem.</p><p><strong>Third tip</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem.</p>'
     }
   ],
   'JobsCards': [
@@ -338,9 +294,9 @@ export const listViewData = {
       'WorkConditions': 'Flexible hours; Business hours; Inside; Outside; Regular hours.',
       'VocationalPathways': 'Social and community services. Manufacturing and technology',
       'Image': '../src/assets/images/placeholders/software-engineer.jpg',
-      'SkillsMatch': 80,
-      'Interest': 70,
-      'Demand': 20,
+      'SkillsMatch': 82,
+      'Interest': 74,
+      'Demand': 23,
       'Pay': '$15–$40',
       'PerTime': 'per hour'
     },

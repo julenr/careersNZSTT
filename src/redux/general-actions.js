@@ -1,4 +1,3 @@
-import Promise from 'bluebird';
 import axios from 'axios';
 import store from './create-store';
 
@@ -31,13 +30,12 @@ export function getQuestionnaire() {
       return axios.get(`/api/skills-transition-tool/form/${appID}`)
         .then(function (response) {
           response.data.Skills.Loading = false;
-          response.data.Skills.skillsTags = [];
+          response.data.Skills.SkillsTags = [];
           return {data: response.data};
         })
         .catch(function (response) {
-          console.error('error ', response);
           fakeData.questionnaire.Skills.Loading = false;
-          fakeData.questionnaire.Skills.skillsTags = [];
+          fakeData.questionnaire.Skills.SkillsTags = [];
           return {data: fakeData.questionnaire};
         });
     }
@@ -53,7 +51,6 @@ export function getLinkedPagesHTML(URLSegment) {
           return {data: response.data};
         })
         .catch(function (response) {
-          console.error('error ', response);
           return {data: fakeData.mainContentHTML};
         });
     }
@@ -69,7 +66,6 @@ export function getFooterData() {
           return {data: response.data};
         })
         .catch(function (response) {
-          console.error('error ', response);
           return {data: fakeData.footerData};
         });
     }
@@ -82,11 +78,10 @@ export function currentJobChanged(newJob) {
     promise: () => {
       return axios.get(`/api/skills-transition-tool/job-skills/${newJob}`)
         .then(function (response) {
-          return {data: response.data};
+          return {data: response.data.Results};
         })
         .catch(function (response) {
-          console.error('error ', response);
-          return {data: Object.assign({}, fakeData.jobSkills.Results)};
+          return {data: fakeData.jobSkills.Results};
         });
     }
   }

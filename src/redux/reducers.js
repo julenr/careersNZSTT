@@ -52,10 +52,11 @@ export function _questionnaire(state = initialState, action = {}) {
       newState.data.Skills.Loading = true;
       return newState;
     case 'GET_JOB_SKILLS_SUCCESS':
-      newState.data.Skills.skillsTags = action.result.data;
+      newState.data.Skills.SkillsTags = action.result.data;
       newState.data.Skills.Loading = false;
       return newState;
     case 'GET_JOB_SKILLS_FAILURE':
+      newState.data.Skills.SkillsTags = action.result.data;
       newState.data.Skills.Loading = false;
       return newState;
 
@@ -95,15 +96,17 @@ export function _questionnaire(state = initialState, action = {}) {
       newState.data.Questionnaire[action.questionID].QuestionResponses[action.tagID].Removed = true;
       return newState;
     case 'DUMP_SKILLS_INTO_TAG_CLOUD_REQUEST':
+      console.log('Dump request');
       return newState;
     case 'DUMP_SKILLS_INTO_TAG_CLOUD_SUCCESS': {
       let questionID = newState.data.Questionnaire.length-1;
-      Object.assign(newState.data.Questionnaire[questionID].QuestionResponses, newState.data.Skills.skillsTags);
+      newState.data.Questionnaire[questionID].QuestionResponses = newState.data.Skills.SkillsTags.slice();
+      console.log('Dump success: ', newState.data.Questionnaire[questionID].QuestionResponses);
       newState.data.Questionnaire[questionID].Loaded = true;
       return newState;
     }
     case 'DUMP_SKILLS_INTO_TAG_CLOUD_FAILURE': {
-      let questionID = newState.data.Questionnaire.length-1;
+      console.log('Dump fail');
       newState.data.Questionnaire[questionID].Loaded = true;
       return newState;
     }

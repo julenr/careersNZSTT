@@ -123,13 +123,16 @@ export function getListViewData() {
     types: ['GET_JOBS_REQUEST', 'GET_JOBS_SUCCESS', 'GET_JOBS_FAILURE'],
     promise: () => {
       let state = store.getState();
-      let listType = state._questionnaire.data.ListType.Current;
-      return axios.post(`/api/skills-transition-tool/listview/${appID}/${listType}`)
+      let listType = state._questionnaire.data.ListTypes.Current;
+      //let Data = JSON.stringify(state._questionnaire.data);
+      //console.log({Data});
+      return axios.post(`/api/skills-transition-tool/listview/${appID}/${listType}`, state._questionnaire.data)
         .then(function (response) {
+          console.log(response.data);
           return {data: response.data};
         })
         .catch(function (response) {
-          console.error('error ', response);
+          console.log(response.data);
           return {data: fakeData.listViewData};
         });
     }

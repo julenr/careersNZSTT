@@ -26,6 +26,7 @@ class IntroForm extends React.Component {
           <div className="text">
             <input
               className="text"
+              autoFocus
               name="q1-name"
               id="q1-name"
               ref="memberName"
@@ -49,13 +50,18 @@ class IntroForm extends React.Component {
     );
   }
 
-  nextClicked = (scrollElementID) => {
+  nextClicked = () => {
     scrollTo(this.scrollElementID, -120);
     this.props.firstQuestion();
   }
 
   updateMemberName = (e, name) => {
-    this.props.setMemberName(name);
+    if(e.key === 'Enter' && name !== ''){
+      this.nextClicked();
+    }
+    else {
+      this.props.setMemberName(name);
+    }
   }
 
 }

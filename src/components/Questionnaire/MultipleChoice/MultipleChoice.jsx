@@ -3,6 +3,7 @@
  */
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import { scrollTo } from '../../../libs/helpers';
 import uuid from 'node-uuid';
@@ -11,6 +12,11 @@ import Checkbutton from '../../subcomponents/Checkbutton';
 import Avatar from '../../subcomponents/Avatar';
 
 class MultipleChoice extends React.Component {
+
+  componentDidMount(){
+    ReactDOM.findDOMNode(this.refs.option0).focus();
+  }
+
   render() {
     var question = this.props.questionnaire[this.props.id];
     this.nextButtonActive = false;
@@ -41,7 +47,11 @@ class MultipleChoice extends React.Component {
   renderResponses = (response, idx) => {
     if(response.Selected) this.nextButtonActive = true;
     return (
-      <span key={idx} onClick={ () => this.props.responseClickedMultipleChoice(this.props.id, idx)}>
+      <span key={idx}
+            onClick={ () => this.props.responseClickedMultipleChoice(this.props.id, idx)}
+            ref={`option${idx}`}
+            tabIndex="0"
+        >
         <Checkbutton key={idx} value={response.ResponseText} selected={response.Selected} />
       </span>
     );

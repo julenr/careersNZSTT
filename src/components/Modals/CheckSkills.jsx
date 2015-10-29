@@ -20,14 +20,19 @@ class CheckSkillsModal extends React.Component {
               </div>
               <div className="layout-col layout-col-8">
                 <div className="tags" data-type="tag">
-                  {this.props.popularSkillsSelected.map(this.renderSkills)}
+                  {
+                    (this.props.popularSkillsSelected.length) ?
+                      this.props.popularSkillsSelected.map(this.renderSkills)
+                      :
+                      <span>Sorry but No skills founded for this Job</span>
+                  }
                 </div>
               </div>
             </div>
             <div className="submit">
-              <a href="#" className="button-solid">Add or edit your skills</a>
+              <a href="javascript:void 0" onClick={this.addSkillsAndCloseModal} className="button-solid">Add or edit your skills</a>
             </div>
-            <a className="action-close icon-cross" href="javascript:void 0" onClick={this.closeModal}>&nbsp;</a>
+            <a className="action-close icon-cross" href="javascript:void 0" onClick={this.cancelModal}>&nbsp;</a>
           </div>
         </div>
       </Modal>
@@ -50,9 +55,15 @@ class CheckSkillsModal extends React.Component {
     );
   }
 
-  closeModal = () => {
+  addSkillsAndCloseModal = () => {
+    this.props.addCheckedSkills();
     this.props.closeCheckSkillsModal();
     this.props.openSkillsModal();
+  }
+
+  cancelModal = () => {
+    this.props.closeCheckSkillsModal();
+    this.props.openAddSkillsModal();
   }
 
 }

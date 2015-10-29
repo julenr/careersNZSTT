@@ -3,6 +3,7 @@
  */
 import axios from 'axios';
 import store from './create-store';
+import _ from 'lodash';
 
 import * as fakeData from './fake-data';
 
@@ -130,7 +131,10 @@ export function getListViewData() {
         })
         .catch(function (response) {
           console.log(response);
-          return {data: fakeData.listViewData};
+          if (__DEV__) {
+            console.log('Using fake data');
+            return {data: _.clone(fakeData.listViewData, true)};
+          }
         });
     }
   }

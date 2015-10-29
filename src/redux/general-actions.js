@@ -1,5 +1,5 @@
 import axios from 'axios';
-import store from './create-store';
+import _ from 'lodash';
 
 import * as fakeData from './fake-data';
 
@@ -34,9 +34,14 @@ export function getQuestionnaire() {
           return {data: response.data};
         })
         .catch(function (response) {
-          fakeData.questionnaire.Skills.Loading = false;
-          fakeData.questionnaire.Skills.SkillsTags = [];
-          return {data: fakeData.questionnaire};
+          console.log(response);
+          if (__DEV__) {
+            console.log('Using fake data');
+            let data = _.clone(fakeData.questionnaire, true);
+            data.Skills.Loading = false;
+            data.Skills.SkillsTags = [];
+            return {data: data};
+          }
         });
     }
   }
@@ -51,7 +56,11 @@ export function getLinkedPagesHTML(URLSegment) {
           return {data: response.data};
         })
         .catch(function (response) {
-          return {data: fakeData.mainContentHTML};
+          console.log(response);
+          if (__DEV__) {
+            console.log('Using fake data');
+            return {data: _.clone(fakeData.mainContentHTML, true)};
+          }
         });
     }
   }
@@ -66,7 +75,11 @@ export function getFooterData() {
           return {data: response.data};
         })
         .catch(function (response) {
-          return {data: fakeData.footerData};
+          console.log(response);
+          if (__DEV__) {
+            console.log('Using fake data');
+            return {data: _.clone(fakeData.footerData, true)};
+          }
         });
     }
   }
@@ -81,12 +94,15 @@ export function currentJobChanged(newJob) {
           return {data: response.data.Results};
         })
         .catch(function (response) {
-          return {data: fakeData.jobSkills.Results};
+          console.log(response);
+          if (__DEV__) {
+            console.log('Using fake data');
+            return {data: _.clone(fakeData.jobSkills.Results, true)};
+          }
         });
     }
   }
 }
-
 
 export function openSkillsModal() {
   return {
@@ -127,7 +143,11 @@ export function getJobSkills(jobSelected) {
           return {data: response.data.Results};
         })
         .catch(function (response) {
-          return {data: fakeData.jobSkills.Results};
+          console.log(response);
+          if (__DEV__) {
+            console.log('Using fake data');
+            return {data: _.clone(fakeData.jobSkills.Results.slice(), true)};
+          }
         });
     },
     jobSelected
@@ -150,6 +170,12 @@ export function CheckJobPopularSkill(idxSkill) {
   return {
     type: 'CHECK_JOB_POPULAR_SKILL',
     idxSkill
+  }
+}
+
+export function addCheckedSkills() {
+  return {
+    type: 'ADD_CHECKED_SKILLS'
   }
 }
 

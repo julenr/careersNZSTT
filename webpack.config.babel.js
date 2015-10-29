@@ -79,6 +79,9 @@ if(TARGET === 'start' || !TARGET) {
       new HtmlwebpackPlugin({
         title: APP_TITLE,
         template: './templates/index-develop.tpl'
+      }),
+      new webpack.DefinePlugin({
+        '__DEV__': JSON.stringify(JSON.parse('true'))
       })
     ]
   });
@@ -132,9 +135,9 @@ if(TARGET === 'build') {
       ),
       new webpack.DefinePlugin({
         'process.env': {
-          //Reduce React lib size
           'NODE_ENV': JSON.stringify('production')
-        }
+        },
+        '__DEV__': JSON.stringify(JSON.parse('false'))
       }),
       new webpack.optimize.UglifyJsPlugin({
         compress: {

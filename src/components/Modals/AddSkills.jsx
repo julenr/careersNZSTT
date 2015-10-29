@@ -21,7 +21,14 @@ class AddSkillsModal extends React.Component {
               <div className="fieldset">
                 <div className="field text">
                   <div className="text">
-                    <input className="text autocomplete" name="q4-sample" id="q4-sample" type="text" data-type="input" placeholder="eg. IT skills" />
+                    <input className="text autocomplete"
+                           name="q4-sample"
+                           id="q4-sample"
+                           type="text"
+                           data-type="input"
+                           placeholder="eg. IT skills"
+                           ref="inputJob"
+                      />
                     </div>
                   </div>
                 </div>
@@ -34,7 +41,7 @@ class AddSkillsModal extends React.Component {
               </div>
               { this.renderShowMoreButton() }
               <div className="submit">
-                <a className="button-solid" onClick={this.showCheckSkillsModal} >Done</a><br/>
+                <a className="button-solid" onClick={() => this.showCheckSkillsModal(this.refs.inputJob.value)} >Done</a><br/>
                 <a className="button-simple" href="javascript:void 0" onClick={this.cancelModal} >Cancel</a>
               </div>
                 <a className="action-close icon-cross" href="javascript:void 0" onClick={this.cancelModal}>&nbsp;</a>

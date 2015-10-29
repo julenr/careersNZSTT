@@ -22,7 +22,12 @@ class EditSkillsModal extends React.Component {
               </div>
               <div className="layout-col layout-col-8">
                 <div className="tags" data-type="tag">
-                  {selectedSkills.map(this.renderSkillsTags)}
+                  {
+                    (selectedSkills.length) ?
+                      selectedSkills.map(this.renderSkillsTags)
+                      :
+                      <span>You still have no added skills</span>
+                  }
                   <span className="button add-more" onClick={this.addSkillsModal}>
                     <span className="icon-plus-circle"></span>
                     Add more skills

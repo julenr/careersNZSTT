@@ -28,6 +28,10 @@ import ProviderConnect from './components/ProviderConnect/ProviderConnect.jsx';
 
 console.clear();
 
+if (__DEV__) {
+  console.log('DEVELOPMENT ENVIRONMENT ACTIVATED');
+}
+
 // Element to attach React-DOM
 const app = document.createElement('div');
 document.body.appendChild(app);

@@ -1,4 +1,5 @@
 import uuid from 'node-uuid';
+import store from './create-store';
 
 var initialState = {};
 
@@ -335,6 +336,16 @@ export function _footerData(state = initialState, action = {}) {
       newState.data.PopularJobs.Skills[action.idxSkill].Selected = !newState.data.PopularJobs.Skills[action.idxSkill].Selected;
       newState.data.PopularJobs.Loading = uuid.v1();
       return newState;
+    case 'ADD_CHECKED_SKILLS':
+      let selectedSkills = store.getState()._questionnaire.data.Skills.Selected;
+      newState.data.PopularJobs.Skills.map((skill) => {
+        if(skill.Selected && (_.findIndex(selectedSkills, (e) => (e === skill.Title)) === -1) ) {
+          selectedSkills.push(skill.Title);
+        }
+      });
+      newState.data.PopularJobs.Skills = [];
+      return newState;
+
     case 'GET_JOB_SKILLS_CHECK_MODAL_REQUEST':
       newState.data.PopularJobs.Loading = true;
       newState.data.PopularJobs.JobSelected = action.jobSelected;

@@ -4,9 +4,11 @@
 import './TypeAhead.scss';
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import { scrollTo } from '../../../libs/helpers';
 import uuid from 'node-uuid';
+import axios from 'axios';
 
 var Typeahead = require('react-typeahead').Typeahead;
 
@@ -14,7 +16,7 @@ import Avatar from '../../subcomponents/Avatar';
 
 class InputTypeAhead extends React.Component {
   render() {
-    var question = this.props.questionnaire[this.props.id];
+    let question = this.props.questionnaire[this.props.id];
     let classes = classNames( this.props.className, {
       'submit': true,
       'submit active': question.Text
@@ -29,7 +31,7 @@ class InputTypeAhead extends React.Component {
           <div className="text">
             <Typeahead
               ref="typeAhead"
-              autoFocus
+              inputProps={ {autoFocus: true} }
               customClasses={{
                 input: 'text',
                 typeahead: 'topcoat-list',
@@ -64,10 +66,8 @@ class InputTypeAhead extends React.Component {
   }
 
   KeyUp = () => {
-    this.props.setTypeAheadText(this.props.id, this.refs.typeAhead);
-    console.log(this.refs.typeAhead);
-    console.log(this.refs.typeAhead.options);
-    //this.refs.typeAhead.options = [];
+    let typeAheadText = this.refs['typeAhead'].state.entryValue;
+    this.props.setTypeAheadText(this.props.id, typeAheadText);
   }
 
   alternativeClicked = (alternativeQuestionID) => {

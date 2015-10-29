@@ -86,3 +86,76 @@ export function currentJobChanged(newJob) {
     }
   }
 }
+
+
+export function openSkillsModal() {
+  return {
+    type: 'SHOW_SKILLS_MODAL'
+  }
+}
+
+export function closeSkillsModal() {
+  return {
+    type: 'CLOSE_SKILLS_MODAL'
+  }
+}
+
+export function openAddSkillsModal() {
+  return {
+    type: 'SHOW_ADD_SKILLS_MODAL'
+  }
+}
+
+export function closeAddSkillsModal() {
+  return {
+    type: 'CLOSE_ADD_SKILLS_MODAL'
+  }
+}
+
+export function showMoreAddSkillsModal() {
+  return {
+    type: 'SHOW_MORE_OPTIONS_ADD_SKILLS_MODAL'
+  }
+}
+
+export function getJobSkills(jobSelected) {
+  return {
+    types: ['GET_JOB_SKILLS_CHECK_MODAL_REQUEST', 'GET_JOB_SKILLS_CHECK_MODAL_SUCCESS', 'GET_JOB_SKILLS_CHECK_MODAL_FAILURE'],
+    promise: () => {
+      return axios.get(`/api/skills-transition-tool/job-skills/${jobSelected}`)
+        .then(function (response) {
+          return {data: response.data.Results};
+        })
+        .catch(function (response) {
+          return {data: fakeData.jobSkills.Results};
+        });
+    },
+    jobSelected
+  }
+}
+
+export function openCheckSkillsModal() {
+  return {
+    type: 'SHOW_CHECK_SKILLS_MODAL'
+  }
+}
+
+export function closeCheckSkillsModal() {
+  return {
+    type: 'CLOSE_CHECK_SKILLS_MODAL'
+  }
+}
+
+export function CheckJobPopularSkill(idxSkill) {
+  return {
+    type: 'CHECK_JOB_POPULAR_SKILL',
+    idxSkill
+  }
+}
+
+export function removeSelectedSkill(skill) {
+  return {
+    type: 'REMOVE_SKILL_FROM_SELECTED',
+    skill
+  }
+}

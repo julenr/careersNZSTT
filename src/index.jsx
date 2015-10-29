@@ -35,7 +35,6 @@ document.body.appendChild(app);
 // Retrieve initial Data from the server
 store.dispatch(actionCreators.getFooterData());
 store.dispatch(actionCreators.getQuestionnaire());
-store.dispatch({type: 'FIRST_QUESTION'});
 
 // Render the DOM when the data is allready stored
 let unsubscribe = store.subscribe(() => {

@@ -19,6 +19,10 @@ const data =
       Questionnaire: [],
       Questions: [],
       refresh: false,
+      Skills: {
+        Selected: [],
+        Current: []
+      }
     }
   },
   _listViewData: {

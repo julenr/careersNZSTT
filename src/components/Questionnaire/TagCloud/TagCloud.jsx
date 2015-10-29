@@ -27,10 +27,6 @@ class TagCloud extends React.Component {
     store.dispatch(actionCreators.dumpSkillsIntoTagCloud());
   }
 
-  componentDidMount(){
-    ReactDOM.findDOMNode(this.refs.option0).focus();
-  }
-
   render() {
     var { skillsLoaded } = this.props;
     if(skillsLoaded) {
@@ -92,13 +88,13 @@ class TagCloudContent extends React.Component {
       } );
       if(response.Selected) this.nextButtonActive = true;
       return (
-      <span key={idx} onClick={ () => this.props.responseClickedTagCloud(this.props.id, idx)}>
-        <span className={ classes } key={idx} tabIndex="0" ref={`option${idx}`} >
+      <span key={idx} onClick={ () => this.props.responseClickedTagCloud(this.props.id, idx)} >
+        <span className={ classes } key={idx} tabIndex="0" >
           {response.Title}
           <span
             className="icon-cancel-circle"
             key={idx}
-            onClick={ () => this.props.removeTag(this.props.id, idx)}
+            onClick={ () => this.props.removeTag(this.props.id, idx) }
             >
           </span>
         </span>

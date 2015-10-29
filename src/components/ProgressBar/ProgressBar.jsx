@@ -3,22 +3,28 @@
  */
 
 import React from 'react';
+import Sticky from 'react-sticky';
 
 class ProgressBar extends React.Component {
   render() {
+    var customStyleObject = {
+      position: 'fixed',
+      bottom: 0,
+      left: 0,
+      right: 0
+    }
+
     return (
+      <Sticky topOffset={-100000} stickyStyle={customStyleObject}>
       <div className="progress-bar">
         <div className="page-wrapper">
-          <span className="progress-bar-status amount-10">&nbsp;</span>
+          <span className={`progress-bar-status amount-${(Math.round(this.props.Percentage/10)*10)}`}>&nbsp;</span>
           <ol>
-            <li className="step-1 active">You've made the first step, you're here!</li>
-            <li className="step-2">Good start user-name! We just need to know a little more to make a good list for you.</li>
-            <li className="step-3">So far we have a list of 123 job/courses, tell us a little more to narrow it down a bit.</li>
-            <li className="step-4">That's better, we've got it down to 23 courses. <a href="#">Show me them now</a></li>
-            <li className="step-5">Great, we've got a nice list of 9 jobs/courses. <a href="#">Show me!</a></li>
+            <li className="step-1 active">{this.props.Text}</li>
           </ol>
         </div>
       </div>
+      </Sticky>
     );
   }
 }

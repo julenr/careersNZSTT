@@ -48,11 +48,11 @@ export function setInputText(questionID, text) {
   }
 }
 
-export function setTypeAheadText(questionID, typeAhead) {
+export function setTypeAheadText(questionID, text) {
   return {
     type: 'SET_INPUT_TYPE_AHEAD',
     questionID,
-    text: typeAhead.state.entryValue
+    text
   }
 }
 
@@ -124,15 +124,12 @@ export function getListViewData() {
     promise: () => {
       let state = store.getState();
       let listType = state._questionnaire.data.ListTypes.Current;
-      //let Data = JSON.stringify(state._questionnaire.data);
-      //console.log({Data});
       return axios.post(`/api/skills-transition-tool/listview/${appID}/${listType}`, state._questionnaire.data)
         .then(function (response) {
-          console.log(response.data);
           return {data: response.data};
         })
         .catch(function (response) {
-          console.log(response.data);
+          console.log(response);
           return {data: fakeData.listViewData};
         });
     }

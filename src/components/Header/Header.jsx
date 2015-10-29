@@ -4,7 +4,13 @@
 import React from 'react';
 import { Router, Route, Link } from 'react-router';
 
+import EditSkillsModal from '../Modals/EditSkills.jsx';
+import AddSkillsModal from '../Modals/AddSkills.jsx';
+import CheckSkillsModal from '../Modals/CheckSkills.jsx';
+
 class Header extends React.Component {
+
+
   render() {
     return (
       <header className="page-header" id="top">
@@ -16,7 +22,7 @@ class Header extends React.Component {
             <ul>
               <li className="tool-edit"><a href="#">Edit</a>
                 <ul>
-                  <li><Link to="/questionnaire">Edit your skills</Link></li>
+                  <li><a href="javascript: void 0" onClick={this.openSkillsModal}>Edit your skills</a></li>
                   <li><a href="#">Edit your preferences</a></li>
                 </ul>
               </li>
@@ -25,9 +31,17 @@ class Header extends React.Component {
           </nav>
           <div className="clear"></div>
         </div>
+        <EditSkillsModal {...this.props}/>
+        <AddSkillsModal {...this.props}/>
+        <CheckSkillsModal {...this.props}/>
       </header>
     );
   }
+
+  openSkillsModal = () => {
+    this.props.openSkillsModal();
+  }
+
 }
 
 export default Header;

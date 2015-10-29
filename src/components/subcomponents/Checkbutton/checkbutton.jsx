@@ -2,9 +2,8 @@
  * Created by jr1500 on 30/09/15.
  */
 
-import classNames from 'classnames';
-
 import React from 'react';
+import classNames from 'classnames';
 
 class Checkbutton extends React.Component {
 

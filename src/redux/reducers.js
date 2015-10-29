@@ -37,6 +37,7 @@ export function _questionnaire(state = initialState, action = {}) {
       };
     case 'GET_QUESTIONNAIRE_SUCCESS':
       action.result.data.Questionnaire = []; // Initialize the questionnaire array
+      action.result.data.Questionnaire.push( Object.assign({}, action.result.data.Questions[0] ));
       return {
         ...state,
         data: action.result.data,
@@ -92,9 +93,16 @@ export function _questionnaire(state = initialState, action = {}) {
       newState.data.refresh = uuid.v1();
       return newState;
     }
+
     case 'REMOVE_TAG':
       newState.data.Questionnaire[action.questionID].QuestionResponses[action.tagID].Removed = true;
       return newState;
+    case 'REMOVE_SKILL_FROM_SELECTED': {
+      let idxSelectedSkill = newState.data.Skills.Selected.findIndex((skill) => (action.skill === skill));
+      newState.data.Skills.Selected.splice(idxSelectedSkill, 1);
+      newState.data.refresh = uuid.v1();
+      return newState;
+    }
     case 'DUMP_SKILLS_INTO_TAG_CLOUD_REQUEST':
       console.log('Dump request');
       return newState;
@@ -158,24 +166,20 @@ export function _questionnaire(state = initialState, action = {}) {
       newState.data.Member.Name = action.name;
       return newState;
 
-    case 'FIRST_QUESTION':
-      if(newState.data.Questionnaire.length) {
-        console.log('the 1st question is already rendered ');
-      }
-      else {
-        newState.data.Questionnaire.push( Object.assign({}, newState.data.Questions[0] ));
-        newState.data.refresh = uuid.v1();
-      }
-      return newState;
     case 'NEXT_QUESTION':
       if(action.questionID < newState.data.Questionnaire.length-1) {
-        console.log('the question is already rendered ', action.questionID, newState.data.Questionnaire.length);
+        console.log('the question is already rendered. Take some action here ', action.questionID, newState.data.Questionnaire.length);
       }
       else {
         let nextQuestionIndex = newState.data.Questions.findIndex((q) => (q.ID === action.nextQuestionID));
         let question = Object.assign({}, newState.data.Questions[nextQuestionIndex]);
         question.Loaded = false; // Force to load skills in tag cloud each time a Tag Cloud is created
         newState.data.Questionnaire.push( question );
+        // This check is if in the case that the next question is a repeated question and does not have to refresh the progress bar
+        if(newState.data.ProgressBar.Percentage < newState.data.Questions[nextQuestionIndex].MilestonePercentage) {
+          newState.data.ProgressBar.Percentage = newState.data.Questions[nextQuestionIndex].MilestonePercentage;
+          newState.data.ProgressBar.Text = newState.data.Questions[nextQuestionIndex].MilestoneText;
+        }
         newState.data.refresh = uuid.v1();
       }
       return newState;
@@ -207,6 +211,7 @@ export function _mainPage(state = initialState, action = {}) {
       return state;
   }
 }
+
 
 // LIST VIEW REDUCER
 export function _listViewData(state = initialState, action = {}) {
@@ -268,6 +273,7 @@ export function _listViewData(state = initialState, action = {}) {
 
 // FOOTER DATA REDUCER
 export function _footerData(state = initialState, action = {}) {
+  let newState = {...state };
   switch (action.type) {
     case 'GET_FOOTER_DATA_REQUEST':
       return {
@@ -275,16 +281,72 @@ export function _footerData(state = initialState, action = {}) {
         loaded: false
       };
     case 'GET_FOOTER_DATA_SUCCESS':
-      return {
-        ...state,
-        data: action.result.data,
-        loaded: true
-      };
+      newState.data = action.result.data;
+      newState.data.PopularJobs.Skills = [];
+      newState.loaded =  true;
+      newState.showSkillsModal = false;
+      newState.showAddSkillsModal = false;
+      newState.showCheckSkillsModal = false;
+      return newState;
     case 'GET_FOOTER_DATA_FAILURE':
+      newState.data = action.result.data;
+      newState.data.PopularJobs.Skills = [];
+      newState.loaded =  true;
+      newState.showSkillsModal = false;
+      newState.showAddSkillsModal = false;
+      newState.showCheckSkillsModal = false;
+      return newState;
+
+    case 'SHOW_SKILLS_MODAL':
       return {
         ...state,
-        loaded: true
+        showSkillsModal: true
       };
+    case 'CLOSE_SKILLS_MODAL':
+      return {
+        ...state,
+        showSkillsModal: false
+      };
+
+    case 'SHOW_ADD_SKILLS_MODAL':
+      return {
+        ...state,
+        showAddSkillsModal: true
+      };
+    case 'CLOSE_ADD_SKILLS_MODAL':
+      return {
+        ...state,
+        showAddSkillsModal: false
+      };
+    case 'SHOW_MORE_OPTIONS_ADD_SKILLS_MODAL':
+      newState.data.PopularJobs.Visible = 1000;
+      return newState;
+    case 'SHOW_CHECK_SKILLS_MODAL':
+      return {
+        ...state,
+        showCheckSkillsModal: true
+      };
+    case 'CLOSE_CHECK_SKILLS_MODAL':
+      return {
+        ...state,
+        showCheckSkillsModal: false
+      };
+    case 'CHECK_JOB_POPULAR_SKILL':
+      newState.data.PopularJobs.Skills[action.idxSkill].Selected = !newState.data.PopularJobs.Skills[action.idxSkill].Selected;
+      newState.data.PopularJobs.Loading = uuid.v1();
+      return newState;
+    case 'GET_JOB_SKILLS_CHECK_MODAL_REQUEST':
+      newState.data.PopularJobs.Loading = true;
+      newState.data.PopularJobs.JobSelected = action.jobSelected;
+      return newState;
+    case 'GET_JOB_SKILLS_CHECK_MODAL_SUCCESS':
+      newState.data.PopularJobs.Skills = action.result.data;
+      newState.data.PopularJobs.Loading = false;
+      return newState;
+    case 'GET_JOB_SKILLS_CHECK_MODAL_FAILURE':
+      newState.data.PopularJobs.Skills = action.result.data;
+      newState.data.PopularJobs.Loading = false;
+      return newState;
     default:
       return state;
   }

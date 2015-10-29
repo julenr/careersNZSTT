@@ -45,8 +45,11 @@ export const questionnaire = {
     'Selected': [],
     'Current': null
   },
-  'Questionnaire': [
-  ],
+  'ProgressBar': {
+    'Percentage': 0,
+    'Text': 'You\'ve made the first step, you\'re here!'
+  },
+  'Questionnaire': [ ],
   'Questions': [
     {
       'ID': 1,
@@ -59,7 +62,9 @@ export const questionnaire = {
       'HasAlternative': false,
       'AlternativeText': '',
       'AlternativeNextQuestionID': null,
-      'Endpoint': null
+      'Endpoint': null,
+      'MilestonePercentage': 10,
+      'MilestoneText': 'Good start user-name! We just need to know a little more to make a good list for you.',
     },
     {
       'ID': 2,
@@ -72,6 +77,8 @@ export const questionnaire = {
       'AlternativeText': 'I don\'t mind',
       'AlternativeNextQuestionID': 5,
       'Endpoint': null,
+      'MilestonePercentage': 20,
+      'MilestoneText': 'So far we have a list of 123 job/courses, tell us a little more to narrow it down a bit.',
       'QuestionResponses': [
         {
           'ID': 0,
@@ -99,6 +106,8 @@ export const questionnaire = {
       'AlternativeText': '',
       'AlternativeNextQuestionID': null,
       'Endpoint': null,
+      'MilestonePercentage': 30,
+      'MilestoneText': 'That\'s better, we\'ve got it down to 23 courses.',
       'QuestionResponses': [
         {
           'ID': 0,
@@ -144,6 +153,8 @@ export const questionnaire = {
       'AlternativeText': 'I don\'t mind',
       'AlternativeNextQuestionID': 4,
       'Endpoint': null,
+      'MilestonePercentage': 40,
+      'MilestoneText': 'Great, we\'ve got a nice list of 9 jobs/courses.',
       'QuestionResponses': [{
         'ID': 1,
         'ResponseText': 'Option 1. Multiple choice question prototype',
@@ -191,10 +202,9 @@ export const questionnaire = {
       'AlternativeText': 'I don\'t have any other jobs to add',
       'AlternativeNextQuestionID': 8,
       'Endpoint': 'Jobs',
-      'QuestionResponses': [
-        'Dentist', 'Software Developer', 'Nurse Practioner', 'Physician', 'Civil Engineer', 'Cost Estimator',
-        'Logistician', 'Pharmacist', 'Optician', 'High School Teacher', 'Loan Officer', 'HR Specialist'
-      ]
+      'MilestonePercentage': 50,
+      'MilestoneText': 'Great, we\'ve got a nice list of 5 jobs/courses.',
+      'QuestionResponses': []
     }, {
       'ID': 7,
       'Text': 'Skills match',
@@ -205,6 +215,8 @@ export const questionnaire = {
       'AlternativeText': '',
       'AlternativeNextQuestionID': null,
       'Endpoint': null,
+      'MilestonePercentage': 70,
+      'MilestoneText': 'Great, we\'ve got a nice list of 3 jobs/courses.',
       'QuestionResponses': [{
         'Title': 'Skill 1.',
         'EntityType': 'None',
@@ -229,7 +241,9 @@ export const questionnaire = {
     }
     , {
       'ID': 8,
-      'QuestionType': 'EndForm'
+      'QuestionType': 'EndForm',
+      'MilestonePercentage': 100,
+      'MilestoneText': 'Great, you have finished 5 jobs/courses.'
     }]
 };
 
@@ -266,6 +280,12 @@ export const footerData = {
         'Title': 'Demo General Content Page - with video'
       }
     ]
+  },
+  'PopularJobs': {
+    'Jobs': ['Landscape Gardener', 'Child care', 'Aborist', 'Software Architect', 'Teacher', 'Warden',
+      'Landscape Gardener', 'Child care', 'Aborist', 'Software Architect', 'Teacher', 'Warden',
+      'Landscape Gardener', 'Child care', 'Aborist', 'Software Architect', 'Teacher', 'Warden'],
+    'Visible': 5
   }
 };
 

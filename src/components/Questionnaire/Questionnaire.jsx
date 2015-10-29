@@ -27,6 +27,7 @@ function mapStateToProps(state) {
   return {
     loaded: state._questionnaire.loaded,
     memberName: state._questionnaire.data.Member.Name,
+    progressBar: state._questionnaire.data.ProgressBar,
     questionnaire: state._questionnaire.data.Questionnaire,
     refresh: state._questionnaire.data.refresh // This value if changed somewhere triggers the component render method
   };
@@ -52,19 +53,19 @@ class Questionnaire extends React.Component {
 class Content extends React.Component {
   render() {
     var { questionnaire, memberName } = this.props;
+
     return (
       <div>
         <QuestionnaireHeader />
         <div className="page-maincontent" id="content">
           <div className="page-wrapper">
             <div className="questions">
-              <IntroForm {...this.props}/>
               {questionnaire.map(this.renderQuestions)}
             </div>
           </div>
         </div>
-        <ProgressBar />
         <Footer />
+        <ProgressBar {...this.props.progressBar}/>
       </div>
     );
   }
@@ -104,8 +105,8 @@ class Content extends React.Component {
 
 }
 
-export default connect(
-  mapStateToProps,
-  actionCreators
-)(Questionnaire);
+  export default connect(
+    mapStateToProps,
+    actionCreators
+  )(Questionnaire);
 

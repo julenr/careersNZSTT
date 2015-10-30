@@ -144,6 +144,7 @@ export function getJobSkills(jobSelected) {
         })
         .catch(function (response) {
           console.log(response);
+          return {data: response.data.Results};
           if (__DEV__) {
             console.log('Using fake data');
             return {data: _.clone(fakeData.jobSkills.Results.slice(), true)};

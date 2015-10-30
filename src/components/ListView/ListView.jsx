@@ -17,15 +17,20 @@ import InstitutionsPanel from './InstitutionsPanel/InstitutionsPanel';
 import Pagination from './Pagination/Pagination';
 import Preferences from './Preferences/Preferences';
 import HiddenCards from './HiddenCards/HiddenCards';
+import MatchSkillsModal from '../Modals/MatchSkills.jsx';
 
 function mapStateToProps(state) {
   return {
     loaded: state._listViewData.loaded,
+    showMatchSkillsModal: state._listViewData.ShowMatchSkillsModal,
+    selectedSkills: state._questionnaire.data.Skills.Selected,
+    checkSkillsID: state._listViewData.CheckSkillsID,
     jobsCards: state._listViewData.data.JobsCards,
     helpPanels: state._listViewData.data.HelpPanels,
     undoPanel: state._listViewData.data.UndoPanel,
     qualificationsPanel: state._listViewData.data.QualificationsPanel,
     institutionsPanel: state._listViewData.data.InstitutionsPanel,
+    showMatchSkillsModal: state._listViewData.ShowMatchSkillsModal,
     refresh: state._listViewData.data.refresh // This value if changed somewhere triggers the component render method
   };
 }
@@ -69,9 +74,9 @@ class Content extends React.Component {
         <Pagination {...this.props} />
         <Preferences {...this.props} />
         <HiddenCards {...this.props} />
-
         <Footer />
         <ActionPlanDrawer />
+        <MatchSkillsModal {...this.props}/>
       </div>
     )
   }

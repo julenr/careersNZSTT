@@ -1,5 +1,6 @@
 import uuid from 'node-uuid';
 import store from './create-store';
+import _ from 'lodash';
 
 var initialState = {};
 
@@ -245,6 +246,15 @@ export function _listViewData(state = initialState, action = {}) {
     case 'FLIP_JOB_CARD':
       newState.data.JobsCards[action.jobID].Flipped = !newState.data.JobsCards[action.jobID].Flipped;
       return newState;
+
+    case 'SHOW_MATCH_SKILLS_MODAL':
+      newState.CheckSkillsID = action.idJobCard;
+      newState.ShowMatchSkillsModal = true;
+      return newState;
+    case 'CLOSE_MATCH_SKILLS_MODAL':
+      newState.ShowMatchSkillsModal = false;
+      return newState;
+
     case 'CLOSE_HELP_PANEL':
       newState.data.HelpPanels[action.panelID].Closed = true;
       newState.data.refresh = uuid.v1();

@@ -318,7 +318,16 @@ export const listViewData = {
       'Interest': 74,
       'Demand': 23,
       'Pay': '$15–$40',
-      'PerTime': 'per hour'
+      'PerTime': 'per hour',
+      'Skills': [
+        'Examine characteristics or behavior of living organisms.',
+        'Research methods to improve food products.',
+        'Test quality of materials or finished products.',
+        'Evaluate quality of materials or products.',
+        'Analyze chemical compounds or substances.',
+        'Clean objects.',
+        'Prepare biological samples for testing or analysis.'
+      ]
     },
     {
       'Closed': false,
@@ -333,7 +342,16 @@ export const listViewData = {
       'Interest': 40,
       'Demand': 30,
       'Pay': '$120–$140',
-      'PerTime': 'per hour'
+      'PerTime': 'per hour',
+      'Skills': [
+        'Examine characteristics or behavior of living organisms.',
+        'Research methods to improve food products.',
+        'Test quality of materials or finished products.',
+        'Evaluate quality of materials or products.',
+        'Analyze chemical compounds or substances.',
+        'Clean objects.',
+        'Prepare biological samples for testing or analysis.'
+      ]
     },
     {
       'Closed': false,
@@ -348,7 +366,16 @@ export const listViewData = {
       'Interest': 60,
       'Demand': 90,
       'Pay': '$180–$340',
-      'PerTime': 'per hour'
+      'PerTime': 'per hour',
+      'Skills': [
+        'Examine characteristics or behavior of living organisms.',
+        'Research methods to improve food products.',
+        'Test quality of materials or finished products.',
+        'Evaluate quality of materials or products.',
+        'Analyze chemical compounds or substances.',
+        'Clean objects.',
+        'Prepare biological samples for testing or analysis.'
+      ]
     },
     {
       'Closed': false,
@@ -363,7 +390,18 @@ export const listViewData = {
       'Interest': 30,
       'Demand': 20,
       'Pay': '$110–$140',
-      'PerTime': 'per hour'
+      'PerTime': 'per hour',
+      'Skills': [
+        'Evaluate reports or designs to determine work needs.',
+        'Prepare chemicals for work application.',
+        'Clean facilities or sites.',
+        'Dispose of trash or waste materials.',
+        'Remove debris from work sites.',
+        'Plant greenery to improve landscape appearance.',
+        'Cultivate lawns, turf, or gardens.',
+        'Irrigate lawns, trees, or plants.',
+        'Install equipment to protect or support trees.'
+      ]
     },
     {
       'Closed': false,
@@ -378,7 +416,16 @@ export const listViewData = {
       'Interest': 50,
       'Demand': 90,
       'Pay': '$150–$240',
-      'PerTime': 'per hour'
+      'PerTime': 'per hour',
+      'Skills': [
+        'Examine characteristics or behavior of living organisms.',
+        'Research methods to improve food products.',
+        'Test quality of materials or finished products.',
+        'Evaluate quality of materials or products.',
+        'Analyze chemical compounds or substances.',
+        'Clean objects.',
+        'Prepare biological samples for testing or analysis.'
+      ]
     }
   ],
   'QualificationsPanel':
@@ -481,5 +528,3 @@ export const jobSkills = {
     }, {'SkillID': 957, 'Title': 'Install equipment to protect or support trees.'}
   ]
 };
-
-

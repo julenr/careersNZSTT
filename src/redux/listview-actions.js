@@ -25,6 +25,19 @@ export function flipJobCard(jobID) {
   }
 }
 
+export function openMatchSkillsModal(idJobCard) {
+  return {
+    type: 'SHOW_MATCH_SKILLS_MODAL',
+    idJobCard
+  }
+}
+export function closeMatchSkillsModal(idJobCard) {
+  return {
+    type: 'CLOSE_MATCH_SKILLS_MODAL',
+    idJobCard
+  }
+}
+
 export function closeUndoPanel() {
   return {
     type: 'CLOSE_UNDO_PANEL'

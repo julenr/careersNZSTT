@@ -27,6 +27,8 @@ const data =
   },
   _listViewData: {
     loaded: false,
+    ShowMatchSkillsModal: false,
+    CheckSkillsID: 0,
     data: {
       refresh: false,
       'UndoPanel': {},

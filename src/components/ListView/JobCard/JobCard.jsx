@@ -93,8 +93,12 @@ class JobCard extends React.Component {
                     className="icon-cross"></span></a>
                 </header>
                 <div className="description">{jobCard.Description}</div>
-                <a href="javascript: void 0" className="action-skills-match divider">See your <em>skills match</em>
-                  for this job</a>
+                <a className="action-skills-match divider"
+                   href="javascript: void 0"
+                   onClick={() => this.props.openMatchSkillsModal(this.props.id)}
+                  >
+                  See your <em>skills match</em>for this job
+                </a>
                 <dl>
                   <dt>Interests:</dt>
                   <dd>{jobCard.Interests}</dd>

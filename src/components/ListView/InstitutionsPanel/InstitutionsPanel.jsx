@@ -6,6 +6,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 import InstitutionCard from '../InstitutionCard';
+import RemoveInstitutionCardModal from './RemoveInstitutionCardModal';
 
 
 class InstitutionsPanel extends React.Component {
@@ -61,6 +62,7 @@ class InstitutionsPanel extends React.Component {
               {institutionsPanel.Institutions.map(this.renderInstitutionsCards)}
             </div>
           </div>
+          <RemoveInstitutionCardModal {...this.props}/>
         </div>
       );
     }

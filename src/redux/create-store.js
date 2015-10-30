@@ -29,6 +29,12 @@ const data =
     loaded: false,
     ShowMatchSkillsModal: false,
     CheckSkillsID: 0,
+    ShowRemoveJobCardModal: false,
+    RemoveJobCardModalID: -1,
+    ShowRemoveQualificationCardModal: false,
+    RemoveQualificationCardModalID: -1,
+    ShowRemoveInstitutionCardModal: false,
+    RemoveInstitutionCardModalID: -1,
     data: {
       refresh: false,
       'UndoPanel': {},

@@ -138,7 +138,8 @@ class JobCard extends React.Component {
     if(this.props.flipped){
       this.flipCard();
     }
-    this.props.closeJobCard(this.props.id);
+    this.props.openRemoveJobCardModal(this.props.id);
+    //this.props.closeJobCard(this.props.id);
   }
 
   openCard = () => {

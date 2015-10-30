@@ -246,6 +246,13 @@ export function _listViewData(state = initialState, action = {}) {
     case 'FLIP_JOB_CARD':
       newState.data.JobsCards[action.jobID].Flipped = !newState.data.JobsCards[action.jobID].Flipped;
       return newState;
+    case 'CLOSE_REMOVE_JOB_CARD_MODAL':
+      newState.ShowRemoveJobCardModal = false;
+      return newState;
+    case 'OPEN_REMOVE_JOB_CARD_MODAL':
+      newState.RemoveJobCardModalID = action.jobCardID;
+      newState.ShowRemoveJobCardModal = true;
+      return newState;
 
     case 'SHOW_MATCH_SKILLS_MODAL':
       newState.CheckSkillsID = action.idJobCard;
@@ -275,6 +282,13 @@ export function _listViewData(state = initialState, action = {}) {
       newState.data.QualificationsPanel.Courses[action.qualificationID].Closed = false;
       newState.data.refresh = uuid.v1();
       return newState;
+    case 'CLOSE_REMOVE_QUALIFICATION_CARD_MODAL':
+      newState.ShowRemoveQualificationCardModal = false;
+      return newState;
+    case 'OPEN_REMOVE_QUALIFICATION_CARD_MODAL':
+      newState.ShowRemoveQualificationCardModal = true;
+      return newState;
+
     case 'CLOSE_INSTITUTION_CARD':
       newState.data.InstitutionsPanel.Institutions[action.institutionID].Closed = true;
       newState.data.refresh = uuid.v1();
@@ -283,6 +297,13 @@ export function _listViewData(state = initialState, action = {}) {
       newState.data.InstitutionsPanel.Institutions[action.institutionID].Closed = false;
       newState.data.refresh = uuid.v1();
       return newState;
+    case 'CLOSE_REMOVE_INSTITUTION_CARD_MODAL':
+      newState.ShowRemoveInstitutionCardModal = false;
+      return newState;
+    case 'OPEN_REMOVE_INSTITUTION_CARD_MODAL':
+      newState.ShowRemoveInstitutionCardModal = true;
+      return newState;
+
     case 'CLOSE_INSTITUTION_PANEL':
       newState.data.InstitutionsPanel.Closed = true;
       newState.data.refresh = uuid.v1();

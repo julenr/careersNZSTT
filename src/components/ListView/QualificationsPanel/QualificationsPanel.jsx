@@ -6,7 +6,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 import QualificationCard from '../QualificationCard';
-
+import RemoveQualificationCardModal from './RemoveQualificationCardModal';
 
 class QualificationsPanel extends React.Component {
 
@@ -61,6 +61,7 @@ class QualificationsPanel extends React.Component {
               {qualificationsPanel.Courses.map(this.renderQualificationsCards)}
             </div>
           </div>
+          <RemoveQualificationCardModal {...this.props}/>
         </div>
       );
     }

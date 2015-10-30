@@ -92,3 +92,42 @@ export function institutionCardOpen(institutionID) {
   }
 }
 
+// JOB CARD MODAL
+export function closeRemoveJobCardModal() {
+  return {
+    type: 'CLOSE_REMOVE_JOB_CARD_MODAL'
+  }
+}
+export function openRemoveJobCardModal(jobCardID) {
+  return {
+    type: 'OPEN_REMOVE_JOB_CARD_MODAL',
+    jobCardID
+  }
+}
+
+// INSTITUTION CARD MODAL
+export function closeRemoveInstitutionCardModal() {
+  return {
+    type: 'CLOSE_REMOVE_INSTITUTION_CARD_MODAL'
+  }
+}
+export function openRemoveInstitutionCardModal(institutionCardID) {
+  return {
+    type: 'OPEN_REMOVE_INSTITUTION_CARD_MODAL',
+    institutionCardID
+  }
+}
+
+// QUALIFICATION CARD MODAL
+export function closeRemoveQualificationCardModal() {
+  return {
+    type: 'CLOSE_REMOVE_QUALIFICATION_CARD_MODAL'
+  }
+}
+export function openRemoveQualificationCardModal(qualificationCardID) {
+  return {
+    type: 'OPEN_REMOVE_QUALIFICATION_CARD_MODAL',
+    qualificationCardID
+  }
+}
+

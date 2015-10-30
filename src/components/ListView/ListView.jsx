@@ -8,29 +8,36 @@ import uuid from 'node-uuid';
 import { connect } from 'react-redux';
 import * as actionCreators from '../../redux/listview-actions';
 
-import Footer from '../Footer/Footer.jsx';
-import ActionPlanDrawer from '../ActionPlanDrawer/ActionPlanDrawer.jsx';
+import Footer from '../Footer/Footer';
+import ActionPlanDrawer from '../ActionPlanDrawer/ActionPlanDrawer';
 import JobCard from './JobCard/JobCard';
+import RemoveJobCardModal from './JobCard/RemoveJobCardModal';
 import ListViewHeader from './ListViewHeader/ListViewHeader';
 import QualificationsPanel from './QualificationsPanel/QualificationsPanel';
 import InstitutionsPanel from './InstitutionsPanel/InstitutionsPanel';
 import Pagination from './Pagination/Pagination';
 import Preferences from './Preferences/Preferences';
 import HiddenCards from './HiddenCards/HiddenCards';
-import MatchSkillsModal from '../Modals/MatchSkills.jsx';
+import MatchSkillsModal from '../Modals/MatchSkills';
 
 function mapStateToProps(state) {
   return {
     loaded: state._listViewData.loaded,
     showMatchSkillsModal: state._listViewData.ShowMatchSkillsModal,
     selectedSkills: state._questionnaire.data.Skills.Selected,
-    checkSkillsID: state._listViewData.CheckSkillsID,
     jobsCards: state._listViewData.data.JobsCards,
     helpPanels: state._listViewData.data.HelpPanels,
     undoPanel: state._listViewData.data.UndoPanel,
     qualificationsPanel: state._listViewData.data.QualificationsPanel,
     institutionsPanel: state._listViewData.data.InstitutionsPanel,
     showMatchSkillsModal: state._listViewData.ShowMatchSkillsModal,
+    checkSkillsID: state._listViewData.CheckSkillsID,
+    showRemoveJobCardModal: state._listViewData.ShowRemoveJobCardModal,
+    removeJobCardModalID: state._listViewData.RemoveJobCardModalID,
+    showRemoveQualificationCardModal: state._listViewData.ShowRemoveQualificationCardModal,
+    removeQualificationCardModalID: state._listViewData.RemoveQualificationCardModalID,
+    showRemoveInstitutionCardModal: state._listViewData.ShowRemoveInstitutionCardModal,
+    removeInstitutionCardModalID: state._listViewData.RemoveInstitutionCardModalID,
     refresh: state._listViewData.data.refresh // This value if changed somewhere triggers the component render method
   };
 }
@@ -77,6 +84,7 @@ class Content extends React.Component {
         <Footer />
         <ActionPlanDrawer />
         <MatchSkillsModal {...this.props}/>
+        <RemoveJobCardModal {...this.props}/>
       </div>
     )
   }

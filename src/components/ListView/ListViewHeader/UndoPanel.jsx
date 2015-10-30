@@ -5,21 +5,12 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { connect } from 'react-redux';
-import * as actionCreators from '../../../redux/listview-actions';
-
-@connect((state) => {
-  return {
-    undoPanel: state._listViewData.data.UndoPanel,
-    closed: state._listViewData.data.UndoPanel.Closed
-  }
-})
 class UndoPanel extends React.Component {
 
   render() {
-    let { undoPanel, closed } = this.props;
+    let { undoPanel } = this.props;
 
-    if(closed) {
+    if(undoPanel.Closed) {
       return <span />;
     }
     else {
@@ -36,7 +27,7 @@ class UndoPanel extends React.Component {
   }
 
   closePanel = () => {
-    this.props.dispatch(actionCreators.undoPanelClosed());
+    this.props.closeUndoPanel();
   }
 }
 

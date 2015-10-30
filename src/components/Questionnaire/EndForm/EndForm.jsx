@@ -29,7 +29,9 @@ class EndForm extends React.Component {
   }
 
   linkClick = () => {
-    this.props.getListViewData();
+    if(!this.props.listViewLoaded) {
+      this.props.getListViewData();
+    }
   }
 }
 

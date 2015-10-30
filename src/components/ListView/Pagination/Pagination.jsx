@@ -5,8 +5,6 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { connect } from 'react-redux';
-import * as actionCreators from '../../../redux/listview-actions';
 
 class Pagination extends React.Component {
 

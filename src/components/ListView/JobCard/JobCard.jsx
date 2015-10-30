@@ -4,27 +4,26 @@
 
 import React from 'react';
 import classNames from 'classnames';
-
 import { connect } from 'react-redux';
-import * as actionCreators from '../../../redux/listview-actions';
 
-@connect((state, props) => {
+function mapStateToProps(state, ownProps) {
   return {
-    jobCard: state._listViewData.data.JobsCards[props.id],
-    flipped: state._listViewData.data.JobsCards[props.id].Flipped,
-    closed: state._listViewData.data.JobsCards[props.id].Closed
-  }
-})
+    // This is needed here in order to show the flipping effect
+    flipped: state._listViewData.data.JobsCards[ownProps.id].Flipped
+  };
+}
+
 class JobCard extends React.Component {
 
   render() {
-    let { jobCard, flipped, closed, hidden } = this.props;
+    let { hidden, flipped } = this.props;
+    let jobCard = this.props.jobsCards[this.props.id];
     let classes = classNames( this.props.className, {
       'careers-card job': true,
       'careers-card job flip': flipped
     } );
 
-    if(closed && !this.props.hidden) {
+    if(jobCard.Closed && !this.props.hidden) {
       return <span />;
     }
     else {
@@ -128,18 +127,18 @@ class JobCard extends React.Component {
   }
 
   flipCard = () => {
-    this.props.dispatch(actionCreators.jobCardFlip(this.props.id));
+    this.props.flipJobCard(this.props.id);
   }
 
   closeCard = () => {
     if(this.props.flipped){
       this.flipCard();
     }
-    this.props.dispatch(actionCreators.jobClosed(this.props.id));
+    this.props.closeJobCard(this.props.id);
   }
 
   openCard = () => {
-    this.props.dispatch(actionCreators.jobOpen(this.props.id));
+    this.props.openJobCard(this.props.id);
   }
 
   roundProgressBarValues = (Value) => {
@@ -147,4 +146,6 @@ class JobCard extends React.Component {
   }
 }
 
-export default JobCard;
+export default connect(
+  mapStateToProps
+)(JobCard);

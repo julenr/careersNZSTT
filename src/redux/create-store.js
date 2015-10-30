@@ -26,7 +26,15 @@ const data =
     }
   },
   _listViewData: {
-    loaded: false
+    loaded: false,
+    data: {
+      refresh: false,
+      'UndoPanel': {},
+      'HelpPanels': [],
+      'JobsCards': [],
+      'QualificationsPanel': {},
+      'InstitutionsPanel': {}
+    }
   }
 };
 

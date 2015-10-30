@@ -7,22 +7,14 @@ import classNames from 'classnames';
 
 import { textFitToContainer } from '../../../libs/helpers.js';
 
-import { connect } from 'react-redux';
-import * as actionCreators from '../../../redux/listview-actions';
-
-@connect((state, props) => {
-  return {
-    qualification: state._listViewData.data.QualificationsPanel.Courses[props.id],
-    closed: state._listViewData.data.QualificationsPanel.Courses[props.id].Closed
-  }
-})
 class QualificationCard extends React.Component {
   render() {
-    let { qualification, closed } = this.props;
+    let { hidden } = this.props;
+    let qualification = this.props.qualificationsPanel.Courses[this.props.id];
     const style = {
       fontSize: textFitToContainer(qualification.Title) + 'px'
     }
-    if(closed && !this.props.hidden) {
+    if(closed && !hidden) {
       return <span />;
     }
     else {
@@ -79,11 +71,11 @@ class QualificationCard extends React.Component {
   }
 
   closeCard = () => {
-    this.props.dispatch(actionCreators.closeQualificationCard(this.props.id));
+    this.props.closeQualificationCard(this.props.id);
   }
 
   openCard = () => {
-    this.props.dispatch(actionCreators.openQualificationCard(this.props.id));
+    this.props.openQualificationCard(this.props.id);
   }
 }
 

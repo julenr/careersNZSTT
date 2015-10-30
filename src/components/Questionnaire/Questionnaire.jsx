@@ -26,6 +26,7 @@ import EndForm from './EndForm/EndForm';
 function mapStateToProps(state) {
   return {
     loaded: state._questionnaire.loaded,
+    listViewLoaded: state._listViewData.loaded,
     memberName: state._questionnaire.data.Member.Name,
     progressBar: state._questionnaire.data.ProgressBar,
     questionnaire: state._questionnaire.data.Questionnaire,
@@ -34,6 +35,7 @@ function mapStateToProps(state) {
 }
 
 class Questionnaire extends React.Component {
+
   render () {
     var { loaded } = this.props;
 
@@ -48,9 +50,11 @@ class Questionnaire extends React.Component {
       );
     }
   }
+
 }
 
 class Content extends React.Component {
+
   render() {
     var { questionnaire, memberName } = this.props;
 
@@ -105,8 +109,8 @@ class Content extends React.Component {
 
 }
 
-  export default connect(
-    mapStateToProps,
-    actionCreators
-  )(Questionnaire);
+export default connect(
+  mapStateToProps,
+  actionCreators
+)(Questionnaire);
 

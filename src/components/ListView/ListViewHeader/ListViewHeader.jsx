@@ -5,17 +5,9 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { connect } from 'react-redux';
-import * as actionCreators from '../../../redux/listview-actions';
-
 import UndoPanel from './UndoPanel';
 import HelpPanel from './HelpPanel';
 
-@connect((state) => {
-  return {
-    helpPanels: state._listViewData.data.HelpPanels
-  }
-})
 class ListViewHeader extends React.Component {
 
   render() {
@@ -34,7 +26,7 @@ class ListViewHeader extends React.Component {
           <p className="results-subtitle">
             <strong>23 courses</strong> are hidden, <a href="javascript: void 0">edit your preferences</a>
           </p>
-          <UndoPanel />
+          <UndoPanel {...this.props}/>
           {helpPanels.map(this.renderHelpPanels)}
         </div>
       </div>
@@ -44,7 +36,7 @@ class ListViewHeader extends React.Component {
   renderHelpPanels = (helpPanel, idx) => {
     if(!helpPanel.Closed) {
       return (
-        <HelpPanel key={idx} id={idx}/>
+        <HelpPanel key={idx} id={idx} {...this.props} />
       );
     }
   }

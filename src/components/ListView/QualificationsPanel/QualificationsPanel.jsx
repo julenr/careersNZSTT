@@ -5,23 +5,14 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { connect } from 'react-redux';
-import * as actionCreators from '../../../redux/listview-actions';
-
 import QualificationCard from '../QualificationCard';
 
-@connect((state) => {
-  return {
-    qualifications: state._listViewData.data.QualificationsPanel.Courses,
-    closed: state._listViewData.data.QualificationsPanel.Closed
-  }
-})
+
 class QualificationsPanel extends React.Component {
 
   render() {
-    let { qualifications, closed } = this.props;
-
-    if(closed) {
+    let { qualificationsPanel } = this.props;
+    if(qualificationsPanel.Closed) {
       return <span />;
     }
     else {
@@ -67,7 +58,7 @@ class QualificationsPanel extends React.Component {
               <a href="javascript: void 0" className="icon-cross panel-close" onClick={this.closePanel}>&nbsp;</a>
             </header>
             <div className="careers-card-wrapper">
-              {qualifications.map(this.renderQualificationsCards)}
+              {qualificationsPanel.Courses.map(this.renderQualificationsCards)}
             </div>
           </div>
         </div>
@@ -78,13 +69,13 @@ class QualificationsPanel extends React.Component {
   renderQualificationsCards = (qualification, idx) => {
     if(!qualification.Closed) {
       return (
-        <QualificationCard key={idx} id={idx} />
+        <QualificationCard key={idx} id={idx} {...this.props} />
       );
     }
   }
 
   closePanel = () => {
-    this.props.dispatch(actionCreators.closeQualificationsPanel());
+    this.props.closeQualificationsPanel();
   }
 }
 

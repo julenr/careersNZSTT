@@ -236,36 +236,46 @@ export function _listViewData(state = initialState, action = {}) {
       };
     case 'CLOSE_JOB_CARD':
       newState.data.JobsCards[action.jobID].Closed = true;
+      newState.data.refresh = uuid.v1();
       return newState;
     case 'OPEN_JOB_CARD':
       newState.data.JobsCards[action.jobID].Closed = false;
+      newState.data.refresh = uuid.v1();
       return newState;
     case 'FLIP_JOB_CARD':
       newState.data.JobsCards[action.jobID].Flipped = !newState.data.JobsCards[action.jobID].Flipped;
       return newState;
     case 'CLOSE_HELP_PANEL':
       newState.data.HelpPanels[action.panelID].Closed = true;
+      newState.data.refresh = uuid.v1();
       return newState;
     case 'CLOSE_UNDO_PANEL':
       newState.data.UndoPanel.Closed = true;
+      newState.data.refresh = uuid.v1();
       return newState;
     case 'CLOSE_QUALIFICATIONS_PANEL':
       newState.data.QualificationsPanel.Closed = true;
+      newState.data.refresh = uuid.v1();
       return newState;
     case 'CLOSE_QUALIFICATION_CARD':
       newState.data.QualificationsPanel.Courses[action.qualificationID].Closed = true;
+      newState.data.refresh = uuid.v1();
       return newState;
     case 'OPEN_QUALIFICATION_CARD':
       newState.data.QualificationsPanel.Courses[action.qualificationID].Closed = false;
+      newState.data.refresh = uuid.v1();
       return newState;
     case 'CLOSE_INSTITUTION_CARD':
       newState.data.InstitutionsPanel.Institutions[action.institutionID].Closed = true;
+      newState.data.refresh = uuid.v1();
       return newState;
     case 'OPEN_INSTITUTION_CARD':
       newState.data.InstitutionsPanel.Institutions[action.institutionID].Closed = false;
+      newState.data.refresh = uuid.v1();
       return newState;
     case 'CLOSE_INSTITUTION_PANEL':
       newState.data.InstitutionsPanel.Closed = true;
+      newState.data.refresh = uuid.v1();
       return newState;
     default:
       return state;

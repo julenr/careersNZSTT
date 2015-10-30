@@ -4,34 +4,34 @@
 
 
 /* List View Actions */
-export function jobClosed(jobID) {
+export function closeJobCard(jobID) {
   return {
     type: 'CLOSE_JOB_CARD',
     jobID
   }
 }
 
-export function jobOpen(jobID) {
+export function openJobCard(jobID) {
   return {
     type: 'OPEN_JOB_CARD',
     jobID
   }
 }
 
-export function jobCardFlip(jobID) {
+export function flipJobCard(jobID) {
   return {
     type: 'FLIP_JOB_CARD',
     jobID
   }
 }
 
-export function undoPanelClosed() {
+export function closeUndoPanel() {
   return {
     type: 'CLOSE_UNDO_PANEL'
   }
 }
 
-export function helpPanelClosed(panelID) {
+export function closeHelpPanel(panelID) {
   return {
     type: 'CLOSE_HELP_PANEL',
     panelID

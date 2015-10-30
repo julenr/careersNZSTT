@@ -18,18 +18,25 @@ import Pagination from './Pagination/Pagination';
 import Preferences from './Preferences/Preferences';
 import HiddenCards from './HiddenCards/HiddenCards';
 
-@connect((state) => {
+function mapStateToProps(state) {
   return {
-    loaded: state._listViewData.loaded
-  }
-})
+    loaded: state._listViewData.loaded,
+    jobsCards: state._listViewData.data.JobsCards,
+    helpPanels: state._listViewData.data.HelpPanels,
+    undoPanel: state._listViewData.data.UndoPanel,
+    qualificationsPanel: state._listViewData.data.QualificationsPanel,
+    institutionsPanel: state._listViewData.data.InstitutionsPanel,
+    refresh: state._listViewData.data.refresh // This value if changed somewhere triggers the component render method
+  };
+}
+
 class ListView extends React.Component {
 
   render () {
     var { loaded } = this.props;
 
     if (loaded) {
-      return <Content />;
+      return <Content {...this.props} />;
     }
     else {
       return (
@@ -42,11 +49,6 @@ class ListView extends React.Component {
 
 }
 
-@connect((state) => {
-  return {
-    jobsCards: state._listViewData.data.JobsCards
-  }
-})
 class Content extends React.Component {
 
   render () {
@@ -54,8 +56,7 @@ class Content extends React.Component {
 
     return (
       <div>
-        <ListViewHeader />
-
+        <ListViewHeader {...this.props}/>
         <div className="page-maincontent">
           <div className="page-wrapper">
             <div className="careers-card-wrapper">
@@ -63,12 +64,11 @@ class Content extends React.Component {
             </div>
           </div>
         </div>
-
-        <QualificationsPanel />
-        <InstitutionsPanel />
-        <Pagination />
-        <Preferences />
-        <HiddenCards />
+        <QualificationsPanel {...this.props} />
+        <InstitutionsPanel {...this.props} />
+        <Pagination {...this.props} />
+        <Preferences {...this.props} />
+        <HiddenCards {...this.props} />
 
         <Footer />
         <ActionPlanDrawer />
@@ -79,11 +79,14 @@ class Content extends React.Component {
   renderJobsCards = (jobCard, idx) => {
     if(!jobCard.Closed) {
       return (
-        <JobCard key={uuid.v4()} id={idx}/>
+        <JobCard key={uuid.v4()} id={idx} {...this.props}/>
       );
     }
   }
 
 }
 
-export default ListView;
+export default connect(
+  mapStateToProps,
+  actionCreators
+)(ListView);

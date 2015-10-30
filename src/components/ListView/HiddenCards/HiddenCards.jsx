@@ -5,32 +5,22 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { connect } from 'react-redux';
-import * as actionCreators from '../../../redux/listview-actions';
-
 import JobCard from '../JobCard/JobCard';
 import QualificationCard from '../QualificationCard';
 import InstitutionCard from '../InstitutionCard';
 
-@connect((state) => {
-  return {
-    jobsCards: state._listViewData.data.JobsCards,
-    qualificationsCard: state._listViewData.data.QualificationsPanel.Courses,
-    institutionsCards: state._listViewData.data.InstitutionsPanel.Institutions
-  }
-})
 class HiddenCards extends React.Component {
 
   render() {
-    var { jobsCards, qualificationsCard, institutionsCards } = this.props;
+    var { jobsCards, qualificationsPanel, institutionsPanel } = this.props;
 
     return (
       <div className="page-maincontent results-hidden">
         <div className="page-wrapper">
           <div className="careers-card-wrapper">
             {jobsCards.map(this.renderJobsCards)}
-            {qualificationsCard.map(this.renderQualificationsCards)}
-            {institutionsCards.map(this.renderInstitutionsCards)}
+            {qualificationsPanel.Courses.map(this.renderQualificationsCards)}
+            {institutionsPanel.Institutions.map(this.renderInstitutionsCards)}
           </div>
         </div>
       </div>
@@ -40,7 +30,7 @@ class HiddenCards extends React.Component {
   renderJobsCards = (jobCard, idx) => {
     if(jobCard.Closed) {
       return (
-        <JobCard key={idx} id={idx} hidden="true"/>
+        <JobCard key={idx} id={idx} hidden="true" {...this.props}/>
       );
     }
   }
@@ -48,7 +38,7 @@ class HiddenCards extends React.Component {
   renderQualificationsCards = (courseCard, idx) => {
     if(courseCard.Closed) {
       return (
-        <QualificationCard key={idx} id={idx} hidden="true"/>
+        <QualificationCard key={idx} id={idx} hidden="true" {...this.props}/>
       );
     }
   }
@@ -56,7 +46,7 @@ class HiddenCards extends React.Component {
   renderInstitutionsCards = (institutionCard, idx) => {
     if(institutionCard.Closed) {
       return (
-        <InstitutionCard key={idx} id={idx} hidden="true"/>
+        <InstitutionCard key={idx} id={idx} hidden="true" {...this.props}/>
       );
     }
   }

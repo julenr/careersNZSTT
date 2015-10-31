@@ -91,7 +91,6 @@ class InputTypeAhead extends React.Component {
   }
 
   valueChanged = (event, value) => {
-    console.log('Value changed ', value, ' Event:', event);
     this.props.loadTypeAhead(this.props.id, value);
     this.props.setTypeAheadText(this.props.id, value);
   }
@@ -102,7 +101,7 @@ class InputTypeAhead extends React.Component {
   }
 
   nextClicked = (nextQuestionID) => {
-    this.props.setFinalTypeAheadText(this.props.id, this.refs.typeAhead);
+    this.props.setFinalTypeAheadText(this.props.id, this.refs.Typeahead.state.value);
     scrollTo(this.scrollElementID, -110);
     this.props.nextQuestion(this.props.id, nextQuestionID);
   }

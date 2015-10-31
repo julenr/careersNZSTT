@@ -30,6 +30,7 @@ function mapStateToProps(state) {
     memberName: state._questionnaire.data.Member.Name,
     progressBar: state._questionnaire.data.ProgressBar,
     questionnaire: state._questionnaire.data.Questionnaire,
+    typeAheadItemsContainer: state._questionnaire.TypeAheadItemsContainer,
     refresh: state._questionnaire.data.refresh // This value if changed somewhere triggers the component render method
   };
 }

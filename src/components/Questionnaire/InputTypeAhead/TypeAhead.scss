@@ -2,81 +2,22 @@
 /* SASS imports */
 @import "../../../styles/_sass_mixins_colours";
 
-.list,
-.topcoat-list {
-  padding: 0;
-  margin: 0;
-  font: inherit;
-  color: white;;
-  background: $skillstool_blue_3;
-  border: none;
-  cursor: default;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
+
+.typeAhead {
+  width:180% !important;
 }
 
-.list__header,
-.topcoat-list__header {
-  margin: 0;
-}
 
-.list__container,
-.topcoat-list__container {
-  padding: 0;
-  margin: 0;
-  list-style-type: none;
-}
-
-.list__item,
-.topcoat-list__item {
-  margin: 0;
-  padding: 0;
-}
-
-.topcoat-list {
-  background-color: #555555;
-}
-
-.topcoat-list__header {
-  padding: 4px 20px;
-  font-size: 1em;
-  font-weight: 400;
-  background-color: #333333;
-  color: #c6c8c8;
-  text-shadow: 0 1px 0 rgba(255,255,255,0.1);
-}
-
-.topcoat-list__container {
-  color: #c6c8c8;
-  margin-left: 20px;
-  padding: 0.5rem 0rem 0.2rem 1rem ;
-  background : white;
-  width: 80%;
-  @include border-radius(0 em(21,21) em(21,21) em(21,21));
-}
-
-.topcoat-list__item {
-  padding: 0.1rem 0rem 0.1rem 1rem ;
-  font-size: 1.3em;
-  color: white;
-}
-
-.topcoat-list__item:first-child {
-}
-
-.topcoat-text-input {
-  width: 100%;
-}
-li.hover {
-  background: #bbbbbb;
-}
-.topcoat-addme::before {
-  content: 'Add me: '
-}
-.topcoat-addme {
-  text-align: right;
-}
+/*
+ AUTOCOMPLETE
+ ---------------------------------------
+*/
+//.ui-helper-hidden-accessible { display:none; }
+//.ui-autocomplete-input { position:relative; z-index:2; }
+//.ui-autocomplete { background:#fff; border:1px solid $skillstool_gray_2; position:absolute; z-index:1; @include border-radius(em(21) em(21) 0 0); padding:0.75em 0 0.5EM;  }
+//.ui-autocomplete .ui-menu-item { font-size:em(14); line-height:lh(18,14); padding:em(5,14) em(20,14); cursor:pointer; }
+//.ui-autocomplete .ui-menu-item.ui-state-focus { color:$skillstool_blue_3; }
+//
+//@media only screen and (min-width:600px) {
+//  .ui-autocomplete .ui-menu-item { font-size:em(21); padding:em(5,21) em(15,21); }
+//}

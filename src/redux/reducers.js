@@ -106,17 +106,14 @@ export function _questionnaire(state = initialState, action = {}) {
       return newState;
     }
     case 'DUMP_SKILLS_INTO_TAG_CLOUD_REQUEST':
-      console.log('Dump request');
       return newState;
     case 'DUMP_SKILLS_INTO_TAG_CLOUD_SUCCESS': {
       let questionID = newState.data.Questionnaire.length-1;
       newState.data.Questionnaire[questionID].QuestionResponses = newState.data.Skills.SkillsTags.slice();
-      console.log('Dump success: ', newState.data.Questionnaire[questionID].QuestionResponses);
       newState.data.Questionnaire[questionID].Loaded = true;
       return newState;
     }
     case 'DUMP_SKILLS_INTO_TAG_CLOUD_FAILURE': {
-      console.log('Dump fail');
       newState.data.Questionnaire[questionID].Loaded = true;
       return newState;
     }
@@ -163,6 +160,20 @@ export function _questionnaire(state = initialState, action = {}) {
       newState.data[endPoint].Selected.push(action.text);
       newState.data.refresh = uuid.v1();
       return newState;
+
+    case 'DUMP_DATA_INTO_TYPE_AHEAD_REQUEST':
+      console.log('Dump Type Ahead request');
+      return newState;
+    case 'DUMP_DATA_INTO_TYPE_AHEAD_SUCCESS': {
+      newState.TypeAheadItemsContainer = action.result.data;
+      console.log('Dump success: ', action.result.data);
+      return newState;
+    }
+    case 'DUMP_DATA_INTO_TYPE_AHEAD_FAILURE': {
+      console.log('Dump fail');
+      return newState;
+    }
+
 
     case 'SET_MEMBER_NAME':
       newState.data.Member.Name = action.name;

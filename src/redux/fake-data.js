@@ -528,3 +528,38 @@ export const jobSkills = {
     }, {'SkillID': 957, 'Title': 'Install equipment to protect or support trees.'}
   ]
 };
+
+
+export const typeAheadData = {
+  'Query': 'fake',
+  'Pagination':
+  {
+    'TotalItems': 17,
+    'Start': 0,
+    'Limit': 10,
+    'CurrentPage': 1,
+    'TotalPages': 2,
+    'FirstItem': 1,
+    'LastItem': 10
+  },
+  'Results': [
+    {
+      'SkillID': 16,
+      'Title': 'Evaluate reports or designs to determine work needs.'
+    }, {'SkillID': 372, 'Title': 'Prepare chemicals for work application.'}, {
+      'SkillID': 390,
+      'Title': 'Clean facilities or sites.'
+    }, {'SkillID': 402, 'Title': 'Remove snow.'}, {
+      'SkillID': 412,
+      'Title': 'Dispose of trash or waste materials.'
+    }, {'SkillID': 408, 'Title': 'Remove debris from work sites.'}, {
+      'SkillID': 936,
+      'Title': 'Plant greenery to improve landscape appearance.'
+    }, {'SkillID': 934, 'Title': 'Cultivate lawns, turf, or gardens.'}, {
+      'SkillID': 939,
+      'Title': 'Irrigate lawns, trees, or plants.'
+    }, {'SkillID': 957, 'Title': 'Install equipment to protect or support trees.'}
+  ]
+};
+
+

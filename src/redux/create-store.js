@@ -13,6 +13,7 @@ const data =
   },
   _questionnaire: {
     loaded: false,
+    TypeAheadItemsContainer: [],
     data: {
       Jobs: {Current: null},
       Member: '',

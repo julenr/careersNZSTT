@@ -10,9 +10,15 @@ import Modal from 'react-modal';
 class EditSkillsModal extends React.Component {
 
   render() {
+    const customStyles = {
+      content: {
+        top: '30px',
+      }
+    }
+
     var selectedSkills = this.props.skillsSelected;
     return (
-      <Modal isOpen={this.props.showSkillsModal} >
+      <Modal isOpen={this.props.showSkillsModal} style={customStyles}>
         <div className="ReactModal__Overlay ReactModal__Overlay--after-open">
           <div className="ReactModal__Content ReactModal__Content--after-open modal modal-edit-skills">
             <h2 className="modal-title">Edit your skills</h2>

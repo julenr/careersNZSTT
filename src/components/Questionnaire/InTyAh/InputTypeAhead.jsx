@@ -10,42 +10,18 @@ import { scrollTo } from '../../../libs/helpers';
 import uuid from 'node-uuid';
 import axios from 'axios';
 
-import Typeahead from 'react-autocomplete'
+var Typeahead = require('react-typeahead').Typeahead;
 
 import Avatar from '../../subcomponents/Avatar';
 
 class InputTypeAhead extends React.Component {
   render() {
     let question = this.props.questionnaire[this.props.id];
-    let typeAheadItemsContainer = this.props.typeAheadItemsContainer;
     let classes = classNames( this.props.className, {
       'submit': true,
       'submit active': question.Text
     } );
     this.scrollElementID = uuid.v1();
-
-    const styles = {
-      item: {
-        padding: '2px 6px',
-        cursor: 'default'
-      },
-
-      highlightedItem: {
-        color: 'white',
-        background: 'hsl(200, 50%, 50%)',
-        padding: '2px 6px',
-        cursor: 'default'
-      },
-
-      menu: {
-        border: 'solid 1px #ccc'
-      },
-
-      typeAhead: {
-        border: 'solid 1px #ccc',
-        background: 'hsl(200, 50%, 50%)',
-      }
-    }
 
     return (
       <div className="fieldset active">
@@ -54,25 +30,24 @@ class InputTypeAhead extends React.Component {
           <label htmlFor="q2-sample">{question.Description}</label>
           <div className="text">
             <Typeahead
-              inputProps={ {'className':'text typeAhead' }  }
-              ref="Typeahead"
-              items={typeAheadItemsContainer}
-              getItemValue={(item) => item.Title}
-              onSelect={(value, item) => {
-                console.log(value, ' ', item);
-                }}
-              onChange={ (event, value) => this.valueChanged(event, value) }
-              renderItem={(item, isHighlighted) => (
-                  <div
-                    style={isHighlighted ? styles.highlightedItem : styles.item}
-                    key={uuid.v1()}
-                    id={uuid.v1()}
-                    >
-                    {item.Title}
-                  </div>
-                )}
+              ref="typeAhead"
+              inputProps={ {autoFocus: true} }
+              customClasses={{
+                input: 'text',
+                typeahead: 'topcoat-list',
+                results: 'topcoat-list__container',
+                listItem: 'topcoat-list__item',
+                token: 'topcoat-button',
+                customAdd: 'topcoat-addme'
+              }}
+              value={question.Text}
+              placeholder={question.PlaceHolder}
+              onKeyUp={ () => this.KeyUp() }
+              onBlur={ () => this.KeyUp() }
+              options={question.QuestionResponses}
+              maxVisible={10}
               />
-              <br/>
+
               <a className="action-flip" href="javascript: void 0" onClick={ () => this.alternativeClicked(question.AlternativeNextQuestionID) } >
                 {question.AlternativeText}
               </a>
@@ -90,10 +65,9 @@ class InputTypeAhead extends React.Component {
     );
   }
 
-  valueChanged = (event, value) => {
-    console.log('Value changed ', value, ' Event:', event);
-    this.props.loadTypeAhead(this.props.id, value);
-    this.props.setTypeAheadText(this.props.id, value);
+  KeyUp = () => {
+    let typeAheadText = this.refs['typeAhead'].state.entryValue;
+    this.props.setTypeAheadText(this.props.id, typeAheadText);
   }
 
   alternativeClicked = (alternativeQuestionID) => {

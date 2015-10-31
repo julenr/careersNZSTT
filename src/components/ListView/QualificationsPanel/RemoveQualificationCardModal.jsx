@@ -30,7 +30,6 @@ class RemoveQualificationCardModal extends React.Component {
           </div>
         </div>
 
-
       </Modal>
     );
   }

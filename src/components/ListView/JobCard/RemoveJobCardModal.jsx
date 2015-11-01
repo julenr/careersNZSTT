@@ -20,14 +20,14 @@ class RemoveJobCardModal extends React.Component {
 
               <div className="form">
                 <p>You are removing the job <strong>{jobCard.Title}</strong> from your list</p>
-                <a href="#" className="button-solid">Remove <span
+                <a href="javascript:void 0" className="button-solid" onClick={this.closeModalAndRemoveJobCard} >Remove <span
                   className="tablet desktop">{jobCard.Title} only</span></a>
               </div>
               <div className="submit">
                 <a className="button-simple" href="javascript:void 0" onClick={this.cancelModal}>Cancel</a>
               </div>
               <a className="action-close icon-cross" href="javascript:void 0"
-                 onClick={this.closeModal}>&nbsp;</a>
+                 onClick={this.cancelModal}>&nbsp;</a>
             </div>
           </div>
 
@@ -40,7 +40,8 @@ class RemoveJobCardModal extends React.Component {
     }
   }
 
-  closeModal = () => {
+  closeModalAndRemoveJobCard = () => {
+    this.props.closeJobCard(this.props.removeJobCardModalID);
     this.props.closeRemoveJobCardModal();
   }
 

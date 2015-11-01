@@ -57,11 +57,11 @@ export function setTypeAheadText(questionID, text) {
   }
 }
 
-export function setFinalTypeAheadText(questionID, typeAhead) {
+export function setFinalTypeAheadText(questionID, text) {
   return {
     type: 'SET_FINAL_INPUT_TYPE_AHEAD',
     questionID,
-    text: typeAhead.state.entryValue
+    text
   }
 }
 

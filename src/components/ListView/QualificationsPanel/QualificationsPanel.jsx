@@ -14,7 +14,7 @@ class QualificationsPanel extends React.Component {
 
     if(showQualificationsPanel) {
       return (
-        <div className="page-maincontent course-options-panel jobs">
+        <div className="page-maincontent course-options-panel jobs" >
           <div className="page-wrapper">
             <header className="panel-header">
               <h2 className="panel-title">Which course suits you best?</h2>

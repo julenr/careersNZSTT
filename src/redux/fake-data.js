@@ -216,25 +216,25 @@ export const questionnaire = {
       'AlternativeNextQuestionID': null,
       'Endpoint': null,
       'MilestonePercentage': 70,
-      'MilestoneText': 'Great, we\'ve got a nice list of 3 jobs/courses.',
+      'MilestoneText': 'Great, we\'ve got a nice [job-title-plural] list of 3 jobs/courses.',
       'QuestionResponses': [{
-        'Title': 'Skill 1.',
+        'ResponseText': 'Skill 1.',
         'EntityType': 'None',
         'EntityData': ''
       }, {
-        'Title': 'Skill 2.',
+        'ResponseText': 'Skill 2.',
         'EntityType': 'None',
         'EntityData': ''
       }, {
-        'Title': 'Skill 3.',
+        'ResponseText': 'Skill 3.',
         'EntityType': 'None',
         'EntityData': ''
       }, {
-        'Title': 'Skill 4.',
+        'ResponseText': 'Skill 4.',
         'EntityType': 'None',
         'EntityData': ''
       }, {
-        'Title': 'Skill 5.',
+        'ResponseText': 'Skill 5.',
         'EntityType': 'None',
         'EntityData': ''
       }]
@@ -243,7 +243,7 @@ export const questionnaire = {
       'ID': 8,
       'QuestionType': 'EndForm',
       'MilestonePercentage': 100,
-      'MilestoneText': 'Great, you have finished 5 jobs/courses.'
+      'MilestoneText': 'Great, you have finished.'
     }]
 };
 

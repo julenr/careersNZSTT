@@ -191,7 +191,12 @@ export function _questionnaire(state = initialState, action = {}) {
         let nextQuestionIndex = newState.data.Questions.findIndex((q) => (q.ID === action.nextQuestionID));
         let question = Object.assign({}, newState.data.Questions[nextQuestionIndex]);
         question.Loaded = false; // Force to load skills in tag cloud each time a Tag Cloud is created
-        question.Description = replaceStrValues(question.Description);
+
+        if(question.QuestionType !== 'EndForm'){ //Replace tokens
+          question.Description = replaceStrValues(question.Description);
+          question.QuestionResponses.forEach((response) => { response.ResponseText = replaceStrValues(response.ResponseText )});
+        }
+
         newState.data.Questionnaire.push( question );
         // This check is if in the case that the next question is a repeated question and does not have to refresh the progress bar
         if(newState.data.ProgressBar.Percentage < newState.data.Questions[nextQuestionIndex].MilestonePercentage) {

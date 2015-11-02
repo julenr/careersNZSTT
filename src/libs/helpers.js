@@ -12,6 +12,8 @@ export function scrollTo(element, offset = 0) {
   scrollToElement(0, bodyScrollTop + elementY + offset);
 }
 
+
+// This function was originally written by Alan from ChromeToaster
 export function textFitToContainer(stringText = '') {
   if(stringText === null) {
     return 23;
@@ -43,6 +45,10 @@ export function textFitToContainer(stringText = '') {
 export function replaceStrValues(string ) {
   const state = store.getState();
 
-  return string.replace('[user-name]', state._questionnaire.data.Member.Name);
+  string = string.replace('[user-name]', state._questionnaire.data.Member.Name);
+  string = string.replace('[user region]', state._questionnaire.data.Member.Region);
+  string = string.replace('[job-title-plural]', `${state._questionnaire.data.Jobs.Current}s`);
+  string = string.replace('[job/course] ', state._questionnaire.data.Jobs.Current);
+  return string.replace('[list-type]', state._questionnaire.data.ListTypes.Current);
 
 }

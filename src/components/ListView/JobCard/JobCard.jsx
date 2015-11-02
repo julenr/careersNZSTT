@@ -5,6 +5,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
+import { scrollTo } from '../../../libs/helpers';
 
 function mapStateToProps(state, ownProps) {
   return {
@@ -133,6 +134,7 @@ class JobCard extends React.Component {
   showQualificationsPanel = () => {
     this.props.closeInstitutionsPanel();
     this.props.openQualificationsPanel();
+    scrollTo('qualifications-panel-scroll-point', -120);
   }
 
   flipCard = () => {

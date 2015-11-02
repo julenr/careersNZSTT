@@ -79,6 +79,7 @@ class Content extends React.Component {
             </div>
           </div>
         </div>
+        <div id="qualifications-panel-scroll-point" />
         <QualificationsPanel {...this.props} />
         <InstitutionsPanel {...this.props} />
         <Pagination {...this.props} />

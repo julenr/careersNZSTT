@@ -28,21 +28,7 @@ class TagCloud extends React.Component {
 
   render() {
     var { skillsLoaded } = this.props;
-    if(skillsLoaded) {
-      return <TagCloudContent {...this.props} />;
-    }
-    else {
-      return (
-        <div>
-          <Loader />
-        </div>
-      );
-    }
-  }
-}
 
-class TagCloudContent extends React.Component {
-  render() {
     var question = this.props.questionnaire[this.props.id];
     this.nextButtonActive = false;
     this.scrollElementID = `TagCloud${this.props.id}`;
@@ -56,13 +42,21 @@ class TagCloudContent extends React.Component {
             </span> to <strong>remove</strong> a skill you don't have or don't want to have.
           </p>
           <div className="question-tags" data-type="tag">
-            {question.QuestionResponses.map(this.renderTags)}
-            <div tabIndex="0" className="tag add-more"><span className="icon-plus-circle"></span>Add more</div>
-            <span tabIndex="0"
-                  className="tag select-all"
-                  onClick={ () => this.props.sellectAllTagCloud(this.props.id)}>
-              Select all
-            </span>
+
+
+            {
+              (skillsLoaded) ?
+                question.QuestionResponses.map(this.renderTags)
+                :
+                <Loader />
+
+            }
+            {
+              (skillsLoaded) ?
+                this.renderButtons
+                :
+                ''
+            }
           </div>
         </div>
         <div className={ classNames({'submit': true, 'submit active': this.nextButtonActive}) }>
@@ -73,6 +67,20 @@ class TagCloudContent extends React.Component {
         </div>
         <span id={this.scrollElementID}></span>
       </div>
+    );
+  }
+
+  renderButtons = () =>  {
+    return (
+      <span>
+        <div tabIndex="0" className="tag add-more"><span className="icon-plus-circle"></span>Add more</div>
+        <span tabIndex="0"
+          className="tag select-all"
+          onClick={ () => this.props.sellectAllTagCloud(this.props.id)}
+          >
+          Select all
+        </span>
+      </span>
     );
   }
 

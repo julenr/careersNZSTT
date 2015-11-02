@@ -5,7 +5,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { scrollTo } from '../../../libs/helpers';
-import uuid from 'node-uuid';
 
 import Checkbutton from '../../subcomponents/Checkbutton';
 import Avatar from '../../subcomponents/Avatar';
@@ -18,7 +17,7 @@ class SingleChoice extends React.Component {
 
   render() {
     var question = this.props.questionnaire[this.props.id];
-    this.scrollElementID = uuid.v1();
+    this.scrollElementID = `SingleChoice${this.props.id}`;
 
     return (
       <div className="fieldset active">

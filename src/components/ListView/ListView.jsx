@@ -14,6 +14,7 @@ import JobCard from './JobCard/JobCard';
 import RemoveJobCardModal from './JobCard/RemoveJobCardModal';
 import ListViewHeader from './ListViewHeader/ListViewHeader';
 import QualificationsPanel from './QualificationsPanel/QualificationsPanel';
+
 import InstitutionsPanel from './InstitutionsPanel/InstitutionsPanel';
 import Pagination from './Pagination/Pagination';
 import Preferences from './Preferences/Preferences';
@@ -29,7 +30,9 @@ function mapStateToProps(state) {
     helpPanels: state._listViewData.data.HelpPanels,
     undoPanel: state._listViewData.data.UndoPanel,
     qualificationsPanel: state._listViewData.data.QualificationsPanel,
+    showQualificationsPanel: state._listViewData.ShowQualificationsPanel,
     institutionsPanel: state._listViewData.data.InstitutionsPanel,
+    showInstitutionsPanel: state._listViewData.ShowInstitutionsPanel,
     showMatchSkillsModal: state._listViewData.ShowMatchSkillsModal,
     checkSkillsID: state._listViewData.CheckSkillsID,
     showRemoveJobCardModal: state._listViewData.ShowRemoveJobCardModal,

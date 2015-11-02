@@ -36,6 +36,8 @@ const data =
     RemoveQualificationCardModalID: -1,
     ShowRemoveInstitutionCardModal: false,
     RemoveInstitutionCardModalID: -1,
+    ShowQualificationsPanel: false,
+    ShowInstitutionsPanel: false,
     data: {
       refresh: false,
       'UndoPanel': {},

@@ -6,18 +6,14 @@ import React from 'react';
 import classNames from 'classnames';
 
 import InstitutionCard from '../InstitutionCard';
-import RemoveInstitutionCardModal from './RemoveInstitutionCardModal';
 
 
 class InstitutionsPanel extends React.Component {
 
   render() {
-    let { institutionsPanel } = this.props;
+    let { institutionsPanel, showInstitutionsPanel } = this.props;
 
-    if(institutionsPanel.closed) {
-      return <span />;
-    }
-    else {
+    if(showInstitutionsPanel) {
       return (
         <div className="page-maincontent course-options-panel courses">
           <div className="page-wrapper">
@@ -62,9 +58,11 @@ class InstitutionsPanel extends React.Component {
               {institutionsPanel.Institutions.map(this.renderInstitutionsCards)}
             </div>
           </div>
-          <RemoveInstitutionCardModal {...this.props}/>
         </div>
       );
+    }
+    else {
+      return <span />;
     }
   }
 
@@ -77,7 +75,7 @@ class InstitutionsPanel extends React.Component {
   }
 
   closePanel = () => {
-    this.props.institutionsPanelClose();
+    this.props.closeInstitutionsPanel();
   }
 }
 

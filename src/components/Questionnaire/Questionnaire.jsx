@@ -19,7 +19,6 @@ import SingleChoice from './SingleChoice/SingleChoice';
 import TagCloud from './TagCloud/TagCloud';
 import InputTypeAhead from './InputTypeAhead/InputTypeAhead';
 import YesNo from './YesNo/YesNo';
-import IntroForm from './IntroForm/IntroForm';
 import EndForm from './EndForm/EndForm';
 
 
@@ -36,7 +35,6 @@ function mapStateToProps(state) {
 }
 
 class Questionnaire extends React.Component {
-
   render () {
     var { loaded } = this.props;
 
@@ -51,7 +49,6 @@ class Questionnaire extends React.Component {
       );
     }
   }
-
 }
 
 class Content extends React.Component {

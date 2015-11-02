@@ -6,7 +6,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import { scrollTo } from '../../../libs/helpers';
-import uuid from 'node-uuid';
 import Loader from 'react-loader';
 
 import { connect } from 'react-redux';
@@ -46,7 +45,7 @@ class TagCloudContent extends React.Component {
   render() {
     var question = this.props.questionnaire[this.props.id];
     this.nextButtonActive = false;
-    this.scrollElementID = uuid.v1();
+    this.scrollElementID = `TagCloud${this.props.id}`;
 
     return (
       <div className="fieldset active">

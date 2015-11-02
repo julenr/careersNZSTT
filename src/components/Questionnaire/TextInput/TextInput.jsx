@@ -5,7 +5,6 @@
 import React from 'react';
 import classNames from 'classnames';
 import { scrollTo } from '../../../libs/helpers';
-import uuid from 'node-uuid';
 
 import Avatar from '../../subcomponents/Avatar';
 
@@ -18,7 +17,7 @@ class TextInput extends React.Component {
         'submit active': question.Text
       }
     );
-    this.scrollElementID = uuid.v1();
+    this.scrollElementID = `TextInput${this.props.id}`;
 
     return (
       <div className="fieldset active">

@@ -79,7 +79,7 @@ class JobCard extends React.Component {
                 </div>
               </div>
               <footer>
-                <a className="card-actions" href="javascript: void 0">How do I train for this job?</a>
+                <a className="card-actions" href="javascript: void 0" onClick={this.showQualificationsPanel}>How do I train for this job?</a>
                 <a className="card-actions reinstate-card" href="javascript: void 0" onClick={this.openCard}>Show
                   this job in my list again</a>
               </footer>
@@ -121,13 +121,18 @@ class JobCard extends React.Component {
                 </div>
               </div>
               <footer>
-                <a className="card-actions" href="javascript: void 0">How do I train for this job?</a>
+                <a className="card-actions" href="javascript: void 0" onClick={this.showQualificationsPanel}>How do I train for this job?</a>
               </footer>
             </div>
           </article>
         </div>
       );
     }
+  }
+
+  showQualificationsPanel = () => {
+    this.props.closeInstitutionsPanel();
+    this.props.openQualificationsPanel();
   }
 
   flipCard = () => {

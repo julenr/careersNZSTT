@@ -7,7 +7,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import { scrollTo } from '../../../libs/helpers';
-import uuid from 'node-uuid';
 import axios from 'axios';
 
 var Typeahead = require('react-typeahead').Typeahead;
@@ -21,7 +20,7 @@ class InputTypeAhead extends React.Component {
       'submit': true,
       'submit active': question.Text
     } );
-    this.scrollElementID = uuid.v1();
+    this.scrollElementID = `Typeahead${this.props.id}`;
 
     return (
       <div className="fieldset active">
@@ -76,7 +75,8 @@ class InputTypeAhead extends React.Component {
   }
 
   nextClicked = (nextQuestionID) => {
-    this.props.setFinalTypeAheadText(this.props.id, this.refs.typeAhead);
+    let typeAheadText = this.refs['typeAhead'].state.entryValue;
+    this.props.setFinalTypeAheadText(this.props.id, typeAheadText);
     scrollTo(this.scrollElementID, -110);
     this.props.nextQuestion(this.props.id, nextQuestionID);
   }

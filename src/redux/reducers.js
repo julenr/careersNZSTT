@@ -2,6 +2,8 @@ import uuid from 'node-uuid';
 import store from './create-store';
 import _ from 'lodash';
 
+import { replaceStrValues } from '../libs/helpers';
+
 var initialState = {};
 
 export function _time(state = initialState, action = {}) {
@@ -145,11 +147,16 @@ export function _questionnaire(state = initialState, action = {}) {
       newState.data.refresh = uuid.v1();
       return newState;
     }
-    case 'SET_INPUT_TEXT':
-      newState.data.Questionnaire[action.questionID].Text = action.text;
+    case 'SET_INPUT_TEXT': {
+      const question = newState.data.Questionnaire[action.questionID]
+      question.Text = action.text;
+      if(question.Endpoint) { //Endpoint tell us if another part of the state needs to be updated with the same value
+        let splits = question.Endpoint.split('.', 2);
+        newState.data[splits[0]][splits[1]] = action.text;
+      }
       newState.data.refresh = uuid.v1();
       return newState;
-
+    }
     case 'SET_INPUT_TYPE_AHEAD':
       newState.data.Questionnaire[action.questionID].Text = action.text;
       newState.data.refresh = uuid.v1();
@@ -162,15 +169,12 @@ export function _questionnaire(state = initialState, action = {}) {
       return newState;
 
     case 'DUMP_DATA_INTO_TYPE_AHEAD_REQUEST':
-      console.log('Dump Type Ahead request');
       return newState;
     case 'DUMP_DATA_INTO_TYPE_AHEAD_SUCCESS': {
       newState.TypeAheadItemsContainer = action.result.data;
-      console.log('Dump success: ', action.result.data);
       return newState;
     }
     case 'DUMP_DATA_INTO_TYPE_AHEAD_FAILURE': {
-      console.log('Dump fail');
       return newState;
     }
 
@@ -187,11 +191,12 @@ export function _questionnaire(state = initialState, action = {}) {
         let nextQuestionIndex = newState.data.Questions.findIndex((q) => (q.ID === action.nextQuestionID));
         let question = Object.assign({}, newState.data.Questions[nextQuestionIndex]);
         question.Loaded = false; // Force to load skills in tag cloud each time a Tag Cloud is created
+        question.Description = replaceStrValues(question.Description);
         newState.data.Questionnaire.push( question );
         // This check is if in the case that the next question is a repeated question and does not have to refresh the progress bar
         if(newState.data.ProgressBar.Percentage < newState.data.Questions[nextQuestionIndex].MilestonePercentage) {
           newState.data.ProgressBar.Percentage = newState.data.Questions[nextQuestionIndex].MilestonePercentage;
-          newState.data.ProgressBar.Text = newState.data.Questions[nextQuestionIndex].MilestoneText;
+          newState.data.ProgressBar.Text = replaceStrValues(newState.data.Questions[nextQuestionIndex].MilestoneText);
         }
         newState.data.refresh = uuid.v1();
       }
@@ -282,8 +287,10 @@ export function _listViewData(state = initialState, action = {}) {
       newState.data.refresh = uuid.v1();
       return newState;
     case 'CLOSE_QUALIFICATIONS_PANEL':
-      newState.data.QualificationsPanel.Closed = true;
-      newState.data.refresh = uuid.v1();
+      newState.ShowQualificationsPanel = false;
+      return newState;
+    case 'OPEN_QUALIFICATIONS_PANEL':
+      newState.ShowQualificationsPanel = true;
       return newState;
     case 'CLOSE_QUALIFICATION_CARD':
       newState.data.QualificationsPanel.Courses[action.qualificationID].Closed = true;
@@ -297,6 +304,7 @@ export function _listViewData(state = initialState, action = {}) {
       newState.ShowRemoveQualificationCardModal = false;
       return newState;
     case 'OPEN_REMOVE_QUALIFICATION_CARD_MODAL':
+      newState.RemoveQualificationCardModalID = action.qualificationCardID;
       newState.ShowRemoveQualificationCardModal = true;
       return newState;
 
@@ -312,12 +320,14 @@ export function _listViewData(state = initialState, action = {}) {
       newState.ShowRemoveInstitutionCardModal = false;
       return newState;
     case 'OPEN_REMOVE_INSTITUTION_CARD_MODAL':
+      newState.RemoveInstitutionCardModalID = action.institutionCardID;
       newState.ShowRemoveInstitutionCardModal = true;
       return newState;
-
     case 'CLOSE_INSTITUTION_PANEL':
-      newState.data.InstitutionsPanel.Closed = true;
-      newState.data.refresh = uuid.v1();
+      newState.ShowInstitutionsPanel = false;
+      return newState;
+    case 'OPEN_INSTITUTION_PANEL':
+      newState.ShowInstitutionsPanel = true;
       return newState;
     default:
       return state;

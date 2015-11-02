@@ -6,16 +6,13 @@ import React from 'react';
 import classNames from 'classnames';
 
 import QualificationCard from '../QualificationCard';
-import RemoveQualificationCardModal from './RemoveQualificationCardModal';
 
 class QualificationsPanel extends React.Component {
 
   render() {
-    let { qualificationsPanel } = this.props;
-    if(qualificationsPanel.Closed) {
-      return <span />;
-    }
-    else {
+    let { qualificationsPanel, showQualificationsPanel } = this.props;
+
+    if(showQualificationsPanel) {
       return (
         <div className="page-maincontent course-options-panel jobs">
           <div className="page-wrapper">
@@ -61,9 +58,11 @@ class QualificationsPanel extends React.Component {
               {qualificationsPanel.Courses.map(this.renderQualificationsCards)}
             </div>
           </div>
-          <RemoveQualificationCardModal {...this.props}/>
         </div>
       );
+    }
+    else {
+      return <span />;
     }
   }
 
@@ -76,6 +75,7 @@ class QualificationsPanel extends React.Component {
   }
 
   closePanel = () => {
+    this.props.closeInstitutionsPanel();
     this.props.closeQualificationsPanel();
   }
 }

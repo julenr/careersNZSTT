@@ -3,10 +3,13 @@
  */
 
 import scrollToElement from 'scroll-to';
+import store from '../redux/create-store';
 
 export function scrollTo(element, offset = 0) {
-  let yPos = document.getElementById(element).getBoundingClientRect().top + document.body.scrollTop;
-  scrollToElement(0, yPos + offset);
+  const bodyScrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+  const elementY = document.getElementById(element).getBoundingClientRect().top;
+
+  scrollToElement(0, bodyScrollTop + elementY + offset);
 }
 
 export function textFitToContainer(stringText = '') {
@@ -34,5 +37,12 @@ export function textFitToContainer(stringText = '') {
   }
 
   return font_size;
+
+}
+
+export function replaceStrValues(string ) {
+  const state = store.getState();
+
+  return string.replace('[user-name]', state._questionnaire.data.Member.Name);
 
 }

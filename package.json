@@ -54,7 +54,6 @@
     "lodash": "^3.10.1",
     "node-uuid": "^1.4.3",
     "react": "^0.14.1",
-    "react-autocomplete": "^0.1.4",
     "react-dom": "^0.14.0",
     "react-loader": "^2.0.0",
     "react-modal": "^0.6.1",

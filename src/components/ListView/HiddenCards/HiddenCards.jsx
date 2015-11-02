@@ -38,7 +38,7 @@ class HiddenCards extends React.Component {
   renderQualificationsCards = (courseCard, idx) => {
     if(courseCard.Closed) {
       return (
-        <QualificationCard key={idx} id={idx} hidden="true" {...this.props}/>
+        <QualificationCard key={idx} id={idx} {...this.props}/>
       );
     }
   }
@@ -46,7 +46,7 @@ class HiddenCards extends React.Component {
   renderInstitutionsCards = (institutionCard, idx) => {
     if(institutionCard.Closed) {
       return (
-        <InstitutionCard key={idx} id={idx} hidden="true" {...this.props}/>
+        <InstitutionCard key={idx} id={idx} {...this.props}/>
       );
     }
   }

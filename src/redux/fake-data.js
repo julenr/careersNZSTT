@@ -62,14 +62,14 @@ export const questionnaire = {
       'HasAlternative': false,
       'AlternativeText': '',
       'AlternativeNextQuestionID': null,
-      'Endpoint': null,
+      'Endpoint': 'Member.Name',
       'MilestonePercentage': 10,
-      'MilestoneText': 'Good start user-name! We just need to know a little more to make a good list for you.',
+      'MilestoneText': 'Good start. We just need to know a little more to make a good list for you.',
     },
     {
       'ID': 2,
       'Text': '',
-      'Description': 'YES/NO QUESTION PROTOTYPE',
+      'Description': 'YES/NO QUESTION PROTOTYPE FOR USER [user-name]',
       'QuestionType': 'YesNo',
       'QuestionResponses': [],
       'NextQuestionID': 3,
@@ -78,7 +78,7 @@ export const questionnaire = {
       'AlternativeNextQuestionID': 5,
       'Endpoint': null,
       'MilestonePercentage': 20,
-      'MilestoneText': 'So far we have a list of 123 job/courses, tell us a little more to narrow it down a bit.',
+      'MilestoneText': 'So far [user-name]! we have a list of 123 job/courses, tell us a little more to narrow it down a bit.',
       'QuestionResponses': [
         {
           'ID': 0,
@@ -430,7 +430,6 @@ export const listViewData = {
   ],
   'QualificationsPanel':
   {
-    'Closed': false,
     'Text': 'Which course suits you best?',
     'Region': 'Northland',
     'Courses': [
@@ -474,7 +473,6 @@ export const listViewData = {
   },
   'InstitutionsPanel':
   {
-    'Closed': false,
     'Text': 'Where would you like to study?',
     'Region': 'Northland',
     'Institutions': [

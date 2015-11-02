@@ -57,6 +57,12 @@ export function closeQualificationsPanel() {
   }
 }
 
+export function openQualificationsPanel() {
+  return {
+    type: 'OPEN_QUALIFICATIONS_PANEL'
+  }
+}
+
 export function closeQualificationCard(qualificationID) {
   return {
     type: 'CLOSE_QUALIFICATION_CARD',
@@ -71,21 +77,26 @@ export function openQualificationCard(qualificationID) {
   }
 }
 
-export function institutionsPanelClose(institutionID) {
+export function closeInstitutionsPanel() {
   return {
-    type: 'CLOSE_INSTITUTION_PANEL',
-    institutionID
+    type: 'CLOSE_INSTITUTION_PANEL'
   }
 }
 
-export function institutionCardClose(institutionID) {
+export function openInstitutionsPanel() {
+  return {
+    type: 'OPEN_INSTITUTION_PANEL'
+  }
+}
+
+export function closeInstitutionCard(institutionID) {
   return {
     type: 'CLOSE_INSTITUTION_CARD',
     institutionID
   }
 }
 
-export function institutionCardOpen(institutionID) {
+export function openInstitutionCard(institutionID) {
   return {
     type: 'OPEN_INSTITUTION_CARD',
     institutionID

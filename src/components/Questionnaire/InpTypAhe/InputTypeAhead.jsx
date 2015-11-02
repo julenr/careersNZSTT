@@ -22,7 +22,7 @@ class InputTypeAhead extends React.Component {
       'submit': true,
       'submit active': question.Text
     } );
-    this.scrollElementID = uuid.v1();
+    this.scrollElementID = this.scrollElementID = `Typeahead${this.props.id}`;
 
     const styles = {
       item: {

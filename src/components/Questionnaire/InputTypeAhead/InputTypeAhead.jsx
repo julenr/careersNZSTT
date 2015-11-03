@@ -7,20 +7,47 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import { scrollTo } from '../../../libs/helpers';
-import axios from 'axios';
+import uuid from 'node-uuid';
 
-var Typeahead = require('react-typeahead').Typeahead;
-
+import Typeahead from '../../subcomponents/Autocomplete/Autocomplete';
 import Avatar from '../../subcomponents/Avatar';
 
 class InputTypeAhead extends React.Component {
   render() {
     let question = this.props.questionnaire[this.props.id];
+    let typeAheadItemsContainer = this.props.typeAheadItemsContainer;
     let classes = classNames( this.props.className, {
       'submit': true,
       'submit active': question.Text
     } );
-    this.scrollElementID = `Typeahead${this.props.id}`;
+    this.scrollElementID = this.scrollElementID = `Typeahead${this.props.id}`;
+
+    const styles = {
+      item: {
+        padding: '2px 6px',
+        cursor: 'default'
+      },
+
+      highlightedItem: {
+        color: 'white',
+        background: 'hsl(200, 50%, 50%)',
+        padding: '2px 6px',
+        cursor: 'default'
+      },
+
+      menu: {
+        border: 'solid 1px #ccc',
+        background: 'rgba(255, 255, 255, 0.9)',
+        zIndex: 2,
+        position: 'static',
+        font: 'inherit'
+      },
+
+      typeAhead: {
+        border: 'solid 1px #ccc',
+        background: 'hsl(200, 50%, 50%)',
+      }
+    }
 
     return (
       <div className="fieldset active">
@@ -29,24 +56,23 @@ class InputTypeAhead extends React.Component {
           <label htmlFor="q2-sample">{question.Description}</label>
           <div className="text">
             <Typeahead
-              ref="typeAhead"
-              inputProps={ {autoFocus: true} }
-              customClasses={{
-                input: 'text',
-                typeahead: 'topcoat-list',
-                results: 'topcoat-list__container',
-                listItem: 'topcoat-list__item',
-                token: 'topcoat-button',
-                customAdd: 'topcoat-addme'
-              }}
-              value={question.Text}
-              placeholder={question.PlaceHolder}
-              onKeyUp={ () => this.KeyUp() }
-              onBlur={ () => this.KeyUp() }
-              options={question.QuestionResponses}
-              maxVisible={10}
+              inputProps={ {'className':'text' }  }
+              ref="Typeahead"
+              items={typeAheadItemsContainer}
+              getItemValue={(item) => item.Title}
+              onChange={ (event, value) => this.valueChanged(event, value) }
+              renderItem={(item, isHighlighted) => (
+                  <div
+                    style={isHighlighted ? styles.highlightedItem : styles.item}
+                    key={uuid.v1()}
+                    id={uuid.v1()}
+                    >
+                    {item.Title}
+                  </div>
+                )}
+              menuStyle={styles.menu}
               />
-
+              <br/>
               <a className="action-flip" href="javascript: void 0" onClick={ () => this.alternativeClicked(question.AlternativeNextQuestionID) } >
                 {question.AlternativeText}
               </a>
@@ -64,9 +90,9 @@ class InputTypeAhead extends React.Component {
     );
   }
 
-  KeyUp = () => {
-    let typeAheadText = this.refs['typeAhead'].state.entryValue;
-    this.props.setTypeAheadText(this.props.id, typeAheadText);
+  valueChanged = (event, value) => {
+    this.props.loadTypeAhead(value);
+    this.props.setTypeAheadText(this.props.id, value);
   }
 
   alternativeClicked = (alternativeQuestionID) => {
@@ -75,8 +101,8 @@ class InputTypeAhead extends React.Component {
   }
 
   nextClicked = (nextQuestionID) => {
-    let typeAheadText = this.refs['typeAhead'].state.entryValue;
-    this.props.setFinalTypeAheadText(this.props.id, typeAheadText);
+    console.log(this.refs.Typeahead.state.value);
+    this.props.setFinalTypeAheadText(this.props.id, this.refs.Typeahead.state.value);
     scrollTo(this.scrollElementID, -110);
     this.props.nextQuestion(this.props.id, nextQuestionID);
   }

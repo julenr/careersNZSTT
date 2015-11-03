@@ -695,7 +695,7 @@ a:hover .button, a:active .button, a:focus .button, .button:hover, .button:activ
 .ReactModal__Overlay { opacity:0; background:rgba(0,0,0,0.7); bottom:0; left:0; position:fixed; right:0; top:0; z-index:8020; }
 .ReactModal__Overlay--after-open { opacity:1; @include transition(all, .2s, ease-in); }
 .ReactModal__Content--after-open { @include transition(all, .2s, ease-in); }
-.ReactModal__Content { position:absolute; right:em(14); top:em(25); left:em(14); bottom:em(14); max-width:em(821); padding:em(20) em(25); background:#fff; margin:0 auto; outline:none; overflow:hidden; overflow-x:hidden; overflow-y:scroll; z-index:8021; @include box-sizing(border-box); @include box-shadow(0, 0, 2px, 2px, rgba(0,0,0,0.15)); text-align:center; } 
+.ReactModal__Content { position:absolute; right:em(14); top:em(25); left:em(14); bottom:em(14); max-width:em(821); padding:em(20) em(25); background:#fff; margin:0 auto; outline:none; overflow:hidden; overflow-x:hidden; overflow-y:scroll; z-index:8021; @include box-sizing(border-box); @include box-shadow(0, 0, 2px, 2px, rgba(0,0,0,0.15)); text-align:center; }
 
 /* Modal content */
 .modal .modal-title { font-size:em(34); line-height:lh(40,34); color:$skillstool_green_2; margin:em(19,34) 0 em(14,34); padding:0 0 em(20,34) 0; border-bottom:2px dotted $skillstool_gray_3; }

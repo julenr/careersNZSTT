@@ -21,6 +21,7 @@ function mapStateToProps(state) {
     popularSkillsLoading: state._footerData.data.PopularJobs.Loading,
     popularJobs: state._footerData.data.PopularJobs,
     popularJobsVisible: state._footerData.data.PopularJobs.Visible,
+    typeAheadItemsContainer: state._questionnaire.TypeAheadItemsContainer,
     refresh: state._questionnaire.data.refresh // This value if changed somewhere triggers the component render method
   };
 }

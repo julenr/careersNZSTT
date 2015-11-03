@@ -60,7 +60,6 @@
     "react-redux": "^4.0.0",
     "react-router": "^1.0.0-rc3",
     "react-sticky": "^3.0.0",
-    "react-typeahead": "^1.1.5",
     "redux": "^3.0.2",
     "scroll-to": "0.0.2"
   }

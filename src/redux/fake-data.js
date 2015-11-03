@@ -249,9 +249,13 @@ export const questionnaire = {
 
 
 export const mainContentHTML = {
-  'Title': 'Demo General Content Page - with video',
-  'FeatureType': 'Video',
-  'Image': null,
+  'Title': 'Demo General Content Page - with image',
+  'FeatureType': 'Image',
+  'Image': {
+    'Medium': {
+      'EmbedHTML': '<img src=\'\' \/>'
+    }
+  },
   'Video': {
     'Title': 'YouTube Video',
     'Type': 'video',

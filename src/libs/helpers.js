@@ -45,10 +45,9 @@ export function textFitToContainer(stringText = '') {
 export function replaceStrValues(string ) {
   const state = store.getState();
 
-  string = string.replace('[user-name]', state._questionnaire.data.Member.Name);
-  string = string.replace('[user region]', state._questionnaire.data.Member.Region);
-  string = string.replace('[job-title-plural]', `${state._questionnaire.data.Jobs.Current}s`);
-  string = string.replace('[job/course] ', state._questionnaire.data.Jobs.Current);
+  string = string.replace('[name]', state._questionnaire.data.Member.Name);
+  string = string.replace('[region]', state._questionnaire.data.Member.Region);
+  string = string.replace('[job] ', state._questionnaire.data.Jobs.Current);
   return string.replace('[list-type]', state._questionnaire.data.ListTypes.Current);
 
 }

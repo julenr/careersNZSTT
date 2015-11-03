@@ -65,7 +65,7 @@ export function setFinalTypeAheadText(questionID, text) {
   }
 }
 
-export function loadTypeAhead(questionID, text) {
+export function loadTypeAhead(text) {
   return {
     types: ['DUMP_DATA_INTO_TYPE_AHEAD_REQUEST', 'DUMP_DATA_INTO_TYPE_AHEAD_SUCCESS', 'DUMP_DATA_INTO_TYPE_AHEAD_FAILURE'],
     promise: () => {

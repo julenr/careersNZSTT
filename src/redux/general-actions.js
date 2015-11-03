@@ -155,6 +155,25 @@ export function getJobSkills(jobSelected) {
   }
 }
 
+export function loadTypeAheadModal(text) {
+  return {
+    types: ['DUMP_DATA_INTO_TYPE_AHEAD_REQUEST', 'DUMP_DATA_INTO_TYPE_AHEAD_SUCCESS', 'DUMP_DATA_INTO_TYPE_AHEAD_FAILURE'],
+    promise: () => {
+      return axios.get(`/api/skills-transition-tool/jobs/${text}`)
+        .then(function (response) {
+          return {data: response.data.Results};
+        })
+        .catch(function (response) {
+          console.log(response);
+          if (__DEV__) {
+            console.log('Using fake data for Type Ahead');
+            return {data: _.clone(fakeData.typeAheadData.Results, true)};
+          }
+        });
+    }
+  }
+}
+
 export function openCheckSkillsModal() {
   return {
     type: 'SHOW_CHECK_SKILLS_MODAL'

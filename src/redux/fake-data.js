@@ -46,6 +46,10 @@ export const questionnaire = {
     'Current': null
   },
   'ProgressBar': {
+    'ListViewLinkText': 'Show me!',
+    'ListViewLinkMinResults': 3,
+    'ListViewLinkMaxResults': 24,
+    'Results': 0,
     'Percentage': 0,
     'Text': 'You\'ve made the first step, you\'re here!'
   },
@@ -69,7 +73,7 @@ export const questionnaire = {
     {
       'ID': 2,
       'Text': '',
-      'Description': 'YES/NO QUESTION PROTOTYPE FOR USER [user-name]',
+      'Description': 'YES/NO QUESTION PROTOTYPE FOR USER [name]',
       'QuestionType': 'YesNo',
       'QuestionResponses': [],
       'NextQuestionID': 3,
@@ -78,7 +82,7 @@ export const questionnaire = {
       'AlternativeNextQuestionID': 5,
       'Endpoint': null,
       'MilestonePercentage': 20,
-      'MilestoneText': 'So far [user-name]! we have a list of 123 job/courses, tell us a little more to narrow it down a bit.',
+      'MilestoneText': '[name]! we have a list of [results-count] job/courses, tell us a little more to narrow it down a bit.',
       'QuestionResponses': [
         {
           'ID': 0,
@@ -315,7 +319,7 @@ export const listViewData = {
       'Title': 'Software Engineer',
       'Description': 'Researches, designs, develops and maintains software systems along with hardware development for medical, scientific, and industrial purposes.',
       'Interests': 'Gardening; Helping people; Cars.',
-      'WorkConditions': 'Flexible hours; Business hours; Inside; Outside; Regular hours.',
+      'WorkConditions': ['Flexible hours', 'Business', 'hours', 'Inside', 'Outside', 'Regular hours'],
       'VocationalPathways': 'Social and community services. Manufacturing and technology',
       'Image': '../src/assets/images/placeholders/software-engineer.jpg',
       'SkillsMatch': 82,
@@ -339,7 +343,7 @@ export const listViewData = {
       'Title': 'Human Resources',
       'Description': 'Plans, directs, and/or coordinates all human resource activities and staff of an organization.',
       'Interests': 'Gardening; Helping people; Cars.',
-      'WorkConditions': 'Flexible hours; Business hours; Inside; Outside; Regular hours.',
+      'WorkConditions': ['Flexible hours', 'hours', 'Outside', ],
       'VocationalPathways': 'Social and community services. Manufacturing and technology',
       'Image': '../src/assets/images/placeholders/human-resources.jpg',
       'SkillsMatch': 10,
@@ -363,7 +367,7 @@ export const listViewData = {
       'Title': 'Dental Hygienist',
       'Description': 'Assists dentists in diagnostic and therapeutic aspects of a group or private dental practice.',
       'Interests': 'Gardening; Helping people; Cars.',
-      'WorkConditions': 'Flexible hours; Business hours; Inside; Outside; Regular hours.',
+      'WorkConditions': ['Flexible hours', 'hours', 'Inside', 'Regular hours'],
       'VocationalPathways': 'Social and community services. Manufacturing and technology',
       'Image': '../src/assets/images/placeholders/dental-hygienist.jpg',
       'SkillsMatch': 100,
@@ -387,7 +391,7 @@ export const listViewData = {
       'Title': 'Landscape gardener',
       'Description': 'Landscape gardeners design, develop, maintain and remodel gardens and landscapes.',
       'Interests': 'Gardening; Helping people; Cars.',
-      'WorkConditions': 'Flexible hours; Business hours; Inside; Outside; Regular hours.',
+      'WorkConditions': ['Flexible hours', 'Business'],
       'VocationalPathways': 'Social and community services. Manufacturing and technology',
       'Image': '../src/assets/images/placeholders/placeholder-630x399-job.jpg',
       'SkillsMatch': 80,
@@ -413,7 +417,7 @@ export const listViewData = {
       'Title': 'Financial Planner',
       'Description': 'Related to careers in portfolio management, the financial planner offers a broad range of services aimed at assisting individuals in managing and planning their financial future.',
       'Interests': 'Gardening; Helping people; Cars.',
-      'WorkConditions': 'Flexible hours; Business hours; Inside; Outside; Regular hours.',
+      'WorkConditions': ['hours', 'Regular hours'],
       'VocationalPathways': 'Social and community services. Manufacturing and technology',
       'Image': '../src/assets/images/placeholders/financial-planner.jpg',
       'SkillsMatch': 20,

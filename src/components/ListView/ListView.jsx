@@ -36,7 +36,7 @@ function mapStateToProps(state) {
     showMatchSkillsModal: state._listViewData.ShowMatchSkillsModal,
     checkSkillsID: state._listViewData.CheckSkillsID,
     showRemoveJobCardModal: state._listViewData.ShowRemoveJobCardModal,
-    removeJobCardModalID: state._listViewData.RemoveJobCardModalID,
+    jobCardSelectedID: state._listViewData.JobCardSelectedID,
     showRemoveQualificationCardModal: state._listViewData.ShowRemoveQualificationCardModal,
     removeQualificationCardModalID: state._listViewData.RemoveQualificationCardModalID,
     showRemoveInstitutionCardModal: state._listViewData.ShowRemoveInstitutionCardModal,
@@ -81,6 +81,7 @@ class Content extends React.Component {
         </div>
         <div id="qualifications-panel-scroll-point" />
         <QualificationsPanel {...this.props} />
+        <div id="institutions-panel-scroll-point" />
         <InstitutionsPanel {...this.props} />
         <Pagination {...this.props} />
         <Preferences {...this.props} />

@@ -201,10 +201,19 @@ export function _questionnaire(state = initialState, action = {}) {
         // This check is if in the case that the next question is a repeated question and does not have to refresh the progress bar
         if(newState.data.ProgressBar.Percentage < newState.data.Questions[nextQuestionIndex].MilestonePercentage) {
           newState.data.ProgressBar.Percentage = newState.data.Questions[nextQuestionIndex].MilestonePercentage;
-          newState.data.ProgressBar.Text = replaceStrValues(newState.data.Questions[nextQuestionIndex].MilestoneText);
         }
         newState.data.refresh = uuid.v1();
       }
+      return newState;
+    case 'JOBS_COUNT_SUCCESS':
+      console.log(action);
+      let nextQuestionIndex = newState.data.Questions.findIndex((q) => (q.ID === action.nextQuestionID));
+      newState.data.ProgressBar.Results = action.result.count;
+      if(newState.data.Questions[nextQuestionIndex].MilestoneText) {}
+        newState.data.ProgressBar.Text = replaceStrValues(newState.data.Questions[nextQuestionIndex].MilestoneText);
+      return newState;
+    case 'JOBS_COUNT_FAILURE':
+      console.log(action);
       return newState;
     default:
       return state;
@@ -267,11 +276,15 @@ export function _listViewData(state = initialState, action = {}) {
     case 'FLIP_JOB_CARD':
       newState.data.JobsCards[action.jobID].Flipped = !newState.data.JobsCards[action.jobID].Flipped;
       return newState;
+    case 'SET_CURRENT_JOB_CARD_ID':
+      newState.JobCardSelectedID = action.jobCardID;
+      return newState;
+
+
     case 'CLOSE_REMOVE_JOB_CARD_MODAL':
       newState.ShowRemoveJobCardModal = false;
       return newState;
     case 'OPEN_REMOVE_JOB_CARD_MODAL':
-      newState.RemoveJobCardModalID = action.jobCardID;
       newState.ShowRemoveJobCardModal = true;
       return newState;
 

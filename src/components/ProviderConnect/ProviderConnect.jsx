@@ -7,33 +7,21 @@ import { Router, Route, Link } from 'react-router';
 import { connect } from 'react-redux';
 import * as actionCreators from '../../redux/general-actions';
 
-@connect((state /*, props*/) => {
+
+function mapStateToProps(state) {
   return {
-    reduxState: state,
-    frozen: state._time.frozen
-  }
-})
+    reduxState: state
+  };
+}
+
 class ProviderConnect extends React.Component {
 
-  buttonClick = () => {
-    this.props.dispatch(actionCreators.getStateButton(300))
-  }
-
   render () {
-    var { frozen, reduxState } = this.props
-    var attrs = {}
-
-    if (frozen) {
-      attrs = {
-        disabled: true
-      }
-    }
+    var { reduxState } = this.props
 
     return (
       <div>
-        <h1>Provider and @connect</h1>
-        <br />
-        {this.renderButton()}
+        <h1>APPLICATION STATE</h1>
         <pre>
           redux state = { JSON.stringify(reduxState, null, 2) }
         </pre>
@@ -41,11 +29,8 @@ class ProviderConnect extends React.Component {
     )
   }
 
-  renderButton = () => {
-    return (
-      <button onClick={this.buttonClick}>Get state!</button>
-    )
-  }
 }
 
-export default ProviderConnect;
+export default connect(
+  mapStateToProps
+)(ProviderConnect);

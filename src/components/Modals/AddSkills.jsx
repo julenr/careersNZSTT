@@ -96,8 +96,8 @@ class AddSkillsModal extends React.Component {
 
   showCheckSkillsModal = (popularJobSelected) => {
     this.props.getJobSkills(popularJobSelected);
-    this.props.closeAddSkillsModal();
     this.props.openCheckSkillsModal();
+    this.props.closeAddSkillsModal();
   }
 
   renderShowMoreButton = () => {

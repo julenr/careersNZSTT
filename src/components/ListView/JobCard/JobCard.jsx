@@ -133,6 +133,7 @@ class JobCard extends React.Component {
 
   showQualificationsPanel = () => {
     this.props.closeInstitutionsPanel();
+    this.props.setCurrentJobID(this.props.id)
     this.props.openQualificationsPanel();
     scrollTo('qualifications-panel-scroll-point', -120);
   }
@@ -145,7 +146,8 @@ class JobCard extends React.Component {
     if(this.props.flipped){
       this.flipCard();
     }
-    this.props.openRemoveJobCardModal(this.props.id);
+    this.props.setCurrentJobID(this.props.id)
+    this.props.openRemoveJobCardModal();
   }
 
   openCard = () => {

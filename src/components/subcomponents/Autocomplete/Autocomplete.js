@@ -1,8 +1,8 @@
 const React = require('react')
 
 //THIS MODULE IS A MODIFICATION FROM REACT-AUTOCOMPLETE v 0.1.4
-// CHANGES are {display: ...} in the div input wrapper and scrollIntoView commented
-//const scrollIntoView = require('dom-scroll-into-view')
+// CHANGES are {display: ...} in the div input wrapper
+const scrollIntoView = require('dom-scroll-into-view')
 
 let _debugStates = []
 
@@ -74,7 +74,7 @@ let Autocomplete = React.createClass({
     if (this.state.isOpen === true && this.state.highlightedIndex !== null) {
       var itemNode = React.findDOMNode(this.refs[`item-${this.state.highlightedIndex}`])
       var menuNode = React.findDOMNode(this.refs.menu)
-      //scrollIntoView(itemNode, menuNode, { onlyScrollIfNeeded: true })
+      scrollIntoView(itemNode, menuNode, { onlyScrollIfNeeded: true })
     }
   },
 

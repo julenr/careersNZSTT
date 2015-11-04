@@ -5,24 +5,6 @@ import * as fakeData from './fake-data';
 
 const appID = document.getElementsByTagName('body')[0].getAttribute('data-application-id');
 
-export function getStateButton(delay = 100) {
-  return {
-    types: ['GET_TIME_REQUEST', 'GET_TIME_SUCCESS', 'GET_TIME_FAILURE'],
-    promise: () => {
-      return new Promise((resolve, reject) => {
-        // Just simulating an async request to a server via a setTimeout
-        setTimeout(() => {
-          const d = new Date();
-          const ms = ('000' + d.getMilliseconds()).slice(-3);
-          resolve({
-            time: `${d.toString().match(/\d{2}:\d{2}:\d{2}/)[0]}.${ms}`
-          });
-        }, delay);
-      });
-    }
-  }
-}
-
 export function getQuestionnaire() {
   return {
     types: ['GET_QUESTIONNAIRE_REQUEST', 'GET_QUESTIONNAIRE_SUCCESS', 'GET_QUESTIONNAIRE_FAILURE'],
@@ -144,7 +126,6 @@ export function getJobSkills(jobSelected) {
         })
         .catch(function (response) {
           console.log(response);
-          return {data: response.data.Results};
           if (__DEV__) {
             console.log('Using fake data');
             return {data: _.clone(fakeData.jobSkills.Results.slice(), true)};

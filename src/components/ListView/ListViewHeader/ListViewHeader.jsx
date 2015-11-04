@@ -21,7 +21,7 @@ class ListViewHeader extends React.Component {
               <li tabIndex="0" value="1">Job</li>
               <li tabIndex="0" value="2">Course</li>
             </ul>
-            </span> suggestions based on <a href="javascript: void 0">your skills</a>
+            </span> suggestions based on <a href="javascript: void 0" onClick={this.props.openSkillsModalFromListView}>your skills</a>
           </h1>
           <p className="results-subtitle">
             <strong>23 courses</strong> are hidden, <a href="javascript: void 0">edit your preferences</a>

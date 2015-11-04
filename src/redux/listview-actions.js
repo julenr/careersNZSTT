@@ -24,6 +24,12 @@ export function flipJobCard(jobID) {
     jobID
   }
 }
+export function setCurrentJobID(jobCardID) {
+  return {
+    type: 'SET_CURRENT_JOB_CARD_ID',
+    jobCardID
+  }
+}
 
 export function openMatchSkillsModal(idJobCard) {
   return {
@@ -31,10 +37,9 @@ export function openMatchSkillsModal(idJobCard) {
     idJobCard
   }
 }
-export function closeMatchSkillsModal(idJobCard) {
+export function closeMatchSkillsModal() {
   return {
-    type: 'CLOSE_MATCH_SKILLS_MODAL',
-    idJobCard
+    type: 'CLOSE_MATCH_SKILLS_MODAL'
   }
 }
 
@@ -109,10 +114,9 @@ export function closeRemoveJobCardModal() {
     type: 'CLOSE_REMOVE_JOB_CARD_MODAL'
   }
 }
-export function openRemoveJobCardModal(jobCardID) {
+export function openRemoveJobCardModal() {
   return {
-    type: 'OPEN_REMOVE_JOB_CARD_MODAL',
-    jobCardID
+    type: 'OPEN_REMOVE_JOB_CARD_MODAL'
   }
 }
 
@@ -142,3 +146,8 @@ export function openRemoveQualificationCardModal(qualificationCardID) {
   }
 }
 
+export function openSkillsModalFromListView() {
+  return {
+    type: 'SHOW_SKILLS_MODAL'
+  }
+}

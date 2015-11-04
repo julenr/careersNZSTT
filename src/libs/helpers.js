@@ -42,12 +42,17 @@ export function textFitToContainer(stringText = '') {
 
 }
 
-export function replaceStrValues(string ) {
+export function replaceStrValues(string = '') {
+  if(!string) return '';
+
   const state = store.getState();
+
+  const results = state._questionnaire.data.ProgressBar.Results || '';
 
   string = string.replace('[name]', state._questionnaire.data.Member.Name);
   string = string.replace('[region]', state._questionnaire.data.Member.Region);
-  string = string.replace('[job] ', state._questionnaire.data.Jobs.Current);
+  string = string.replace('[job]', state._questionnaire.data.Jobs.Current);
+  string = string.replace('[results-count]', results.toString());
   return string.replace('[list-type]', state._questionnaire.data.ListTypes.Current);
 
 }

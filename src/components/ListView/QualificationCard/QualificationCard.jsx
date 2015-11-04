@@ -5,6 +5,8 @@
 import React from 'react';
 import classNames from 'classnames';
 
+import { scrollTo } from '../../../libs/helpers';
+
 import RemoveQualificationCardModal from './RemoveQualificationCardModal';
 import { textFitToContainer } from '../../../libs/helpers.js';
 
@@ -68,6 +70,7 @@ class QualificationCard extends React.Component {
 
   showInstitutionsPanel = () => {
     this.props.openInstitutionsPanel();
+    scrollTo('institutions-panel-scroll-point', -120);
   }
 
   closeCard = () => {

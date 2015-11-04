@@ -67,7 +67,7 @@ class Content extends React.Component {
           </div>
         </div>
         <Footer />
-        <ProgressBar {...this.props.progressBar}/>
+        <ProgressBar {...this.props.progressBar} onClickViewList={this.props.getListViewData}/>
       </div>
     );
   }

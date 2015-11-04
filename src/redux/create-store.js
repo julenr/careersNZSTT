@@ -9,7 +9,14 @@ const data =
     loaded: false
   },
   _footerData: {
-    loaded: false
+    loaded: false,
+    data: {
+      PopularJobs: {
+        Jobs: [],
+        Visible: 0,
+        Skills: []
+      }
+    }
   },
   _questionnaire: {
     loaded: false,
@@ -31,7 +38,7 @@ const data =
     ShowMatchSkillsModal: false,
     CheckSkillsID: 0,
     ShowRemoveJobCardModal: false,
-    RemoveJobCardModalID: -1,
+    JobCardSelectedID: -1,
     ShowRemoveQualificationCardModal: false,
     RemoveQualificationCardModalID: -1,
     ShowRemoveInstitutionCardModal: false,
@@ -44,7 +51,13 @@ const data =
       'HelpPanels': [],
       'JobsCards': [],
       'QualificationsPanel': {},
-      'InstitutionsPanel': {}
+      'InstitutionsPanel': {},
+      'ProgressBar': {
+        'Results': 0,
+        'ListViewLinkText': 'Show me!',
+        'ListViewLinkMinResults': 3,
+        'ListViewLinkMaxResults': 24
+      }
     }
   }
 };

@@ -17,9 +17,11 @@ function mapStateToProps(state) {
     showAddSkillsModal: state._footerData.showAddSkillsModal,
     showCheckSkillsModal: state._footerData.showCheckSkillsModal,
     skillsSelected: state._questionnaire.data.Skills.Selected,
-    popularSkillsSelected: state._footerData.data.PopularJobs.Skills,
     popularSkillsLoading: state._footerData.data.PopularJobs.Loading,
+
+    popularSkillsSelected: state._footerData.data.PopularJobs.Skills,
     popularJobs: state._footerData.data.PopularJobs,
+
     popularJobsVisible: state._footerData.data.PopularJobs.Visible,
     typeAheadItemsContainer: state._questionnaire.TypeAheadItemsContainer,
     refresh: state._questionnaire.data.refresh // This value if changed somewhere triggers the component render method

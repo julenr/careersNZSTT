@@ -23,7 +23,7 @@ class Header extends React.Component {
               <li className="tool-edit"><a href="#">Edit</a>
                 <ul>
                   <li><a href="javascript: void 0" onClick={this.openSkillsModal}>Edit your skills</a></li>
-                  <li><a href="#">Edit your preferences</a></li>
+                  <li><a href="javascript: void 0">Edit your preferences</a></li>
                 </ul>
               </li>
               <li className="tool-save"><a href="#">Save</a></li>

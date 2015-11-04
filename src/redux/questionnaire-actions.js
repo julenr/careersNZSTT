@@ -132,7 +132,27 @@ export function firstQuestion() {
 
 export function nextQuestion(questionID, nextQuestionID) {
   return {
-    type: 'NEXT_QUESTION',
+    types: ['NEXT_QUESTION', 'JOBS_COUNT_SUCCESS', 'JOBS_COUNT_FAILURE'],
+    promise: () => {
+      let state = store.getState();
+      let listType = state._questionnaire.data.ListTypes.Current;
+      if(listType) {
+        return axios.post(`/api/skills-transition-tool/listcount/${appID}/${listType}`, state._questionnaire.data)
+          .then(function (response) {
+            return {count: response.data.Count};
+          })
+          .catch(function (response) {
+            console.log(response);
+            if (__DEV__) {
+              console.log('Using fake data');
+              return {count: 10};
+            }
+          });
+      }
+      else {
+        return new Promise(() => true).then( () => {return {count:0}} ).catch(() => {return {count:0}});
+      }
+    },
     questionID,
     nextQuestionID
   }

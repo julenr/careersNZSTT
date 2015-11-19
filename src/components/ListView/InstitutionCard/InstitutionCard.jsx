@@ -4,6 +4,7 @@
 
 import React from 'react';
 import classNames from 'classnames';
+import { Link } from 'react-router';
 
 import RemoveInstitutionCardModal from './RemoveInstitutionCardModal';
 
@@ -29,9 +30,12 @@ class InstitutionCard extends React.Component {
               <dt>Location:</dt>
               <dd>{institutionCard.Location}</dd>
             </dl>
-            <a className="button" href="javascript: void 0">
-              View this course <span className="icon-arrow-right"></span>
-            </a>
+
+            <Link className="button" to="/course-detail" >
+              <span onClick={() => this.linkClick(institutionCard.CourseID)}>View this course
+                <span className="icon-arrow-right"></span>
+              </span>
+            </Link>
             <a className="button reinstate-card" href="javascript: void 0" onClick={this.openCard}>
               Show this course above
             </a>
@@ -48,6 +52,10 @@ class InstitutionCard extends React.Component {
 
   openCard = () => {
     this.props.openInstitutionCard(this.props.id);
+  }
+
+  linkClick = (courseID) => {
+    this.props.getCourseDetails(courseID);
   }
 }
 

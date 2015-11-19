@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import classNames from 'classnames';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import JobCard from '../JobCard/JobCard';
 import QualificationCard from '../QualificationCard';
@@ -17,10 +17,26 @@ class HiddenCards extends React.Component {
     return (
       <div className="page-maincontent results-hidden">
         <div className="page-wrapper">
+          <div className="results-hidden-link">
+            <a href="javascript: void 0">Hidden jobs/courses <span className="icon-arrow-down-long"></span></a>
+          </div>
           <div className="careers-card-wrapper">
-            {jobsCards.map(this.renderJobsCards)}
-            {qualificationsPanel.Courses.map(this.renderQualificationsCards)}
-            {institutionsPanel.Institutions.map(this.renderInstitutionsCards)}
+            <div className="careers-card-wrapper">
+              <ReactCSSTransitionGroup
+                transitionEnterTimeout={1000}
+                transitionLeaveTimeout={1000}
+                transitionName={{
+                enter: 'animated',
+                enterActive: 'zoomIn',
+                leave: 'animated',
+                leaveActive: 'zoomOutUp'
+                }}
+                >
+                {jobsCards.map(this.renderJobsCards)}
+                {qualificationsPanel.Courses.map(this.renderQualificationsCards)}
+                {institutionsPanel.Institutions.map(this.renderInstitutionsCards)}
+              </ReactCSSTransitionGroup >
+            </div>
           </div>
         </div>
       </div>
@@ -30,7 +46,7 @@ class HiddenCards extends React.Component {
   renderJobsCards = (jobCard, idx) => {
     if(jobCard.Closed) {
       return (
-        <JobCard key={idx} id={idx} hidden="true" {...this.props}/>
+        <JobCard key={`jobCard${idx}`} id={idx} {...this.props}/>
       );
     }
   }
@@ -38,7 +54,7 @@ class HiddenCards extends React.Component {
   renderQualificationsCards = (courseCard, idx) => {
     if(courseCard.Closed) {
       return (
-        <QualificationCard key={idx} id={idx} {...this.props}/>
+        <QualificationCard key={`qualificationCard${idx}`} id={idx} {...this.props}/>
       );
     }
   }
@@ -46,7 +62,7 @@ class HiddenCards extends React.Component {
   renderInstitutionsCards = (institutionCard, idx) => {
     if(institutionCard.Closed) {
       return (
-        <InstitutionCard key={idx} id={idx} {...this.props}/>
+        <InstitutionCard key={`institutionCard${idx}`} id={idx} {...this.props}/>
       );
     }
   }

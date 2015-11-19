@@ -20,17 +20,3 @@ This documents describes the modifications that must be done from the original t
     li for .checkbox-item
     ul dor .checkbox
 
-
-
-
-ASK ALAN
-
-
-IS THIS NECESSARY
-
-/*
- ICONS
----------------------------------------
-*/
-
-.ajax-spinner { background:url(../assets/images/icons/ajax-spinner-small.gif) no-repeat center center; display:block; height:em(16); width:100%; }

@@ -11,8 +11,7 @@ class CheckSkillsModal extends React.Component {
   render() {
     return (
       <Modal isOpen={this.props.showCheckSkillsModal} >
-        <div className="ReactModal__Overlay ReactModal__Overlay--after-open">
-          <div className="ReactModal__Content ReactModal__Content--after-open modal modal-skills-match">
+          <div className="modal modal-skills-match">
             <h2 className="modal-title">{`Skills match for ${this.props.popularJobs.JobSelected}`}</h2>
             <div className="layout-row">
               <div className="layout-col layout-col-4">
@@ -34,7 +33,6 @@ class CheckSkillsModal extends React.Component {
             </div>
             <a className="action-close icon-cross" href="javascript:void 0" onClick={this.cancelModal}>&nbsp;</a>
           </div>
-        </div>
       </Modal>
     );
   }
@@ -58,7 +56,6 @@ class CheckSkillsModal extends React.Component {
   addSkillsAndCloseModal = () => {
     this.props.addCheckedSkills();
     this.props.closeCheckSkillsModal();
-    this.props.openSkillsModal();
   }
 
   cancelModal = () => {

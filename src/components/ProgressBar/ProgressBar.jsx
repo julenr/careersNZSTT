@@ -19,9 +19,14 @@ class ProgressBar extends React.Component {
     const maxResults = this.props.ListViewLinkMaxResults > this.props.Results;
 
     return (
-      <Sticky topOffset={-100000} stickyStyle={customStyleObject}>
-      <div className="progress-bar">
+      <div className="progress-bar pinned">
         <div className="page-wrapper">
+          <div className="plan-help-popup">
+            <a href="link_to_help_page_for_non_js_users" className="help-trigger">
+              <img className="avatar" src={require('../../assets/images/placeholders/action-plan-help-avatar-1.jpg')} alt="Help assistant. " width="54" height="54" />
+              <span className="text">Need help?</span>
+            </a>
+          </div>
           <span className={`progress-bar-status amount-${(Math.round(this.props.Percentage/10)*10)}`}>&nbsp;</span>
           <ol>
             <li className="step-1 active">
@@ -34,9 +39,9 @@ class ProgressBar extends React.Component {
               }
             </li>
           </ol>
+          <a href="https://www.surveymonkey.com/r/ZD2VTVG" className="feedback-button" target="_blank">Feedback</a>
         </div>
       </div>
-      </Sticky>
     );
   }
 }

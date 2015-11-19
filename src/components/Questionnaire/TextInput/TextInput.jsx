@@ -24,8 +24,11 @@ class TextInput extends React.Component {
         <div className="field text with-avatar">
           <Avatar />
           <label htmlFor="q2-sample">{question.Description}</label>
-          <p className="help">An example of help text</p>
           <div className="text">
+            {
+              (question.HintPosition === 'Top' && question.HintText) ?
+              <p className="help">{question.HintText}</p> : ''
+            }
             <input className="text"
                    autoFocus
                    ref="inputText"
@@ -33,9 +36,20 @@ class TextInput extends React.Component {
                    type="text"
                    data-type="input"
                    defaultValue={question.Text}
-                   placeholder={question.PlaceHolder}
+                   placeholder={question.Placeholder}
               />
-            <p className="help">An example of hint text in an alternate location</p>
+              {
+                  (question.HintPosition === 'Bottom' && question.HintText) ?
+                  <p className="help">{question.HintText}</p> : ''
+              }
+              {
+              (question.HasAlternative) ?
+                  <a className="action-flip" href="javascript: void 0" onClick={ () => this.alternativeClicked(question.AlternativeNextQuestionID) } >
+                    {question.AlternativeText}
+                  </a>
+                  :
+                  ''
+            }
           </div>
         </div>
         <div className={ classes }>
@@ -48,6 +62,13 @@ class TextInput extends React.Component {
         <span id={this.scrollElementID}></span>
       </div>
     );
+  }
+
+  alternativeClicked = (alternativeQuestionID) => {
+    this.refs.inputText.value = '';
+    this.props.setInputText(this.props.id, this.refs.inputText.value)
+    scrollTo(this.scrollElementID, -110);
+    this.props.nextQuestion(this.props.id, alternativeQuestionID);
   }
 
   nextClicked = (nextQuestionID) => {

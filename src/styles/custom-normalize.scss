@@ -457,3 +457,47 @@ button, input.submit, .submit input { cursor: pointer; }
 .clear { clear: both; display: block; height: 0; overflow: hidden; }
 .access, .hidden-on-load { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
 
+
+/* =============================================================================
+   questions introduction
+   ========================================================================== */
+.questions-intro {
+  iframe {
+    float: left;
+    max-width: 20em;
+    height: 20em;
+  }
+
+  .intro-text {
+
+    p.heading {  margin: 0;  text-align: center;  }
+
+    a.play-video {  display: block;  }
+  }
+}
+
+@media only screen and (min-width:600px) {
+  .questions-intro .intro-text {
+    float: left;
+    width: calc(60% - 0.68966em);
+    margin: 0.68966em 0 0 0.68966em;
+
+    p.heading {  text-align: left;  }
+
+    p {  margin-top: 0;  }
+
+    a.play-video {  font-size: 0.62069em;  padding-top: 0.6em;  }
+  }
+}
+
+.radio .checkbox li.basic:not(.trigger-reveal-additional-options) {
+  clear: both;
+  float: none;
+}
+
+@media only screen and (min-width: 600px) {
+  .radio .checkbox li.basic:not(.trigger-reveal-additional-options) {
+    clear: both;
+    float: none;
+  }
+}

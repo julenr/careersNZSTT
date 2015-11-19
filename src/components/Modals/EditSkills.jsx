@@ -10,17 +10,17 @@ import Modal from 'react-modal';
 class EditSkillsModal extends React.Component {
 
   render() {
+    const { skillsSelected } = this.props;
+
     const customStyles = {
       content: {
         top: '30px',
       }
     }
 
-    var selectedSkills = this.props.skillsSelected;
     return (
       <Modal isOpen={this.props.showSkillsModal} style={customStyles}>
-        <div className="ReactModal__Overlay ReactModal__Overlay--after-open">
-          <div className="ReactModal__Content ReactModal__Content--after-open modal modal-edit-skills">
+          <div className="modal modal-edit-skills">
             <h2 className="modal-title">Edit your skills</h2>
             <div className="layout-row">
               <div className="layout-col layout-col-4">
@@ -29,8 +29,8 @@ class EditSkillsModal extends React.Component {
               <div className="layout-col layout-col-8">
                 <div className="tags" data-type="tag">
                   {
-                    (selectedSkills.length) ?
-                      selectedSkills.map(this.renderSkillsTags)
+                    (skillsSelected.length) ?
+                      skillsSelected.map(this.renderSkillsTags)
                       :
                       <span>You still have no added skills</span>
                   }
@@ -42,11 +42,10 @@ class EditSkillsModal extends React.Component {
               </div>
             </div>
             <div className="submit">
-              <a href="javascript:void 0" className="button-solid" onClick={this.closeSkillsModal}>Done</a>
+              <a href="javascript:void 0" className="button-solid" onClick={this.applyAndCloseSkillsModal}>Done</a>
             </div>
-            <a className="action-close icon-cross" href="javascript:void 0" onClick={this.closeSkillsModal}>&nbsp;</a>
+            <a className="action-close icon-cross" href="javascript:void 0" onClick={this.cancelSkillsModal}>&nbsp;</a>
           </div>
-        </div>
       </Modal>
     );
   }
@@ -60,12 +59,18 @@ class EditSkillsModal extends React.Component {
     );
   }
 
-  closeSkillsModal = () => {
+  applyAndCloseSkillsModal = () => {
+    this.props.closeSkillsModal();
+    this.props.resetListViewState();
+    this.props.getListViewData();
+  }
+
+  cancelSkillsModal = () => {
+    this.props.restoreSkills();
     this.props.closeSkillsModal();
   }
 
   addSkillsModal = () => {
-    this.props.closeSkillsModal();
     this.props.openAddSkillsModal();
   }
 

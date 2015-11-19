@@ -6,8 +6,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { scrollTo } from '../../../libs/helpers';
 
-import Checkbutton from '../../subcomponents/Checkbutton';
 import Avatar from '../../subcomponents/Avatar';
+import _ from 'lodash';
+import classNames from 'classnames';
 
 class SingleChoice extends React.Component {
 
@@ -17,6 +18,11 @@ class SingleChoice extends React.Component {
 
   render() {
     var question = this.props.questionnaire[this.props.id];
+    const alternativeSelected = (this.props.questionnaire[this.props.id].Selected === -1);
+    let classes = classNames({
+      'basic': true,
+      'selected': alternativeSelected
+    });
     this.scrollElementID = `SingleChoice${this.props.id}`;
 
     return (
@@ -24,10 +30,28 @@ class SingleChoice extends React.Component {
         <div className="field radio with-avatar">
           <Avatar />
           <label>{question.Description}</label>
-          <div data-type="radio" className="checkbox radio">
+          {
+            (question.HintPosition === 'Top' && question.HintText) ?
+            <p className="help">{question.HintText}</p> : ''
+          }
+          <ul data-type="radio" className="radio">
             {question.QuestionResponses.map(this.renderResponses)}
-          </div>
+            {
+              (question.HasAlternative) ?
+                  <li className={ classes } href="javascript: void 0" onClick={ () => this.alternativeClicked(question.AlternativeNextQuestionID) } >
+                    <span className="icon-tick"></span>
+                    {question.AlternativeText}
+                    <span className="icon-arrow-right"></span>
+                  </li>
+                  :
+                  ''
+            }
+          </ul>
         </div>
+        {
+          (question.HintPosition === 'Bottom' && question.HintText) ?
+          <p className="help">{question.HintText}</p> : ''
+        }
         <span id={this.scrollElementID}></span>
       </div>
     );
@@ -35,21 +59,40 @@ class SingleChoice extends React.Component {
 
   renderResponses = (response, idx) => {
     const selected = (this.props.questionnaire[this.props.id].Selected === idx);
+    let classes = classNames(
+        {
+          'selected': selected
+        }
+    );
+
     return (
-      <span key={idx}
+      <li key={idx}
             onClick={ () => this.onClick(idx)}
             ref={`option${idx}`}
-            tabIndex="0"
+            tabIndex="0" className={ classes }
         >
-        <Checkbutton key={idx} value={response.ResponseText} selected={selected} />
-      </span>
+        <span className="icon-tick"></span>
+          {response.ResponseText}
+      </li>
     );
+  }
+
+  alternativeClicked = (alternativeNextQuestionID) => {
+    //deselect options
+    this.props.responseClickedAlternativeOfSingleChoice(this.props.id);
+    scrollTo(this.scrollElementID, -110);
+    this.props.nextQuestion(this.props.id, alternativeNextQuestionID);
   }
 
   onClick = (idx) => {
     scrollTo(this.scrollElementID, -120);
     this.props.responseClickedSingleChoice(this.props.id, idx)
-    this.props.nextQuestion(this.props.id, this.props.questionnaire[this.props.id].QuestionResponses[idx].NextQuestionID)
+    //Check if there is only a nextQuestionID for all the responses
+    let nextID = this.props.questionnaire[this.props.id].QuestionResponses[idx].NextQuestionID;
+    if(nextID === 0){
+      nextID = this.props.questionnaire[this.props.id].NextQuestionID;
+    }
+    this.props.nextQuestion(this.props.id, nextID)
   }
 
 }

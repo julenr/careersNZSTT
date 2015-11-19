@@ -10,12 +10,15 @@ import HtmlwebpackPlugin from 'html-webpack-plugin';
 import merge from 'webpack-merge';
 import Clean from 'clean-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 
 import pkg from './package.json';
 
 const TARGET = process.env.npm_lifecycle_event;
 const ROOT_PATH = path.resolve(__dirname);
 const APP_TITLE = 'Skills Transition Tool - Careers New Zealand';
+
+process.env.BABEL_ENV = TARGET;
 
 const common = {
   entry: path.resolve(ROOT_PATH, 'src'),
@@ -53,6 +56,11 @@ if(TARGET === 'start' || !TARGET) {
           include: path.resolve(ROOT_PATH, 'src')
         },
         {
+          test: /\.css$/,
+          loaders: ['style', 'css'],
+          include: path.resolve(ROOT_PATH, 'src')
+        },
+        {
           test: /\.(png|jpg|gif)$/,
           loader: 'url?limit=25',
           include: path.resolve(ROOT_PATH, 'src')
@@ -72,7 +80,11 @@ if(TARGET === 'start' || !TARGET) {
       historyApiFallback: true,
       hot: true,
       inline: true,
-      progress: true
+      progress: true,
+      watchOptions: {
+        poll: 1000
+      },
+      host: "0.0.0.0"
     },
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
@@ -82,7 +94,11 @@ if(TARGET === 'start' || !TARGET) {
       }),
       new webpack.DefinePlugin({
         '__DEV__': JSON.stringify(JSON.parse('true'))
-      })
+      }),
+      new CopyWebpackPlugin([
+        { from: './src/assets/images/favicon', to: './images/favicon' },
+        { from: './src/styles/browser', to: './css/browser' }
+      ])
     ]
   });
 }
@@ -108,6 +124,11 @@ if(TARGET === 'build') {
         {
           test: /\.scss$/,
           loader: ExtractTextPlugin.extract('style', 'css!sass'),
+          include: path.resolve(ROOT_PATH, 'src')
+        },
+        {
+          test: /\.css$/,
+          loaders: ['style', 'css'],
           include: path.resolve(ROOT_PATH, 'src')
         },
         {
@@ -147,7 +168,11 @@ if(TARGET === 'build') {
       new HtmlwebpackPlugin({
         title: APP_TITLE,
         template: './templates/index-production.tpl'
-      })
+      }),
+      new CopyWebpackPlugin([
+        { from: './src/assets/images/favicon', to: './images/favicon' },
+        { from: './src/styles/browser', to: './css/browser' }
+      ])
     ]
   });
 }

@@ -4,14 +4,15 @@
 
 import React from 'react';
 import classNames from 'classnames';
-
 import { Link } from 'react-router';
-
-import * as actionCreators from '../../../redux/general-actions';
 
 import Avatar from '../../subcomponents/Avatar';
 
 class EndForm extends React.Component {
+  componentWillMount() {
+    this.props.resetListViewLoaderFlag();
+  }
+
   render() {
     return (
       <div className="fieldset last active">
@@ -22,7 +23,12 @@ class EndForm extends React.Component {
           </label>
         </div>
         <div className="submit active">
-          <Link className="button next" to="/list-view" ><span onClick={this.linkClick}>Great, show me!</span><span className="icon-arrow-right"></span></Link>
+          <Link className="button next" to="/list-view" >
+            <span onClick={this.linkClick}>
+              Great, show me!
+              <span className="icon-arrow-right"></span>
+            </span>
+          </Link>
         </div>
       </div>
     );

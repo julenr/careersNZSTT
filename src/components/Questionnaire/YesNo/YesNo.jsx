@@ -7,7 +7,6 @@ import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import { scrollTo } from '../../../libs/helpers';
 
-import Checkbutton from '../../subcomponents/Checkbutton';
 import Avatar from '../../subcomponents/Avatar';
 
 class YesNo extends React.Component {
@@ -18,24 +17,39 @@ class YesNo extends React.Component {
 
   render() {
     var question = this.props.questionnaire[this.props.id];
+    const alternativeSelected = (this.props.questionnaire[this.props.id].Selected === -1);
+    let classes = classNames({
+      'basic': true,
+      'selected': alternativeSelected
+    });
     this.scrollElementID = `YesNo${this.props.id}`;
-
     return (
       <div className="fieldset active">
         <div className="field radio with-avatar inline">
           <Avatar />
           <label>{question.Description}</label>
+          {
+            (question.HintPosition === 'Top' && question.HintText) ?
+            <p className="help">{question.HintText}</p> : ''
+          }
           <ul data-type="radio" className="radio">
             {question.QuestionResponses.map(this.renderResponses)}
-            <li tabIndex="0"
-                className="basic"
-                onClick={ () => this.alternativeClicked(question.AlternativeNextQuestionID) }
-              >
-              <span className="icon-tick"></span>
-              {question.AlternativeText}
-            </li>
+            {
+              (question.HasAlternative) ?
+                  <li className={ classes } href="javascript: void 0" onClick={ () => this.alternativeClicked(question.AlternativeNextQuestionID) } >
+                    <span className="icon-tick"></span>
+                    {question.AlternativeText}
+                    <span className="icon-arrow-right"></span>
+                  </li>
+                  :
+                  ''
+            }
           </ul>
         </div>
+        {
+          (question.HintPosition === 'Bottom' && question.HintText) ?
+          <p className="help">{question.HintText}</p> : ''
+        }
         <span id={this.scrollElementID}></span>
       </div>
     );
@@ -62,6 +76,7 @@ class YesNo extends React.Component {
   }
 
   alternativeClicked = (alternativeQuestionID) => {
+    this.props.responseClickedAlternativeOfSingleChoice(this.props.id);
     scrollTo(this.scrollElementID, -110);
     this.props.nextQuestion(this.props.id, alternativeQuestionID);
   }

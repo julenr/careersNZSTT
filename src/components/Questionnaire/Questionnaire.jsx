@@ -4,10 +4,12 @@
 
 import React from 'react';
 import { Router, Route, Link } from 'react-router'
-import Loader from 'react-loader';
 
 import { connect } from 'react-redux';
 import * as actionCreators from '../../redux/questionnaire-actions';
+import { openAddSkillsModal } from '../../redux/general-actions';
+import { resetListViewLoaderFlag } from '../../redux/listview-actions';
+import { setCurrentRoute } from '../../redux/general-actions';
 
 import Footer from '../Footer/Footer';
 import Avatar from '../subcomponents/Avatar';
@@ -20,11 +22,15 @@ import TagCloud from './TagCloud/TagCloud';
 import InputTypeAhead from './InputTypeAhead/InputTypeAhead';
 import YesNo from './YesNo/YesNo';
 import EndForm from './EndForm/EndForm';
+import ChangeQuestionnaireModal from './ChangeQuestionnaireModal';
 
 
 function mapStateToProps(state) {
   return {
     loaded: state._questionnaire.loaded,
+    changeQuestionnaireModal: state._questionnaire.ChangeQuestionnaireModal,
+    toShowVideo: state._questionnaire.data.toShowVideo,
+    intro: state._questionnaire.data.Intro,
     listViewLoaded: state._listViewData.loaded,
     memberName: state._questionnaire.data.Member.Name,
     progressBar: state._questionnaire.data.ProgressBar,
@@ -36,18 +42,20 @@ function mapStateToProps(state) {
 
 class Questionnaire extends React.Component {
   render () {
-    var { loaded } = this.props;
-
-    if(loaded) {
+    if (this.props.loaded) {
       return <Content {...this.props} />;
     }
     else {
       return (
         <div>
-          <Loader />
+          <div className="spinner"></div>
         </div>
       );
     }
+  }
+
+  componentDidMount() {
+    this.props.setCurrentRoute('Questionnaire');
   }
 }
 
@@ -58,7 +66,7 @@ class Content extends React.Component {
 
     return (
       <div>
-        <QuestionnaireHeader />
+        <QuestionnaireHeader {...this.props}/>
         <div className="page-maincontent" id="content">
           <div className="page-wrapper">
             <div className="questions">
@@ -68,6 +76,7 @@ class Content extends React.Component {
         </div>
         <Footer />
         <ProgressBar {...this.props.progressBar} onClickViewList={this.props.getListViewData}/>
+        <ChangeQuestionnaireModal {...this.props} changeQuestionnaireModal={this.props.changeQuestionnaireModal}/>
       </div>
     );
   }
@@ -76,31 +85,31 @@ class Content extends React.Component {
     switch ( question.QuestionType ) {
       case 'TextInput' :
         return (
-          <TextInput key={idx} id={idx} {...this.props} />
+          <TextInput key={`TextInput${idx}`} id={idx} {...this.props} />
         );
       case 'SingleChoice':
         return (
-          <SingleChoice key={idx} id={idx} {...this.props} />
+          <SingleChoice key={`SingleChoice${idx}`} id={idx} {...this.props} />
         );
       case 'MultipleChoice' :
         return (
-          <MultipleChoice key={idx} id={idx} {...this.props} />
+          <MultipleChoice key={`MultipleChoice${idx}`} id={idx} {...this.props} />
         );
       case 'TagCloud' :
         return (
-          <TagCloud key={idx} id={idx} {...this.props} />
+          <TagCloud key={`TagCloud${idx}`} id={idx} {...this.props} />
         );
-      case 'Typeahead' :
+        case 'Typeahead' :
         return (
-          <InputTypeAhead key={idx} id={idx} {...this.props} />
+          <InputTypeAhead key={`InputTypeAhead${idx}`} id={idx} {...this.props} />
         );
       case 'YesNo':
         return (
-          <YesNo key={idx} id={idx} {...this.props} />
+          <YesNo key={`YesNo${idx}`} id={idx} {...this.props} />
         );
       default :
         return (
-          <EndForm key={idx} {...this.props}/>
+          <EndForm key={`EndForm${idx}`} {...this.props}/>
         );
     }
   }
@@ -109,6 +118,11 @@ class Content extends React.Component {
 
 export default connect(
   mapStateToProps,
-  actionCreators
+  {
+    ...actionCreators,
+    openAddSkillsModal,
+    resetListViewLoaderFlag,
+    setCurrentRoute
+  }
 )(Questionnaire);
 

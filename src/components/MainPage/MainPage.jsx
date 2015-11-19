@@ -3,10 +3,10 @@
  */
 
 import React from 'react';
-import Loader from 'react-loader';
 import { Router, Route, Link } from 'react-router';
 import { connect } from 'react-redux';
 
+import * as actionCreators from '../../redux/general-actions';
 import Footer from '../Footer/Footer.jsx';
 import ActionPlanDrawer from '../ActionPlanDrawer/ActionPlanDrawer.jsx';
 
@@ -20,16 +20,19 @@ function mapStateToProps(state, ownProps) {
 
 class MainPage extends React.Component {
   render () {
-    var { loaded } = this.props;
-
-    if (loaded)
-      return <Content {...this.props}/>;
+    if (this.props.loaded) {
+      return <Content {...this.props}/>
+    }
     else
       return (
         <div>
-          <Loader loaded={loaded} />
+          <div className="spinner"></div>
         </div>
       );
+  }
+
+  componentDidMount() {
+    this.props.setCurrentRoute('MainPage');
   }
 }
 
@@ -65,5 +68,7 @@ class Content extends React.Component {
 }
 
 export default connect(
-  mapStateToProps
+  mapStateToProps, {
+      ...actionCreators
+    }
 )(MainPage);

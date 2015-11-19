@@ -160,6 +160,9 @@ let Autocomplete = React.createClass({
             this.state.value.length
           )
           this.props.onSelect(this.state.value, item)
+          if (typeof this.props.callback === 'function') {
+            this.props.callback(this.state.value)
+          }
         })
       }
     },
@@ -243,6 +246,9 @@ let Autocomplete = React.createClass({
       this.props.onSelect(this.state.value, item)
       React.findDOMNode(this.refs.input).focus()
       this.setIgnoreBlur(false)
+      if (typeof this.props.callback === 'function') {
+        this.props.callback(this.state.value)
+      }
     })
   },
 
@@ -329,7 +335,7 @@ let Autocomplete = React.createClass({
           onClick={this.handleInputClick}
           value={this.state.value}
         />
-        {this.state.isOpen && this.renderMenu()}
+        {this.state.value.length > 2 && this.state.isOpen && this.renderMenu()}
         {this.props.debug && (
           <pre style={{marginLeft: 300}}>
             {JSON.stringify(_debugStates.slice(_debugStates.length - 5, _debugStates.length), null, 2)}

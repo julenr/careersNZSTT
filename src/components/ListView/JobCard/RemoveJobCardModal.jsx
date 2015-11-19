@@ -14,8 +14,7 @@ class RemoveJobCardModal extends React.Component {
     if(this.props.jobCardSelectedID >= 0) {
       return (
         <Modal isOpen={this.props.showRemoveJobCardModal}>
-          <div className="ReactModal__Overlay ReactModal__Overlay--after-open">
-            <div className="ReactModal__Content ReactModal__Content--after-open modal modal-remove">
+            <div className="modal modal-remove">
               <h2 className="modal-title">{`Remove ${jobCard.Title}`}</h2>
               <div className="form">
                 <p>You are removing the job <strong>{jobCard.Title}</strong> from your list</p>
@@ -23,14 +22,13 @@ class RemoveJobCardModal extends React.Component {
                   Remove <span className="tablet desktop">{jobCard.Title} only</span>
                 </a>
               </div>
-              {this.groupJobsByWorkConditions()}
+              {this.renderRemoveJobsGroupedByConditions()}
               <div className="submit">
                 <a className="button-simple" href="javascript:void 0" onClick={this.cancelModal}>Cancel</a>
               </div>
               <a className="action-close icon-cross" href="javascript:void 0"
                  onClick={this.cancelModal}>&nbsp;</a>
             </div>
-          </div>
         </Modal>
       );
     }
@@ -39,29 +37,33 @@ class RemoveJobCardModal extends React.Component {
     }
   }
 
-  groupJobsByWorkConditions = () => {
-
-    let joinedWorkConditions = _(this.props.jobsCards)
-      .map((jobCard) =>{return (!jobCard.Closed) ? jobCard.WorkConditions : [];})
+  renderRemoveJobsGroupedByConditions = () => {
+    let joinedConditions = _(this.props.jobsCards)
+      .map((jobCard) =>{
+        return (!jobCard.Closed && !jobCard.Filtered) ?
+          jobCard.WorkConditions.concat(jobCard.VocationalPathways, jobCard.Interests)
+          :
+          [];
+      })
       .flatten()
       .value();
 
-    let groupedWorkConditions = _.countBy(joinedWorkConditions);
-    let uniqueWorkConditions = _(joinedWorkConditions)
+    let groupedConditions = _.countBy(joinedConditions);
+    let uniqueConditions = _(joinedConditions)
       .uniq()
-      .remove((workCondition) => (groupedWorkConditions[workCondition] > 1))
+      .remove((Condition) => (groupedConditions[Condition] > 1))
       .value();
 
-    const removeButtons = uniqueWorkConditions.map((workCondition, idx) => {
-      if(groupedWorkConditions[workCondition]) {
+    const removeButtons = uniqueConditions.map((condition, idx) => {
+      if(groupedConditions[condition]) {
         return (
           <span key={idx}>
             {(idx === 0) ? <p>If you'd prefer you can remove all jobs from your list with similar conditions:</p> : ''}
             <p>
-              <a href="javascript:void 0" className="button">
-              {`Remove all ${workCondition} jobs `}
+              <a href="javascript:void 0" className="button" onClick={() => this.closeModalAndFilterGroupByCondition(condition)}>
+              {`Remove all ${condition} jobs `}
                 <span className="amount">
-                  <span>{`(${groupedWorkConditions[workCondition]} jobs)`}</span>
+                  <span>{`(${groupedConditions[condition]} jobs)`}</span>
                 </span>
               </a>
             </p>
@@ -75,9 +77,15 @@ class RemoveJobCardModal extends React.Component {
     return removeButtons;
   }
 
-  closeModalAndRemoveJobCard = () => {
-    this.props.closeJobCard(this.props.jobCardSelectedID);
+  closeModalAndFilterGroupByCondition = (condition) => {
     this.props.closeRemoveJobCardModal();
+    this.props.addJobCardCondition(condition);
+    this.props.filterJobCardsByCondition(condition);
+  }
+
+  closeModalAndRemoveJobCard = () => {
+    this.props.closeRemoveJobCardModal();
+    this.props.closeJobCard(this.props.jobCardSelectedID);
   }
 
   cancelModal = () => {

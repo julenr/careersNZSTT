@@ -1,9 +1,12 @@
+import logLite from '../libs/logLite';
+
+let logger = logLite.getLogger('promise middleware');
 
 export default function promiseMiddleware() {
   return (next) => (action) => {
     const { promise, types, ...rest } = action;
 
-    console.log(action);
+    logger.log(action);
 
 
     if (!promise) {

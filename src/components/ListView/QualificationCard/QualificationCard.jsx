@@ -6,13 +6,19 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { scrollTo } from '../../../libs/helpers';
+import { connect } from 'react-redux';
 
-import RemoveQualificationCardModal from './RemoveQualificationCardModal';
 import { textFitToContainer } from '../../../libs/helpers.js';
 
+function mapStateToProps(state, ownProps) {
+  return {
+    qualification: state._listViewData.data.QualificationsPanel.Courses[ownProps.id]
+  };
+}
 class QualificationCard extends React.Component {
   render() {
-    let qualification = this.props.qualificationsPanel.Courses[this.props.id];
+    let qualification = this.props.qualification;
+
     const style = {
       fontSize: textFitToContainer(qualification.Title) + 'px'
     }
@@ -63,12 +69,13 @@ class QualificationCard extends React.Component {
             </a>
           </footer>
         </div>
-        <RemoveQualificationCardModal {...this.props}/>
       </article>
     );
   }
 
   showInstitutionsPanel = () => {
+    this.props.setCurrentQualificationID(this.props.id);
+    this.props.getInstitutionByID(this.props.qualification.QualificationID);
     this.props.openInstitutionsPanel();
     scrollTo('institutions-panel-scroll-point', -120);
   }
@@ -82,4 +89,6 @@ class QualificationCard extends React.Component {
   }
 }
 
-export default QualificationCard;
+export default connect(
+  mapStateToProps
+)(QualificationCard);

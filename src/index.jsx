@@ -2,10 +2,20 @@
  * Created by jr1500 on 9/09/15.
  */
 
+import logLite from './libs/logLite';
+
+let logger = logLite.getLogger('index');
+
+if (__DEV__) {
+  logger.log('DEVELOPMENT ENVIRONMENT ACTIVATED');
+}
+
 // SASS Stylesheets
 import './styles/custom-normalize.scss';
 import './styles/fonts.scss';
 import './styles/screen.scss';
+import './styles/animate.css';
+import './styles/tooltip.scss';
 
 // REACT Dependencies
 import React from 'react';
@@ -13,7 +23,6 @@ import ReactDOM from 'react-dom';
 import { Router, Route, Link, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
-import Loader from 'react-loader';
 
 // REDUX STORE
 import store from './redux/create-store';
@@ -24,13 +33,8 @@ import App from './components/App/App.jsx';
 import MainPage from './components/MainPage/MainPage.jsx';
 import Questionnaire from './components/Questionnaire/Questionnaire.jsx';
 import ListView from './components/ListView/ListView.jsx';
+import CourseDetail from './components/CourseDetail/CourseDetail.jsx';
 import ProviderConnect from './components/ProviderConnect/ProviderConnect.jsx';
-
-console.clear();
-
-if (__DEV__) {
-  console.log('DEVELOPMENT ENVIRONMENT ACTIVATED');
-}
 
 // Element to attach React-DOM
 const app = document.createElement('div');
@@ -53,6 +57,7 @@ let unsubscribe = store.subscribe(() => {
               <Route path="questionnaire" component={Questionnaire} />
               <Route path="providerconnect" component={ProviderConnect} />
               <Route path="list-view" component={ListView} />
+              <Route path="course-detail" component={CourseDetail} />
               {state._footerData.data.Footer.Menu.map(renderFooter)}
             </Route>
           </Router>
@@ -62,7 +67,7 @@ let unsubscribe = store.subscribe(() => {
     }
     else {
       ReactDOM.render((
-        <Loader />
+        <div className="spinner"></div>
       ), app);
     }
   }

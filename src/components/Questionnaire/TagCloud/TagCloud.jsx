@@ -6,7 +6,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import { scrollTo } from '../../../libs/helpers';
-import Loader from 'react-loader';
 
 import { connect } from 'react-redux';
 import * as actionCreators from '../../../redux/questionnaire-actions';
@@ -38,9 +37,10 @@ class TagCloud extends React.Component {
         <div className="field radio with-avatar">
           <Avatar />
           <label>{question.Description}</label>
-          <p className="help">Use the <span className="icon-cancel-circle">
-            </span> to <strong>remove</strong> a skill you don't have or don't want to have.
-          </p>
+          {
+            (question.HintPosition === 'Top' && question.HintText) ?
+            <p className="help">{question.HintText}</p> : ''
+          }
           <div className="question-tags" data-type="tag">
 
 
@@ -48,12 +48,12 @@ class TagCloud extends React.Component {
               (skillsLoaded) ?
                 question.QuestionResponses.map(this.renderTags)
                 :
-                <Loader />
+                <div className="spinner inline"></div>
 
             }
             {
               (skillsLoaded) ?
-                this.renderButtons
+                this.renderButtons()
                 :
                 ''
             }
@@ -65,6 +65,10 @@ class TagCloud extends React.Component {
             >That looks about right<span className="icon-arrow-down"></span>
           </a>
         </div>
+        {
+          (question.HintPosition === 'Bottom' && question.HintText) ?
+          <p className="help">{question.HintText}</p> : ''
+        }
         <span id={this.scrollElementID}></span>
       </div>
     );
@@ -73,10 +77,16 @@ class TagCloud extends React.Component {
   renderButtons = () =>  {
     return (
       <span>
-        <div tabIndex="0" className="tag add-more"><span className="icon-plus-circle"></span>Add more</div>
+        <div tabIndex="0"
+             className="tag add-more"
+             onClick={ () => this.props.openAddSkillsModal(this.props.questionnaire[this.props.id].ID)}
+          >
+          <span className="icon-plus-circle"></span>
+          Add more
+        </div>
         <span tabIndex="0"
           className="tag select-all"
-          onClick={ () => this.props.sellectAllTagCloud(this.props.id)}
+          onClick={ () => this.props.selectAllTagCloud(this.props.id)}
           >
           Select all
         </span>
@@ -85,29 +95,20 @@ class TagCloud extends React.Component {
   }
 
   renderTags = (response, idx) => {
-    if(response.Removed) {
-      return ( <span key={idx} /> );
-    }
-    else {
-      let classes = classNames( this.props.className, {
-        'tag': true,
-        'tag selected': response.Selected
-      } );
-      if(response.Selected) this.nextButtonActive = true;
-      return (
-      <span key={idx} onClick={ () => this.props.responseClickedTagCloud(this.props.id, idx)} >
-        <span className={ classes } key={idx} tabIndex="0" >
-          {response.Title}
-          <span
-            className="icon-cancel-circle"
-            key={idx}
-            onClick={ () => this.props.removeTag(this.props.id, idx) }
-            >
-          </span>
+    let classes = classNames( this.props.className, {
+      'tag': true,
+      'tag selected': response.Selected
+    } );
+    if(response.Selected) this.nextButtonActive = true;
+    return (
+    <span key={idx} onClick={ () => this.props.responseClickedTagCloud(this.props.id, idx)} >
+      <span className={ classes } key={idx} tabIndex="0" >
+        <span className="icon-tick">
         </span>
+        {response.Title}
       </span>
-      );
-    }
+    </span>
+    );
   }
 
   nextClicked = (nextID) => {

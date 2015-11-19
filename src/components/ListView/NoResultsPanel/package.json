@@ -1,0 +1,6 @@
+{
+  "name": "NoResultsPanel",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./NoResultsPanel.jsx"
+}

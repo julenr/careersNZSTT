@@ -5,41 +5,52 @@
 import React from 'react';
 import classNames from 'classnames';
 
+import { scrollTo } from '../../../libs/helpers';
 import UndoPanel from './UndoPanel';
 import HelpPanel from './HelpPanel';
+import TextSelect from '../../subcomponents/TextSelect';
 
-class ListViewHeader extends React.Component {
+const ListViewHeader = (props) => {
+  const { helpPanels } = props;
 
-  render() {
-    let { helpPanels } = this.props;
-
-    return (
-      <div className="page-maincontent" id="content">
-        <div className="page-wrapper">
-          <h1 className="results-title"> <span className="select-menu"> <a href="javascript: void 0" className="select-menu-trigger">Job<span className="icon-arrow-down"></span></a>
-            <ul data-type="select" className="ui-menu">
-              <li tabIndex="0" value="1">Job</li>
-              <li tabIndex="0" value="2">Course</li>
-            </ul>
-            </span> suggestions based on <a href="javascript: void 0" onClick={this.props.openSkillsModalFromListView}>your skills</a>
-          </h1>
-          <p className="results-subtitle">
-            <strong>23 courses</strong> are hidden, <a href="javascript: void 0">edit your preferences</a>
-          </p>
-          <UndoPanel {...this.props}/>
-          {helpPanels.map(this.renderHelpPanels)}
+  return (
+    <div className="page-maincontent" id="content">
+      <div className="page-wrapper">
+        <h1 className="access">Job suggestions based on skills</h1>
+        <div className="results-title">
+          <span className="select-menu">
+            <TextSelect options={['Job', 'Course']} active={props.ListType} onChange={(e) => changeListType(e, props)}/>
+          </span>
+          &nbsp;suggestions based on <a href="javascript: void 0" onClick={props.openSkillsModalFromListView}>your skills</a>
         </div>
+        <p className="results-subtitle">
+          {
+            (props.filters.JobCardsFiltered) ?
+              <span><strong>{props.filters.JobCardsFiltered} courses</strong> are hidden, </span>
+            :
+             ''
+          }
+          <a href="javascript: void 0" onClick={() => scrollTo('preferences-panel', -70)}>edit your preferences</a>
+        </p>
+        <UndoPanel {...props}/>
+        {helpPanels.map((helpPanel, idx) => renderHelpPanels(helpPanel, idx, props))}
       </div>
+    </div>
+  );
+}
+
+const renderHelpPanels = (helpPanel, idx, props) => {
+  if(!helpPanel.Closed) {
+    return (
+      <HelpPanel key={idx} id={idx} {...props} />
     );
   }
+}
 
-  renderHelpPanels = (helpPanel, idx) => {
-    if(!helpPanel.Closed) {
-      return (
-        <HelpPanel key={idx} id={idx} {...this.props} />
-      );
-    }
-  }
+const changeListType = (e, props) => {
+  props.setListViewType(e);
+  props.resetListViewState();
+  props.getListViewData();
 }
 
 export default ListViewHeader;

@@ -4,16 +4,38 @@
 import axios from 'axios';
 import store from './create-store';
 import _ from 'lodash';
-
 import * as fakeData from './fake-data';
+import logLite from '../libs/logLite';
+
+let logger = logLite.getLogger('questionnaire actions');
 
 const appID = document.getElementsByTagName('body')[0].getAttribute('data-application-id');
+
+export function showVideo() {
+  return {
+    type: 'SHOW_VIDEO'
+  }
+}
 
 export function responseClickedMultipleChoice(questionID, responseID) {
   return {
     type: 'RESPONSE_CLICKED_MULTIPLE_CHOICE',
     questionID,
     responseID
+  }
+}
+
+export function responseClickedAlternativeOfMultipleChoice(questionID) {
+  return {
+    type: 'RESPONSE_CLICKED_ALTERNATIVE_OF_MULTIPLE_CHOICE',
+    questionID
+  }
+}
+
+export function showMoreOptions(questionID) {
+  return {
+    type: 'SHOW_MORE_OPTIONS',
+    questionID
   }
 }
 
@@ -33,11 +55,30 @@ export function responseClickedSingleChoice(questionID, responseID) {
   }
 }
 
+export function responseClickedAlternativeOfSingleChoice(questionID) {
+  return {
+    type: 'RESPONSE_CLICKED_ALTERNATIVE_OF_SINGLE_CHOICE',
+    questionID
+  }
+}
+
 export function clickedYesNo(questionID, responseID) {
   return {
     type: 'CLICKED_YES_NO',
     questionID,
     responseID
+  }
+}
+
+export function closeChangeQuestionnaireModal() {
+  return {
+    type: 'CLOSE_QUESTIONNAIRE_MODAL'
+  }
+}
+
+export function changeCurrentQuestion() {
+  return {
+    type: 'CHANGE_CURRENT_QUESTION'
   }
 }
 
@@ -65,18 +106,18 @@ export function setFinalTypeAheadText(questionID, text) {
   }
 }
 
-export function loadTypeAhead(text) {
+export function loadTypeAhead(text, endpoint) {
   return {
     types: ['DUMP_DATA_INTO_TYPE_AHEAD_REQUEST', 'DUMP_DATA_INTO_TYPE_AHEAD_SUCCESS', 'DUMP_DATA_INTO_TYPE_AHEAD_FAILURE'],
     promise: () => {
-      return axios.get(`/api/skills-transition-tool/jobs/${text}`)
+      return axios.get(`/api/skills-transition-tool/${endpoint}/${text}`)
         .then(function (response) {
           return {data: response.data.Results};
         })
         .catch(function (response) {
-          console.log(response);
+          logger.log(response);
           if (__DEV__) {
-            console.log('Using fake data for Type Ahead');
+            logger.log('Using fake data for Type Ahead');
             return {data: _.clone(fakeData.typeAheadData.Results, true)};
           }
         });
@@ -91,18 +132,18 @@ export function setMemberName(name) {
   }
 }
 
-export function sellectAllTagCloud(questionID) {
+export function selectAllTagCloud(questionID) {
   return {
     type: 'SELECT_ALL_TAG_CLOUD',
     questionID
   }
 }
 
-export function removeTag(questionID, tagID) {
+export function addSkillToQuestion(questionID, value) {
   return {
-    type: 'REMOVE_TAG',
+    type: 'ADD_SKILLS_INTO_TAG_CLOUD',
     questionID,
-    tagID
+    value
   }
 }
 
@@ -142,9 +183,9 @@ export function nextQuestion(questionID, nextQuestionID) {
             return {count: response.data.Count};
           })
           .catch(function (response) {
-            console.log(response);
+            logger.log(response);
             if (__DEV__) {
-              console.log('Using fake data');
+              logger.log('Using fake data');
               return {count: 10};
             }
           });
@@ -166,12 +207,17 @@ export function getListViewData() {
       let listType = state._questionnaire.data.ListTypes.Current;
       return axios.post(`/api/skills-transition-tool/listview/${appID}/${listType}`, state._questionnaire.data)
         .then(function (response) {
+          response.data.Filters = _.clone(state._listViewData.data.Filters, true); //Keep the original Filters
+          response.data.Filters.Region = state._questionnaire.data.Regions.Current;
           return {data: response.data};
         })
         .catch(function (response) {
-          console.log(response);
+          logger.log(response);
           if (__DEV__) {
-            console.log('Using fake data');
+            logger.log('Using fake data');
+            fakeData.listViewData.ListType = listType;
+            fakeData.listViewData.Filters = _.clone(state._listViewData.data.Filters, true); //Keep the original Filters
+            console.log(state);
             return {data: _.clone(fakeData.listViewData, true)};
           }
         });
@@ -179,3 +225,9 @@ export function getListViewData() {
   }
 }
 
+export function setListViewType(listType) {
+  return {
+    type: 'SET_LIST_VIEW_TYPE',
+    listType
+  }
+}

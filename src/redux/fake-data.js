@@ -9,6 +9,44 @@ export const questionnaire = {
       'Skills': 'http:\/\/careersnz.stripetheweb.com\/tools\/skills-transition-tool\/skills'
     }
   },
+  'Intro': {
+    'FeatureType': 'Video',
+    'Title': '<p><strong>Hi there, I\'m John.<\/strong> Welcome to Change up!<\/p>',
+    'Blurb': 'This website will help you find a course and a better job based on the skills you have and the things you want from work and study.',
+    'Image': {
+      'Small': {
+        'Src': 'http:\/\/careersnz.stripetheweb.com\/assets\/_resampled\/SetWidth400-generalcontentimage.jpg',
+        'Alt': 'assets\/generalcontentimage.jpg',
+        'Width': 400,
+        'Height': 226,
+        'EmbedHTML': '<img src=\'http:\/\/careersnz.stripetheweb.com\/assets\/_resampled\/SetWidth400-generalcontentimage.jpg\' alt=\'SetWidth400-generalcontentimage\' \/>'
+      },
+      'Medium': {
+        'Src': 'http:\/\/careersnz.stripetheweb.com\/assets\/_resampled\/SetWidth800-generalcontentimage.jpg',
+        'Alt': 'assets\/generalcontentimage.jpg',
+        'Width': 800,
+        'Height': 451,
+        'EmbedHTML': '<img src=\'http:\/\/careersnz.stripetheweb.com\/assets\/_resampled\/SetWidth800-generalcontentimage.jpg\' alt=\'SetWidth800-generalcontentimage\' \/>'
+      },
+      'Large': {
+        'Src': 'http:\/\/careersnz.stripetheweb.com\/assets\/_resampled\/SetWidth959-generalcontentimage.jpg',
+        'Alt': 'assets\/generalcontentimage.jpg',
+        'Width': 959,
+        'Height': 541,
+        'EmbedHTML': '<img src=\'http:\/\/careersnz.stripetheweb.com\/assets\/_resampled\/SetWidth959-generalcontentimage.jpg\' alt=\'SetWidth959-generalcontentimage\' \/>'
+      }
+    },
+    'Video': {
+      'Title':'Top 10 Emma Stone Performances',
+      'Type':'video',
+      'SourceURL':'https:\/\/www.youtube.com\/watch?v=Hy59IfNzSeU',
+      'Width':'480',
+      'Height':'270',
+      'Description':'Top 10 Emma Stone Performances',
+      'ThumbURL':'https:\/\/i.ytimg.com\/vi\/Hy59IfNzSeU\/hqdefault.jpg',
+      'EmbedHTML':'<div class="media"><iframe width=\'480\' height=\'270\' src=\'https:\/\/www.youtube.com\/embed\/Hy59IfNzSeU?feature=oembed&autoplay=1\' frameborder=\'0\' allowfullscreen><\/iframe><\/div>'
+    }
+  },
   'Member': {
     'UserID': null,
     'SessionID': 'de34dsfvm7lur0uk5psniogbr7',
@@ -63,21 +101,23 @@ export const questionnaire = {
       'QuestionResponses': [],
       'PlaceHolder': 'Optional placeholder',
       'NextQuestionID': 2,
-      'HasAlternative': false,
-      'AlternativeText': '',
-      'AlternativeNextQuestionID': null,
+      'HasAlternative': true,
+      'AlternativeText': 'I don\'t care',
+      'AlternativeNextQuestionID': 2,
       'Endpoint': 'Member.Name',
       'MilestonePercentage': 10,
       'MilestoneText': 'Good start. We just need to know a little more to make a good list for you.',
+      'HintText': 'Hint: Think about your name',
+      'HintPosition': 'Bottom',
     },
     {
       'ID': 2,
       'Text': '',
-      'Description': 'YES/NO QUESTION PROTOTYPE FOR USER [name]',
+      'Description': 'YES/NO QUESTION PROTOTYPE FOR USER [name], YES selects List View type \'Job\' NO \'Course\'',
       'QuestionType': 'YesNo',
       'QuestionResponses': [],
       'NextQuestionID': 3,
-      'HasAlternative': false,
+      'HasAlternative': true,
       'AlternativeText': 'I don\'t mind',
       'AlternativeNextQuestionID': 5,
       'Endpoint': null,
@@ -94,11 +134,13 @@ export const questionnaire = {
         {
           'ID': 1,
           'ResponseText': 'No',
-          'NextQuestionID': 1,
+          'NextQuestionID': 3,
           'EntityType': 'ListTypes',
           'EntityData': 'Course'
         }
-      ]
+      ],
+      'HintText': 'Hint: Think about Yes and No',
+      'HintPosition': 'Top',
     },
     {
       'ID': 3,
@@ -146,7 +188,9 @@ export const questionnaire = {
           'EntityType': 'None',
           'EntityData': ''
         }
-      ]
+      ],
+      'HintText': 'Hint: Think about making a choice',
+      'HintPosition': 'Bottom',
     }, {
       'ID': 5,
       'Text': 'Another job',
@@ -155,8 +199,9 @@ export const questionnaire = {
       'NextQuestionID': 6,
       'HasAlternative': true,
       'AlternativeText': 'I don\'t mind',
-      'AlternativeNextQuestionID': 4,
+      'AlternativeNextQuestionID': 6,
       'Endpoint': null,
+      'Visible': 6,
       'MilestonePercentage': 40,
       'MilestoneText': 'Great, we\'ve got a nice list of 9 jobs/courses.',
       'QuestionResponses': [{
@@ -194,7 +239,9 @@ export const questionnaire = {
         'NextQuestionID': 6,
         'EntityType': 'None',
         'EntityData': ''
-      }]
+      }],
+      'HintText': 'Hint: Think about many choices...',
+      'HintPosition': 'Top',
     }, {
       'ID': 6,
       'Text': '',
@@ -208,7 +255,9 @@ export const questionnaire = {
       'Endpoint': 'Jobs',
       'MilestonePercentage': 50,
       'MilestoneText': 'Great, we\'ve got a nice list of 5 jobs/courses.',
-      'QuestionResponses': []
+      'QuestionResponses': [],
+      'HintText': 'Hint: Think about typeahead...',
+      'HintPosition': 'Bottom',
     }, {
       'ID': 7,
       'Text': 'Skills match',
@@ -241,7 +290,9 @@ export const questionnaire = {
         'ResponseText': 'Skill 5.',
         'EntityType': 'None',
         'EntityData': ''
-      }]
+      }],
+      'HintText': 'Hint: Think about tagation.',
+      'HintPosition': 'Top'
     }
     , {
       'ID': 8,
@@ -270,11 +321,34 @@ export const mainContentHTML = {
     'ThumbURL': 'https:\/\/i.ytimg.com\/vi\/udGgFUKxokg\/hqdefault.jpg',
     'EmbedHTML': '<div class=\'media\'><iframe width=\'480\' height=\'270\' src=\'https:\/\/www.youtube.com\/embed\/udGgFUKxokg?feature=oembed\' frameborder=\'0\' allowfullscreen><\/iframe><\/div>'
   },
-  'Intro': 'Intro goes here ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-  'Content': '            <!-- START WYSIWYG content -->\n            <h2>Take the next step (H2)<\/h2>\n            <p>Muse about prime number venture a mote of dust suspended in a sunbeam the ash of stellar alchemy intelligent beings the sky calls to us Vangelis trillion culture, kindling the energy hidden in matter decipherment worldlets. A mote of dust suspended in a sunbeam, a still more glorious dawn awaits kindling the energy hidden in matter radio telescope.<\/p>\n            <h3>Explorations billions and billions (H3)<\/h3>\n            <p class=\'h5\'>Harvesting star light galaxies two ghostly white figures:<\/p>\n            <ul>\n              <li>in coveralls and helmets<\/li>\n              <li>are softly dancing\n                <ul>\n                  <li>extraplanetary Hypatia,<\/li>\n                  <li>courage of our questions\n                    <ul>\n                      <li>emerged into consciousness<\/li>\n                      <li>Hydrogen atoms<\/li>\n                    <\/ul>\n                  <\/li>\n                  <li>the sky calls to us!<\/li>\n                <\/ul>\n              <\/li>\n              <li>Not a sunrise but a galaxyrise.<\/li>\n            <\/ul>\n            <p class=\'h5\'>Radio telescope extraordinary claims:<\/p>\n            <ol>\n              <li>require extraordinary evidence<\/li>\n              <li>two ghostly white figures\n                <ol class=\'list-alpha\'>\n                  <li>in coveralls and helmets<\/li>\n                  <li>are softly dancing finite\n                    <ol class=\'list-roman\'>\n                      <li>but unbounded<\/li>\n                      <li>extraplanetary radio telescope<\/li>\n                    <\/ol>\n                  <\/li>\n                  <li>star stuff harvesting star light<\/li>\n                <\/ol>\n              <\/li>\n              <li>Billions upon billions upon billions upon billions upon billions upon billions upon billions?<\/li>\n            <\/ol>\n            <h4>Corpus callosum (H4)<\/h4>\n            <p>Corpus callosum. Vanquish the impossible decipherment take root and flourish! Orions sword. The sky calls to us!<\/p>\n            <blockquote>\n              <p>Orions sword from which we spring! Astonishment laws of physics bits of moving fluff, science the sky calls to us gathered by gravity, cosmic ocean. <br>\n                <cite><strong>Carl Sagan<\/strong><\/cite><\/p>\n            <\/blockquote>\n            <p>Explorations billions upon billions permanence of the stars, \'Vangelis cosmos culture colonies\' ship of the imagination of brilliant syntheses at the edge of forever a still more glorious dawn awaits extraordinary claims require extraordinary evidence tesseract gathered by gravity rich in heavy atoms. AC\/DC Drake Equation globular star cluster quasar rich in heavy atoms realm of the galaxies<\/p>\n\n            <div class=\'captionImage left\'>\n              <img src=\'..\/images\/placeholders\/placeholder-1918x1082-people.jpg\' width=\'959\' height=\'541\' alt=\'\' \/>\n              <p class=\'caption\'>Image caption Lorem ipsum dolor sit amet, <a href=\'#\'>consectetur adipiscing elit<\/a>.<\/p>\n            <\/div>\n\n            <p>Consectetur adipiscing elit. Aliquam at link style sem. Strong erat emphasis. Donec placerat nisl magna, et faucibus arcu condimentum sed.<\/p>\n                \n            <h2>Tables<\/h2>            \n            <table>\n              <caption>\n              Tables\n              <\/caption>\n              <thead>\n                <tr>\n                  <th>Table header 1<\/th>\n                  <th>Table header 2<\/th>\n                  <th>Table header 3<\/th>\n                <\/tr>\n              <\/thead>\n              <tbody>\n                <tr>\n                  <td>Lorem ipsum<\/td>\n                  <td>Lorem ipsum<\/td>\n                  <td><p>Consectetur adipiscing elit. Aliquam at link style sem. Strong erat emphasis. Donec placerat nisl magna, et faucibus arcu condimentum sed.<\/p><\/td>\n                <\/tr>\n                <tr>\n                  <td>Lorem ipsum<\/td>\n                  <td>Lorem ipsum<\/td>\n                  <td><p>Consectetur adipiscing elit. Aliquam at link style sem. Strong erat emphasis. Donec placerat nisl magna, et faucibus arcu condimentum sed.<\/p><\/td>\n                <\/tr>\n                <tr>\n                  <td>Lorem ipsum<\/td>\n                  <td>Lorem ipsum<\/td>\n                  <td><p>Consectetur adipiscing elit. Aliquam at link style sem. Strong erat emphasis. Donec placerat nisl magna, et faucibus arcu condimentum sed.<\/p><\/td>\n                <\/tr>\n              <\/tbody>\n            <\/table>\n            <h2>Video<\/h2>\n            <div class=\'capionImage video\'>\n              <iframe width=\'730\' height=\'411\' src=\'https:\/\/www.youtube.com\/embed\/oZal3m3JOkk?rel=0&amp;showinfo=0\' frameborder=\'0\' allowfullscreen><\/iframe>\n              <p class=\'caption\'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem. Aliquam erat volutpat. Donec placerat nisl magna, et faucibus arcu condimentum sed.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem. Aliquam erat volutpat. Donec placerat nisl magna, et faucibus arcu condimentum sed.<\/p>\n            <\/div>\n            <!-- END WYSIWYG content -->'
+  'Content': '            <!-- START WYSIWYG content -->\n            <h2>Take the next step (H2)<\/h2>\n            <p>Muse about prime number venture a mote of dust suspended in a sunbeam the ash of stellar alchemy intelligent beings the sky calls to us Vangelis trillion culture, kindling the energy hidden in matter decipherment worldlets. A mote of dust suspended in a sunbeam, a still more glorious dawn awaits kindling the energy hidden in matter radio telescope.<\/p>\n            <h3>Explorations billions and billions (H3)<\/h3>\n            <p class=\'h5\'>Harvesting star light galaxies two ghostly white figures:<\/p>\n            <ul>\n              <li>in coveralls and helmets<\/li>\n              <li>are softly dancing\n                <ul>\n                  <li>extraplanetary Hypatia,<\/li>\n                  <li>courage of our questions\n                    <ul>\n                      <li>emerged into consciousness<\/li>\n                      <li>Hydrogen atoms<\/li>\n                    <\/ul>\n                  <\/li>\n                  <li>the sky calls to us!<\/li>\n                <\/ul>\n              <\/li>\n              <li>Not a sunrise but a galaxyrise.<\/li>\n            <\/ul>\n            <p class=\'h5\'>Radio telescope extraordinary claims:<\/p>\n            <ol>\n              <li>require extraordinary evidence<\/li>\n              <li>two ghostly white figures\n                <ol class=\'list-alpha\'>\n                  <li>in coveralls and helmets<\/li>\n                  <li>are softly dancing finite\n                    <ol class=\'list-roman\'>\n                      <li>but unbounded<\/li>\n                      <li>extraplanetary radio telescope<\/li>\n                    <\/ol>\n                  <\/li>\n                  <li>star stuff harvesting star light<\/li>\n                <\/ol>\n              <\/li>\n              <li>Billions upon billions upon billions upon billions upon billions upon billions upon billions?<\/li>\n            <\/ol>\n            <h4>Corpus callosum (H4)<\/h4>\n            <p>Corpus callosum. Vanquish the impossible decipherment take root and flourish! Orions sword. The sky calls to us!<\/p>\n            <blockquote>\n              <p>Orions sword from which we spring! Astonishment laws of physics bits of moving fluff, science the sky calls to us gathered by gravity, cosmic ocean. <br>\n                <cite><strong>Carl Sagan<\/strong><\/cite><\/p>\n            <\/blockquote>\n            <p>Explorations billions upon billions permanence of the stars, \'Vangelis cosmos culture colonies\' ship of the imagination of brilliant syntheses at the edge of forever a still more glorious dawn awaits extraordinary claims require extraordinary evidence tesseract gathered by gravity rich in heavy atoms. AC\/DC Drake Equation globular star cluster quasar rich in heavy atoms realm of the galaxies<\/p>\n\n            <div class=\'captionImage left\'>\n              <img src=\'..\/images\/placeholders\/placeholder-1918x1082-people.jpg\' width=\'959\' height=\'541\' alt=\'\' \/>\n              <p class=\'caption\'>Image caption Lorem ipsum dolor sit amet, <a href=\'#\'>consectetur adipiscing elit<\/a>.<\/p>\n            <\/div>\n\n            <p>Consectetur adipiscing elit. Aliquam at link style sem. Strong erat emphasis. Donec placerat nisl magna, et faucibus arcu condimentum sed.<\/p>\n                \n            <h2>Tables<\/h2>            \n            <table>\n              <caption>\n              Tables\n              <\/caption>\n              <thead>\n                <tr>\n                  <th>Table header 1<\/th>\n                  <th>Table header 2<\/th>\n                  <th>Table header 3<\/th>\n                <\/tr>\n              <\/thead>\n              <tbody>\n                <tr>\n                  <td>Lorem ipsum<\/td>\n                  <td>Lorem ipsum<\/td>\n                  <td><p>Consectetur adipiscing elit. Aliquam at link style sem. Strong erat emphasis. Donec placerat nisl magna, et faucibus arcu condimentum sed.<\/p><\/td>\n                <\/tr>\n                <tr>\n                  <td>Lorem ipsum<\/td>\n                  <td>Lorem ipsum<\/td>\n                  <td><p>Consectetur adipiscing elit. Aliquam at link style sem. Strong erat emphasis. Donec placerat nisl magna, et faucibus arcu condimentum sed.<\/p><\/td>\n                <\/tr>\n                <tr>\n                  <td>Lorem ipsum<\/td>\n                  <td>Lorem ipsum<\/td>\n                  <td><p>Consectetur adipiscing elit. Aliquam at link style sem. Strong erat emphasis. Donec placerat nisl magna, et faucibus arcu condimentum sed.<\/p><\/td>\n                <\/tr>\n              <\/tbody>\n            <\/table>\n            <h2>Video<\/h2>\n            <div class=\'capionImage video\'>\n              <iframe width=\'730\' height=\'411\' src=\'https:\/\/www.youtube.com\/embed\/oZal3m3JOkk?rel=0&amp;showinfo=0\' frameborder=\'0\' allowfullscreen><\/iframe>\n              <p class=\'caption\'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem. Aliquam erat volutpat. Donec placerat nisl magna, et faucibus arcu condimentum sed.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem. Aliquam erat volutpat. Donec placerat nisl magna, et faucibus arcu condimentum sed.<\/p>\n            <\/div>\n            <!-- END WYSIWYG content -->',
 };
 
 export const footerData = {
+  'Regions': [
+    'Auckland',
+    'Waikato',
+    'Bay Of Plenty',
+    'Gisborne',
+    'Hawkes Bay',
+    'Taranaki',
+    'Manawatu / Wanganui',
+    'Wellington',
+    'Nelson / Tasman',
+    'Marlborough',
+    'West Coast',
+    'Canterbury',
+    'Otago',
+    'Southland',
+    'All',
+    'Northland'
+  ],
+  'Tooltips': {
+    'JobCardVocationalPathways': 'Here is a tooltip for Vocational Pathways.',
+    'ListViewPreferences': 'Here is a tooltip for List View preferences.',
+    'CourseDetailsLevel': 'Here is a tooltip for Course Datail Level.',
+    'CourseDetailsVocationalPathways': 'Here is a tooltip For Course Detail Vocational Pathways.'
+  },
   'Footer': {
     'Text': 'Here is some text, it does not have any HTML in it',
     'Menu': [
@@ -299,6 +373,7 @@ export const footerData = {
 
 
 export const listViewData = {
+  'ListType': '',
   'UndoPanel':
   {
     'Closed': false,
@@ -312,15 +387,276 @@ export const listViewData = {
       'Tips': '<p><strong>First tip</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem.</p><p><strong>Second tip</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem.</p><p><strong>Third tip</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem.</p>'
     }
   ],
+  'Filters': {
+    'JobCards': [],
+    'JobCardsFiltered': 0,
+    'QualificationCards': [],
+    'QualificationCardsFiltered': 0,
+    'ShowAddPreferenceModal': false,
+    'Region': 'All'
+  },
+  'ActionPlanDrawer': {
+    'SuggestedActions': [
+      {
+        'Title': '<p>0 Eam in novum adipisci. Cum meis legimus elaboraret ea <a href="www.google.co.nz"> look at google</a></p>',
+        'IsInActionPlan': true
+      },
+      {
+        'Title': '<p>1 Mea justo tractatos no, quidam fabulas consulatu id cum, eu insolens legendos electram ius. Mollis patrioque qui in, his at legendos tacimates.</p>',
+        'IsInActionPlan': false
+      },
+      {
+        'Title': '<p>2 Eam in novum adipisci. Cum meis legimus elaboraret ea</p>',
+        'IsInActionPlan': true
+      },
+      {
+        'Title': '<p>3 Mea ei eros aliquam, est feugiat evertitur neglegentur ad, vis ea vidisse scripta vivendum.</p>',
+        'IsInActionPlan': true
+      },
+      {
+        'Title': '<p>4 His ea malis docendi delicata. Ea epicuri corrumpit vulputate pri, nec erant perpetua repudiandae cu.</p>',
+        'IsInActionPlan': false
+      }
+    ],
+    'Courses': [
+    ]
+  },
   'JobsCards': [
     {
+      'SubJobID': 1,
       'Closed': false,
+      'Filtered': false,
       'Flipped': false,
-      'Title': 'Software Engineer',
+      'Title': '1 Software Engineer',
       'Description': 'Researches, designs, develops and maintains software systems along with hardware development for medical, scientific, and industrial purposes.',
-      'Interests': 'Gardening; Helping people; Cars.',
+      'Interests': ['Gardening', 'Helping people',  'Cars'],
       'WorkConditions': ['Flexible hours', 'Business', 'hours', 'Inside', 'Outside', 'Regular hours'],
-      'VocationalPathways': 'Social and community services. Manufacturing and technology',
+      'VocationalPathways': ['Social and community services', 'Manufacturing and technology'],
+      'Image': '../src/assets/images/placeholders/software-engineer.jpg',
+      'SkillsMatch': 82,
+      'Interest': 74,
+      'Demand': 23,
+      'Pay': '$15–$40',
+      'PerTime': 'per hour',
+      'Skills': [
+        'Examine characteristics or behavior of living organisms.',
+        'Research methods to improve food products.',
+        'Test quality of materials or finished products.',
+        'Evaluate quality of materials or products.',
+        'Analyze chemical compounds or substances.',
+        'Clean objects.',
+        'Prepare biological samples for testing or analysis.'
+      ]
+    },{
+      'SubJobID': 2,
+      'Closed': false,
+      'Filtered': false,
+      'Flipped': false,
+      'Title': '2 Sofeer',
+      'Description': 'Researches, designs, develops and maintains software systems along with hardware development for medical, scientific, and industrial purposes.',
+      'Interests': ['Gardening', 'Helping people',  'Cars'],
+      'WorkConditions': ['Flexible hours', 'Business', 'hours', 'Inside', 'Outside', 'Regular hours'],
+      'VocationalPathways': ['Social and community services', 'Manufacturing and technology'],
+      'Image': '../src/assets/images/placeholders/software-engineer.jpg',
+      'SkillsMatch': 82,
+      'Interest': 74,
+      'Demand': 23,
+      'Pay': '$15–$40',
+      'PerTime': 'per hour',
+      'Skills': [
+        'Examine characteristics or behavior of living organisms.',
+        'Research methods to improve food products.',
+        'Test quality of materials or finished products.',
+        'Evaluate quality of materials or products.',
+        'Analyze chemical compounds or substances.',
+        'Clean objects.',
+        'Prepare biological samples for testing or analysis.'
+      ]
+    },{
+      'SubJobID': 3,
+      'Closed': false,
+      'Filtered': false,
+      'Flipped': false,
+      'Title': '3 Engineer',
+      'Description': 'Researches, designs, develops and maintains software systems along with hardware development for medical, scientific, and industrial purposes.',
+      'Interests': ['Gardening', 'Helping people',  'Cars'],
+      'WorkConditions': ['Flexible hours', 'Business', 'hours', 'Inside', 'Outside', 'Regular hours'],
+      'VocationalPathways': ['Social and community services', 'Manufacturing and technology'],
+      'Image': '../src/assets/images/placeholders/software-engineer.jpg',
+      'SkillsMatch': 82,
+      'Interest': 74,
+      'Demand': 23,
+      'Pay': '$15–$40',
+      'PerTime': 'per hour',
+      'Skills': [
+        'Examine characteristics or behavior of living organisms.',
+        'Research methods to improve food products.',
+        'Test quality of materials or finished products.',
+        'Evaluate quality of materials or products.',
+        'Analyze chemical compounds or substances.',
+        'Clean objects.',
+        'Prepare biological samples for testing or analysis.'
+      ]
+    },{
+      'SubJobID': 4,
+      'Closed': false,
+      'Filtered': false,
+      'Flipped': false,
+      'Title': '4 Softwar',
+      'Description': 'Researches, designs, develops and maintains software systems along with hardware development for medical, scientific, and industrial purposes.',
+      'Interests': ['Gardening', 'Helping people',  'Cars'],
+      'WorkConditions': ['Flexible hours', 'Business', 'hours', 'Inside', 'Outside', 'Regular hours'],
+      'VocationalPathways': ['Social and community services', 'Manufacturing and technology'],
+      'Image': '../src/assets/images/placeholders/software-engineer.jpg',
+      'SkillsMatch': 82,
+      'Interest': 74,
+      'Demand': 23,
+      'Pay': '$15–$40',
+      'PerTime': 'per hour',
+      'Skills': [
+        'Examine characteristics or behavior of living organisms.',
+        'Research methods to improve food products.',
+        'Test quality of materials or finished products.',
+        'Evaluate quality of materials or products.',
+        'Analyze chemical compounds or substances.',
+        'Clean objects.',
+        'Prepare biological samples for testing or analysis.'
+      ]
+    },{
+      'SubJobID': 5,
+      'Closed': false,
+      'Filtered': false,
+      'Flipped': false,
+      'Title': '5 Softwarengineer',
+      'Description': 'Researches, designs, develops and maintains software systems along with hardware development for medical, scientific, and industrial purposes.',
+      'Interests': ['Gardening', 'Helping people',  'Cars'],
+      'WorkConditions': ['Flexible hours', 'Business', 'hours', 'Inside', 'Outside', 'Regular hours'],
+      'VocationalPathways': ['Social and community services', 'Manufacturing and technology'],
+      'Image': '../src/assets/images/placeholders/software-engineer.jpg',
+      'SkillsMatch': 82,
+      'Interest': 74,
+      'Demand': 23,
+      'Pay': '$15–$40',
+      'PerTime': 'per hour',
+      'Skills': [
+        'Examine characteristics or behavior of living organisms.',
+        'Research methods to improve food products.',
+        'Test quality of materials or finished products.',
+        'Evaluate quality of materials or products.',
+        'Analyze chemical compounds or substances.',
+        'Clean objects.',
+        'Prepare biological samples for testing or analysis.'
+      ]
+    },{
+      'SubJobID': 6,
+      'Closed': false,
+      'Filtered': false,
+      'Flipped': false,
+      'Title': '6 Software Engineer',
+      'Description': 'Researches, designs, develops and maintains software systems along with hardware development for medical, scientific, and industrial purposes.',
+      'Interests': ['Gardening', 'Helping people',  'Cars'],
+      'WorkConditions': ['Flexible hours', 'Business', 'hours', 'Inside', 'Outside', 'Regular hours'],
+      'VocationalPathways': ['Social and community services', 'Manufacturing and technology'],
+      'Image': '../src/assets/images/placeholders/software-engineer.jpg',
+      'SkillsMatch': 82,
+      'Interest': 74,
+      'Demand': 23,
+      'Pay': '$15–$40',
+      'PerTime': 'per hour',
+      'Skills': [
+        'Examine characteristics or behavior of living organisms.',
+        'Research methods to improve food products.',
+        'Test quality of materials or finished products.',
+        'Evaluate quality of materials or products.',
+        'Analyze chemical compounds or substances.',
+        'Clean objects.',
+        'Prepare biological samples for testing or analysis.'
+      ]
+    },{
+      'SubJobID': 7,
+      'Closed': false,
+      'Filtered': false,
+      'Flipped': false,
+      'Title': '7 Software Engineer',
+      'Description': 'Researches, designs, develops and maintains software systems along with hardware development for medical, scientific, and industrial purposes.',
+      'Interests': ['Gardening', 'Helping people',  'Cars'],
+      'WorkConditions': ['Flexible hours', 'Business', 'hours', 'Inside', 'Outside', 'Regular hours'],
+      'VocationalPathways': ['Social and community services', 'Manufacturing and technology'],
+      'Image': '../src/assets/images/placeholders/software-engineer.jpg',
+      'SkillsMatch': 82,
+      'Interest': 74,
+      'Demand': 23,
+      'Pay': '$15–$40',
+      'PerTime': 'per hour',
+      'Skills': [
+        'Examine characteristics or behavior of living organisms.',
+        'Research methods to improve food products.',
+        'Test quality of materials or finished products.',
+        'Evaluate quality of materials or products.',
+        'Analyze chemical compounds or substances.',
+        'Clean objects.',
+        'Prepare biological samples for testing or analysis.'
+      ]
+    },{
+      'SubJobID': 8,
+      'Closed': false,
+      'Filtered': false,
+      'Flipped': false,
+      'Title': '8 Software Engineer',
+      'Description': 'Researches, designs, develops and maintains software systems along with hardware development for medical, scientific, and industrial purposes.',
+      'Interests': ['Gardening', 'Helping people',  'Cars'],
+      'WorkConditions': ['Flexible hours', 'Business', 'hours', 'Inside', 'Outside', 'Regular hours'],
+      'VocationalPathways': ['Social and community services', 'Manufacturing and technology'],
+      'Image': '../src/assets/images/placeholders/software-engineer.jpg',
+      'SkillsMatch': 82,
+      'Interest': 74,
+      'Demand': 23,
+      'Pay': '$15–$40',
+      'PerTime': 'per hour',
+      'Skills': [
+        'Examine characteristics or behavior of living organisms.',
+        'Research methods to improve food products.',
+        'Test quality of materials or finished products.',
+        'Evaluate quality of materials or products.',
+        'Analyze chemical compounds or substances.',
+        'Clean objects.',
+        'Prepare biological samples for testing or analysis.'
+      ]
+    },{
+      'SubJobID': 9,
+      'Closed': false,
+      'Filtered': false,
+      'Flipped': false,
+      'Title': '9 Software Engineer',
+      'Description': 'Researches, designs, develops and maintains software systems along with hardware development for medical, scientific, and industrial purposes.',
+      'Interests': ['Gardening', 'Helping people',  'Cars'],
+      'WorkConditions': ['Flexible hours', 'Business', 'hours', 'Inside', 'Outside', 'Regular hours'],
+      'VocationalPathways': ['Social and community services', 'Manufacturing and technology'],
+      'Image': '../src/assets/images/placeholders/software-engineer.jpg',
+      'SkillsMatch': 82,
+      'Interest': 74,
+      'Demand': 23,
+      'Pay': '$15–$40',
+      'PerTime': 'per hour',
+      'Skills': [
+        'Examine characteristics or behavior of living organisms.',
+        'Research methods to improve food products.',
+        'Test quality of materials or finished products.',
+        'Evaluate quality of materials or products.',
+        'Analyze chemical compounds or substances.',
+        'Clean objects.',
+        'Prepare biological samples for testing or analysis.'
+      ]
+    },{
+      'SubJobID': 10,
+      'Closed': false,
+      'Filtered': false,
+      'Flipped': false,
+      'Title': '10 Software Engineer',
+      'Description': 'Researches, designs, develops and maintains software systems along with hardware development for medical, scientific, and industrial purposes.',
+      'Interests': ['Gardening', 'Helping people',  'Cars'],
+      'WorkConditions': ['Flexible hours', 'Business', 'hours', 'Inside', 'Outside', 'Regular hours'],
+      'VocationalPathways': ['Social and community services', 'Manufacturing and technology'],
       'Image': '../src/assets/images/placeholders/software-engineer.jpg',
       'SkillsMatch': 82,
       'Interest': 74,
@@ -338,13 +674,15 @@ export const listViewData = {
       ]
     },
     {
+      'SubJobID': 11,
       'Closed': false,
+      'Filtered': false,
       'Flipped': true,
       'Title': 'Human Resources',
       'Description': 'Plans, directs, and/or coordinates all human resource activities and staff of an organization.',
-      'Interests': 'Gardening; Helping people; Cars.',
+      'Interests': ['Gardening', 'Helping people',  'Cars'],
       'WorkConditions': ['Flexible hours', 'hours', 'Outside', ],
-      'VocationalPathways': 'Social and community services. Manufacturing and technology',
+      'VocationalPathways': ['Social and community services', 'Manufacturing and technology'],
       'Image': '../src/assets/images/placeholders/human-resources.jpg',
       'SkillsMatch': 10,
       'Interest': 40,
@@ -362,13 +700,15 @@ export const listViewData = {
       ]
     },
     {
+      'SubJobID': 12,
       'Closed': false,
+      'Filtered': false,
       'Flipped': false,
       'Title': 'Dental Hygienist',
       'Description': 'Assists dentists in diagnostic and therapeutic aspects of a group or private dental practice.',
-      'Interests': 'Gardening; Helping people; Cars.',
+      'Interests': ['Helping people'],
       'WorkConditions': ['Flexible hours', 'hours', 'Inside', 'Regular hours'],
-      'VocationalPathways': 'Social and community services. Manufacturing and technology',
+      'VocationalPathways': ['Social and community services', 'Manufacturing and technology'],
       'Image': '../src/assets/images/placeholders/dental-hygienist.jpg',
       'SkillsMatch': 100,
       'Interest': 60,
@@ -386,13 +726,15 @@ export const listViewData = {
       ]
     },
     {
+      'SubJobID': 13,
       'Closed': false,
+      'Filtered': false,
       'Flipped': false,
       'Title': 'Landscape gardener',
       'Description': 'Landscape gardeners design, develop, maintain and remodel gardens and landscapes.',
-      'Interests': 'Gardening; Helping people; Cars.',
+      'Interests': ['Helping people',  'Cars'],
       'WorkConditions': ['Flexible hours', 'Business'],
-      'VocationalPathways': 'Social and community services. Manufacturing and technology',
+      'VocationalPathways':  ['Social and community services'],
       'Image': '../src/assets/images/placeholders/placeholder-630x399-job.jpg',
       'SkillsMatch': 80,
       'Interest': 30,
@@ -412,13 +754,15 @@ export const listViewData = {
       ]
     },
     {
+      'SubJobID': 14,
       'Closed': false,
+      'Filtered': false,
       'Flipped': false,
       'Title': 'Financial Planner',
       'Description': 'Related to careers in portfolio management, the financial planner offers a broad range of services aimed at assisting individuals in managing and planning their financial future.',
-      'Interests': 'Gardening; Helping people; Cars.',
+      'Interests': ['Gardening'],
       'WorkConditions': ['hours', 'Regular hours'],
-      'VocationalPathways': 'Social and community services. Manufacturing and technology',
+      'VocationalPathways':  ['Manufacturing and technology'],
       'Image': '../src/assets/images/placeholders/financial-planner.jpg',
       'SkillsMatch': 20,
       'Interest': 50,
@@ -436,6 +780,203 @@ export const listViewData = {
       ]
     }
   ],
+  'QualificationCards': [
+    {
+      'Closed': false,
+      'Filtered': false,
+      'Title': '1 Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
+      'Institution': 'at International College of New Zealand Limited',
+      'Regions': ['Otago', 'Wellington'],
+      'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
+      'VocationalPathways': [
+        'Social and community services',
+        'Manufacturing and technology'
+      ],
+      'Level': '1',
+      'LeadsTo': 'Groundsperson; Another job title; Job three',
+      'CourseID': 1
+    },
+    {
+      'Closed': false,
+      'Filtered': false,
+      'Title': '2 Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
+      'Institution': 'at International College of New Zealand Limited',
+      'Regions': ['Otago', 'Wellington'],
+      'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
+      'VocationalPathways': [
+        'Social and community services',
+        'Manufacturing and technology'
+      ],
+      'Level': '3',
+      'LeadsTo': 'Groundsperson; Another job title; Job three',
+      'CourseID': 2
+    },
+    {
+      'Closed': false,
+      'Filtered': false,
+      'Title': '3 Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
+      'Institution': 'at International College of New Zealand Limited',
+      'Regions': ['Otago', 'Wellington'],
+      'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
+      'VocationalPathways': [
+        'Social and community services',
+        'Manufacturing and technology'
+      ],
+      'Level': '5',
+      'LeadsTo': 'Groundsperson; Another job title; Job three',
+      'CourseID': 3
+    },
+    {
+      'Closed': false,
+      'Filtered': false,
+      'Title': '4 Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
+      'Institution': 'at International College of New Zealand Limited',
+      'Regions': ['Otago', 'Wellington'],
+      'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
+      'VocationalPathways': [
+        'Social and community services',
+        'Manufacturing and technology'
+      ],
+      'Level': '5',
+      'LeadsTo': 'Groundsperson; Another job title; Job three',
+      'CourseID': 4
+    },
+    {
+      'Closed': false,
+      'Filtered': false,
+      'Title': '5 Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
+      'Institution': 'at International College of New Zealand Limited',
+      'Regions': ['Otago', 'Wellington'],
+      'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
+      'VocationalPathways': [
+        'Social and community services',
+        'Manufacturing and technology'
+      ],
+      'Level': '5',
+      'LeadsTo': 'Groundsperson; Another job title; Job three',
+      'CourseID': 5
+    },
+    {
+      'Closed': false,
+      'Filtered': false,
+      'Title': '6 Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
+      'Institution': 'at International College of New Zealand Limited',
+      'Regions': ['Otago', 'Wellington'],
+      'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
+      'VocationalPathways': [
+        'Social and community services',
+        'Manufacturing and technology'
+      ],
+      'Level': '5',
+      'LeadsTo': 'Groundsperson; Another job title; Job three',
+      'CourseID': 6
+    },
+    {
+      'Closed': false,
+      'Filtered': false,
+      'Title': '7 Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
+      'Institution': 'at International College of New Zealand Limited',
+      'Regions': ['Otago', 'Wellington'],
+      'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
+      'VocationalPathways': [
+        'Social and community services',
+        'Manufacturing and technology'
+      ],
+      'Level': '5',
+      'LeadsTo': 'Groundsperson; Another job title; Job three',
+      'CourseID': 7
+    },
+    {
+      'Closed': false,
+      'Filtered': false,
+      'Title': '8 Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
+      'Institution': 'at International College of New Zealand Limited',
+      'Regions': ['Otago', 'Wellington'],
+      'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
+      'VocationalPathways': [
+        'Social and community services',
+        'Manufacturing and technology'
+      ],
+      'Level': '5',
+      'LeadsTo': 'Groundsperson; Another job title; Job three',
+      'CourseID': 8
+    },
+    {
+      'Closed': false,
+      'Filtered': false,
+      'Title': '9 Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
+      'Institution': 'at International College of New Zealand Limited',
+      'Regions': ['Otago', 'Wellington'],
+      'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
+      'VocationalPathways': [
+        'Social and community services',
+        'Manufacturing and technology'
+      ],
+      'Level': '5',
+      'LeadsTo': 'Groundsperson; Another job title; Job three',
+      'CourseID': 9
+    },
+    {
+      'Closed': false,
+      'Filtered': false,
+      'Title': '10 Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
+      'Institution': 'at International College of New Zealand Limited',
+      'Regions': ['Otago', 'Wellington'],
+      'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
+      'VocationalPathways': [
+        'Social and community services',
+        'Manufacturing and technology'
+      ],
+      'Level': '5',
+      'LeadsTo': 'Groundsperson; Another job title; Job three',
+      'CourseID': 10
+    },
+    {
+      'Closed': false,
+      'Filtered': false,
+      'Title': '11 Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
+      'Institution': 'at International College of New Zealand Limited',
+      'Regions': ['Otago', 'Wellington'],
+      'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
+      'VocationalPathways': [
+        'Social and community services',
+        'Manufacturing and technology'
+      ],
+      'Level': '5',
+      'LeadsTo': 'Groundsperson; Another job title; Job three',
+      'CourseID': 11
+    },
+    {
+      'Closed': false,
+      'Filtered': false,
+      'Title': '12 Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
+      'Institution': 'at International College of New Zealand Limited',
+      'Regions': ['Otago', 'Wellington'],
+      'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
+      'VocationalPathways': [
+        'Social and community services',
+        'Manufacturing and technology'
+      ],
+      'Level': '5',
+      'LeadsTo': 'Groundsperson; Another job title; Job three',
+      'CourseID': 12
+    },
+    {
+      'Closed': false,
+      'Filtered': false,
+      'Title': '13 Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
+      'Institution': 'at International College of New Zealand Limited',
+      'Regions': ['Otago', 'Wellington'],
+      'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
+      'VocationalPathways': [
+        'Social and community services',
+        'Manufacturing and technology'
+      ],
+      'Level': '5',
+      'LeadsTo': 'Groundsperson; Another job title; Job three',
+      'CourseID': 13
+    }
+  ],
   'QualificationsPanel':
   {
     'Text': 'Which course suits you best?',
@@ -443,8 +984,10 @@ export const listViewData = {
     'Courses': [
       {
         'Closed': false,
+        'Filtered': false,
         'Title': 'Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
         'Institution': 'at International College of New Zealand Limited',
+        'Regions': ['Otago', 'Wellington'],
         'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
         'VocationalPathways': [
           'Social and community services',
@@ -455,8 +998,10 @@ export const listViewData = {
       },
       {
         'Closed': false,
+        'Filtered': false,
         'Title': 'Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
         'Institution': 'at International College of New Zealand Limited',
+        'Regions': ['Otago', 'Wellington'],
         'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
         'VocationalPathways': [
           'Social and community services',
@@ -467,8 +1012,10 @@ export const listViewData = {
       },
       {
         'Closed': false,
+        'Filtered': false,
         'Title': 'Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
         'Institution': 'at International College of New Zealand Limited',
+        'Regions': ['Otago', 'Wellington'],
         'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
         'VocationalPathways': [
           'Social and community services',
@@ -485,22 +1032,29 @@ export const listViewData = {
     'Region': 'Northland',
     'Institutions': [
       {
+        'CourseID': 1,
         'Closed': false,
         'Title': 'Auckland University of Technology',
-        'Location': 'Auckland'
+        'Location': 'Auckland',
+        'Regions': ['Otago', 'Wellington']
       },
       {
+        'CourseID': 2,
         'Closed': false,
         'Title': 'University of Canterbury',
+        'Regions': ['Otago', 'Wellington'],
         'Location': 'Houghton Bay'
       },
       {
+        'CourseID': 3,
         'Closed': false,
         'Title': 'University of Otago',
+        'Regions': ['Otago', 'Wellington'],
         'Location': 'Dunedin'
       }
     ]
-  }
+  },
+  'DebugExplain': 'Debug info from the server required by the client'
 };
 
 export const jobSkills = {
@@ -568,4 +1122,235 @@ export const typeAheadData = {
   ]
 };
 
+
+export const courseDetail = {
+  'CourseDetails': {
+    'ID':225,
+    'CourseTitle': 'Certificate of Professional Cookery',
+    'ProviderName': 'Whitireia Polytechnic',
+    'Intro': '<p>Intro goes here ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>',
+    'Blurb': '<h2>Body heading style what can I learn during this course?</h2>\n<p>Style for body copy is like this. Food safety and hygiene, first aid, theory of catering principles, practical applications of cooking.</p>\n<h2>What can I expect out of this course?</h2>\n<p>Graduates will have the necessary knowledge, skills and the internationally recognised City and Guilds International Certificate and Diploma in Cookery, to secure employment in the hospitality industry.</p>\n<p>Aliquam at porttitor sem. Aliquam erat volutpat. Donec placerat nisl magna, et faucibus arcu condimentum sed.Lorem ipsum dolor sit amet, consectetur adipiscing elit. <a href=\'javscript:void: 0\'>More about this course</a>.</p>',
+    'Summary': {
+      'Level': '4',
+      'Location': 'Porirua',
+      'VocationalPathways': [
+      'Construction and infrastructure',
+      'Manufacturing and technology'
+      ]
+    },
+    'Link': 'http://careers.local/jobs/details'
+  },
+  'NextSteps': {
+    'Title': 'Take the next step',
+    'Actions': [
+      {
+        'Title': 'Action 1',
+        'IsInActionPlan': false
+      },
+      {
+        'Title': 'Action 2',
+        'IsInActionPlan': true
+      },
+      {
+        'Title': 'Action 3',
+        'IsInActionPlan': false
+      }
+    ]
+  },
+  'BarriersPanel': {
+    'Title': 'Worried about something?',
+    'Barriers': [
+      {
+        'Title': 'Barrier 1',
+        'Summary': '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>',
+        'Actions': [
+          {
+            'Title': 'Something I have to do to get started',
+            'IsInActionPlan': false
+          },
+          {
+            'Title': 'Something I have to do to get started',
+            'IsInActionPlan': true
+          }
+        ]
+      },
+      {
+        'Title': 'Barrier 2',
+        'Summary': '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>',
+        'Actions': [
+          {
+            'Title': 'Something I have to do to get started',
+            'IsInActionPlan': false
+          },
+          {
+            'Title': 'Something I have to do to get started',
+            'IsInActionPlan': false
+          }
+        ]
+      },
+      {
+        'Title': 'Barrier 3',
+        'Summary': '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>',
+        'Actions': [
+          {
+            'Title': 'Something I have to do to get started',
+            'IsInActionPlan': true
+          },
+          {
+            'Title': 'Something I have to do to get started',
+            'IsInActionPlan': false
+          }
+        ]
+      }
+    ]
+  },
+  'Jobs': {
+    'Title': 'This course can help you get these jobs:',
+    'JobsCards': [
+      {
+        'JobID': 4,
+        'Closed': false,
+        'Flipped': false,
+        'Filtered': false,
+        'Title': 'Software Engineer',
+        'Description': 'Researches, designs, develops and maintains software systems along with hardware development for medical, scientific, and industrial purposes.',
+        'Interests': [
+          'Gardening',
+          'Helping people',
+          'Cars'
+        ],
+        'WorkConditions': [
+          'Flexible hours',
+          'Business hours',
+          'Inside',
+          'Outside',
+          'Regular hours'
+        ],
+        'VocationalPathways': [
+          'Social and community services',
+          'Manufacturing and technology'
+        ],
+        'Regions': [
+          'Auckland',
+          'Canterbury',
+          'Nelson',
+        ],
+        'Image': '../src/assets/images/placeholders/software-engineer.jpg',
+        'SkillsMatch': 80,
+        'Interest': 70,
+        'Demand': 20,
+        'Pay': '$15–$40',
+        'PerTime': 'per hour',
+        'Skills': [
+          'Examine characteristics or behavior of living organisms.',
+          'Research methods to improve food products.',
+          'Test quality of materials or finished products.',
+          'Evaluate quality of materials or products.',
+          'Analyze chemical compounds or substances.',
+          'Clean objects.',
+          'Prepare biological samples for testing or analysis.'
+        ]
+      },
+      {
+        'JobID': 5,
+        'Closed': false,
+        'Flipped': true,
+        'Filtered': false,
+        'Title': 'Human Resources',
+        'Description': 'Plans, directs, and/or coordinates all human resource activities and staff of an organization.',
+        'Interests': [
+          'Gardening',
+          'Helping people',
+          'Cars'
+        ],
+        'WorkConditions': [
+          'Flexible hours',
+          'Business hours',
+          'Inside',
+          'Outside',
+          'Regular hours'
+        ],
+        'VocationalPathways': [
+          'Social and community services',
+          'Manufacturing and technology'
+        ],
+        'Regions': [
+          'Auckland',
+          'Nelson'
+        ],
+        'Image': '../src/assets/images/placeholders/human-resources.jpg',
+        'SkillsMatch': 10,
+        'Interest': 40,
+        'Demand': 30,
+        'Pay': '$120–$140',
+        'PerTime': 'per hour',
+        'Skills': [
+          'Monitor operational procedures in technical environments to ensure conformance to standards.',
+          'Interpret research or operational data.',
+          'Collect biological specimens.',
+          'Set up laboratory or field equipment.',
+          'Care for plants or animals.'
+        ]
+      },
+      {
+        'JobID': 6,
+        'Closed': false,
+        'Flipped': false,
+        'Filtered': false,
+        'Title': 'Dental Hygienist',
+        'Description': 'Assists dentists in diagnostic and therapeutic aspects of a group or private dental practice.',
+        'Interests': [
+          'Gardening',
+          'Helping people',
+          'Cars'
+        ],
+        'WorkConditions': [
+          'Flexible hours',
+          'Business hours',
+          'Inside',
+          'Outside',
+          'Regular hours'
+        ],
+        'VocationalPathways': [
+          'Social and community services',
+          'Manufacturing and technology'
+        ],
+        'Region': [
+          'Auckland',
+          'Bay of Plenty'
+        ],
+        'Image': '../src/assets/images/placeholders/dental-hygienist.jpg',
+        'SkillsMatch': 100,
+        'Interest': 60,
+        'Demand': 90,
+        'Pay': '$180–$340',
+        'PerTime': 'per hour',
+        'Skills': []
+      }
+    ]
+  },
+  'Courses': {
+    'Title': 'Other providers who offer this course:',
+      'Institutions':[
+      {
+        'CourseID':12,
+        'Closed':false,
+        'Title':'Golden Bay Work Centre Trust',
+        'Location':'Canterbury'
+      },
+      {
+        'CourseID':13,
+        'Closed':false,
+        'Title':'Skills Update Training Institute',
+        'Location':'Taupo'
+      },
+      {
+        'CourseID':14,
+        'Closed':false,
+        'Title':'Turanga Ararau',
+        'Location':'None'
+      }
+    ]
+  }
+}
 

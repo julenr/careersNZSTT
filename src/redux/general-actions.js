@@ -1,7 +1,9 @@
 import axios from 'axios';
 import _ from 'lodash';
-
 import * as fakeData from './fake-data';
+import logLite from '../libs/logLite';
+
+let logger = logLite.getLogger('general actions');
 
 const appID = document.getElementsByTagName('body')[0].getAttribute('data-application-id');
 
@@ -16,9 +18,9 @@ export function getQuestionnaire() {
           return {data: response.data};
         })
         .catch(function (response) {
-          console.log(response);
+          logger.log(response);
           if (__DEV__) {
-            console.log('Using fake data');
+            logger.log('Using fake data');
             let data = _.clone(fakeData.questionnaire, true);
             data.Skills.Loading = false;
             data.Skills.SkillsTags = [];
@@ -38,9 +40,9 @@ export function getLinkedPagesHTML(URLSegment) {
           return {data: response.data};
         })
         .catch(function (response) {
-          console.log(response);
+          logger.log(response);
           if (__DEV__) {
-            console.log('Using fake data');
+            logger.log('Using fake data');
             return {data: _.clone(fakeData.mainContentHTML, true)};
           }
         });
@@ -57,9 +59,9 @@ export function getFooterData() {
           return {data: response.data};
         })
         .catch(function (response) {
-          console.log(response);
+          logger.log(response);
           if (__DEV__) {
-            console.log('Using fake data');
+            logger.log('Using fake data');
             return {data: _.clone(fakeData.footerData, true)};
           }
         });
@@ -76,9 +78,9 @@ export function currentJobChanged(newJob) {
           return {data: response.data.Results};
         })
         .catch(function (response) {
-          console.log(response);
+          logger.log(response);
           if (__DEV__) {
-            console.log('Using fake data');
+            logger.log('Using fake data');
             return {data: _.clone(fakeData.jobSkills.Results, true)};
           }
         });
@@ -98,9 +100,16 @@ export function closeSkillsModal() {
   }
 }
 
-export function openAddSkillsModal() {
+export function openAddSkillsModal(questionID) {
   return {
-    type: 'SHOW_ADD_SKILLS_MODAL'
+    type: 'SHOW_ADD_SKILLS_MODAL',
+    questionID
+  }
+}
+
+export function addSkillToTag() {
+  return {
+    type: ''
   }
 }
 
@@ -125,9 +134,9 @@ export function getJobSkills(jobSelected) {
           return {data: response.data.Results};
         })
         .catch(function (response) {
-          console.log(response);
+          logger.log(response);
           if (__DEV__) {
-            console.log('Using fake data');
+            logger.log('Using fake data');
             return {data: _.clone(fakeData.jobSkills.Results.slice(), true)};
           }
         });
@@ -140,14 +149,14 @@ export function loadTypeAheadModal(text) {
   return {
     types: ['DUMP_DATA_INTO_TYPE_AHEAD_REQUEST', 'DUMP_DATA_INTO_TYPE_AHEAD_SUCCESS', 'DUMP_DATA_INTO_TYPE_AHEAD_FAILURE'],
     promise: () => {
-      return axios.get(`/api/skills-transition-tool/jobs/${text}`)
+      return axios.get(`/api/skills-transition-tool/skills/${text}`)
         .then(function (response) {
           return {data: response.data.Results};
         })
         .catch(function (response) {
-          console.log(response);
+          logger.log(response);
           if (__DEV__) {
-            console.log('Using fake data for Type Ahead');
+            logger.log('Using fake data for Type Ahead');
             return {data: _.clone(fakeData.typeAheadData.Results, true)};
           }
         });
@@ -186,3 +195,24 @@ export function removeSelectedSkill(skill) {
     skill
   }
 }
+
+export function backupSkills() {
+  return {
+    type: 'BACKUP_SKILLS'
+  }
+}
+
+export function restoreSkills() {
+  return {
+    type: 'RESTORE_SKILLS'
+  }
+}
+
+export function setCurrentRoute(route) {
+  return {
+    type: 'SET_CURRENT_ROUTE',
+    route
+  }
+}
+
+

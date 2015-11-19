@@ -7,6 +7,9 @@ import classNames from 'classnames';
 import uuid from 'node-uuid';
 import Modal from 'react-modal';
 
+import { connect } from 'react-redux';
+import { addSkillToQuestion } from '../../redux/questionnaire-actions.js';
+
 import Typeahead from '../subcomponents/Autocomplete/Autocomplete';
 
 class AddSkillsModal extends React.Component {
@@ -41,8 +44,7 @@ class AddSkillsModal extends React.Component {
 
     return (
       <Modal isOpen={this.props.showAddSkillsModal} >
-        <div className="ReactModal__Overlay ReactModal__Overlay--after-open">
-          <div className="ReactModal__Content ReactModal__Content--after-open modal modal-add-skills">
+          <div className="modal modal-add-skills">
             <h2 className="modal-title">Edit your skills</h2>
             <div className="form">
               <h3>Add skills to your list.</h3>
@@ -66,6 +68,7 @@ class AddSkillsModal extends React.Component {
                         </div>
                         )}
                       menuStyle={styles.menu}
+                      callback={this.addSkill}
                       />
 
                   </div>
@@ -79,19 +82,30 @@ class AddSkillsModal extends React.Component {
               </div>
               { this.renderShowMoreButton() }
               <div className="submit">
-                <a className="button-solid" onClick={() => this.showCheckSkillsModal(this.refs.Typeahead.state.value)} >Done</a><br/>
+                <a className="button-solid" onClick={this.cancelModal} >Done</a><br/>
                 <a className="button-simple" href="javascript:void 0" onClick={this.cancelModal} >Cancel</a>
               </div>
                 <a className="action-close icon-cross" href="javascript:void 0" onClick={this.cancelModal}>&nbsp;</a>
               </div>
             </div>
-          </div>
       </Modal>
     );
   }
 
-  valueChanged = (event, value) => {
+  addSkill = (value) => {
+    var questionID = this.props.addSkillsToQuestionID;
+    this.props.addSkillToQuestion(questionID, value);
+    this.cancelModal();
+  }
+
+  callLoadTypeAhead = _.debounce((value) => {
     this.props.loadTypeAheadModal(value);
+  }, 500)
+
+  valueChanged = (event, value) => {
+    if(value && value.length > 2) { //no typeahead till 3 or more characters entered.
+      this.callLoadTypeAhead(value);
+    }
   }
 
   showCheckSkillsModal = (popularJobSelected) => {
@@ -125,13 +139,8 @@ class AddSkillsModal extends React.Component {
     }
   }
 
-  closeModal = () => {
-    this.props.closeAddSkillsModal();
-  }
-
   cancelModal = () => {
     this.props.closeAddSkillsModal();
-    this.props.openSkillsModal();
   }
 
   showMore = () => {

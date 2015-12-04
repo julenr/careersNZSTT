@@ -1,11 +1,13 @@
 import axios from 'axios';
 import _ from 'lodash';
-import * as fakeData from './fake-data';
 import logLite from '../libs/logLite';
 
 let logger = logLite.getLogger('general actions');
-
 const appID = document.getElementsByTagName('body')[0].getAttribute('data-application-id');
+
+if (__DEV__){
+  var fakeData = require('./fake-data');
+}
 
 export function getQuestionnaire() {
   return {
@@ -25,9 +27,33 @@ export function getQuestionnaire() {
             data.Skills.Loading = false;
             data.Skills.SkillsTags = [];
             return {data: data};
+          } else {
+            throw error(response);
           }
         });
     }
+  }
+}
+
+export function loadSavedState() {
+  return {
+    types: ['GET_SAVED_STATE_REQUEST', 'GET_SAVED_STATE_SUCCESS', 'GET_SAVED_STATE_FAILURE'],
+    promise: () => {
+      return axios.get(`/api/skills-transition-tool/load/${appID}`)
+        .then(function (response) {
+          return response;
+        })
+        .catch(function (response) {
+          logger.log(response);
+          throw error(response);
+        });
+    }
+  }
+}
+
+export function closeDetailsSavedModal() {
+  return {
+    type: 'CLOSE_DETAILS_SAVED_MODAL'
   }
 }
 
@@ -44,6 +70,8 @@ export function getLinkedPagesHTML(URLSegment) {
           if (__DEV__) {
             logger.log('Using fake data');
             return {data: _.clone(fakeData.mainContentHTML, true)};
+          } else {
+            throw error(response);
           }
         });
     }
@@ -63,6 +91,8 @@ export function getFooterData() {
           if (__DEV__) {
             logger.log('Using fake data');
             return {data: _.clone(fakeData.footerData, true)};
+          } else {
+            throw error(response);
           }
         });
     }
@@ -82,6 +112,8 @@ export function currentJobChanged(newJob) {
           if (__DEV__) {
             logger.log('Using fake data');
             return {data: _.clone(fakeData.jobSkills.Results, true)};
+          } else {
+            throw error(response);
           }
         });
     }
@@ -97,6 +129,12 @@ export function openSkillsModal() {
 export function closeSkillsModal() {
   return {
     type: 'CLOSE_SKILLS_MODAL'
+  }
+}
+
+export function openLoginModal() {
+  return {
+    type: 'SHOW_LOGIN_MODAL'
   }
 }
 
@@ -138,6 +176,8 @@ export function getJobSkills(jobSelected) {
           if (__DEV__) {
             logger.log('Using fake data');
             return {data: _.clone(fakeData.jobSkills.Results.slice(), true)};
+          } else {
+            throw error(response);
           }
         });
     },
@@ -158,6 +198,8 @@ export function loadTypeAheadModal(text) {
           if (__DEV__) {
             logger.log('Using fake data for Type Ahead');
             return {data: _.clone(fakeData.typeAheadData.Results, true)};
+          } else {
+            throw error(response);
           }
         });
     }
@@ -215,4 +257,21 @@ export function setCurrentRoute(route) {
   }
 }
 
+export function openResetToolModal() {
+  return {
+    type: 'OPEN_RESET_TOOL_MODAL'
+  }
+}
+
+export function closeResetToolModal() {
+  return {
+    type: 'CLOSE_RESET_TOOL_MODAL'
+  }
+}
+
+export function resetTool() {
+  return {
+    type: 'RESET_TOOL'
+  }
+}
 

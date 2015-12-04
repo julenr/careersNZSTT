@@ -9,23 +9,23 @@ import Modal from 'react-modal';
 class RemoveInstitutionCardModal extends React.Component {
 
   render() {
-    let institutionCard = this.props.institutionsPanel.Institutions[this.props.removeInstitutionCardModalID];
+    let institutionCard = this.props.institutionsPanel.CourseCards[this.props.removeInstitutionCardModalID];
     if(this.props.removeInstitutionCardModalID >= 0) {
       return (
-        <Modal isOpen={this.props.showRemoveInstitutionCardModal}>
-            <div className="modal modal-remove">
-              <h2 className="modal-title">{`Remove ${institutionCard.Title}`}</h2>
-              <div className="form">
-                <p>You are removing the course-provider <strong>{institutionCard.Title}</strong> from your list</p>
-                <a href="javascript:void 0" className="button-solid" onClick={this.closeModalAndRemoveInstitutionCard} >Remove <span
-                  className="tablet desktop">{institutionCard.Title} only</span></a>
-              </div>
-              <div className="submit">
-                <a className="button-simple" href="javascript:void 0" onClick={this.cancelModal}>Cancel</a>
-              </div>
-              <a className="action-close icon-cross" href="javascript:void 0"
-                 onClick={this.cancelModal}>&nbsp;</a>
+        <Modal isOpen={this.props.showRemoveInstitutionCardModal} onRequestClose={this.cancelModal}>
+          <div className="modal-table"><div className="modal-liner"><div className="modal modal-remove">
+            <h2 className="modal-title">{`Remove ${institutionCard.Title}`}</h2>
+            <div className="form">
+              <p>You are removing the course-provider <strong>{institutionCard.Title}</strong> from your list</p>
+              <a href="javascript:void 0" className="button-solid" onClick={this.closeModalAndRemoveInstitutionCard} >Remove <span
+                className="tablet desktop">{institutionCard.Title} only</span></a>
             </div>
+            <div className="submit">
+              <a className="button-simple" href="javascript:void 0" onClick={this.cancelModal}>Cancel</a>
+            </div>
+            <a className="action-close icon-cross" href="javascript:void 0"
+               onClick={this.cancelModal}>&nbsp;</a>
+          </div></div></div>
         </Modal>
       );
     }

@@ -1,11 +1,13 @@
 import axios from 'axios';
 import _ from 'lodash';
-import * as fakeData from './fake-data';
 import logLite from '../libs/logLite';
 
 let logger = logLite.getLogger('general actions');
-
 const appID = document.getElementsByTagName('body')[0].getAttribute('data-application-id');
+
+if (__DEV__){
+  var fakeData = require('./fake-data');
+}
 
 export function getCourseDetails(courseID) {
   return {
@@ -34,17 +36,40 @@ export function flipJobCard(jobID) {
   }
 }
 
-export function addActionToPlan(actionID) {
+export function addActionToPlan(actionID, course, title) {
   return {
     type: 'ADD_ACTION_TO_PLAN',
-    actionID
+    actionID,
+    course: course,
+    title: title
   }
 }
 
-export function addBarrierActionToPlan(actionID, barrierID) {
+export function removeActionFromPlan(actionID, course) {
+  return {
+    type: 'REMOVE_ACTION_FROM_PLAN',
+    actionID,
+    courseID: course.CourseDetails.ID
+  }
+}
+
+export function addBarrierActionToPlan(actionID, barrierID, course, Title) {
   return {
     type: 'ADD_BARRIER_ACTION_TO_PLAN',
     actionID,
-    barrierID
+    barrierID: barrierID,
+    course: course,
+    title: Title
+  }
+}
+
+export function removeBarrierActionFromPlan(actionID, barrierID, course, Title) {
+  return {
+    type: 'REMOVE_BARRIER_ACTION_FROM_PLAN',
+    actionID,
+    barrierID: barrierID,
+    course: course,
+    courseID: course.CourseDetails.ID,
+    title: Title
   }
 }

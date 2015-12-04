@@ -15,7 +15,7 @@ class Header extends React.Component {
     return (
       <header className="page-header" id="top">
         <div className="page-wrapper">
-          <Link to="/" className="home-logo" title="Return to the Change Up home page. ">Change Up</Link>
+          <Link to="/" className="home-logo" title="Return to the Skills Builder home page. ">Skills Builder</Link>
           <a href="http://www.careersnz.govt.nz/" className="careersnz-logo" title="Visit the Careers New Zealand home page. ">Careers New Zealand</a>
           <img src={require('../../assets/images/logos/skills-transition-tool-logo-print.png')} width="295" height="35" className="print" alt="" />
           <nav className="header-tools">
@@ -27,8 +27,13 @@ class Header extends React.Component {
                     :
                     ''
                 }
+                {
+                  (this.props.currentRoute === 'Questionnaire' && this.props.member.UserID === null) ?
+                    this.renderQuestionnaireMenu()
+                    :
+                    ''
+                }
               </li>
-              {/* <li className="tool-save"><a href="#">Save</a></li> */ }
             </ul>
           </nav>
           <div className="clear"></div>
@@ -40,16 +45,27 @@ class Header extends React.Component {
     );
   }
 
-  openSkillsModal = () => {
-    this.props.openSkillsModal();
+  renderQuestionnaireMenu = () => {
+    return (
+      <ul>
+        <li><a href="javascript: void 0" onClick={this.props.openLoginModal}>Load saved details</a></li>
+      </ul>
+    );
   }
 
   renderListViewMenu = () => {
     return (
       <ul>
-        <li><a href="javascript: void 0" onClick={this.openSkillsModal}>Edit your skills</a></li>
+        <li><a href="javascript: void 0" onClick={this.props.openSkillsModal}>Edit your skills</a></li>
         <li><a href="javascript: void 0" onClick={() => scrollTo('preferences-panel', -70)}>Edit your preferences</a></li>
+        {
+          (this.props.member.UserID === null) ?
+          <li><a href="javascript: void 0" onClick={this.props.openLoginModal}>Save</a></li>
+            :
+            ''
+          }
       </ul>
+
     );
   }
 

@@ -2,7 +2,6 @@
  * Created by jr1500 on 7/11/15.
  */
 import uuid from 'node-uuid';
-import store from '../create-store';
 import _ from 'lodash';
 import logLite from '../../libs/logLite';
 import * as paginationConstants from '../../constants/pagination-constants'
@@ -11,15 +10,22 @@ let logger = logLite.getLogger('list view reducer');
 
 const listViewInitialState = {
   loaded: false,
+  QualificationsPanelLoaded: false,
+  InstitutionsPanelLoaded: false,
   ShowMatchSkillsModal: false,
   CheckSkillsID: 0,
   ShowRemoveJobCardModal: false,
+  ShowVocationalPathwaysModal: false,
   JobCardSelectedID: -1,
   ShowRemoveQualificationCardModal: false,
   RemoveQualificationCardModalID: -1,
   ShowRemoveInstitutionCardModal: false,
   RemoveInstitutionCardModalID: -1,
   ShowQualificationsPanel: false,
+  ShowEntryRequirementsModal: false,
+  ShowFullQualificationCardDescriptionModal: false,
+  JobCardSelectedID: -1,
+  QualificationCardSelectedID: 0,
   ShowInstitutionsPanel: false,
   PaginationLimit: paginationConstants.paginationInitialLimit,
   data: {
@@ -36,14 +42,19 @@ const listViewInitialState = {
     },
     'JobsCards': [],
     'QualificationsPanel': {},
-    'InstitutionsPanel': {}
-  }
+    'InstitutionsPanel': {},
+    'HiddenPanel': {}
+  },
+  ShowListTypeOptions: false
 }
 
 // LIST VIEW REDUCER
 export function _listViewData(state = listViewInitialState, action = {}) {
   let newState = {...state };
   switch (action.type) {
+    case 'GET_SAVED_STATE_SUCCESS':
+      newState = action.result.data._listViewData;
+      return newState;
     case 'GET_JOBS_REQUEST':
       return {
         ...state,
@@ -139,6 +150,8 @@ export function _listViewData(state = listViewInitialState, action = {}) {
 
     case 'RESET_LIST_VIEW_LOADER':
       newState.loaded = false;
+      newState.QualificationsPanelLoaded = false;
+      newState.InstitutionsPanelLoaded = false;
       return newState;
 
     case 'SHOW_ADD_PREFERENCE_MODAL':
@@ -159,6 +172,9 @@ export function _listViewData(state = listViewInitialState, action = {}) {
     case 'FLIP_JOB_CARD':
       newState.data.JobsCards[action.jobID].Flipped = !newState.data.JobsCards[action.jobID].Flipped;
       return newState;
+    case 'FLIP_QUALIFICATION_CARD':
+      newState.data.QualificationsPanel.Courses[action.qualificationID].Flipped = !newState.data.QualificationsPanel.Courses[action.qualificationID].Flipped;
+      return newState;
     case 'SET_CURRENT_JOB_CARD_ID':
       newState.JobCardSelectedID = action.jobCardID;
       return newState;
@@ -166,27 +182,31 @@ export function _listViewData(state = listViewInitialState, action = {}) {
       newState.QualificationCardSelectedID = action.qualificationCardID;
       return newState;
     case 'GET_QUALIFICATIONS_BY_JOB_REQUEST':
-      newState.loaded = false;
+      newState.QualificationsPanelLoaded = false;
       return newState;
     case 'GET_QUALIFICATIONS_BY_JOB_SUCCESS':
-      newState.loaded = true;
-      newState.data.QualificationsPanel.Courses = action.result.data;
+      newState.data.QualificationsPanel.Courses = action.result.data.QualificationCards;
+      newState.data.QualificationsPanel.EntryRequirementsSummary = action.result.data.EntryRequirementsSummary;
+      newState.data.QualificationsPanel.EntryRequirements = action.result.data.EntryRequirements;
+      newState.QualificationsPanelLoaded = true;
       return newState;
     case 'GET_QUALIFICATIONS_BY_JOB_FAILURE':
       newState.data.QualificationsPanel.Courses = [];
-      newState.loaded = true;
+      newState.data.QualificationsPanel.EntryRequirementsSummary = '';
+      newState.data.QualificationsPanel.EntryRequirements = '';
+      newState.QualificationsPanelLoaded = true;
       return newState;
 
     case 'GET_INSTITUTIONS_BY_QUALIFICATION_REQUEST':
-      newState.loaded = false;
+      newState.InstitutionsPanelLoaded = false;
       return newState;
     case 'GET_INSTITUTIONS_BY_QUALIFICATION_SUCCESS':
-      newState.loaded = true;
-      newState.data.InstitutionsPanel.Institutions = action.result.data;
+      newState.InstitutionsPanelLoaded = true;
+      newState.data.InstitutionsPanel.CourseCards = action.result.data;
       return newState;
     case 'GET_INSTITUTIONS_BY_QUALIFICATION_FAILURE':
-      newState.data.InstitutionsPanel.Institutions = [];
-      newState.loaded = true;
+      newState.data.InstitutionsPanel.CourseCards = [];
+      newState.InstitutionsPanelLoaded = true;
       return newState;
 
     case 'CLOSE_REMOVE_JOB_CARD_MODAL':
@@ -195,6 +215,12 @@ export function _listViewData(state = listViewInitialState, action = {}) {
     case 'OPEN_REMOVE_JOB_CARD_MODAL':
       newState.ShowRemoveJobCardModal = true;
       return newState;
+    case 'CLOSE_VOCATIONAL_PATHWAYS_MODAL':
+      newState.ShowVocationalPathwaysModal = false;
+      return newState;
+    case 'OPEN_VOCATIONAL_PATHWAYS_MODAL':
+      newState.ShowVocationalPathwaysModal = true;
+      return newState;
 
     case 'SHOW_MATCH_SKILLS_MODAL':
       newState.CheckSkillsID = action.idJobCard;
@@ -202,6 +228,13 @@ export function _listViewData(state = listViewInitialState, action = {}) {
       return newState;
     case 'CLOSE_MATCH_SKILLS_MODAL':
       newState.ShowMatchSkillsModal = false;
+      return newState;
+
+    case 'SHOW_ENTRY_REQUIREMENTS_MODAL':
+      newState.ShowEntryRequirementsModal = true;
+      return newState;
+    case 'CLOSE_ENTRY_REQUIREMENTS_MODAL':
+      newState.ShowEntryRequirementsModal = false;
       return newState;
 
     case 'CLOSE_HELP_PANEL':
@@ -233,13 +266,23 @@ export function _listViewData(state = listViewInitialState, action = {}) {
       newState.RemoveQualificationCardModalID = action.qualificationCardID;
       newState.ShowRemoveQualificationCardModal = true;
       return newState;
+    case 'QUALIFICATION_CARD_DESCRIPTION_OVERFLOW':
+      newState.data.QualificationsPanel.Courses[action.qualificationID].DescriptionOverflow = true;
+      newState.data.refresh = uuid.v1();
+      return newState;
+    case 'OPEN_FULL_QUALIFICATION_CARD_DESCRIPTION':
+      newState.ShowFullQualificationCardDescriptionModal = true;
+      return newState;
+    case 'CLOSE_FULL_QUALIFICATION_CARD_DESCRIPTION':
+      newState.ShowFullQualificationCardDescriptionModal = false;
+      return newState;
 
     case 'CLOSE_INSTITUTION_CARD':
-      newState.data.InstitutionsPanel.Institutions[action.institutionID].Closed = true;
+      newState.data.InstitutionsPanel.CourseCards[action.institutionID].Closed = true;
       newState.data.refresh = uuid.v1();
       return newState;
     case 'OPEN_INSTITUTION_CARD':
-      newState.data.InstitutionsPanel.Institutions[action.institutionID].Closed = false;
+      newState.data.InstitutionsPanel.CourseCards[action.institutionID].Closed = false;
       newState.data.refresh = uuid.v1();
       return newState;
     case 'CLOSE_REMOVE_INSTITUTION_CARD_MODAL':
@@ -254,6 +297,10 @@ export function _listViewData(state = listViewInitialState, action = {}) {
       return newState;
     case 'OPEN_INSTITUTION_PANEL':
        newState.ShowInstitutionsPanel = true;
+      return newState;
+    case 'SWAP_HIDDEN_PANEL':
+      newState.data.HiddenPanel.Closed = !newState.data.HiddenPanel.Closed;
+      newState.data.refresh = uuid.v1();
       return newState;
     case 'INCREASE_PAGINATION_LIMIT': {
       let increment = action.increment || paginationConstants.paginationIncrement;
@@ -270,10 +317,16 @@ export function _listViewData(state = listViewInitialState, action = {}) {
       newState.ShowRemoveInstitutionCardModal = false;
       newState.RemoveInstitutionCardModalID = -1;
       newState.ShowQualificationsPanel = false;
+      newState.ShowEntryRequirementsModal = false;
       newState.ShowInstitutionsPanel = false;
+      newState.ShowFullQualificationCardDescriptionModal = false;
       newState.PaginationLimit = paginationConstants.paginationInitialLimit;
       return newState;
     }
+    case 'TOGGLE_LIST_TYPE_OPTIONS':
+      let show = newState.ShowListTypeOptions;
+      newState.ShowListTypeOptions = !show;
+      return newState;
       
     default:
       return state;

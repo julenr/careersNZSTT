@@ -19,8 +19,8 @@ class EditSkillsModal extends React.Component {
     }
 
     return (
-      <Modal isOpen={this.props.showSkillsModal} style={customStyles}>
-          <div className="modal modal-edit-skills">
+      <Modal isOpen={this.props.showSkillsModal} style={customStyles} onRequestClose={this.cancelSkillsModal}>
+          <div className="modal-table"><div className="modal-liner"><div className="modal modal-edit-skills">
             <h2 className="modal-title">Edit your skills</h2>
             <div className="layout-row">
               <div className="layout-col layout-col-4">
@@ -45,7 +45,7 @@ class EditSkillsModal extends React.Component {
               <a href="javascript:void 0" className="button-solid" onClick={this.applyAndCloseSkillsModal}>Done</a>
             </div>
             <a className="action-close icon-cross" href="javascript:void 0" onClick={this.cancelSkillsModal}>&nbsp;</a>
-          </div>
+          </div></div></div>
       </Modal>
     );
   }

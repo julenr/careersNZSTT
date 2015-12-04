@@ -21,7 +21,8 @@ const BarriersPanel = (props) => {
 
 const renderBarriers = (barrier, idx, props) => {
   return (
-    <Barrier key={idx} {...barrier} idBarrier={idx} addActionToPlan={props.addBarrierActionToPlan} />
+    <Barrier key={idx} {...barrier} idBarrier={idx} addBarrierActionToPlan={props.addBarrierActionToPlan}
+             course={props.course} removeBarrierActionFromPlan={props.removeBarrierActionFromPlan}/>
   );
 }
 

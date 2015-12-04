@@ -171,7 +171,8 @@ if(TARGET === 'build') {
       }),
       new CopyWebpackPlugin([
         { from: './src/assets/images/favicon', to: './images/favicon' },
-        { from: './src/styles/browser', to: './css/browser' }
+        { from: './src/styles/browser', to: './css/browser' },
+        { from: './src/assets/ie8', to: './ie8' }
       ])
     ]
   });

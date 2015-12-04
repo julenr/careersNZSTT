@@ -14,6 +14,7 @@ import ActionPlanDrawer from '../ActionPlanDrawer/ActionPlanDrawer.jsx';
 function mapStateToProps(state, ownProps) {
   return {
     loaded: state._mainPage.loaded,
+    loading: state._mainPage.loading,
     mainPage: state._mainPage.data
   };
 }
@@ -23,16 +24,17 @@ class MainPage extends React.Component {
     if (this.props.loaded) {
       return <Content {...this.props}/>
     }
-    else
+    else {
+      if(!this.props.loading) {
+        let urlSegment = this.props.route.path;
+        this.props.getLinkedPagesHTML(urlSegment);
+      }
       return (
         <div>
           <div className="spinner"></div>
         </div>
       );
-  }
-
-  componentDidMount() {
-    this.props.setCurrentRoute('MainPage');
+    }
   }
 }
 
@@ -41,6 +43,11 @@ class Content extends React.Component {
     let { mainPage } = this.props;
     return mainPage.FeatureType === 'Video' ? mainPage.Video.EmbedHTML : mainPage.Image.Medium.EmbedHTML;
   }
+
+  componentDidMount() {
+    this.props.setCurrentRoute('MainPage');
+  }
+
   render () {
     var { mainPage } = this.props;
     return (
@@ -48,13 +55,13 @@ class Content extends React.Component {
         <div className="page-maincontent" id="content">
           <div className="page-wrapper">
             <div className="nav-link-back">
-              <a href="#">Back</a>
+              <a href="javascript: void 0" onClick={this.goBack}>Back</a>
             </div>
             <section className="content-wrapper">
-              <h1>{ JSON.stringify(mainPage.Title, null, 2) }</h1>
-              <div className="capionImage video" dangerouslySetInnerHTML={{__html: this.getHtmlContent()}} />
+              <h1>{mainPage.Title}</h1>
+              <figure className="intro-image" dangerouslySetInnerHTML={{__html: this.getHtmlContent()}} />
               <div className="intro-text">
-                <p>{ JSON.stringify(mainPage.Intro, null, 2) }</p>
+                <p>{mainPage.Intro}</p>
               </div>
               <div dangerouslySetInnerHTML={{__html: mainPage.Content}} />
             </section>
@@ -64,6 +71,10 @@ class Content extends React.Component {
         <Footer />
       </div>
     )
+  }
+
+  goBack() {
+    window.history.back();
   }
 }
 

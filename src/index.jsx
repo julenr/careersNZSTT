@@ -34,19 +34,27 @@ import MainPage from './components/MainPage/MainPage.jsx';
 import Questionnaire from './components/Questionnaire/Questionnaire.jsx';
 import ListView from './components/ListView/ListView.jsx';
 import CourseDetail from './components/CourseDetail/CourseDetail.jsx';
-import ProviderConnect from './components/ProviderConnect/ProviderConnect.jsx';
 
 // Element to attach React-DOM
 const app = document.createElement('div');
+const userID = document.getElementsByTagName('body')[0].getAttribute('data-member-id');
+
 document.body.appendChild(app);
 
 // Retrieve initial Data from the server
-store.dispatch(actionCreators.getFooterData());
-store.dispatch(actionCreators.getQuestionnaire());
+if(!sessionStorage.getItem('careers')) {
+  if(userID !== '') {
+    store.dispatch(actionCreators.loadSavedState());
+  } else {
+    store.dispatch(actionCreators.getFooterData());
+    store.dispatch(actionCreators.getQuestionnaire());
+  }
+}
 
 // Render the DOM when the data is allready stored
-let unsubscribe = store.subscribe(() => {
+const interval = setInterval(() => {
     const state = store.getState();
+    let spinnerRendered = false;
     if(state._footerData.loaded) { //Check if everything is loaded before render App
       ReactDOM.render((
         <Provider store={ store }>
@@ -55,7 +63,6 @@ let unsubscribe = store.subscribe(() => {
             <Route path="/" component={App}>
               <IndexRoute component={Questionnaire} />
               <Route path="questionnaire" component={Questionnaire} />
-              <Route path="providerconnect" component={ProviderConnect} />
               <Route path="list-view" component={ListView} />
               <Route path="course-detail" component={CourseDetail} />
               {state._footerData.data.Footer.Menu.map(renderFooter)}
@@ -63,15 +70,16 @@ let unsubscribe = store.subscribe(() => {
           </Router>
         </Provider>
       ), app);
-      unsubscribe();
+      clearInterval(interval);
+    } else {
+        if(!spinnerRendered) {
+          spinnerRendered = true;
+          ReactDOM.render((
+            <div className="spinner"></div>
+          ), app);
+        }
     }
-    else {
-      ReactDOM.render((
-        <div className="spinner"></div>
-      ), app);
-    }
-  }
-);
+  }, 10);
 
 function callCreateBrowserHistory() {
   return createBrowserHistory();

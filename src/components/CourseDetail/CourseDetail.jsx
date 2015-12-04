@@ -39,15 +39,14 @@ class CourseDetail extends React.Component {
       );
     }
   }
-
-  componentDidMount() {
-    this.props.setCurrentRoute('CourseDetail');
-  }
-
 }
 
 
 class Content extends React.Component {
+
+  componentDidMount() {
+    this.props.setCurrentRoute('CourseDetail');
+  }
 
   render() {
     return (
@@ -62,8 +61,8 @@ class Content extends React.Component {
           <JobsPanel {...this.props} />
           <CoursePanel />
         </div>
-        <Footer />
         <ActionPlanDrawer />
+        <Footer />
       </div>
     );
   }

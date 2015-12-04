@@ -22,7 +22,8 @@ const NextStepsPanel = (props) => {
 const renderActions = (action, idx, props) => {
   return (
     <div key={idx} className="layout-col-4 layout-col">
-      <ActionCard key={idx} id={idx} {...action} addActionToPlan={props.addActionToPlan}/>
+      <ActionCard key={props.ActionId} id={props.ActionId} {...action} course={props.course} addActionToPlan={props.addActionToPlan}
+                  removeActionFromPlan={props.removeActionFromPlan}/>
     </div>
   );
 }

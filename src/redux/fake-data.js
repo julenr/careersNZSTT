@@ -11,7 +11,7 @@ export const questionnaire = {
   },
   'Intro': {
     'FeatureType': 'Video',
-    'Title': '<p><strong>Hi there, I\'m John.<\/strong> Welcome to Change up!<\/p>',
+    'Title': '<p><strong>Hi there, I\'m John.<\/strong> Welcome to Skills Builder!<\/p>',
     'Blurb': 'This website will help you find a course and a better job based on the skills you have and the things you want from work and study.',
     'Image': {
       'Small': {
@@ -96,19 +96,19 @@ export const questionnaire = {
     {
       'ID': 1,
       'Text': '',
-      'Description': 'BASIC TEXT INPUT QUESTION PROTOTYPE',
+      'Description': 'First up, what is your name?',
       'QuestionType': 'TextInput',
       'QuestionResponses': [],
       'PlaceHolder': 'Optional placeholder',
       'NextQuestionID': 2,
-      'HasAlternative': true,
-      'AlternativeText': 'I don\'t care',
-      'AlternativeNextQuestionID': 2,
+      'HasAlternative': false,
+      'AlternativeText': null,
+      'AlternativeNextQuestionID': null,
       'Endpoint': 'Member.Name',
       'MilestonePercentage': 10,
       'MilestoneText': 'Good start. We just need to know a little more to make a good list for you.',
-      'HintText': 'Hint: Think about your name',
-      'HintPosition': 'Bottom',
+      'HintText': '',
+      'HintPosition': 'Bottom'
     },
     {
       'ID': 2,
@@ -184,14 +184,32 @@ export const questionnaire = {
         },
         {'ID': 4,
           'ResponseText': 'Option 5. Jumps to question prototype 6.',
-          'NextQuestionID': 6,
+          'NextQuestionID': 4,
           'EntityType': 'None',
           'EntityData': ''
         }
       ],
       'HintText': 'Hint: Think about making a choice',
       'HintPosition': 'Bottom',
-    }, {
+    },
+    {
+      'ID': 4,
+      'Text': '',
+      'Description': 'First up, what is your name?',
+      'QuestionType': 'TextInput',
+      'QuestionResponses': [],
+      'PlaceHolder': 'Optional placeholder',
+      'NextQuestionID': 2,
+      'HasAlternative': false,
+      'AlternativeText': null,
+      'AlternativeNextQuestionID': null,
+      'Endpoint': 'Member.Name',
+      'MilestonePercentage': 10,
+      'MilestoneText': 'Good start. We just need to know a little more to make a good list for you.',
+      'HintText': '',
+      'HintPosition': 'Bottom'
+    },
+    {
       'ID': 5,
       'Text': 'Another job',
       'Description': 'MULTIPLE CHOICE QUESTION PROTOTYPE',
@@ -239,9 +257,31 @@ export const questionnaire = {
         'NextQuestionID': 6,
         'EntityType': 'None',
         'EntityData': ''
+      }, {
+        'ID': 6,
+        'ResponseText': 'Option 6. Multiple choice question prototype',
+        'selected': true,
+        'NextQuestionID': 6,
+        'EntityType': 'None',
+        'EntityData': ''
+      }, {
+        'ID': 7,
+        'ResponseText': 'Option 7. Multiple choice question prototype',
+        'selected': true,
+        'NextQuestionID': 6,
+        'EntityType': 'None',
+        'EntityData': ''
+      }, {
+        'ID': 8,
+        'ResponseText': 'Option 8. Multiple choice question prototype',
+        'selected': true,
+        'NextQuestionID': 6,
+        'EntityType': 'None',
+        'EntityData': ''
       }],
       'HintText': 'Hint: Think about many choices...',
       'HintPosition': 'Top',
+      'HasSeeMore': true,
     }, {
       'ID': 6,
       'Text': '',
@@ -340,14 +380,30 @@ export const footerData = {
     'Canterbury',
     'Otago',
     'Southland',
-    'All',
     'Northland'
   ],
+  'ResetModal': {
+    'Title': 'Reset Skills Builder',
+    'Content':'<p>Resetting Skills Builder will remove all your personal information, skills, preferences and your action plan. You will start again at the beginning answering questions about yourself.<\/p><p><strong>Are you sure you want to reset Skills Builder?</strong></p>'
+  },
+  'VocationalPathways': {
+    'Services industries': 'blue',
+    'Primary industries': 'green',
+    'Manufacturing and technology': 'red',
+    'Construction and infrastructure': 'orange',
+    'Creative industries': 'yellow',
+    'Social and community services': 'purple'
+  },
+  'VocationalPathwaysModal': {
+    'Title': 'CMS Vocational Pathways',
+    'Content': '<p>CMS The Vocational Pathways help student students see how their learning and achievement is valued in the \'real world\' by aligning the NCEA level 2 Assessment Standards including specific \'sector-related\' standards with six industries:<\/p>'
+  },
   'Tooltips': {
     'JobCardVocationalPathways': 'Here is a tooltip for Vocational Pathways.',
     'ListViewPreferences': 'Here is a tooltip for List View preferences.',
     'CourseDetailsLevel': 'Here is a tooltip for Course Datail Level.',
-    'CourseDetailsVocationalPathways': 'Here is a tooltip For Course Detail Vocational Pathways.'
+    'CourseDetailsVocationalPathways': 'Here is a tooltip For Course Detail Vocational Pathways.',
+    'QualificationCardLevel': 'Here is a tooltip For Qualification Card Level.'
   },
   'Footer': {
     'Text': 'Here is some text, it does not have any HTML in it',
@@ -368,6 +424,28 @@ export const footerData = {
       'Landscape Gardener', 'Child care', 'Aborist', 'Software Architect', 'Teacher', 'Warden',
       'Landscape Gardener', 'Child care', 'Aborist', 'Software Architect', 'Teacher', 'Warden'],
     'Visible': 5
+  },
+  'HelpPopup': {
+    'HelpText': '<p>If you get stuck or want to talk about your options don\'t hesitate to get in touch by clicking here.<p><br><p><strong>Got it, thanks.<\/strong><\/p>',
+    'Link1Text': '0800 222 733',
+    'Link1Link': 'tel:0800222733',
+    'Link1OpenInNewTab': false,
+    'Link2Text': 'Chat online',
+    'Link2Link': '#',
+    'Link2OpenInNewTab': false,
+    'Link3Text': 'Read online help',
+    'Link3Link': 'http:\/\/www.careers.govt.nz\/tools\/skills-transition-tool\/help',
+    'Link3OpenInNewTab': false
+  },
+  'LogoutForm': {
+    'Action': 'http:\/\/careers.local\/Security\/logout\/',
+    'Method': 'get',
+    'AccountLink': 'http:\/\/careers.local\/my-career-portfolio\/account-settings\/'
+  },
+  'Survey': {
+    'Text': 'Take our Survey',
+    'Link': 'http:\/\/surveymonkey.com\/r\/ZD2VTVG',
+    'Target': '_blank'
   }
 };
 
@@ -378,6 +456,10 @@ export const listViewData = {
   {
     'Closed': false,
     'Text': 'No shift work'
+  },
+  'HiddenPanel':
+  {
+    'Closed': true,
   }
   ,
   'HelpPanels': [
@@ -398,28 +480,36 @@ export const listViewData = {
   'ActionPlanDrawer': {
     'SuggestedActions': [
       {
+        'ActionID': 1,
         'Title': '<p>0 Eam in novum adipisci. Cum meis legimus elaboraret ea <a href="www.google.co.nz"> look at google</a></p>',
         'IsInActionPlan': true
       },
       {
+        'ActionID': 2,
         'Title': '<p>1 Mea justo tractatos no, quidam fabulas consulatu id cum, eu insolens legendos electram ius. Mollis patrioque qui in, his at legendos tacimates.</p>',
         'IsInActionPlan': false
       },
       {
+        'ActionID': 3,
         'Title': '<p>2 Eam in novum adipisci. Cum meis legimus elaboraret ea</p>',
         'IsInActionPlan': true
       },
       {
+        'ActionID': 4,
         'Title': '<p>3 Mea ei eros aliquam, est feugiat evertitur neglegentur ad, vis ea vidisse scripta vivendum.</p>',
         'IsInActionPlan': true
       },
       {
+        'ActionID': 5,
         'Title': '<p>4 His ea malis docendi delicata. Ea epicuri corrumpit vulputate pri, nec erant perpetua repudiandae cu.</p>',
         'IsInActionPlan': false
       }
     ],
     'Courses': [
-    ]
+    ],
+    'NoResultsTitle':'Your actions',
+    'NoResultsText':'<p><strong>To add an action:</strong><br>Find a course you\'re insterested in and click or tap the "add" button next to the action you want to take.',
+
   },
   'JobsCards': [
     {
@@ -512,7 +602,7 @@ export const listViewData = {
       'Interest': 74,
       'Demand': 23,
       'Pay': '$15–$40',
-      'PerTime': 'per hour',
+      'PerTime': '',
       'Skills': [
         'Examine characteristics or behavior of living organisms.',
         'Research methods to improve food products.',
@@ -783,25 +873,29 @@ export const listViewData = {
   'QualificationCards': [
     {
       'Closed': false,
+      'Flipped': false,
       'Filtered': false,
       'Title': '1 Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
       'Institution': 'at International College of New Zealand Limited',
       'Regions': ['Otago', 'Wellington'],
+      'DescriptionText': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
       'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
       'VocationalPathways': [
         'Social and community services',
         'Manufacturing and technology'
       ],
       'Level': '1',
-      'LeadsTo': 'Groundsperson; Another job title; Job three',
+      'LeadsTo': 'Groundsperson; Another job title; Job three, Human Resources Adviser; Procurement Manager; Office Manager; Managing Director/Chief Executive; Advertising, Sales and Marketing Manager; Secretary (General); Secretary',
       'CourseID': 1
     },
     {
       'Closed': false,
+      'Flipped': false,
       'Filtered': false,
       'Title': '2 Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
       'Institution': 'at International College of New Zealand Limited',
       'Regions': ['Otago', 'Wellington'],
+      'DescriptionText': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
       'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
       'VocationalPathways': [
         'Social and community services',
@@ -813,10 +907,12 @@ export const listViewData = {
     },
     {
       'Closed': false,
+      'Flipped': true,
       'Filtered': false,
       'Title': '3 Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
       'Institution': 'at International College of New Zealand Limited',
       'Regions': ['Otago', 'Wellington'],
+      'DescriptionText': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
       'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
       'VocationalPathways': [
         'Social and community services',
@@ -828,10 +924,12 @@ export const listViewData = {
     },
     {
       'Closed': false,
+      'Flipped': false,
       'Filtered': false,
       'Title': '4 Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
       'Institution': 'at International College of New Zealand Limited',
       'Regions': ['Otago', 'Wellington'],
+      'DescriptionText': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
       'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
       'VocationalPathways': [
         'Social and community services',
@@ -843,10 +941,12 @@ export const listViewData = {
     },
     {
       'Closed': false,
+      'Flipped': false,
       'Filtered': false,
       'Title': '5 Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
       'Institution': 'at International College of New Zealand Limited',
       'Regions': ['Otago', 'Wellington'],
+      'DescriptionText': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
       'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
       'VocationalPathways': [
         'Social and community services',
@@ -858,10 +958,12 @@ export const listViewData = {
     },
     {
       'Closed': false,
+      'Flipped': false,
       'Filtered': false,
       'Title': '6 Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
       'Institution': 'at International College of New Zealand Limited',
       'Regions': ['Otago', 'Wellington'],
+      'DescriptionText': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
       'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
       'VocationalPathways': [
         'Social and community services',
@@ -873,10 +975,12 @@ export const listViewData = {
     },
     {
       'Closed': false,
+      'Flipped': false,
       'Filtered': false,
       'Title': '7 Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
       'Institution': 'at International College of New Zealand Limited',
       'Regions': ['Otago', 'Wellington'],
+      'DescriptionText': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
       'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
       'VocationalPathways': [
         'Social and community services',
@@ -888,10 +992,12 @@ export const listViewData = {
     },
     {
       'Closed': false,
+      'Flipped': false,
       'Filtered': false,
       'Title': '8 Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
       'Institution': 'at International College of New Zealand Limited',
       'Regions': ['Otago', 'Wellington'],
+      'DescriptionText': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
       'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
       'VocationalPathways': [
         'Social and community services',
@@ -903,10 +1009,12 @@ export const listViewData = {
     },
     {
       'Closed': false,
+      'Flipped': false,
       'Filtered': false,
       'Title': '9 Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
       'Institution': 'at International College of New Zealand Limited',
       'Regions': ['Otago', 'Wellington'],
+      'DescriptionText': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
       'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
       'VocationalPathways': [
         'Social and community services',
@@ -918,10 +1026,12 @@ export const listViewData = {
     },
     {
       'Closed': false,
+      'Flipped': false,
       'Filtered': false,
       'Title': '10 Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
       'Institution': 'at International College of New Zealand Limited',
       'Regions': ['Otago', 'Wellington'],
+      'DescriptionText': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
       'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
       'VocationalPathways': [
         'Social and community services',
@@ -933,10 +1043,12 @@ export const listViewData = {
     },
     {
       'Closed': false,
+      'Flipped': false,
       'Filtered': false,
       'Title': '11 Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
       'Institution': 'at International College of New Zealand Limited',
       'Regions': ['Otago', 'Wellington'],
+      'DescriptionText': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
       'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
       'VocationalPathways': [
         'Social and community services',
@@ -948,10 +1060,12 @@ export const listViewData = {
     },
     {
       'Closed': false,
+      'Flipped': false,
       'Filtered': false,
       'Title': '12 Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
       'Institution': 'at International College of New Zealand Limited',
       'Regions': ['Otago', 'Wellington'],
+      'DescriptionText': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
       'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
       'VocationalPathways': [
         'Social and community services',
@@ -963,10 +1077,12 @@ export const listViewData = {
     },
     {
       'Closed': false,
+      'Flipped': false,
       'Filtered': false,
       'Title': '13 Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
       'Institution': 'at International College of New Zealand Limited',
       'Regions': ['Otago', 'Wellington'],
+      'DescriptionText': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
       'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
       'VocationalPathways': [
         'Social and community services',
@@ -979,29 +1095,36 @@ export const listViewData = {
   ],
   'QualificationsPanel':
   {
-    'Text': 'Which course suits you best?',
-    'Region': 'Northland',
+    'NoResultsMessage': 'Sorry, there are no courses to show in the region you have set. Please choose a different one.',
+    'FilteredResultsMessage': 'Sorry, there are no courses to show in the region you have set. Please choose a different one.',
+    'Title': 'Which course suits you best?',
+    'EntryRequirements': '<p>There are no specific entry requirements to become a painter and decorator because you learn skills on the job. However, you can improve your job prospects and earning potential by doing an apprenticeship and gaining a National Certificate. <\/p>',
+    'EntryRequirementsSummary': '<p>There are no specific entry requirements to become a painter and decorator because you learn skills on the job. However, you can improve your job prospects and earning potential by doing an apprenticeship and gaining a National Certificate.<\/p>\n<p>Apprentices must do between 5,000 and 6,000 hours (three to four years) of on-the-job training, attend block courses and complete workbooks for assessment.<\/p>\n<p>You can do an apprenticeship through the New Zealand Apprenticeships scheme. Pre-employment courses in painting and decorating are available for those who are interested in taking up an apprenticeship.<\/p>\n<ul class=\"arrow-blue\">\n<li><a href=\"http:\/\/www.careers.govt.nz\/education-and-training\/workplace-training-and-apprenticeships\/new-zealand-apprenticeships\/\">Find out more about New Zealand Apprenticeships<\/a><\/li>\n<li><a href=\"http:\/\/www.bcito.org.nz\/get-career\/career-options\" target=\"_blank\">Building and Construction Industry Training Organisation (BCITO) - information on apprenticeships<\/a><\/li>\n<li><a class=\"external\" href=\"http:\/\/www.masterpainters.co.nz\/careers\/\" target=\"_blank\">Master Painters website - information on pre-trade courses, apprenticeships and career pathways<\/a><\/li>\n<\/ul>',
     'Courses': [
       {
         'Closed': false,
+        'Flipped': false,
         'Filtered': false,
         'Title': 'Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
         'Institution': 'at International College of New Zealand Limited',
         'Regions': ['Otago', 'Wellington'],
-        'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
+        'DescriptionText': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive 6 text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive 7 text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
+        'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive 6 text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive 7 text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem… Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
         'VocationalPathways': [
           'Social and community services',
           'Manufacturing and technology'
         ],
         'Level': '1',
-        'LeadsTo': 'Groundsperson; Another job title; Job three'
+        'LeadsTo': 'Groundsperson; Another job title; Job three, Human Resources Adviser; Procurement Manager; Office Manager; Managing Director/Chief Executive; Advertising, Sales and Marketing Manager; Secretary (General); Secretary'
       },
       {
         'Closed': false,
+        'Flipped': false,
         'Filtered': false,
         'Title': 'Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
         'Institution': 'at International College of New Zealand Limited',
         'Regions': ['Otago', 'Wellington'],
+        'DescriptionText': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
         'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
         'VocationalPathways': [
           'Social and community services',
@@ -1012,10 +1135,12 @@ export const listViewData = {
       },
       {
         'Closed': false,
+        'Flipped': false,
         'Filtered': false,
         'Title': 'Graduate Diploma in Professional Supervision (Biculturalism in Practice)',
         'Institution': 'at International College of New Zealand Limited',
         'Regions': ['Otago', 'Wellington'],
+        'DescriptionText': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
         'Description': 'Descriptive text lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem…',
         'VocationalPathways': [
           'Social and community services',
@@ -1030,26 +1155,26 @@ export const listViewData = {
   {
     'Text': 'Where would you like to study?',
     'Region': 'Northland',
-    'Institutions': [
+    'CourseCards': [
       {
         'CourseID': 1,
         'Closed': false,
         'Title': 'Auckland University of Technology',
-        'Location': 'Auckland',
-        'Regions': ['Otago', 'Wellington']
+        'Location': 'Otago',
+        'LocationName': 'Otago'
       },
       {
         'CourseID': 2,
         'Closed': false,
         'Title': 'University of Canterbury',
-        'Regions': ['Otago', 'Wellington'],
-        'Location': 'Houghton Bay'
+        'LocationName': 'Houghton Bay',
+        'Location': 'Wellington'
       },
       {
         'CourseID': 3,
         'Closed': false,
         'Title': 'University of Otago',
-        'Regions': ['Otago', 'Wellington'],
+        'LocationName': 'Dunedin',
         'Location': 'Dunedin'
       }
     ]
@@ -1144,14 +1269,17 @@ export const courseDetail = {
     'Title': 'Take the next step',
     'Actions': [
       {
+        'ActionID': 900,
         'Title': 'Action 1',
         'IsInActionPlan': false
       },
       {
+        'ActionID': 901,
         'Title': 'Action 2',
-        'IsInActionPlan': true
+        'IsInActionPlan': false
       },
       {
+        'ActionID': 902,
         'Title': 'Action 3',
         'IsInActionPlan': false
       }
@@ -1165,12 +1293,14 @@ export const courseDetail = {
         'Summary': '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>',
         'Actions': [
           {
+            'ActionID': 218,
             'Title': 'Something I have to do to get started',
             'IsInActionPlan': false
           },
           {
+            'ActionID': 219,
             'Title': 'Something I have to do to get started',
-            'IsInActionPlan': true
+            'IsInActionPlan': false
           }
         ]
       },
@@ -1179,10 +1309,12 @@ export const courseDetail = {
         'Summary': '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>',
         'Actions': [
           {
+            'ActionID': 228,
             'Title': 'Something I have to do to get started',
             'IsInActionPlan': false
           },
           {
+            'ActionID': 229,
             'Title': 'Something I have to do to get started',
             'IsInActionPlan': false
           }
@@ -1193,10 +1325,12 @@ export const courseDetail = {
         'Summary': '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>',
         'Actions': [
           {
+            'ActionID': 238,
             'Title': 'Something I have to do to get started',
-            'IsInActionPlan': true
+            'IsInActionPlan': false
           },
           {
+            'ActionID': 239,
             'Title': 'Something I have to do to get started',
             'IsInActionPlan': false
           }

@@ -1,10 +1,9 @@
 /**
  * Created by jr1500 on 30/09/15.
  */
-import './TypeAhead.scss';
-
 import React from 'react';
 import ReactDOM from 'react-dom';
+import _ from 'lodash';
 import classNames from 'classnames';
 import { scrollTo } from '../../../libs/helpers';
 import uuid from 'node-uuid';
@@ -16,42 +15,54 @@ class InputTypeAhead extends React.Component {
   render() {
     const question = this.props.questionnaire[this.props.id];
     const typeAheadItemsContainer = this.props.typeAheadItemsContainer;
+    const firstQuestion = (this.props.id === 0);
+    const firstQuestionClass = (firstQuestion) ? 'fieldset first-question active' : 'fieldset active';
+    const firstQuestionNoAvatar = (firstQuestion) ? 'field text' : 'field text with-avatar';
     let classes = classNames( this.props.className, {
       'submit': true,
       'submit active': question.Text
     } );
-    this.scrollElementID = this.scrollElementID = `Typeahead${this.props.id}`;
+
     const styles = {
       item: {
-        padding: '2px 6px',
-        cursor: 'default'
+        fontSize: '1.3125em',
+        lineHeight: '1.28571',
+        padding: '0.35714em 1.42857em',
+        cursor: 'pointer',
+        fontFamily: 'MullerLight, Arial, sans-serif',
+        fontWeight: 'bold',
+        fontStyle: 'normal',
+        WebkitFontSmoothing: 'antialiased'
       },
 
       highlightedItem: {
-        color: 'white',
-        background: 'hsl(200, 50%, 50%)',
-        padding: '2px 6px',
-        cursor: 'default'
+        fontSize: '1.3125em',
+        lineHeight: '1.28571',
+        padding: '0.35714em 1.42857em',
+        cursor: 'pointer',
+        color: '#01b9ee',
+        fontWeight: 'bold',
+        fontStyle: 'normal',
+        WebkitFontSmoothing: 'antialiased'
       },
 
       menu: {
-        border: 'solid 1px #ccc',
-        background: 'rgba(255, 255, 255, 0.9)',
-        zIndex: 2,
+        background: '#fff',
+        border: '1px solid #a3a3a3',
         position: 'static',
-        font: 'inherit'
-      },
-
-      typeAhead: {
-        border: 'solid 1px #ccc',
-        background: 'hsl(200, 50%, 50%)',
+        zIndex: '1',
+        WebkitBorderRadius: '1.3125em 1.3125em 0 0',
+        borderRadius: '1.3125em 1.3125em 0 0',
+        padding: '0.75em 0 0.5EM',
       }
     }
 
+    this.scrollElementID = `Typeahead${this.props.id}`;
     return (
-      <div className="fieldset active">
-        <div className="field text with-avatar">
-          <Avatar />
+      <div className={firstQuestionClass}>
+        {(firstQuestion) ? <p>To get started answer the question below…</p>: ''}
+        <div className={firstQuestionNoAvatar}>
+          {(!firstQuestion) ? <Avatar /> : ''}
           <label htmlFor="q2-sample">{question.Description}</label>
           <div className="text">
             {
@@ -76,20 +87,21 @@ class InputTypeAhead extends React.Component {
                   </div>
                 )}
               menuStyle={styles.menu}
-              callback={this.callback}
+              callback={(a) => this.callback(a, question.Endpoint)}
               />
               <br/>
             {
+              (question.HintPosition === 'Bottom' && question.HintText && !question.Text) ?
+              <p className="help">{question.HintText}</p> : ''
+              }
+            {
               (question.HasAlternative) ?
-                <a className="action-flip" href="javascript: void 0" onClick={ () => this.alternativeClicked(question.AlternativeNextQuestionID) } >
+                <a className="option-basic" href="javascript: void 0" onClick={ () => this.alternativeClicked(question.AlternativeNextQuestionID) } >
                   {question.AlternativeText}
+                  <span className="icon-arrow-right"></span>
                 </a>
                 :
                 ''
-            }
-            {
-              (question.HintPosition === 'Bottom' && question.HintText) ?
-              <p className="help">{question.HintText}</p> : ''
             }
           </div>
         </div>
@@ -105,15 +117,15 @@ class InputTypeAhead extends React.Component {
     );
   }
 
-  callback = () => {
-    console.log('select');
+  callback = (value) => {
+    this.props.setTypeAheadText(this.props.id, value);
   }
 
   valueChanged = (event, value, endPoint) => {
     if (value && value.length > 2) { //must enter at least 3 characters before doing typeahead lookup
       this.callLoadTypeAhead(value, endPoint);
     }
-    this.props.setTypeAheadText(this.props.id, value);
+    this.props.setTypeAheadText(this.props.id, ''); //Set value to false to hide next button
   }
 
   callLoadTypeAhead = _.debounce((value, endPoint) => {
@@ -126,12 +138,14 @@ class InputTypeAhead extends React.Component {
 
   alternativeClicked = (alternativeQuestionID) => {
     scrollTo(this.scrollElementID, -110);
+    this.props.setNextQuestionId(alternativeQuestionID);
     this.props.nextQuestion(this.props.id, alternativeQuestionID);
   }
 
   nextClicked = (nextQuestionID) => {
     this.props.setFinalTypeAheadText(this.props.id, this.refs.Typeahead.state.value);
     scrollTo(this.scrollElementID, -110);
+    this.props.setNextQuestionId(nextQuestionID);
     this.props.nextQuestion(this.props.id, nextQuestionID);
   }
 

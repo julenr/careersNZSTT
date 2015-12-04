@@ -25,7 +25,7 @@ class JobCard extends React.Component {
       'careers-card job': true,
       'careers-card job flip': flipped
     } );
-    const style = {
+    const style = flipped ? {} : {
       fontSize: textFitToContainer(jobCard.Title) + 'px'
     }
 
@@ -43,14 +43,9 @@ class JobCard extends React.Component {
                   className="icon-plus-circle"></span></a>
 
                 <div className="sectors">
-                  <a href="javascript: void 0">
+                  <a href="javascript: void 0" onClick={this.props.openVocationalPathwaysModal}>
                     <ul>
-                      <li title="Manufacturing and technology" className="sector-yellow">
-                        Manufacturing and technology
-                      </li>
-                      <li title="Construction and infrastructure" className="sector-blue">
-                        Construction and infrastructure
-                      </li>
+                      { _.map(jobCard.VocationalPathways, this.renderPathwaySwatch) }
                     </ul>
                     <span className="more">More</span>
                   </a>
@@ -74,7 +69,9 @@ class JobCard extends React.Component {
                     className={`progress-bar-status amount-${this.roundProgressBarValues(jobCard.Demand)}`}>{jobCard.Demand}%</span>
                   </dd>
                   <dt>Pay:</dt>
-                  <dd>{jobCard.Pay}<br/>{jobCard.PerTime}</dd>
+                  {
+                    this.renderPay(jobCard)
+                    }
                 </dl>
                 <a className="action-flip" href="javascript: void 0" onClick={this.flipCard}>More about this job <span
                   className="icon-refresh"></span></a>
@@ -113,24 +110,24 @@ class JobCard extends React.Component {
                   <Tooltip
                     animation="zoom"
                     trigger="click"
-                    overlayStyle={{zIndex:1000}}
+                    overlayClassName="job-card-tooltip"
                     overlay={
                       <div className="field radio with-avatar">
                         {tooltips.JobCardVocationalPathways}
                       </div>
                       }
                     >
-                    <span className="icon-help tooltip" title="This is a tooltip" />
+                    <span className="icon-help tooltip" title={tooltips.JobCardVocationalPathways} />
                   </Tooltip>
                 </dt>
                 <dd>
                   <ul className="sector-simple-list">
-                    <li className="sector-purple">{jobCard.VocationalPathways}</li>
+                      { _.map(jobCard.VocationalPathways, this.renderPathwaySwatch) }
                   </ul>
                 </dd>
               </dl>
               <div className="layout-row divider">
-                <a className="action-joblink-external" href="javascript: void 0">Full job info on Careers NZ
+                <a className="action-joblink-external" href={jobCard.Link}>Full job info on Careers NZ
                   website</a>
                 <a className="action-flip" href="javascript: void 0" onClick={this.flipCard}>
                   Go back <span className="icon-refresh"></span>
@@ -144,6 +141,24 @@ class JobCard extends React.Component {
         </article>
       </div>
     );
+  }
+
+  renderPay = (jobCard) => {
+    switch (jobCard.PerTime.toLowerCase()){
+      case 'per year': {
+        return <dd>{jobCard.Pay}<br/>{jobCard.PerTime.toLowerCase()}</dd>
+      }
+      case 'per hour': {
+        return <dd>{jobCard.Pay}<br/>{jobCard.PerTime.toLowerCase()}</dd>
+      }
+      default:
+        return <dd>Varied</dd>
+
+    }
+  }
+
+  renderPathwaySwatch = (title, idx) => {
+    return (<li title={title} key={idx} className={`sector-${this.props.vocationalPathways[title]}`}>{title}</li>);
   }
 
   preventDefault = (e) => {

@@ -17,9 +17,12 @@ import ActionPlanDrawer from '../ActionPlanDrawer/ActionPlanDrawer';
 import JobCard from './JobCard/JobCard';
 import QualificationCard from './QualificationCard/QualificationCard';
 import RemoveJobCardModal from './JobCard/RemoveJobCardModal';
+import VocationalPathwaysModal from './JobCard/VocationalPathwaysModal';
 import ListViewHeader from './ListViewHeader/ListViewHeader';
 import QualificationsPanel from './QualificationsPanel/QualificationsPanel';
+import EntryRequirementsModal from './QualificationsPanel/EntryRequirementsModal';
 import RemoveQualificationCardModal from './QualificationCard/RemoveQualificationCardModal';
+import FullQualificationCardDescriptionModal from './QualificationCard/FullQualificationCardDescriptionModal';
 import NoResultsPanel from './NoResultsPanel/NoResultsPanel';
 import InstitutionsPanel from './InstitutionsPanel/InstitutionsPanel';
 import Pagination from './Pagination/Pagination';
@@ -32,6 +35,8 @@ function mapStateToProps(state) {
   return {
     ListType: state._listViewData.data.ListType,
     loaded: state._listViewData.loaded,
+    qualificationsPanelLoaded: state._listViewData.QualificationsPanelLoaded,
+    institutionsPanelLoaded: state._listViewData.InstitutionsPanelLoaded,
     showMatchSkillsModal: state._listViewData.ShowMatchSkillsModal,
     selectedSkills: state._questionnaire.data.Skills.Selected,
     jobsCards: state._listViewData.data.JobsCards,
@@ -39,6 +44,7 @@ function mapStateToProps(state) {
     undoPanel: state._listViewData.data.UndoPanel,
     qualificationsPanel: state._listViewData.data.QualificationsPanel,
     showQualificationsPanel: state._listViewData.ShowQualificationsPanel,
+    showEntryRequirementsModal: state._listViewData.ShowEntryRequirementsModal,
     institutionsPanel: state._listViewData.data.InstitutionsPanel,
     showInstitutionsPanel: state._listViewData.ShowInstitutionsPanel,
     checkSkillsID: state._listViewData.CheckSkillsID,
@@ -49,11 +55,17 @@ function mapStateToProps(state) {
     tooltips: state._footerData.data.Tooltips,
     showAddPreferenceModal: state._listViewData.data.Filters.ShowAddPreferenceModal,
     jobCardSelectedID: state._listViewData.JobCardSelectedID,
+    qualificationCardSelectedID: state._listViewData.QualificationCardSelectedID,
     showRemoveQualificationCardModal: state._listViewData.ShowRemoveQualificationCardModal,
+    showFullQualificationCardDescriptionModal: state._listViewData.ShowFullQualificationCardDescriptionModal,
     removeQualificationCardModalID: state._listViewData.RemoveQualificationCardModalID,
     showRemoveInstitutionCardModal: state._listViewData.ShowRemoveInstitutionCardModal,
     removeInstitutionCardModalID: state._listViewData.RemoveInstitutionCardModalID,
     paginationLimit: state._listViewData.PaginationLimit,
+    hiddenPanel: state._listViewData.data.HiddenPanel,
+    showVocationalPathwaysModal: state._listViewData.ShowVocationalPathwaysModal,
+    vocationalPathwaysModal: state._footerData.data.VocationalPathwaysModal,
+    vocationalPathways: state._footerData.data.VocationalPathways,
     refresh: state._listViewData.data.refresh // This value if changed somewhere triggers the component render method
   };
 }
@@ -65,8 +77,13 @@ class ListView extends React.Component {
     }
     else {
       return (
-        <div>
-          <div className="spinner"></div>
+        <div className="active" id="list-changing-overlay">
+          <div className="overlay-liner">
+            <div className="message">
+              <span className="icon-refresh"></span>
+              Updating your <br/><strong>course/job</strong> <br/>suggestions
+            </div>
+          </div>
         </div>
       );
     }
@@ -89,7 +106,7 @@ class Content extends React.Component {
         paginationLimit} = this.props;
     const cards = (ListType === 'Job') ? jobsCards : qualificationsPanel.Courses;
     const areVisibleCards = this.checkAreVisibleCards(cards);
-    const areHiddenCards = this.checkAreHiddenCards(cards); //Not used yet
+    const areHiddenCards = this.areHiddenCards();
     const visibleCardsCount = this.getVisibleCardsCount(cards);
     cards.lastShownCardIndex = this.getLastPaginationIndex(cards, paginationLimit);
 
@@ -100,13 +117,13 @@ class Content extends React.Component {
           <div className="page-wrapper">
             <div className="careers-card-wrapper">
               <ReactCSSTransitionGroup
-                transitionEnterTimeout={1000}
-                transitionLeaveTimeout={1000}
+                transitionEnterTimeout={500}
+                transitionLeaveTimeout={500}
                 transitionName={{
                 enter: 'animated',
-                enterActive: 'lightSpeedIn',
+                enterActive: 'fadeIn',
                 leave: 'animated',
-                leaveActive: 'lightSpeedOut'
+                leaveActive: 'fadeOut'
                 }}
                 >
                 {
@@ -119,16 +136,19 @@ class Content extends React.Component {
         {(areVisibleCards) ? '' : <NoResultsPanel /> }
         <div id="qualifications-panel-scroll-point" />
         {(showQualificationsPanel) ? <QualificationsPanel {...this.props} /> : '' }
+        {(showQualificationsPanel) ? <EntryRequirementsModal {...this.props} /> : '' }
         <div id="institutions-panel-scroll-point" />
         {(showInstitutionsPanel) ? <InstitutionsPanel {...this.props} /> : '' }
         {(areVisibleCards) ? <Pagination {...this.props} visibleCardsCount={visibleCardsCount} /> : '' }
         <Preferences {...this.props} />
-        <HiddenCards {...this.props} />
-        <Footer />
+        {(areHiddenCards) ? <HiddenCards {...this.props} /> : '' }
         <ActionPlanDrawer/>
+        <Footer />
         {(areVisibleCards && (ListType === 'Job')) ? <MatchSkillsModal {...this.props}/> : '' }
         {(areVisibleCards && (ListType === 'Job')) ? <RemoveJobCardModal {...this.props}/> : '' }
         {(areVisibleCards) ? <RemoveQualificationCardModal {...this.props}/> : '' }
+        {(areVisibleCards) ? <FullQualificationCardDescriptionModal {...this.props}/> : '' }
+        <VocationalPathwaysModal {...this.props} />
       </div>
     )
   }
@@ -174,16 +194,20 @@ class Content extends React.Component {
 
   }
 
-  checkAreHiddenCards = (cards) => {
-    if(!cards.length) {
-      return false;
-    }
-    return (_.findIndex(cards, (card) => {
-      if(card.Closed) {
-        return true;
-      }
-    }) !== -1)
+  areHiddenCards = () => {
+    const jobCards = (_.findIndex(this.props.jobsCards, (card) => {
+      return card.Closed;
+    }) !== -1);
 
+    const qualificationCards = (_.findIndex(this.props.qualificationsPanel.Courses, (card) => {
+      return card.Closed;
+    }) !== -1);
+
+    const institutionsCards = (_.findIndex(this.props.institutionsPanel.CourseCards, (card) => {
+      return card.Closed;
+    }) !== -1);
+
+    return jobCards || qualificationCards || institutionsCards;
   }
 
   //returns all cards which are not hidden and not filtered. Does not account for pagination ie. card may be 'visible'

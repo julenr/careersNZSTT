@@ -10,7 +10,11 @@ import Avatar from '../../subcomponents/Avatar';
 
 class TextInput extends React.Component {
   render() {
-    var question = this.props.questionnaire[this.props.id];
+    const question = this.props.questionnaire[this.props.id];
+    const firstQuestion = (this.props.id === 0);
+    const firstQuestionClass = (firstQuestion) ? 'fieldset first-question active' : 'fieldset active';
+    const firstQuestionNoAvatar = (firstQuestion) ? 'field text ' : 'field text with-avatar';
+
     let classes = classNames(
       {
         'submit': true,
@@ -18,12 +22,12 @@ class TextInput extends React.Component {
       }
     );
     this.scrollElementID = `TextInput${this.props.id}`;
-
     return (
-      <div className="fieldset active">
-        <div className="field text with-avatar">
-          <Avatar />
-          <label htmlFor="q2-sample">{question.Description}</label>
+      <div className={firstQuestionClass}>
+        {(firstQuestion) ? <p>To get started answer the question below…</p>: ''}
+        <div className={firstQuestionNoAvatar}>
+          {(!firstQuestion) ? <Avatar /> : ''}
+          <label htmlFor="q1-name">{question.Description}</label>
           <div className="text">
             {
               (question.HintPosition === 'Top' && question.HintText) ?
@@ -44,8 +48,9 @@ class TextInput extends React.Component {
               }
               {
               (question.HasAlternative) ?
-                  <a className="action-flip" href="javascript: void 0" onClick={ () => this.alternativeClicked(question.AlternativeNextQuestionID) } >
+                  <a className="option-basic" href="javascript: void 0" onClick={ () => this.alternativeClicked(question.AlternativeNextQuestionID) } >
                     {question.AlternativeText}
+                    <span className="icon-arrow-right"></span>
                   </a>
                   :
                   ''
@@ -68,11 +73,13 @@ class TextInput extends React.Component {
     this.refs.inputText.value = '';
     this.props.setInputText(this.props.id, this.refs.inputText.value)
     scrollTo(this.scrollElementID, -110);
+    this.props.setNextQuestionId(alternativeQuestionID);
     this.props.nextQuestion(this.props.id, alternativeQuestionID);
   }
 
   nextClicked = (nextQuestionID) => {
     scrollTo(this.scrollElementID, -110);
+    this.props.setNextQuestionId(nextQuestionID);
     this.props.nextQuestion(this.props.id, nextQuestionID);
   }
 

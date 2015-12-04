@@ -13,22 +13,22 @@ class RemoveJobCardModal extends React.Component {
     let jobCard = this.props.jobsCards[this.props.jobCardSelectedID];
     if(this.props.jobCardSelectedID >= 0) {
       return (
-        <Modal isOpen={this.props.showRemoveJobCardModal}>
-            <div className="modal modal-remove">
-              <h2 className="modal-title">{`Remove ${jobCard.Title}`}</h2>
-              <div className="form">
-                <p>You are removing the job <strong>{jobCard.Title}</strong> from your list</p>
-                <a href="javascript:void 0" className="button-solid" onClick={this.closeModalAndRemoveJobCard} >
-                  Remove <span className="tablet desktop">{jobCard.Title} only</span>
-                </a>
-              </div>
-              {this.renderRemoveJobsGroupedByConditions()}
-              <div className="submit">
-                <a className="button-simple" href="javascript:void 0" onClick={this.cancelModal}>Cancel</a>
-              </div>
-              <a className="action-close icon-cross" href="javascript:void 0"
-                 onClick={this.cancelModal}>&nbsp;</a>
+        <Modal isOpen={this.props.showRemoveJobCardModal} onRequestClose={this.cancelModal}>
+          <div className="modal-table"><div className="modal-liner"><div className="modal modal-remove">
+            <h2 className="modal-title">{`Remove ${jobCard.Title}`}</h2>
+            <div className="form">
+              <p>You are removing the job <strong>{jobCard.Title}</strong> from your list</p>
+              <a href="javascript:void 0" className="button-solid" onClick={this.closeModalAndRemoveJobCard} >
+                Remove <span className="tablet desktop">{jobCard.Title} only</span>
+              </a>
             </div>
+            {this.renderRemoveJobsGroupedByConditions()}
+            <div className="submit">
+              <a className="button-simple" href="javascript:void 0" onClick={this.cancelModal}>Cancel</a>
+            </div>
+            <a className="action-close icon-cross" href="javascript:void 0"
+               onClick={this.cancelModal}>&nbsp;</a>
+          </div></div></div>
         </Modal>
       );
     }

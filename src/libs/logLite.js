@@ -45,7 +45,7 @@ export default (() => {
     };
 
     var exports = {
-        defaultLogLevel: 'debug'
+        defaultLogLevel: 'warn'
     };
 
     if(__DEV__){

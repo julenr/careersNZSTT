@@ -9,9 +9,6 @@ import { Link } from 'react-router';
 import Avatar from '../../subcomponents/Avatar';
 
 class EndForm extends React.Component {
-  componentWillMount() {
-    this.props.resetListViewLoaderFlag();
-  }
 
   render() {
     return (
@@ -23,8 +20,8 @@ class EndForm extends React.Component {
           </label>
         </div>
         <div className="submit active">
-          <Link className="button next" to="/list-view" >
-            <span onClick={this.linkClick}>
+          <Link className="button next" to="/list-view" onClick={this.linkClick}>
+            <span>
               Great, show me!
               <span className="icon-arrow-right"></span>
             </span>

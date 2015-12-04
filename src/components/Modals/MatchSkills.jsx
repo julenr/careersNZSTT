@@ -13,8 +13,8 @@ class MatchSkillsModal extends React.Component {
     if(this.props.jobsCards.length) {
       let jobCard = this.props.jobsCards[this.props.checkSkillsID];
       return (
-        <Modal isOpen={this.props.showMatchSkillsModal} >
-            <div className="modal modal-skills-match">
+        <Modal isOpen={this.props.showMatchSkillsModal} onRequestClose={this.closeModal}>
+            <div className="modal-table"><div className="modal-liner"><div className="modal modal-skills-match">
               <h2 className="modal-title">{`Skills match for ${jobCard.Title}`}</h2>
               <div className="layout-row">
                 <div className="layout-col layout-col-4">
@@ -35,7 +35,7 @@ class MatchSkillsModal extends React.Component {
                 <a className="button-solid" href="javascript:void 0" onClick={this.showAddEditSkillsModal}>Add or edit your skills</a>
               </div>
               <a className="action-close icon-cross" href="javascript:void 0" onClick={this.closeModal}>&nbsp;</a>
-            </div>
+            </div></div></div>
         </Modal>
       );
     } else {

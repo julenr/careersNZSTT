@@ -27,4 +27,4 @@ const TextSelect = (props) => {
   )
 }
 
-module.exports = TextSelect
+export default TextSelect;

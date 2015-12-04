@@ -43,8 +43,8 @@ class AddSkillsModal extends React.Component {
 
 
     return (
-      <Modal isOpen={this.props.showAddSkillsModal} >
-          <div className="modal modal-add-skills">
+      <Modal isOpen={this.props.showAddSkillsModal} onRequestClose={this.cancelModal}>
+          <div className="modal-table"><div className="modal-liner"><div className="modal modal-add-skills" >
             <h2 className="modal-title">Edit your skills</h2>
             <div className="form">
               <h3>Add skills to your list.</h3>
@@ -87,7 +87,7 @@ class AddSkillsModal extends React.Component {
               </div>
                 <a className="action-close icon-cross" href="javascript:void 0" onClick={this.cancelModal}>&nbsp;</a>
               </div>
-            </div>
+            </div></div></div>
       </Modal>
     );
   }

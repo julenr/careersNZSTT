@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html{% if(o.htmlWebpackPlugin.files.manifest) { %}
-  manifest="{%= o.htmlWebpackPlugin.files.manifest %}"{% } %}>
-  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <!--[if lt IE 9 ]><html lang="en-NZ" class="lt-ie9"><![endif]-->
+  <!--[if (gte IE 9)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html lang="en-NZ"><!--<![endif]-->
   <head>
     <title>{%=o.htmlWebpackPlugin.options.title%}</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Icons -->
@@ -34,7 +34,7 @@
 
     <!--[if lte IE 8]>
     <link rel="stylesheet" href="./css/browser/ie8.css" media="all" />
-    <script src="../javascript/plugins/respond.min.js"></script>
+    <script src="./ie8/respond.min.js"></script>
     <![endif]-->
     <!--[if IE 9]>
     <link rel="stylesheet" href="./css/browser/ie9.css" media="all" />
@@ -53,7 +53,7 @@
      </script>
      <!-- Hide Unsuported Browser or JavaScript disabled message before checking -->
   </head>
-  <body data-application-id='1371'>
+  <body data-application-id='1371' data-member-id=''>
     <div id='noscript'>
       <div class="message" id="javascript-disabled">
         <div class="page-wrapper">

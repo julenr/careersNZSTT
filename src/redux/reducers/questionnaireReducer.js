@@ -11,17 +11,19 @@ let logger = logLite.getLogger('questionnaire reducer');
 
 const initialData = {
   loaded: false,
+  ShowLoginModal: false,
+  showDetailsSavedModal: false,
   History: [],
   ChangeQuestionnaireModal: false,
   TypeAheadItemsContainer: [],
   data: {
     Jobs: {Current: null},
-    Member: '',
+    Member: {UserID: null},
     Questionnaire: [],
     Questions: [],
     refresh: false,
     Skills: {
-    Selected: [],
+      Selected: [],
       Current: []
     },
     'ProgressBar': {
@@ -37,21 +39,31 @@ const initialData = {
 export function _questionnaire(state = initialData, action = {}) {
   let newState = {...state };
 
-  // Check if the user is modifiying a previous question
-  if(action.questionID < newState.data.Questionnaire.length-1 &&
-    ( action.type !== 'JOBS_COUNT_SUCCESS' && action.type !== 'JOBS_COUNT_FAILURE')) {
+  // Check if the user is modifying a previous question
+  if(action.type !== 'NEXT_QUESTION' &&
+    (action.questionID < newState.data.Questionnaire.length-1 &&
+    ( action.type !== 'JOBS_COUNT_SUCCESS' && action.type !== 'JOBS_COUNT_FAILURE'))
+  ) {
       newState.ToChangeQuestionID = action.questionID;
+      if(action.hasOwnProperty('responseID')) {
+        newState.ToChangeResponse = action.responseID;
+      } else if(action.hasOwnProperty('text')) {
+        newState.ToChangeResponse = action.text;
+      } else {
+        newState.ToChangeResponse = undefined;
+      }
+    document.body.classList.add('ReactCustonModal');
       newState.ChangeQuestionnaireModal = true;
       return newState;
   }
 
   switch (action.type) {
     case 'CLOSE_QUESTIONNAIRE_MODAL':
+      document.body.classList.remove('ReactCustonModal');
       newState.ChangeQuestionnaireModal = false;
       return newState;
 
     case 'CHANGE_CURRENT_QUESTION':
-      console.log('Question to go: ', newState.ToChangeQuestionID);
       newState.data = newState.History[newState.ToChangeQuestionID];
       newState.History = _.take(newState.History, newState.ToChangeQuestionID);
       return newState;
@@ -77,6 +89,9 @@ export function _questionnaire(state = initialData, action = {}) {
 
     case 'SHOW_VIDEO':
       newState.data.toShowVideo = true;
+      return newState;
+    case 'HIDE_VIDEO':
+      newState.data.toShowVideo = false;
       return newState;
     case 'GET_JOB_SKILLS_REQUEST':
       newState.data.Skills.Loading = true;
@@ -171,8 +186,8 @@ export function _questionnaire(state = initialData, action = {}) {
     case 'DUMP_SKILLS_INTO_TAG_CLOUD_REQUEST':
       return newState;
     case 'DUMP_SKILLS_INTO_TAG_CLOUD_SUCCESS': {
-      let questionID = newState.data.Questionnaire.length-1;
-      newState.data.Questionnaire[questionID].QuestionResponses = newState.data.Skills.SkillsTags.slice(0, 1);
+      const questionID = newState.data.Questionnaire.length-1;
+      newState.data.Questionnaire[questionID].QuestionResponses = newState.data.Skills.SkillsTags.slice(0);
       newState.data.Questionnaire[questionID].QuestionResponses.map((skill) => {
         skill.Selected = true;
         newState.data.Skills.Selected.push(skill.Title);
@@ -181,6 +196,7 @@ export function _questionnaire(state = initialData, action = {}) {
       return newState;
     }
     case 'DUMP_SKILLS_INTO_TAG_CLOUD_FAILURE': {
+      const questionID = newState.data.Questionnaire.length-1;
       newState.data.Questionnaire[questionID].Loaded = true;
       return newState;
     }
@@ -241,17 +257,23 @@ export function _questionnaire(state = initialData, action = {}) {
       return newState;
 
     case 'DUMP_DATA_INTO_TYPE_AHEAD_REQUEST':
+      newState.TypeAheadItemsContainer = [];
       return newState;
     case 'DUMP_DATA_INTO_TYPE_AHEAD_SUCCESS': {
       newState.TypeAheadItemsContainer = action.result.data;
       return newState;
     }
     case 'DUMP_DATA_INTO_TYPE_AHEAD_FAILURE': {
+      newState.TypeAheadItemsContainer = [];
       return newState;
     }
 
     case 'SET_MEMBER_NAME':
       newState.data.Member.Name = action.name;
+      return newState;
+
+    case 'SET_NEXT_QUESTION_ID':
+      newState.ToChangeNextQuestionID = action.ID;
       return newState;
 
     case 'NEXT_QUESTION': {
@@ -282,19 +304,74 @@ export function _questionnaire(state = initialData, action = {}) {
       return newState;
     }
     case 'JOBS_COUNT_SUCCESS':
-      logger.log(action);
       let nextQuestionIndex = newState.data.Questions.findIndex((q) => (q.ID === action.nextQuestionID));
       newState.data.ProgressBar.Results = action.result.count;
       if(newState.data.Questions[nextQuestionIndex].MilestoneText) {}
       newState.data.ProgressBar.Text = replaceStrValues(newState.data.Questions[nextQuestionIndex].MilestoneText);
       return newState;
     case 'JOBS_COUNT_FAILURE':
-      logger.log(action);
       return newState;
     case 'SET_LIST_VIEW_TYPE': {
       newState.data.ListTypes.Current = action.listType;
       return newState;
     }
+
+    case 'AUTHENTICATION_REQUEST':
+      newState.data.Authenticating = true;
+      return newState;
+    case 'AUTHENTICATION_SUCCESS':
+      newState.data.Member = action.result.data;
+      newState.data.Authenticating = false;
+      newState.showLoginModal = false;
+      newState.showDetailsSavedModal = true;
+      return newState;
+    case 'AUTHENTICATION_FAILURE':
+      newState.data.Member.UserID = -1;
+      newState.data.Authenticating = false;
+      newState.data.refresh = uuid.v1();
+      return newState;
+    case 'SHOW_LOGIN_MODAL':
+      document.body.classList.add('ReactCustonModal');
+      return {
+        ...state,
+        showLoginModal: true
+      };
+    case 'CLOSE_LOGIN_MODAL':
+      document.body.classList.remove('ReactCustonModal');
+      newState.showLoginModal = false;
+      newState.data.Member.UserID = null;
+      return newState;
+    case 'RESET_USER_LOGIN_ID':
+      newState.data.Member.UserID = null;
+      return newState;
+    case 'LOGOUT_REQUEST':
+      newState.data.Authenticating = true;
+      return newState;
+    case 'LOGOUT_SUCCESS':
+      newState.data.Authenticating = false;
+      newState.data.Member.UserID = null;
+      newState.data.refresh = uuid.v1();
+      return newState;
+    case 'LOGOUT_FAILURE':
+      newState.data.Authenticating = false;
+      return newState;
+
+    case 'GET_SAVED_STATE_REQUEST':
+      document.body.classList.remove('ReactCustonModal');
+      newState.loaded = false;
+      return newState;
+    case 'GET_SAVED_STATE_SUCCESS':
+      newState = action.result.data._questionnaire;
+      newState.showDetailsSavedModal = false;
+      newState.loaded = true;
+      return newState;
+    case 'GET_SAVED_STATE_FAILURE':
+      newState.loaded = true;
+      newState.showDetailsSavedModal = false;
+      return newState;
+    case 'CLOSE_DETAILS_SAVED_MODAL':
+      newState.showDetailsSavedModal = false;
+      return newState;
     default:
       return state;
   }

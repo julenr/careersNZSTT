@@ -26,6 +26,7 @@ class Pagination extends React.Component {
                 animation="zoom"
                 trigger="click"
                 overlayStyle={{zIndex:1000}}
+                overlayClassName="job-card-tooltip"
                 overlay={
                       <div className="field radio with-avatar">
                         {tooltips.ListViewPreferences}
@@ -50,18 +51,18 @@ class Pagination extends React.Component {
               </div>
               <p className="help">Use the <span className="icon-cancel-circle"></span> to hide job/courses you don't want to use in the future.</p>
             </div>
-            <div className="layout-col layout-col-4">
+            {/*<div className="layout-col layout-col-4">
               <p className="title">You have asked to <strong>prioritise</strong> {ListType}s that are:</p>
               <div className="tags" data-type="tag">
-                {/*<span className="tag">No shift work<span className="icon-cancel-circle"></span></span>
+                {/!*<span className="tag">No shift work<span className="icon-cancel-circle"></span></span>
                 <span className="tag">Night shift<span className="icon-cancel-circle"></span></span>
-                <span className="tag">A thing I hate that may run to two lines<span className="icon-cancel-circle"></span></span>*/}
+                <span className="tag">A thing I hate that may run to two lines<span className="icon-cancel-circle"></span></span>*!/}
                 <span className="button add-more"><span className="icon-plus-circle"></span> Add interest</span>
               </div>
               <p className="help">Use the <span className="icon-cancel-circle"></span> to remove skills you don't have or don't want to use in the future.</p>
-            </div>
+            </div>*/}
             <div className="layout-col layout-col-4">
-              <p className="title">You are interested in {ListType}s in this <strong>region</strong>:</p>
+              <p className="title">You are interested in Couses in this <strong>region</strong>:</p>
               <TextSelect options={regions} active={regionFilter} onChange={(region) => this.setAndApplyRegionFilter(region)}/>
               <p className="help">Distance and online courses will also be shown.</p>
             </div>

@@ -11,15 +11,15 @@ class AddPreferenceModal extends React.Component {
 
   render() {
     return (
-      <Modal isOpen={this.props.filters.ShowAddPreferenceModal}>
-          <div className="modal modal-add-preference">
-            <h2 className="modal-title">Add a preference</h2>
-            {this.renderRemoveJobsCoursesGroupedByConditions()}
-            <div className="submit">
-              <a href="javascript: void 0" className="button-simple" onClick={this.cancelModal}>Cancel</a>
-            </div>
-            <a className="action-close icon-cross" href="javascript: void 0" onClick={this.cancelModal}>&nbsp;</a>
+      <Modal isOpen={this.props.filters.ShowAddPreferenceModal} onRequestClose={this.cancelModal}>
+        <div className="modal-table"><div className="modal-liner"><div className="modal modal-add-preference">
+          <h2 className="modal-title">Add a preference</h2>
+          {this.renderRemoveJobsCoursesGroupedByConditions()}
+          <div className="submit">
+            <a href="javascript: void 0" className="button-simple" onClick={this.cancelModal}>Cancel</a>
           </div>
+          <a className="action-close icon-cross" href="javascript: void 0" onClick={this.cancelModal}>&nbsp;</a>
+        </div></div></div>
       </Modal>
     )
   }
@@ -70,7 +70,7 @@ class AddPreferenceModal extends React.Component {
     return (removeButtons.length) ?
       removeButtons
       :
-      <p>There is no conditions to apply</p>
+      <p>There are no conditions to apply</p>
       ;
   }
 

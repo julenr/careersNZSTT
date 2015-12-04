@@ -4,7 +4,7 @@
 
 import React from 'react';
 import classNames from 'classnames';
-
+import Tooltip from 'rc-tooltip';
 import { scrollTo } from '../../../libs/helpers';
 import { connect } from 'react-redux';
 
@@ -12,18 +12,34 @@ import { textFitToContainer } from '../../../libs/helpers.js';
 
 function mapStateToProps(state, ownProps) {
   return {
-    qualification: state._listViewData.data.QualificationsPanel.Courses[ownProps.id]
+    qualification: state._listViewData.data.QualificationsPanel.Courses[ownProps.id],
+    flipped: state._listViewData.data.QualificationsPanel.Courses[ownProps.id].Flipped,
   };
 }
-class QualificationCard extends React.Component {
-  render() {
-    let qualification = this.props.qualification;
 
+const MAX_WORD_NUMBER_LEADS_TO = 22;
+
+class QualificationCard extends React.Component {
+
+  componentDidUpdate = () => {
+    if( !this.props.qualification.DescriptionOverflow && this.checkOverflow(`description${this.props.id}`)){
+      this.props.qualificationCardDescriptionOverflow(this.props.id);
+    }
+  }
+
+  render() {
+    const { flipped, tooltips } = this.props;
+    const qualification = this.props.qualification;
+    let classes = classNames( this.props.className, {
+      'careers-card qualification': true,
+      'careers-card qualification flip': flipped
+    } );
     const style = {
       fontSize: textFitToContainer(qualification.Title) + 'px'
     }
+
     return (
-      <article className="careers-card qualification">
+      <article className={ classes }>
         <div className="card front">
           <div className="liner">
             <header>
@@ -31,10 +47,9 @@ class QualificationCard extends React.Component {
               <a href="javascript: void 0" className="action-remove" onClick={this.closeCard}><span className="icon-cross"></span></a>
               <a href="javascript: void 0" className="action-reinstate" onClick={this.openCard} title="Show this course in my list again"><span className="icon-plus-circle"></span></a>
               <div className="sectors">
-                <a href="javascript: void 0">
+                <a href="javascript: void 0" onClick={this.props.openVocationalPathwaysModal}>
                   <ul>
-                    <li title="Manufacturing and technology" className="sector-yellow">Manufacturing and technology</li>
-                    <li title="Construction and infrastructure" className="sector-blue">Construction and infrastructure</li>
+                    { _.map(qualification.VocationalPathways, this.renderPathwaySwatch) }
                   </ul>
                   <span className="more">More</span>
                 </a>
@@ -43,22 +58,67 @@ class QualificationCard extends React.Component {
             <p className="provider">
               {qualification.Institution}
             </p>
-            <p className="description divider">
-              {qualification.Description}
-            </p>
-            <dl className="divider">
-              <dt>Vocational pathways: <span className="icon-help tooltip" title="This is a tooltip">&nbsp;</span></dt>
-              <dd>
-                <ul className="sector-simple-list">
-                  <li className="sector-purple">Social and community services</li>
-                  <li className="sector-red">Manufacturing and technology</li>
-                </ul>
-              </dd>
-              <dt>Level:</dt>
-              <dd>{qualification.Level} <span className="icon-help" title="This is a tooltip. lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem lorem"></span></dd>
-              <dt>This course can lead to jobs like:</dt>
-              <dd>{qualification.LeadsTo}</dd>
-            </dl>
+            <div className="layout-row divider">
+              <dl>
+                <dt>Level:</dt>
+                <dd>{qualification.Level}&nbsp;
+
+                  <Tooltip
+                    animation="zoom"
+                    trigger="click"
+                    overlayClassName="job-card-tooltip"
+                    overlay={
+                      <div className="field radio with-avatar">
+                        {tooltips.QualificationCard}
+                      </div>
+                      }
+                  >
+                    <span className="icon-help tooltip" title={tooltips.QualificationCardLevel} />
+                  </Tooltip>
+
+                </dd>
+              </dl>
+              <div className="course-leads-to">
+                <p>
+                  {
+                    this.leadsToTruncated(qualification.LeadsTo)
+                    }
+                </p>
+              </div>
+              <a className="action-flip" href="javascript: void 0" onClick={this.flipCard}>More about this course <span className="icon-refresh"></span></a>
+            </div>
+          </div>
+          <footer>
+            <a className="card-actions" href="javascript: void 0" onClick={this.showInstitutionsPanel}>
+              Where can I do this course?
+            </a>
+            <a className="card-actions reinstate-card" href="javascript: void 0" onClick={this.openCard}>
+              Show this course in my list again
+            </a>
+          </footer>
+        </div>
+
+        <div className="card back">
+          <div className="liner">
+            <header>
+              <h3 className="title" style={style}>{qualification.Title}</h3>
+              <a href="javascript: void 0" className="action-remove" onClick={this.closeCard}><span className="icon-cross"></span></a>
+              <a href="javascript: void 0" className="action-reinstate" onClick={this.openCard} title="Show this course in my list again"><span className="icon-plus-circle"></span></a>
+            </header>
+            <div className="description" id={`description${this.props.id}`}>
+              {qualification.DescriptionText}
+            </div>
+            <span>
+              {
+                (qualification.DescriptionOverflow) ?
+                <a className="action-flip" href="javascript: void 0" onClick={this.showFullDescription}>View full course description</a>
+                  :
+                  ''
+                }
+            </span>
+            <div className="layout-row divider">
+              <a className="action-flip" href="javascript: void 0" onClick={this.flipCard}>Go back <span className="icon-refresh"></span></a>
+            </div>
           </div>
           <footer>
             <a className="card-actions" href="javascript: void 0" onClick={this.showInstitutionsPanel}>
@@ -73,15 +133,51 @@ class QualificationCard extends React.Component {
     );
   }
 
+  checkOverflow = (id) => {
+    const el = document.getElementById(id);
+    const curOverflow = el.style.overflow;
+    let isOverflowing;
+
+    if ( !curOverflow || curOverflow === 'visible' ) {
+      el.style.overflow = 'hidden';
+    }
+    isOverflowing = el.clientHeight < el.scrollHeight;
+    el.style.overflow = curOverflow;
+    return isOverflowing;
+  }
+
+  leadsToTruncated = (leadsTo) => {
+    const wholeString = `This course can lead to jobs like: ${leadsTo}`;
+
+    if(wholeString.split(' ').length > MAX_WORD_NUMBER_LEADS_TO) {
+      return `${wholeString.split(' ').splice(0, MAX_WORD_NUMBER_LEADS_TO).join(' ')}...`;
+    } else {
+      return wholeString;
+    }
+  };
+
+  renderPathwaySwatch = (title, idx) => {
+    return (<li title={title} key={idx} className={`sector-${this.props.vocationalPathways[title]}`}>{title}</li>);
+  }
+
   showInstitutionsPanel = () => {
     this.props.setCurrentQualificationID(this.props.id);
     this.props.getInstitutionByID(this.props.qualification.QualificationID);
     this.props.openInstitutionsPanel();
     scrollTo('institutions-panel-scroll-point', -120);
   }
+  
+  flipCard = () => {
+    this.props.flipQualificationCard(this.props.id);
+  }
 
   closeCard = () => {
     this.props.openRemoveQualificationCardModal(this.props.id);
+  }
+
+  showFullDescription = () => {
+    this.props.setCurrentQualificationID(this.props.id);
+    this.props.showQualificationFullDescriptionModal();
   }
 
   openCard = () => {

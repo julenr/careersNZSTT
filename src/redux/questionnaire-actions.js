@@ -4,16 +4,58 @@
 import axios from 'axios';
 import store from './create-store';
 import _ from 'lodash';
-import * as fakeData from './fake-data';
+
 import logLite from '../libs/logLite';
 
 let logger = logLite.getLogger('questionnaire actions');
-
 const appID = document.getElementsByTagName('body')[0].getAttribute('data-application-id');
+
+if (__DEV__){
+  var fakeData = require('./fake-data');
+}
 
 export function showVideo() {
   return {
     type: 'SHOW_VIDEO'
+  }
+}
+
+export function hideVideo() {
+  return {
+    type: 'HIDE_VIDEO'
+  }
+}
+
+export function submitChangeAnswer(questionID, response, questionType) {
+  switch (questionType) {
+    case 'MultipleChoice':
+      if(response === undefined) {
+        return responseClickedAlternativeOfMultipleChoice(questionID);
+      }
+      return responseClickedMultipleChoice(questionID, response);
+    case 'SingleChoice':
+      if(response === undefined) {
+        return responseClickedAlternativeOfSingleChoice(questionID);
+      }
+      return responseClickedSingleChoice(questionID, response);
+    case 'YesNo':
+      if(response === undefined) {
+        return responseClickedAlternativeOfSingleChoice(questionID);
+      }
+      return clickedYesNo(questionID, response);
+    case 'TextInput':
+      if(response === undefined) {
+        return responseClickedAlternativeOfSingleChoice(questionID);
+      }
+      return setInputText(questionID, response);
+    case 'TypeAhead':
+      if(response === undefined) {
+        return responseClickedAlternativeOfSingleChoice(questionID);
+      }
+      return setTypeAheadText(questionID, response);
+    case 'TagCloud':
+      return responseClickedTagCloud(questionID, response);
+    //no change answer behaviour for EndForm question type
   }
 }
 
@@ -171,6 +213,13 @@ export function firstQuestion() {
   }
 }
 
+export function setNextQuestionId(nextQuestionId) {
+  return {
+    type: 'SET_NEXT_QUESTION_ID',
+    ID: nextQuestionId
+  }
+}
+
 export function nextQuestion(questionID, nextQuestionID) {
   return {
     types: ['NEXT_QUESTION', 'JOBS_COUNT_SUCCESS', 'JOBS_COUNT_FAILURE'],
@@ -208,7 +257,7 @@ export function getListViewData() {
       return axios.post(`/api/skills-transition-tool/listview/${appID}/${listType}`, state._questionnaire.data)
         .then(function (response) {
           response.data.Filters = _.clone(state._listViewData.data.Filters, true); //Keep the original Filters
-          response.data.Filters.Region = state._questionnaire.data.Regions.Current;
+          response.data.Filters.Region = (state._questionnaire.data.Regions.Current === null) ? 'All': state._questionnaire.data.Regions.Current;
           return {data: response.data};
         })
         .catch(function (response) {
@@ -229,5 +278,73 @@ export function setListViewType(listType) {
   return {
     type: 'SET_LIST_VIEW_TYPE',
     listType
+  }
+}
+
+export function logIn(Email, Password, Remember) {
+  return {
+    types: ['AUTHENTICATION_REQUEST', 'AUTHENTICATION_SUCCESS', 'AUTHENTICATION_FAILURE'],
+    promise: () => {
+      const postData = {
+        AuthenticationMethod: 'MCPMemberAuthenticator',
+        Email, Password, Remember
+      }
+      return axios.post(`/api/skills-transition-tool/login/${appID}`, postData)
+        .then(function (response) {
+          return {data: response.data.Member};
+        })
+        .catch(function (response) {
+          logger.log(response);
+          if (__DEV__) {
+            if(Email === 'admin@admin.com' && Password === 'admin') {
+              return {
+                data:{
+                  UserID:119,
+                  SessionID: 'nc7gphup5f4g0mkneni59sk6e1',
+                  Region: null,
+                  Name: 'Bob',
+                  Gender: '',
+                  Ethnicity: ''
+                }
+              };
+            } else {
+              throw error('Authentication failed');
+            }
+          } else {
+            throw error(response.Error);
+          }
+        });
+    }
+  }
+}
+
+export function logOut() {
+  return {
+    types: ['LOGOUT_REQUEST', 'LOGOUT_SUCCESS', 'LOGOUT_FAILURE'],
+    promise: () => {
+      return axios.post(`/api/skills-transition-tool/logout`)
+        .then(function (response) {
+          return {data: 'ok'};
+        })
+        .catch(function (response) {
+          logger.log(response);
+          if (__DEV__) {
+            return {true};
+          } else {
+            throw error(response);
+          }
+        });
+    }
+  }
+}
+
+export function closeLoginModal() {
+  return {
+    type: 'CLOSE_LOGIN_MODAL'
+  }
+}
+export function resetLoginUserID() {
+  return {
+    type: 'RESET_USER_LOGIN_ID'
   }
 }

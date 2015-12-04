@@ -11,7 +11,7 @@ import RemoveInstitutionCardModal from './RemoveInstitutionCardModal';
 class InstitutionCard extends React.Component {
 
   render() {
-    let institutionCard = this.props.institutionsPanel.Institutions[this.props.id];
+    let institutionCard = this.props.institutionsPanel.CourseCards[this.props.id];
 
     return (
       <article className="careers-card course">
@@ -28,11 +28,11 @@ class InstitutionCard extends React.Component {
             </header>
             <dl className="divider">
               <dt>Location:</dt>
-              <dd>{institutionCard.Location}</dd>
+              <dd>{institutionCard.LocationName}</dd>
             </dl>
 
-            <Link className="button" to="/course-detail" >
-              <span onClick={() => this.linkClick(institutionCard.CourseID)}>View this course
+            <Link className="button" to="/course-detail" onClick={() => this.linkClick(institutionCard.CourseID)}>
+              <span>View this course
                 <span className="icon-arrow-right"></span>
               </span>
             </Link>

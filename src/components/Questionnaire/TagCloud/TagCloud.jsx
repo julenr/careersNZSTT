@@ -26,72 +26,61 @@ class TagCloud extends React.Component {
   }
 
   render() {
-    var { skillsLoaded } = this.props;
+    const { skillsLoaded } = this.props;
+    const question = this.props.questionnaire[this.props.id];
+    const firstQuestion = (this.props.id === 0);
+    const firstQuestionClass = (firstQuestion) ? 'fieldset first-question active' : 'fieldset active';
+    const firstQuestionNoAvatar = (firstQuestion) ? 'field radio' : 'field radio with-avatar';
 
-    var question = this.props.questionnaire[this.props.id];
     this.nextButtonActive = false;
     this.scrollElementID = `TagCloud${this.props.id}`;
 
-    return (
-      <div className="fieldset active">
-        <div className="field radio with-avatar">
-          <Avatar />
-          <label>{question.Description}</label>
-          {
-            (question.HintPosition === 'Top' && question.HintText) ?
-            <p className="help">{question.HintText}</p> : ''
-          }
-          <div className="question-tags" data-type="tag">
-
-
+    if(skillsLoaded) {
+      return (
+        <div className={firstQuestionClass}>
+          {(firstQuestion) ? <p>To get started answer the question below…</p>: ''}
+          <div className={firstQuestionNoAvatar}>
+            {(!firstQuestion) ? <Avatar /> : ''}
+            <label>{question.Description}</label>
             {
-              (skillsLoaded) ?
+              (question.HintPosition === 'Top' && question.HintText) ?
+              <p className="help">{question.HintText}</p> : ''
+              }
+            <div className="question-tags" data-type="tag">
+              {
                 question.QuestionResponses.map(this.renderTags)
-                :
-                <div className="spinner inline"></div>
-
-            }
-            {
-              (skillsLoaded) ?
-                this.renderButtons()
-                :
-                ''
-            }
+                }
+              <div tabIndex="0"
+                   className="tag add-more"
+                   onClick={ () => this.props.openAddSkillsModal(this.props.questionnaire[this.props.id].ID)}
+              >
+                <span className="icon-plus-circle"></span>
+                Add more
+              </div>
+            <span tabIndex="0"
+                  className="tag select-all"
+                  onClick={ () => this.props.selectAllTagCloud(this.props.id)}
+            >
+              Select all
+            </span>
+            </div>
           </div>
-        </div>
-        <div className={ classNames({'submit': true, 'submit active': this.nextButtonActive}) }>
-          <a className="button next"
-             onClick={ () => this.nextClicked(question.NextQuestionID)}
+          <div className={ classNames({'submit': true, 'submit active': this.nextButtonActive}) }>
+            <a className="button next"
+               onClick={ () => this.nextClicked(question.NextQuestionID)}
             >That looks about right<span className="icon-arrow-down"></span>
-          </a>
+            </a>
+          </div>
+          {
+            (question.HintPosition === 'Bottom' && question.HintText) ?
+            <p className="help">{question.HintText}</p> : ''
+            }
+          <span id={this.scrollElementID}></span>
         </div>
-        {
-          (question.HintPosition === 'Bottom' && question.HintText) ?
-          <p className="help">{question.HintText}</p> : ''
-        }
-        <span id={this.scrollElementID}></span>
-      </div>
-    );
-  }
-
-  renderButtons = () =>  {
-    return (
-      <span>
-        <div tabIndex="0"
-             className="tag add-more"
-             onClick={ () => this.props.openAddSkillsModal(this.props.questionnaire[this.props.id].ID)}
-          >
-          <span className="icon-plus-circle"></span>
-          Add more
-        </div>
-        <span tabIndex="0"
-          className="tag select-all"
-          onClick={ () => this.props.selectAllTagCloud(this.props.id)}
-          >
-          Select all
-        </span>
-      </span>
-    );
+      );
+    } else {
+      return <div className="spinner inline"></div>;
+    }
   }
 
   renderTags = (response, idx) => {
@@ -101,7 +90,10 @@ class TagCloud extends React.Component {
     } );
     if(response.Selected) this.nextButtonActive = true;
     return (
-    <span key={idx} onClick={ () => this.props.responseClickedTagCloud(this.props.id, idx)} >
+    <span key={idx}
+          onClick={() => this.tagClicked(idx)}
+          onKeyUp={(e) => this.onKeyUp(e, idx)}
+    >
       <span className={ classes } key={idx} tabIndex="0" >
         <span className="icon-tick">
         </span>
@@ -111,8 +103,19 @@ class TagCloud extends React.Component {
     );
   }
 
+  onKeyUp = (event, idx) => {
+    if(event.key === 'Enter' || event.key === ' ') {
+      this.tagClicked(idx);
+    }
+  }
+
+  tagClicked = (idx) => {
+    this.props.responseClickedTagCloud(this.props.id, idx)
+  }
+
   nextClicked = (nextID) => {
     scrollTo(this.scrollElementID, -120);
+    this.props.setNextQuestionId(nextID);
     this.props.nextQuestion(this.props.id, nextID);
   }
 

@@ -22,7 +22,11 @@ const footerInitialState = {
 // FOOTER DATA REDUCER
 export function _footerData(state = footerInitialState, action = {}) {
   let newState = {...state };
+
   switch (action.type) {
+    case 'GET_SAVED_STATE_SUCCESS':
+      newState = action.result.data._footerData;
+      return newState;
     case 'GET_FOOTER_DATA_REQUEST':
       return {
         ...state,
@@ -31,11 +35,13 @@ export function _footerData(state = footerInitialState, action = {}) {
     case 'GET_FOOTER_DATA_SUCCESS':
       newState.data = action.result.data;
       newState.data.PopularJobs.Skills = [];
+      newState.data.Regions.push('All');
       newState.loaded =  true;
       newState.showSkillsModal = false;
       newState.showAddSkillsModal = false;
       newState.addSkillsToQuestionID = null;
       newState.showCheckSkillsModal = false;
+      newState.showResetToolModal = false;
       return newState;
     case 'GET_FOOTER_DATA_FAILURE':
       newState.data = action.result.data;
@@ -44,6 +50,7 @@ export function _footerData(state = footerInitialState, action = {}) {
       newState.showSkillsModal = false;
       newState.showAddSkillsModal = false;
       newState.showCheckSkillsModal = false;
+      newState.showResetToolModal = false;
       return newState;
 
     case 'SHOW_SKILLS_MODAL':
@@ -101,6 +108,18 @@ export function _footerData(state = footerInitialState, action = {}) {
     case 'RESTORE_SKILLS': {
       store.getState()._questionnaire.data.Skills.Selected = newState.data.CopyOfSkills;
       return newState;
+    }
+    case 'OPEN_RESET_TOOL_MODAL': {
+      return {
+        ...state,
+        showResetToolModal: true
+      };
+    }
+    case 'CLOSE_RESET_TOOL_MODAL': {
+      return {
+        ...state,
+        showResetToolModal: false
+      };
     }
 
     case 'GET_JOB_SKILLS_CHECK_MODAL_REQUEST':

@@ -3,37 +3,27 @@
  */
 
 import React from 'react';
-import classNames from 'classnames';
-import uuid from 'node-uuid';
 import { connect } from 'react-redux';
-
-import Avatar from '../../subcomponents/Avatar';
-
+import YouTube from 'react-youtube';
 
 function mapStateToProps(state) {
   return {
     blurb: state._questionnaire.data.Intro.Blurb,
-    introTitle: state._questionnaire.data.Intro.Title
+    introTitle: state._questionnaire.data.Intro.Title,
+    video: state._questionnaire.data.Intro.Video
   };
 }
 
 class QuestionnaireHeader extends React.Component {
-
-/*
-    <div class="title">
-      <img src="../assets/images/placeholders/placeholder-avatar-video.jpg" width="347" height="347" alt="John" id="intro-video-placeholder">
-      <p><strong>Hi there, I'm John.</strong> Welcome to Change up!</p>
-      <div class="clear"></div>
-    </div>
-    <p class="blurb">This website will help you find a course and a better job based on the skills you have and the things you want from work and study.
-      <br>
-      <a href="#" class="play-video">Play video</a>
-    </p>
-    <div class="clear"></div>
-    */
   render() {
-
-    const {blurb, introTitle} = this.props;
+    const {blurb, introTitle, video} = this.props;
+    const opts = {
+      height: video.Height,
+      width: video.Width,
+      playerVars: { // https://developers.google.com/youtube/player_parameters
+        autoplay: 1
+      }
+    };
 
     return (
       <div className="questions-intro">
@@ -42,13 +32,17 @@ class QuestionnaireHeader extends React.Component {
           <div className="title">
             {
                 this.shouldShowVideo() ?
-                    <div dangerouslySetInnerHTML={{__html: this.props.intro.Video.EmbedHTML}} />
+                  <YouTube
+                    url={video.SourceURL}
+                    opts={opts}
+                    onEnd={this._onEnd}
+                  />
                     :
                     <img src={this.props.intro.Image.Medium.Src} width="347" height="347"
               alt="John" id="intro-video-placeholder" onClick={() => this.showVideo()}/>
             }
             <div dangerouslySetInnerHTML={{__html: introTitle}} />
-            <div class="clear"></div>
+            <div className="clear"></div>
           </div>
           <p className="blurb">
             {blurb}<br/>
@@ -58,6 +52,10 @@ class QuestionnaireHeader extends React.Component {
         </div>
       </div>
     );
+  }
+
+  _onEnd = () => {
+    this.props.hideVideo();
   }
 
   shouldShowVideo = () => {

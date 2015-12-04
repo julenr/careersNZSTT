@@ -1,10 +1,9 @@
-const React = require('react')
+const React = require('react');
+const ReactDOM = require('react-dom');
 
 //THIS MODULE IS A MODIFICATION FROM REACT-AUTOCOMPLETE v 0.1.4
 // CHANGES are {display: ...} in the div input wrapper
 const scrollIntoView = require('dom-scroll-into-view')
-
-let _debugStates = []
 
 let Autocomplete = React.createClass({
 
@@ -72,8 +71,8 @@ let Autocomplete = React.createClass({
 
   maybeScrollItemIntoView () {
     if (this.state.isOpen === true && this.state.highlightedIndex !== null) {
-      var itemNode = React.findDOMNode(this.refs[`item-${this.state.highlightedIndex}`])
-      var menuNode = React.findDOMNode(this.refs.menu)
+      var itemNode = ReactDOM.findDOMNode(this.refs[`item-${this.state.highlightedIndex}`])
+      var menuNode = ReactDOM.findDOMNode(this.refs.menu)
       scrollIntoView(itemNode, menuNode, { onlyScrollIfNeeded: true })
     }
   },
@@ -144,7 +143,7 @@ let Autocomplete = React.createClass({
         this.setState({
           isOpen: false
         }, () => {
-          React.findDOMNode(this.refs.input).select()
+          ReactDOM.findDOMNode(this.refs.input).select()
         })
       }
       else {
@@ -154,8 +153,7 @@ let Autocomplete = React.createClass({
           isOpen: false,
           highlightedIndex: null
         }, () => {
-          //React.findDOMNode(this.refs.input).focus() // TODO: file issue
-          React.findDOMNode(this.refs.input).setSelectionRange(
+          ReactDOM.findDOMNode(this.refs.input).setSelectionRange(
             this.state.value.length,
             this.state.value.length
           )
@@ -207,7 +205,7 @@ let Autocomplete = React.createClass({
       this.state.value.toLowerCase()
     ) === 0)
     if (itemValueDoesMatch) {
-      var node = React.findDOMNode(this.refs.input)
+      var node = ReactDOM.findDOMNode(this.refs.input)
       var setSelection = () => {
         node.value = itemValue
         node.setSelectionRange(this.state.value.length, itemValue.length)
@@ -220,7 +218,7 @@ let Autocomplete = React.createClass({
   },
 
   setMenuPositions () {
-    var node = React.findDOMNode(this.refs.input)
+    var node = ReactDOM.findDOMNode(this.refs.input)
     var rect = node.getBoundingClientRect()
     var computedStyle = getComputedStyle(node)
     var marginBottom = parseInt(computedStyle.marginBottom, 10)
@@ -244,7 +242,7 @@ let Autocomplete = React.createClass({
       highlightedIndex: null
     }, () => {
       this.props.onSelect(this.state.value, item)
-      React.findDOMNode(this.refs.input).focus()
+      ReactDOM.findDOMNode(this.refs.input).focus()
       this.setIgnoreBlur(false)
       if (typeof this.props.callback === 'function') {
         this.props.callback(this.state.value)
@@ -313,12 +311,6 @@ let Autocomplete = React.createClass({
   },
 
   render () {
-    if (this.props.debug) { // you don't like it, you love it
-      _debugStates.push({
-        id: _debugStates.length,
-        state: this.state
-      })
-    }
     return (
       <div>
         <input
@@ -327,6 +319,7 @@ let Autocomplete = React.createClass({
           aria-autocomplete="both"
           aria-label={this.getActiveItemValue()}
           ref="input"
+          autoFocus
           onFocus={this.handleInputFocus}
           onBlur={this.handleInputBlur}
           onChange={(event) => this.handleChange(event)}
@@ -335,12 +328,7 @@ let Autocomplete = React.createClass({
           onClick={this.handleInputClick}
           value={this.state.value}
         />
-        {this.state.value.length > 2 && this.state.isOpen && this.renderMenu()}
-        {this.props.debug && (
-          <pre style={{marginLeft: 300}}>
-            {JSON.stringify(_debugStates.slice(_debugStates.length - 5, _debugStates.length), null, 2)}
-          </pre>
-        )}
+        {this.state.value.length > 2 && this.props.items.length !== 0 && this.state.isOpen && this.renderMenu()}
       </div>
     )
   }

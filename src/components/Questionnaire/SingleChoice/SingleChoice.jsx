@@ -17,8 +17,12 @@ class SingleChoice extends React.Component {
   }
 
   render() {
-    var question = this.props.questionnaire[this.props.id];
+    const question = this.props.questionnaire[this.props.id];
     const alternativeSelected = (this.props.questionnaire[this.props.id].Selected === -1);
+    const firstQuestion = (this.props.id === 0);
+    const firstQuestionClass = (firstQuestion) ? 'fieldset first-question active' : 'fieldset active';
+    const firstQuestionNoAvatar = (firstQuestion) ? 'field radio' : 'field radio with-avatar';
+
     let classes = classNames({
       'basic': true,
       'selected': alternativeSelected
@@ -26,9 +30,10 @@ class SingleChoice extends React.Component {
     this.scrollElementID = `SingleChoice${this.props.id}`;
 
     return (
-      <div className="fieldset active">
-        <div className="field radio with-avatar">
-          <Avatar />
+      <div className={firstQuestionClass}>
+        {(firstQuestion) ? <p>To get started answer the question below…</p>: ''}
+        <div className={firstQuestionNoAvatar}>
+          {(!firstQuestion) ? <Avatar /> : ''}
           <label>{question.Description}</label>
           {
             (question.HintPosition === 'Top' && question.HintText) ?
@@ -68,6 +73,7 @@ class SingleChoice extends React.Component {
     return (
       <li key={idx}
             onClick={ () => this.onClick(idx)}
+            onKeyUp={ (e) => this.onKeyUp(e, idx)}
             ref={`option${idx}`}
             tabIndex="0" className={ classes }
         >
@@ -81,7 +87,14 @@ class SingleChoice extends React.Component {
     //deselect options
     this.props.responseClickedAlternativeOfSingleChoice(this.props.id);
     scrollTo(this.scrollElementID, -110);
+    this.props.setNextQuestionId(alternativeNextQuestionID);
     this.props.nextQuestion(this.props.id, alternativeNextQuestionID);
+  }
+
+  onKeyUp = (event, idx) => {
+    if(event.key === 'Enter' || event.key === ' ') {
+      this.onClick(idx);
+    }
   }
 
   onClick = (idx) => {
@@ -92,6 +105,7 @@ class SingleChoice extends React.Component {
     if(nextID === 0){
       nextID = this.props.questionnaire[this.props.id].NextQuestionID;
     }
+    this.props.setNextQuestionId(nextID);
     this.props.nextQuestion(this.props.id, nextID)
   }
 

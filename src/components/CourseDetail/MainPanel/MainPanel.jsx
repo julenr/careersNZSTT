@@ -13,14 +13,14 @@ class MainPanel extends React.Component {
     return (
       <article className="course-detail">
         <header>
-          <h1>{CourseTitle}<span>{ProviderName}</span></h1>
+          <h1>{CourseTitle}<span className="location">{ProviderName}</span></h1>
         </header>
         <div className="layout-row">
           <div className="layout-col-7 layout-col">
             <div className="course-intro">
-              <p>{Intro}</p>
+              {Intro}
             </div>
-            <div className="capionImage video" dangerouslySetInnerHTML={{__html: Blurb}} />
+            <figure className="intro-image" dangerouslySetInnerHTML={{__html: Blurb}} />
             <ul className="course-links">
               <li><a href="#panel-next-steps"><strong>Take the next step</strong> <span className="icon-arrow-down"></span></a></li>
               <li><a href="#panel-worried-about">I'm worried about something <span className="icon-arrow-down"></span></a></li>
@@ -35,6 +35,7 @@ class MainPanel extends React.Component {
                   animation="zoom"
                   trigger="click"
                   overlayStyle={{zIndex:1000}}
+                  overlayClassName="job-card-tooltip"
                   overlay={
                       <div className="field radio with-avatar">
                         {this.props.tooltips.CourseDetailsLevel}
@@ -51,6 +52,7 @@ class MainPanel extends React.Component {
                   animation="zoom"
                   trigger="click"
                   overlayStyle={{zIndex:1000}}
+                  overlayClassName="job-card-tooltip"
                   overlay={
                     <div className="field radio with-avatar">
                       {this.props.tooltips.CourseDetailsVocationalPathways}

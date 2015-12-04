@@ -4,6 +4,7 @@
 
 import React from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import classNames from 'classnames';
 
 import JobCard from '../JobCard/JobCard';
 import QualificationCard from '../QualificationCard';
@@ -12,29 +13,41 @@ import InstitutionCard from '../InstitutionCard';
 class HiddenCards extends React.Component {
 
   render() {
-    var { jobsCards, qualificationsPanel, institutionsPanel } = this.props;
+    const { jobsCards, qualificationsPanel, institutionsPanel, hiddenPanel } = this.props;
+    let classes = classNames(
+      {
+      'page-maincontent results-hidden': true,
+      'page-maincontent results-hidden active': !hiddenPanel.Closed
+    } );
+    let arrow = classNames(
+      {
+        'active': !hiddenPanel.Closed
+      } );
 
     return (
-      <div className="page-maincontent results-hidden">
+      <div className={ classes }>
         <div className="page-wrapper">
           <div className="results-hidden-link">
-            <a href="javascript: void 0">Hidden jobs/courses <span className="icon-arrow-down-long"></span></a>
+            <a href="javascript: void 0" className={arrow} onClick={this.props.swapHiddenPanelVisible}>
+              Hidden jobs/courses
+              <span className="icon-arrow-down-long"></span>
+            </a>
           </div>
           <div className="careers-card-wrapper">
             <div className="careers-card-wrapper">
               <ReactCSSTransitionGroup
-                transitionEnterTimeout={1000}
-                transitionLeaveTimeout={1000}
+                transitionEnterTimeout={500}
+                transitionLeaveTimeout={500}
                 transitionName={{
                 enter: 'animated',
-                enterActive: 'zoomIn',
+                enterActive: 'fadeIn',
                 leave: 'animated',
-                leaveActive: 'zoomOutUp'
+                leaveActive: 'fadeOut'
                 }}
                 >
                 {jobsCards.map(this.renderJobsCards)}
                 {qualificationsPanel.Courses.map(this.renderQualificationsCards)}
-                {institutionsPanel.Institutions.map(this.renderInstitutionsCards)}
+                {institutionsPanel.CourseCards.map(this.renderInstitutionsCards)}
               </ReactCSSTransitionGroup >
             </div>
           </div>

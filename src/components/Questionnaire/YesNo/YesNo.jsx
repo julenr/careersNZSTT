@@ -16,17 +16,22 @@ class YesNo extends React.Component {
   }
 
   render() {
-    var question = this.props.questionnaire[this.props.id];
+    const question = this.props.questionnaire[this.props.id];
     const alternativeSelected = (this.props.questionnaire[this.props.id].Selected === -1);
+    const firstQuestion = (this.props.id === 0);
+    const firstQuestionClass = (firstQuestion) ? 'fieldset first-question active' : 'fieldset active';
+    const firstQuestionNoAvatar = (firstQuestion) ? 'field radio inline' : 'field radio with-avatar inline';
+
     let classes = classNames({
       'basic': true,
       'selected': alternativeSelected
     });
     this.scrollElementID = `YesNo${this.props.id}`;
     return (
-      <div className="fieldset active">
-        <div className="field radio with-avatar inline">
-          <Avatar />
+      <div className={firstQuestionClass}>
+          {(firstQuestion) ? <p>To get started answer the question below…</p>: ''}
+          <div className={firstQuestionNoAvatar}>
+            {(!firstQuestion) ? <Avatar /> : ''}
           <label>{question.Description}</label>
           {
             (question.HintPosition === 'Top' && question.HintText) ?
@@ -69,6 +74,7 @@ class YesNo extends React.Component {
         ref={`option${idx}`}
         key={idx}
         onClick={ () => this.onClick(idx) }
+        onKeyUp={ (e) => this.onKeyUp(e, idx)}
       >
         <span className="icon-tick"></span>{response.ResponseText}
       </li>
@@ -78,13 +84,22 @@ class YesNo extends React.Component {
   alternativeClicked = (alternativeQuestionID) => {
     this.props.responseClickedAlternativeOfSingleChoice(this.props.id);
     scrollTo(this.scrollElementID, -110);
+    this.props.setNextQuestionId(alternativeQuestionID);
     this.props.nextQuestion(this.props.id, alternativeQuestionID);
   }
 
+  onKeyUp = (event, idx) => {
+    if(event.key === 'Enter' || event.key === ' ') {
+      this.onClick(idx);
+    }
+  }
+
   onClick = (idx) => {
+    let nextQuestionId = this.props.questionnaire[this.props.id].QuestionResponses[idx].NextQuestionID;
     scrollTo(this.scrollElementID, -120);
-    this.props.clickedYesNo(this.props.id, idx)
-    this.props.nextQuestion(this.props.id, this.props.questionnaire[this.props.id].QuestionResponses[idx].NextQuestionID)
+    this.props.clickedYesNo(this.props.id, idx);
+    this.props.setNextQuestionId(nextQuestionId);
+    this.props.nextQuestion(this.props.id, nextQuestionId);
   }
 
 }

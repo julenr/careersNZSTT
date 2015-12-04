@@ -7,13 +7,16 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import uuid from 'node-uuid';
 import * as actionCreators from '../../redux/general-actions';
+import { logOut } from '../../redux/questionnaire-actions';
 
 
 function mapStateToProps(state) {
   return {
     text: state._footerData.data.Footer.Text,
     links: state._footerData.data.Footer.Menu,
-    loading: state._mainPage.loading
+    loading: state._mainPage.loading,
+    userID: state._questionnaire.data.Member.UserID,
+    accountLink: state._footerData.data.LogoutForm.AccountLink
   };
 }
 
@@ -25,8 +28,7 @@ class AppFooter extends React.Component {
       <footer className="page-footer">
         <div className="page-wrapper">
           <div className="layout-col-3 layout-col">
-            <div className="site-name">
-              { JSON.stringify(text, null, 2) }
+            <div className="site-name" dangerouslySetInnerHTML={{__html:text}}>
             </div>
             <div className="onet-logo">
               This tool uses O*NET data<br/>
@@ -37,9 +39,18 @@ class AppFooter extends React.Component {
           <div className="layout-col-6 layout-col">
             <nav className="nav-footer">
               <ul>
+                <li><a href="javascript: void 0" onClick={this.props.openResetToolModal}>Reset tool</a></li>
+                {
+                  (this.props.userID !== null) ?
+                    [
+                      <li key="2"><a href={this.props.accountLink}>Account details</a></li>,
+                      <li key="1"><a href="javascript: void 0" onClick={this.props.logOut}>Log out</a></li>
+                     ]
+                    :
+                    ''
+                  }
                 <li>
                   {links.map(this.renderLinks)}
-                  <Link to="/providerconnect">Get State</Link>
                 </li>
               </ul>
             </nav>
@@ -86,5 +97,8 @@ class AppFooter extends React.Component {
 
 export default connect(
   mapStateToProps,
-  actionCreators
+  {
+    ...actionCreators,
+    logOut
+  }
 )(AppFooter);

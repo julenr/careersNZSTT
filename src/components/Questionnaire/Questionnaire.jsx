@@ -24,11 +24,13 @@ import YesNo from './YesNo/YesNo';
 import EndForm from './EndForm/EndForm';
 import ChangeQuestionnaireModal from './ChangeQuestionnaireModal';
 
-
 function mapStateToProps(state) {
   return {
     loaded: state._questionnaire.loaded,
     changeQuestionnaireModal: state._questionnaire.ChangeQuestionnaireModal,
+    changeToResponse: state._questionnaire.ToChangeResponse,
+    changeToQuestionId: state._questionnaire.ToChangeQuestionID,
+    changeNextQuestionId: state._questionnaire.ToChangeNextQuestionID,
     toShowVideo: state._questionnaire.data.toShowVideo,
     intro: state._questionnaire.data.Intro,
     listViewLoaded: state._listViewData.loaded,
@@ -36,6 +38,7 @@ function mapStateToProps(state) {
     progressBar: state._questionnaire.data.ProgressBar,
     questionnaire: state._questionnaire.data.Questionnaire,
     typeAheadItemsContainer: state._questionnaire.TypeAheadItemsContainer,
+    userID: state._questionnaire.data.Member.UserID,
     refresh: state._questionnaire.data.refresh // This value if changed somewhere triggers the component render method
   };
 }
@@ -74,9 +77,9 @@ class Content extends React.Component {
             </div>
           </div>
         </div>
-        <Footer />
-        <ProgressBar {...this.props.progressBar} onClickViewList={this.props.getListViewData}/>
         <ChangeQuestionnaireModal {...this.props} changeQuestionnaireModal={this.props.changeQuestionnaireModal}/>
+        <ProgressBar {...this.props.progressBar} onClickViewList={this.props.getListViewData}/>
+        <Footer />
       </div>
     );
   }

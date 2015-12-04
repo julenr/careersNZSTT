@@ -1,18 +1,62 @@
 @import "_sass_mixins_colours";
 
 .rc-tooltip {
-    position: absolute;
-    z-index: 1070;
     display: block;
     visibility: visible;
-    font-size: em(17);
-    line-height:lh(22,17);
-    overflow:hidden;
-    word-wrap:break-word;
     opacity: 1;
-    min-height:em(55);
-    min-width:em(120);
-    max-width:em(284);
+
+    &.job-card-tooltip {
+        position: absolute;
+        z-index: 10;
+        font-size: em(17);
+        line-height:lh(22,17);
+        overflow:hidden;
+        word-wrap:break-word;
+        min-height:em(55);
+        min-width:em(120);
+        max-width:em(284);
+
+        .rc-tooltip-inner {
+            padding:em(17,17) em(20,17) em(21,17) em(92,17);
+            color: #fff;
+            text-align: left;
+            text-decoration: none;
+            background-color: $skillstool_blue_1;
+            border-radius: 1px;
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.17);
+            min-height:em(55);
+            min-width:em(120);
+            max-width:em(304);
+        }
+
+        .rc-tooltip-inner:before { content:""; position:absolute; left:em(20); top:em(15); width:em(54); height:em(54); background:url(../assets/images/placeholders/action-plan-help-avatar-1.jpg) no-repeat; @include background-size(contain); @include border-radius(50%); border:2px solid #fff; }
+    }
+
+    &.no-arrow {
+        .rc-tooltip-arrow {
+            display: none;
+        }
+    }
+
+    &.help-tooltip {
+        position: absolute;
+        left: em(0) !important;
+        z-index: 2;
+    }
+
+    &.list-type-options {
+        position: absolute;
+        font-size:em(31);
+        .ui-menu {
+            top: -19px;
+            right: 0;
+            text-align: center;
+        }
+
+        @media only screen and (min-width:600px) {
+            font-size: em(46);
+        }
+    }
 }
 .rc-tooltip-hidden {
     display: none;
@@ -40,21 +84,6 @@
 .rc-tooltip-placement-leftBottom {
     padding: 0 15px 0 0px;
 }
-
-.rc-tooltip-inner {
-    padding:em(17,17) em(20,17) em(21,17) em(92,17);
-    color: #fff;
-    text-align: left;
-    text-decoration: none;
-    background-color: $skillstool_blue_1;
-    border-radius: 1px;
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.17);
-    min-height:em(55);
-    min-width:em(120);
-    max-width:em(304);
-}
-
-.rc-tooltip-inner:before { content:""; position:absolute; left:em(20); top:em(15); width:em(54); height:em(54); background:url(../assets/images/placeholders/action-plan-help-avatar-1.jpg) no-repeat; @include background-size(contain); @include border-radius(50%); border:2px solid #fff; }
 
 .rc-tooltip-arrow {
     position: absolute;
@@ -146,47 +175,40 @@
 .rc-tooltip-zoom-appear {
     opacity: 0;
     animation-duration: 0.3s;
-    animation-fill-mode: both;
-    animation-timing-function: cubic-bezier(0.18, 0.89, 0.32, 1.28);
     animation-play-state: paused;
 }
 .rc-tooltip-zoom-leave {
     animation-duration: 0.3s;
-    animation-fill-mode: both;
-    animation-timing-function: cubic-bezier(0.6, -0.3, 0.74, 0.05);
     animation-play-state: paused;
 }
 .rc-tooltip-zoom-enter.rc-tooltip-zoom-enter-active,
 .rc-tooltip-zoom-appear.rc-tooltip-zoom-appear-active {
-    animation-name: rcToolTipZoomIn;
+    animation-name: rcToolTipFadeIn;
     animation-play-state: running;
 }
 .rc-tooltip-zoom-leave.rc-tooltip-zoom-leave-active {
-    animation-name: rcToolTipZoomOut;
+    animation-name: rcToolTipFadeOut;
     animation-play-state: running;
 }
-@keyframes rcToolTipZoomIn {
+@keyframes rcToolTipFadeIn {
     0% {
         opacity: 0;
-        transform-origin: 50% 50%;
-        transform: scale(0, 0);
     }
     100% {
         opacity: 1;
-        transform-origin: 50% 50%;
-        transform: scale(1, 1);
     }
 }
-@keyframes rcToolTipZoomOut {
+@keyframes rcToolTipFadeOut {
     0% {
         opacity: 1;
-        transform-origin: 50% 50%;
-        transform: scale(1, 1);
     }
     100% {
         opacity: 0;
-        transform-origin: 50% 50%;
-        transform: scale(0, 0);
     }
+}
+
+//This class is for avoid the modals to scroll the underlying page
+.ReactCustonModal {
+    overflow-y: hidden;
 }
 

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!--[if lt IE 9 ]><html lang="en-NZ" class="lt-ie9"><![endif]-->
-<!--[if (gte IE 9)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html lang="en-NZ"><!--<![endif]--><head>
+  <!--[if lt IE 9 ]><html lang="en-NZ" class="lt-ie9"><![endif]-->
+  <!--[if (gte IE 9)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html lang="en-NZ"><!--<![endif]-->
   <head>
     <base href="http://careers.local/skills-transition-tool/app/build/">
     <title>{%=o.htmlWebpackPlugin.options.title%}</title>
@@ -33,7 +33,7 @@
     {% } %}
     <!--[if lte IE 8]>
     <link rel="stylesheet" href="./css/browser/ie8.css" media="all" />
-    <script src="../javascript/plugins/respond.min.js"></script>
+    <script src="./ie8/respond.min.js"></script>
     <![endif]-->
     <!--[if IE 9]>
     <link rel="stylesheet" href="./css/browser/ie9.css" media="all" />

@@ -8,7 +8,6 @@ export default function promiseMiddleware() {
 
     logger.log(action);
 
-
     if (!promise) {
       return next(action);
     }

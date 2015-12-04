@@ -20,7 +20,10 @@ const Barrier = (props) => {
 
 const renderActions = (action, idx, props) => {
   return (
-    <ActionCard key={idx} id={idx} {...action} idBarrier={props.idBarrier} addActionToPlan={props.addActionToPlan} />
+    <ActionCard isBarrier key={idx } id={props.ActionId} {...action} idBarrier={props.idBarrier}
+                addBarrierActionToPlan={props.addBarrierActionToPlan}
+                removeBarrierActionFromPlan={props.removeBarrierActionFromPlan}
+                course={props.course}/>
   );
 }
 

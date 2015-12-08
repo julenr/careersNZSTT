@@ -10,13 +10,14 @@ let logger = logLite.getLogger('list view reducer');
 
 const listViewInitialState = {
   loaded: false,
+  MainPanelSplitIndexCard: -1,  //This index value specifies which index Job/Qualification card is the point to split to insert the second panel
+  SecondPanelSplitIndexCard: -1, //This index value specifies which index Qualification card is the point to insert Provider Panel
   QualificationsPanelLoaded: false,
   InstitutionsPanelLoaded: false,
   ShowMatchSkillsModal: false,
   CheckSkillsID: 0,
   ShowRemoveJobCardModal: false,
   ShowVocationalPathwaysModal: false,
-  JobCardSelectedID: -1,
   ShowRemoveQualificationCardModal: false,
   RemoveQualificationCardModalID: -1,
   ShowRemoveInstitutionCardModal: false,
@@ -321,13 +322,23 @@ export function _listViewData(state = listViewInitialState, action = {}) {
       newState.ShowInstitutionsPanel = false;
       newState.ShowFullQualificationCardDescriptionModal = false;
       newState.PaginationLimit = paginationConstants.paginationInitialLimit;
+      newState.MainPanelSplitIndexCard = -1;
+      newState.SecondPanelSplitIndexCard = -1;
       return newState;
     }
-    case 'TOGGLE_LIST_TYPE_OPTIONS':
-      let show = newState.ShowListTypeOptions;
+    case 'TOGGLE_LIST_TYPE_OPTIONS': {
+      const show = newState.ShowListTypeOptions;
       newState.ShowListTypeOptions = !show;
       return newState;
-      
+    }
+    case 'SET_SPLIT_INDEX_CARD_POINT': {
+      if(newState.ListType === action.listType){
+        newState.SecondPanelSplitIndexCard = action.indexCard;
+      } else {
+        newState.MainPanelSplitIndexCard = action.indexCard;
+      }
+      return newState;
+    }
     default:
       return state;
   }

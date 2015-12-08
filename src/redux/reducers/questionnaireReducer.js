@@ -75,7 +75,7 @@ export function _questionnaire(state = initialData, action = {}) {
       };
     case 'GET_QUESTIONNAIRE_SUCCESS':
       action.result.data.Questionnaire = []; // Initialize the questionnaire array
-      action.result.data.Questionnaire.push( Object.assign({}, action.result.data.Questions[0] ));
+      action.result.data.Questionnaire.push( _.cloneDeep(action.result.data.Questions[0]));
       return {
         ...state,
         data: action.result.data,
@@ -168,7 +168,7 @@ export function _questionnaire(state = initialData, action = {}) {
       return newState;
     }
     case 'REMOVE_SKILL_FROM_SELECTED': {
-      let idxSelectedSkill = newState.data.Skills.Selected.findIndex((skill) => (action.skill === skill));
+      let idxSelectedSkill = _.findIndex(newState.data.Skills.Selected, (skill) => (action.skill === skill));
       newState.data.Skills.Selected.splice(idxSelectedSkill, 1);
       newState.data.refresh = uuid.v1();
       return newState;
@@ -277,8 +277,8 @@ export function _questionnaire(state = initialData, action = {}) {
       return newState;
 
     case 'NEXT_QUESTION': {
-      let nextQuestionIndex = newState.data.Questions.findIndex((q) => (q.ID === action.nextQuestionID));
-      let question = Object.assign({}, newState.data.Questions[nextQuestionIndex]);
+      let nextQuestionIndex = _.findIndex(newState.data.Questions, (q) => (q.ID === action.nextQuestionID));
+      let question = _.cloneDeep(newState.data.Questions[nextQuestionIndex]);
 
       // Keep the Questionnaire state at each Question
       newState.History.push( _.cloneDeep(newState.data) );
@@ -304,7 +304,7 @@ export function _questionnaire(state = initialData, action = {}) {
       return newState;
     }
     case 'JOBS_COUNT_SUCCESS':
-      let nextQuestionIndex = newState.data.Questions.findIndex((q) => (q.ID === action.nextQuestionID));
+      let nextQuestionIndex = _.findIndex(newState.data.Questions, (q) => (q.ID === action.nextQuestionID));
       newState.data.ProgressBar.Results = action.result.count;
       if(newState.data.Questions[nextQuestionIndex].MilestoneText) {}
       newState.data.ProgressBar.Text = replaceStrValues(newState.data.Questions[nextQuestionIndex].MilestoneText);

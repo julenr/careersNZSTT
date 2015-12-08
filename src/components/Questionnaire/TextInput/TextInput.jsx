@@ -4,7 +4,7 @@
 
 import React from 'react';
 import classNames from 'classnames';
-import { scrollTo } from '../../../libs/helpers';
+import scrollTo from '../../../libs/scrollTo/scrollTo.js';
 
 import Avatar from '../../subcomponents/Avatar';
 

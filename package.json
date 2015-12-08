@@ -49,7 +49,8 @@
     "bluebird": "^2.10.2",
     "classnames": "^2.1.5",
     "dom-scroll-into-view": "^1.0.1",
-    "history": "^1.12.0",
+    "es6-promise": "^3.0.2",
+    "history": "^1.13.1",
     "lodash": "^3.10.1",
     "node-uuid": "^1.4.3",
     "rc-tooltip": "^3.2.0",
@@ -60,7 +61,6 @@
     "react-redux": "^4.0.0",
     "react-router": "^1.0.0",
     "react-youtube": "^4.1.2",
-    "redux": "^3.0.4",
-    "scroll-to": "0.0.2"
+    "redux": "^3.0.4"
   }
 }

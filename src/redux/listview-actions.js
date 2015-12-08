@@ -5,7 +5,6 @@
 import axios from 'axios';
 import store from './create-store';
 import _ from 'lodash';
-import { scrollTo } from '../libs/helpers';
 import logLite from '../libs/logLite';
 
 let logger = logLite.getLogger('listview actions');
@@ -351,6 +350,14 @@ export function resetListViewState() {
 export function swapHiddenPanelVisible() {
   return {
     type: 'SWAP_HIDDEN_PANEL'
+  }
+}
+
+export function setSplitIndexCardPoint(indexCard, listType) {
+  return {
+    type: 'SET_SPLIT_INDEX_CARD_POINT',
+    indexCard,
+    listType
   }
 }
 

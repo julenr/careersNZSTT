@@ -5,7 +5,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
-import { scrollTo } from '../../../libs/helpers';
+import scrollTo from '../../../libs/scrollTo/scrollTo.js';
 import { textFitToContainer } from '../../../libs/helpers.js';
 import * as actionCreators from '../../../redux/coursedetail-actions';
 
@@ -27,7 +27,6 @@ class JobCard extends React.Component {
     const style = {
       fontSize: textFitToContainer(jobCard.Title) + 'px'
     }
-
     return (
       <div>
         <article className={ classes }>
@@ -89,7 +88,7 @@ class JobCard extends React.Component {
           <div className="card back">
             <div className="liner">
               <header>
-                <h3 className="title" style={style}>{jobCard.Title}</h3>
+                <h3 className="title">{jobCard.Title}</h3>
               </header>
               <div className="description">{jobCard.Description}</div>
               <a className="action-skills-match divider"

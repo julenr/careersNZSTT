@@ -4,7 +4,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { scrollTo } from '../../../libs/helpers';
+import scrollTo from '../../../libs/scrollTo/scrollTo.js';
 
 import Avatar from '../../subcomponents/Avatar';
 import _ from 'lodash';

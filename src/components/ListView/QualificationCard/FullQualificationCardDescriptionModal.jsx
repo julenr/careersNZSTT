@@ -17,7 +17,7 @@ const FullQualificationCardDescriptionModal = (props) => {
               (qualificationCard) ?
                 [
                   <h2 key="0" className="modal-title">{qualificationCard.Title}</h2>,
-                  <div key="1" dangerouslySetInnerHTML={{__html: qualificationCard.Description}} />
+                  <div key="1" dangerouslySetInnerHTML={{__html: qualificationCard.DescriptionText}} />
                   ]
                 :
                 <span/>

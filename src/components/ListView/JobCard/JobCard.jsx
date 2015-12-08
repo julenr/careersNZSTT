@@ -6,7 +6,6 @@ import React from 'react';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
 import Tooltip from 'rc-tooltip';
-import { scrollTo } from '../../../libs/helpers';
 import { textFitToContainer } from '../../../libs/helpers.js';
 
 function mapStateToProps(state, ownProps) {
@@ -28,7 +27,6 @@ class JobCard extends React.Component {
     const style = flipped ? {} : {
       fontSize: textFitToContainer(jobCard.Title) + 'px'
     }
-
     return (
       <div>
         <article className={ classes }>
@@ -90,7 +88,7 @@ class JobCard extends React.Component {
           <div className="card back">
             <div className="liner">
               <header>
-                <h3 className="title" style={style}>{jobCard.Title}</h3>
+                <h3 className="title" >{jobCard.Title}</h3>
                 <a href="javascript: void 0" className="action-remove" onClick={this.closeCard}><span
                   className="icon-cross"></span></a>
               </header>
@@ -176,9 +174,9 @@ class JobCard extends React.Component {
   showQualificationsPanel = () => {
     this.props.closeInstitutionsPanel();
     this.props.setCurrentJobID(this.props.id);
+    this.props.setSplitIndexCardPoint(this.props.id, 'Job');
     this.props.getQualificationsByJob(this.props.jobsCards[this.props.id].SubJobID);
     this.props.openQualificationsPanel();
-    scrollTo('qualifications-panel-scroll-point', -120);
   }
 
   flipCard = () => {

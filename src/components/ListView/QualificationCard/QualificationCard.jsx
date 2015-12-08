@@ -5,7 +5,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import Tooltip from 'rc-tooltip';
-import { scrollTo } from '../../../libs/helpers';
+import scrollTo from '../../../libs/scrollTo/scrollTo.js';
 import { connect } from 'react-redux';
 
 import { textFitToContainer } from '../../../libs/helpers.js';
@@ -106,7 +106,7 @@ class QualificationCard extends React.Component {
               <a href="javascript: void 0" className="action-reinstate" onClick={this.openCard} title="Show this course in my list again"><span className="icon-plus-circle"></span></a>
             </header>
             <div className="description" id={`description${this.props.id}`}>
-              {qualification.DescriptionText}
+              {qualification.Description}
             </div>
             <span>
               {
@@ -138,7 +138,7 @@ class QualificationCard extends React.Component {
     const curOverflow = el.style.overflow;
     let isOverflowing;
 
-    if ( !curOverflow || curOverflow === 'visible' ) {
+    if(!curOverflow || curOverflow === 'visible') {
       el.style.overflow = 'hidden';
     }
     isOverflowing = el.clientHeight < el.scrollHeight;
@@ -162,6 +162,7 @@ class QualificationCard extends React.Component {
 
   showInstitutionsPanel = () => {
     this.props.setCurrentQualificationID(this.props.id);
+    this.props.setSplitIndexCardPoint(this.props.id, 'Course');
     this.props.getInstitutionByID(this.props.qualification.QualificationID);
     this.props.openInstitutionsPanel();
     scrollTo('institutions-panel-scroll-point', -120);

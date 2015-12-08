@@ -5,7 +5,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import _ from 'lodash';
 import classNames from 'classnames';
-import { scrollTo } from '../../../libs/helpers';
+import scrollTo from '../../../libs/scrollTo/scrollTo.js';
 import uuid from 'node-uuid';
 
 import Typeahead from '../../subcomponents/Autocomplete/Autocomplete';

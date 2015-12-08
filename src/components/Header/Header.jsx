@@ -4,7 +4,7 @@
 import React from 'react';
 import { Router, Route, Link } from 'react-router';
 
-import { scrollTo } from '../../libs/helpers';
+import scrollTo from '../../libs/scrollTo/scrollTo.js';
 import EditSkillsModal from '../Modals/EditSkills.jsx';
 import AddSkillsModal from '../Modals/AddSkills.jsx';
 import CheckSkillsModal from '../Modals/CheckSkills.jsx';

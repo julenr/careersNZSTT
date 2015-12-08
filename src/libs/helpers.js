@@ -2,16 +2,7 @@
  * Created by jr1500 on 21/10/15.
  */
 
-import scrollToElement from 'scroll-to';
 import store from '../redux/create-store';
-
-export function scrollTo(element, offset = 0) {
-  const bodyScrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-  const elementY = document.getElementById(element).getBoundingClientRect().top;
-
-  scrollToElement(0, bodyScrollTop + elementY + offset);
-}
-
 
 // This function was originally written by Alan from ChromeToaster
 export function textFitToContainer(stringText = '') {

@@ -17,9 +17,7 @@ class MainPanel extends React.Component {
         </header>
         <div className="layout-row">
           <div className="layout-col-7 layout-col">
-            <div className="course-intro">
-              {Intro}
-            </div>
+            <div className="course-intro" dangerouslySetInnerHTML={{__html: Intro}}/>
             <figure className="intro-image" dangerouslySetInnerHTML={{__html: Blurb}} />
             <ul className="course-links">
               <li><a href="#panel-next-steps"><strong>Take the next step</strong> <span className="icon-arrow-down"></span></a></li>

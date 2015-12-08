@@ -20,6 +20,7 @@ import './styles/tooltip.scss';
 // REACT Dependencies
 import React from 'react';
 import ReactDOM from 'react-dom';
+import es6Promise from 'es6-promise';
 import { Router, Route, Link, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
@@ -34,6 +35,9 @@ import MainPage from './components/MainPage/MainPage.jsx';
 import Questionnaire from './components/Questionnaire/Questionnaire.jsx';
 import ListView from './components/ListView/ListView.jsx';
 import CourseDetail from './components/CourseDetail/CourseDetail.jsx';
+
+//Polifill Promise for axios
+es6Promise.polyfill();
 
 // Element to attach React-DOM
 const app = document.createElement('div');
@@ -59,7 +63,6 @@ const interval = setInterval(() => {
       ReactDOM.render((
         <Provider store={ store }>
           <Router>
-            { /*<Router history={callCreateBrowserHistory()}>  TODO: Problems rendering in Vagrant-Nginx environment */}
             <Route path="/" component={App}>
               <IndexRoute component={Questionnaire} />
               <Route path="questionnaire" component={Questionnaire} />
@@ -80,10 +83,6 @@ const interval = setInterval(() => {
         }
     }
   }, 10);
-
-function callCreateBrowserHistory() {
-  return createBrowserHistory();
-}
 
 // Render links dinamicaly from the server
 function renderFooter(route, idx) {

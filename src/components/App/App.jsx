@@ -61,7 +61,8 @@ export default connect(
     addSkillToQuestion,
     closeLoginModal,
     logIn,
-    resetLoginUserID
+    resetLoginUserID,
+    resetListViewState
   }
 )(App);
 

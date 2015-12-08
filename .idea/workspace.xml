@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="af5ed913-2982-4e06-90ed-89af6a0ad3b1" name="Default" comment="Merge branch 'develop' of http://stash.stripetheweb.com/scm/ctct/careersnz into develop&#10;&#10;# Conflicts:&#10;#&#9;skills-transition-tool/app/build/app.js&#10;#&#9;skills-transition-tool/app/build/app.js.map&#10;#&#9;skills-transition-tool/app/build/index.html&#10;#&#9;skills-transition-tool/app/build/styles.css&#10;#&#9;skills-transition-tool/app/build/styles.css.map&#10;#&#9;skills-transition-tool/app/build/vendor.js&#10;#&#9;skills-transition-tool/app/build/vendor.js.map&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/subcomponents/Sticky/Sticky.jsx" afterPath="$PROJECT_DIR$/src/components/subcomponents/Sticky/Sticky.jsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/redux/questionnaire-actions.js" afterPath="$PROJECT_DIR$/src/redux/questionnaire-actions.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/ListView/JobCard/JobCard.jsx" afterPath="$PROJECT_DIR$/src/components/ListView/JobCard/JobCard.jsx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/ListView/ListView.jsx" afterPath="$PROJECT_DIR$/src/components/ListView/ListView.jsx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/ListView/QualificationCard/QualificationCard.jsx" afterPath="$PROJECT_DIR$/src/components/ListView/QualificationCard/QualificationCard.jsx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/ListView/QualificationsPanel/QualificationsPanel.jsx" afterPath="$PROJECT_DIR$/src/components/ListView/QualificationsPanel/QualificationsPanel.jsx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/redux/listview-actions.js" afterPath="$PROJECT_DIR$/src/redux/listview-actions.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/redux/reducers/listviewReducer.js" afterPath="$PROJECT_DIR$/src/redux/reducers/listviewReducer.js" />
     </list>
     <ignored path="careersNZSTT.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,11 +28,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Sticky.jsx" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/subcomponents/Sticky/Sticky.jsx">
+      <file leaf-file-name="ListView.jsx" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/ListView/ListView.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.89462364">
-              <caret line="153" column="0" selection-start-line="153" selection-start-column="0" selection-end-line="153" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.48447204">
+              <caret line="148" column="42" selection-start-line="148" selection-start-column="42" selection-end-line="148" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -55,21 +59,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/components/Modals/RemoveActionModal.jsx" />
-        <option value="$PROJECT_DIR$/src/components/Modals/MatchSkills.jsx" />
-        <option value="$PROJECT_DIR$/src/components/Modals/Login.jsx" />
-        <option value="$PROJECT_DIR$/src/components/Modals/EditSkills.jsx" />
-        <option value="$PROJECT_DIR$/src/components/Modals/CheckSkills.jsx" />
-        <option value="$PROJECT_DIR$/src/components/Modals/AddSkills.jsx" />
-        <option value="$PROJECT_DIR$/src/components/ListView/JobCard/RemoveJobCardModal.jsx" />
-        <option value="$PROJECT_DIR$/src/components/ListView/JobCard/VocationalPathwaysModal.jsx" />
-        <option value="$PROJECT_DIR$/src/components/ListView/Preferences/AddPreferenceModal.jsx" />
-        <option value="$PROJECT_DIR$/src/components/ListView/QualificationCard/RemoveQualificationCardModal.jsx" />
-        <option value="$PROJECT_DIR$/src/components/Questionnaire/ChangeQuestionnaireModal.jsx" />
         <option value="$PROJECT_DIR$/src/components/Modals/ResetToolModal.jsx" />
-        <option value="$PROJECT_DIR$/src/components/Questionnaire/SingleChoice/SingleChoice.jsx" />
-        <option value="$PROJECT_DIR$/src/components/Questionnaire/YesNo/YesNo.jsx" />
-        <option value="$PROJECT_DIR$/src/components/Questionnaire/MultipleChoice/MultipleChoice.jsx" />
         <option value="$PROJECT_DIR$/src/redux/reducers/actionPlanReducer.js" />
         <option value="$PROJECT_DIR$/src/redux/actionplan-actions.js" />
         <option value="$PROJECT_DIR$/src/components/ActionPlanDrawer/ActionPlanCard.jsx" />
@@ -79,33 +69,47 @@
         <option value="$PROJECT_DIR$/src/components/ListView/QualificationsPanel/EntryRequirementsModal.jsx" />
         <option value="$PROJECT_DIR$/src/redux/general-actions.js" />
         <option value="$PROJECT_DIR$/src/redux/coursedetail-actions.js" />
-        <option value="$PROJECT_DIR$/src/styles/screen.scss" />
-        <option value="$PROJECT_DIR$/src/components/ListView/QualificationCard/QualificationCard.jsx" />
         <option value="$PROJECT_DIR$/src/components/ListView/QualificationCard/QualificationFullDescriptionModal.jsx" />
-        <option value="$PROJECT_DIR$/src/components/ListView/ListViewHeader/ListViewHeader.jsx" />
         <option value="$PROJECT_DIR$/src/components/Questionnaire/InputTypeAhead/TypeAhead.scss" />
         <option value="$PROJECT_DIR$/src/components/subcomponents/Autocomplete/Autocomplete.js" />
-        <option value="$PROJECT_DIR$/src/components/Questionnaire/InputTypeAhead/InputTypeAhead.jsx" />
-        <option value="$PROJECT_DIR$/src/components/Questionnaire/TagCloud/TagCloud.jsx" />
         <option value="$PROJECT_DIR$/src/components/ProgressBar/ProgressBar.jsx" />
         <option value="$PROJECT_DIR$/src/components/ActionPlanDrawer/ActionPlanDrawer.jsx" />
-        <option value="$PROJECT_DIR$/src/components/ListView/QualificationCard/FullQualificationCardDescriptionModal.jsx" />
-        <option value="$PROJECT_DIR$/src/components/ListView/QualificationsPanel/QualificationsPanel.jsx" />
-        <option value="$PROJECT_DIR$/src/redux/reducers/questionnaireReducer.js" />
-        <option value="$PROJECT_DIR$/src/redux/listview-actions.js" />
         <option value="$PROJECT_DIR$/src/components/ListView/InstitutionsPanel/InstitutionsPanel.jsx" />
         <option value="$PROJECT_DIR$/src/components/ListView/HiddenCards/HiddenCards.jsx" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/components/ListView/InstitutionCard/InstitutionCard.jsx" />
         <option value="$PROJECT_DIR$/build/app.js" />
-        <option value="$PROJECT_DIR$/src/components/ListView/ListView.jsx" />
         <option value="$PROJECT_DIR$/src/components/ListView/InstitutionCard/RemoveInstitutionCardModal.jsx" />
-        <option value="$PROJECT_DIR$/src/redux/reducers/listviewReducer.js" />
         <option value="$PROJECT_DIR$/src/components/CourseDetail/CourseDetail.jsx" />
-        <option value="$PROJECT_DIR$/src/redux/fake-data.js" />
         <option value="$PROJECT_DIR$/src/redux/reducers/footerReducer.js" />
         <option value="$PROJECT_DIR$/src/redux/questionnaire-actions.js" />
         <option value="$PROJECT_DIR$/src/components/subcomponents/Sticky/Sticky.jsx" />
+        <option value="$PROJECT_DIR$/src/components/CourseDetail/MainPanel/MainPanel.jsx" />
+        <option value="$PROJECT_DIR$/src/index.jsx" />
+        <option value="$PROJECT_DIR$/src/components/ListView/QualificationCard/FullQualificationCardDescriptionModal.jsx" />
+        <option value="$PROJECT_DIR$/src/redux/fake-data.js" />
+        <option value="$PROJECT_DIR$/src/libs/helpers.js" />
+        <option value="$PROJECT_DIR$/src/libs/scrollTo.js" />
+        <option value="$PROJECT_DIR$/src/components/Questionnaire/InputTypeAhead/InputTypeAhead.jsx" />
+        <option value="$PROJECT_DIR$/src/components/Questionnaire/MultipleChoice/MultipleChoice.jsx" />
+        <option value="$PROJECT_DIR$/src/components/Questionnaire/SingleChoice/SingleChoice.jsx" />
+        <option value="$PROJECT_DIR$/src/components/Questionnaire/TagCloud/TagCloud.jsx" />
+        <option value="$PROJECT_DIR$/src/components/Questionnaire/TextInput/TextInput.jsx" />
+        <option value="$PROJECT_DIR$/src/components/Questionnaire/YesNo/YesNo.jsx" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/src/redux/reducers/questionnaireReducer.js" />
+        <option value="$PROJECT_DIR$/src/libs/scrollTo/scrollTo.js" />
+        <option value="$PROJECT_DIR$/src/components/Header/Header.jsx" />
+        <option value="$PROJECT_DIR$/src/components/ListView/ListViewHeader/ListViewHeader.jsx" />
+        <option value="$PROJECT_DIR$/src/components/CourseDetail/JobsPanel/JobCard.jsx" />
+        <option value="$PROJECT_DIR$/src/components/App/App.jsx" />
+        <option value="$PROJECT_DIR$/src/styles/screen.scss" />
+        <option value="$PROJECT_DIR$/src/libs/scrollTo/raf.js" />
+        <option value="$PROJECT_DIR$/src/components/ListView/QualificationsPanel/QualificationsPanel.jsx" />
+        <option value="$PROJECT_DIR$/src/components/ListView/ListView.jsx" />
+        <option value="$PROJECT_DIR$/src/components/ListView/QualificationCard/QualificationCard.jsx" />
+        <option value="$PROJECT_DIR$/src/components/ListView/JobCard/JobCard.jsx" />
+        <option value="$PROJECT_DIR$/src/redux/listview-actions.js" />
+        <option value="$PROJECT_DIR$/src/redux/reducers/listviewReducer.js" />
       </list>
     </option>
   </component>
@@ -167,6 +171,7 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -195,21 +200,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="careersNZSTT" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -224,6 +215,50 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="redux" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="careersNZSTT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="redux" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="reducers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="careersNZSTT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -245,7 +280,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="subcomponents" />
+              <option name="myItemId" value="Questionnaire" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -264,12 +299,119 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Questionnaire" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TagCloud" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="careersNZSTT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ListView" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="careersNZSTT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ListView" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="QualificationsPanel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="careersNZSTT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ListView" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="QualificationCard" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="careersNZSTT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ListView" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="JobCard" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -284,25 +426,25 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="FullScreen" value="true" />
     <property name="recentsLimit" value="5" />
-    <property name="SearchEverywhereHistoryKey" value="fake&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/redux/fake-data.js&#10;screen&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/styles/screen.scss&#10;rem&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/components/ListView/QualificationCard/RemoveQualificationCardModal.jsx&#10;full&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/components/ListView/QualificationCard/FullQualificationCardDescriptionModal.jsx&#10;list&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/components/ListView/ListView.jsx&#10;progre&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/components/ProgressBar/ProgressBar.jsx&#10;scre&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/styles/screen.scss&#10;fak&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/redux/fake-data.js&#10;rese&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/components/Modals/ResetToolModal.jsx&#10;fa&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/redux/fake-data.js&#10;quali&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/components/ListView/QualificationCard/QualificationCard.jsx&#10;scree&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/styles/screen.scss&#10;listview&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/redux/listview-actions.js&#10;job&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/components/ListView/JobCard/JobCard.jsx&#10;ques&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/redux/questionnaire-actions.js&#10;cre&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/redux/create-store.js&#10;questio&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/components/Questionnaire/Questionnaire.jsx&#10;remove&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/components/ListView/JobCard/RemoveJobCardModal.jsx&#10;lis&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/redux/listview-actions.js&#10;add&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/components/ListView/Preferences/AddPreferenceModal.jsx&#10;reduc&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/redux/reducers.js&#10;addpre&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/components/ListView/Preferences/AddPreferenceModal.jsx&#10;redu&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/redux/reducers.js&#10;questi&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/redux/questionnaire-actions.js&#10;fad&#9;RUN_CONFIGURATION&#9;fakeData.js&#10;remo&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/components/ListView/JobCard/RemoveJobCardModal.jsx&#10;type&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/components/Questionnaire/InputTypeAhead/InputTypeAhead.jsx&#10;sin&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/components/Questionnaire/SingleChoice/SingleChoice.jsx&#10;single&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/components/Questionnaire/SingleChoice/SingleChoice.jsx&#10;red&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/redux/reducers.js&#10;gene&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/redux/general-actions.js&#10;ge&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/redux/general-actions.js&#10;header&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/components/Header/Header.jsx&#10;check&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/components/Modals/CheckSkills.jsx&#10;match&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/components/Modals/MatchSkills.jsx&#10;app&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/components/App/App.jsx&#10;re&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/redux/reducers.js&#10;gener&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/redux/general-actions.js&#10;che&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/components/Modals/CheckSkills.jsx&#10;listvi&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/components/ListView/ListView.jsx&#10;head&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/components/Header/Header.jsx&#10;listvie&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/components/ListView/ListViewHeader/ListViewHeader.jsx&#10;end&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/components/Questionnaire/EndForm/EndForm.jsx&#10;pr&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/components/ProgressBar/ProgressBar.jsx&#10;progr&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/components/ProgressBar/ProgressBar.jsx&#10;pa&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/package.json&#10;quest&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/app/components/QuestionsPage/QuestionsPage.jsx&#10;foo&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/app/components/Footer/Footer.jsx" />
+    <property name="SearchEverywhereHistoryKey" value="screen&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/styles/screen.scss&#10;header&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/components/Header/Header.jsx&#10;jobcar&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/components/CourseDetail/JobsPanel/JobCard.jsx&#10;fake&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/redux/fake-data.js&#10;quali&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/components/ListView/QualificationCard/FullQualificationCardDescriptionModal.jsx&#10;voca&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/components/ListView/JobCard/VocationalPathwaysModal.jsx&#10;index&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/index.jsx&#10;course&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/components/CourseDetail/CourseDetail.jsx&#10;rem&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/components/ListView/QualificationCard/RemoveQualificationCardModal.jsx&#10;full&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/components/ListView/QualificationCard/FullQualificationCardDescriptionModal.jsx&#10;list&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/components/ListView/ListView.jsx&#10;progre&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/components/ProgressBar/ProgressBar.jsx&#10;scre&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/styles/screen.scss&#10;fak&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/redux/fake-data.js&#10;rese&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/components/Modals/ResetToolModal.jsx&#10;fa&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/redux/fake-data.js&#10;scree&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/styles/screen.scss&#10;listview&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/redux/listview-actions.js&#10;job&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/components/ListView/JobCard/JobCard.jsx&#10;ques&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/redux/questionnaire-actions.js&#10;cre&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/redux/create-store.js&#10;questio&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/components/Questionnaire/Questionnaire.jsx&#10;remove&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/components/ListView/JobCard/RemoveJobCardModal.jsx&#10;lis&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/redux/listview-actions.js&#10;add&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/components/ListView/Preferences/AddPreferenceModal.jsx&#10;reduc&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/redux/reducers.js&#10;addpre&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/skills-transition-tool/public/skills-transition-tool/app/src/components/ListView/Preferences/AddPreferenceModal.jsx&#10;redu&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/redux/reducers.js&#10;questi&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/redux/questionnaire-actions.js&#10;fad&#9;RUN_CONFIGURATION&#9;fakeData.js&#10;remo&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/components/ListView/JobCard/RemoveJobCardModal.jsx&#10;type&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/components/Questionnaire/InputTypeAhead/InputTypeAhead.jsx&#10;sin&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/components/Questionnaire/SingleChoice/SingleChoice.jsx&#10;single&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/components/Questionnaire/SingleChoice/SingleChoice.jsx&#10;red&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/redux/reducers.js&#10;gene&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/redux/general-actions.js&#10;ge&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/redux/general-actions.js&#10;check&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/components/Modals/CheckSkills.jsx&#10;match&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/components/Modals/MatchSkills.jsx&#10;app&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/components/App/App.jsx&#10;re&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/redux/reducers.js&#10;gener&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/redux/general-actions.js&#10;che&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/components/Modals/CheckSkills.jsx&#10;listvi&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/components/ListView/ListView.jsx&#10;head&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/components/Header/Header.jsx&#10;listvie&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/components/ListView/ListViewHeader/ListViewHeader.jsx&#10;end&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/components/Questionnaire/EndForm/EndForm.jsx&#10;pr&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/components/ProgressBar/ProgressBar.jsx&#10;progr&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/src/components/ProgressBar/ProgressBar.jsx&#10;pa&#9;FILE&#9;file:///Users/jr1500/WebstormProjects/careersNZSTT/package.json" />
     <property name="ignore_missing_gitignore" value="true" />
     <property name="javascript.nodejs.core.library.configured.version" value="0.12.7" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/Cellar/nvm/versions/node/v5.1.0/bin/node" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/libs" />
+      <recent name="$PROJECT_DIR$/src/libs/scroll-to/scrollTo" />
+      <recent name="$PROJECT_DIR$/src/components/ListView/QualificationsPanel" />
+      <recent name="$PROJECT_DIR$/src/components/Modals" />
+      <recent name="$PROJECT_DIR$/src/components/Questionnaire" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/libs/scrollTo" />
       <recent name="$PROJECT_DIR$/src/components/ListView/QualificationCard" />
       <recent name="$PROJECT_DIR$/src/components/Modals" />
       <recent name="$PROJECT_DIR$/src/components/ListView/JobCard" />
       <recent name="$PROJECT_DIR$/src/components/subcomponents/TextSelect" />
-      <recent name="$PROJECT_DIR$/src/components/CourseDetail/JobsPanel" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/components/ListView/QualificationsPanel" />
-      <recent name="$PROJECT_DIR$/src/components/Modals" />
-      <recent name="$PROJECT_DIR$/src/components/Questionnaire" />
-      <recent name="$PROJECT_DIR$/src/styles" />
-      <recent name="$PROJECT_DIR$/src/redux/reducers" />
     </key>
   </component>
   <component name="RunManager" selected="Node.js.index.jsx">
@@ -397,19 +539,18 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23044397" sideWeight="0.6951807" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42427886" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23044397" sideWeight="0.3048193" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.61658657" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328125" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24947146" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37860578" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37831324" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3987952" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39783654" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -417,6 +558,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42427886" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -474,96 +616,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/Questionnaire/SingleChoice/SingleChoice.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6939281">
-          <caret line="97" column="3" selection-start-line="93" selection-start-column="2" selection-end-line="97" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Questionnaire/YesNo/YesNo.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.85377944">
-          <caret line="93" column="5" selection-start-line="91" selection-start-column="4" selection-end-line="93" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Questionnaire/MultipleChoice/MultipleChoice.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33952913">
-          <caret line="78" column="35" selection-start-line="78" selection-start-column="35" selection-end-line="78" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/redux/reducers/actionPlanReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9677819">
-          <caret line="128" column="63" selection-start-line="128" selection-start-column="63" selection-end-line="128" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Questionnaire/QuestionnaireHeader/QuestionnaireHeader.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40272614">
-          <caret line="43" column="63" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Modals/RemoveActionModal.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19330855">
-          <caret line="14" column="103" selection-start-line="14" selection-start-column="58" selection-end-line="14" selection-end-column="103" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ListView/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ListView/JobCard/RemoveJobCardModal.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16109046">
-          <caret line="12" column="69" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ListView/QualificationsPanel/EntryRequirementsModal.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43494424">
-          <caret line="27" column="24" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ListView/Pagination/Pagination.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4832714">
-          <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/constants/pagination-constants.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.016109046">
-          <caret line="1" column="41" selection-start-line="1" selection-start-column="41" selection-end-line="1" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Questionnaire/EndForm/EndForm.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/redux/actionplan-actions.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8455285">
@@ -591,46 +643,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1771995">
           <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ListView/JobCard/VocationalPathwaysModal.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1771995">
-          <caret line="13" column="8" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="89" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ListView/QualificationCard/QualificationCard.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.57992566">
-          <caret line="107" column="41" selection-start-line="107" selection-start-column="41" selection-end-line="107" selection-end-column="41" />
-          <folding>
-            <marker date="1449097884000" expanded="true" signature="3345:3699" placeholder="..." />
-            <marker date="1449097884000" expanded="true" signature="3449:3508" placeholder="..." />
-            <marker date="1449097884000" expanded="true" signature="3614:3679" placeholder="..." />
-            <marker date="1449097884000" expanded="true" signature="3751:5287" placeholder="..." />
-            <marker date="1449097884000" expanded="true" signature="3785:4899" placeholder="..." />
-            <marker date="1449097884000" expanded="true" signature="3806:4225" placeholder="..." />
-            <marker date="1449097884000" expanded="true" signature="3850:3857" placeholder="..." />
-            <marker date="1449097884000" expanded="true" signature="4302:4367" placeholder="..." />
-            <marker date="1449097884000" expanded="true" signature="4721:4882" placeholder="..." />
-            <marker date="1449097884000" expanded="true" signature="4918:5272" placeholder="..." />
-            <marker date="1449097884000" expanded="true" signature="5022:5081" placeholder="..." />
-            <marker date="1449097884000" expanded="true" signature="5187:5252" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ListView/ListViewHeader/ListViewHeader.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30444965">
-          <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -642,31 +654,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33828998">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="33" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Questionnaire/TagCloud/TagCloud.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5006196">
-          <caret line="57" column="24" selection-start-line="57" selection-start-column="24" selection-end-line="57" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/ProgressBar/ProgressBar.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3866171">
           <caret line="24" column="5" selection-start-line="19" selection-start-column="4" selection-end-line="24" selection-end-column="5" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -690,17 +681,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Header/Header.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -708,25 +688,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.14498141">
           <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ListView/QualificationCard/FullQualificationCardDescriptionModal.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5638166">
-          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Questionnaire/InputTypeAhead/InputTypeAhead.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43333334">
-          <caret line="72" column="49" selection-start-line="72" selection-start-column="49" selection-end-line="72" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -748,43 +709,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ListView/QualificationsPanel/QualificationsPanel.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.645601">
-          <caret line="82" column="23" selection-start-line="82" selection-start-column="23" selection-end-line="82" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/redux/reducers/questionnaireReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5972738">
-          <caret line="253" column="33" selection-start-line="253" selection-start-column="33" selection-end-line="253" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/ActionPlanDrawer/ActionPlanList.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.43494424">
           <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/styles/screen.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5326505">
-          <caret line="612" column="0" selection-start-line="612" selection-start-column="0" selection-end-line="612" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.71702945">
-          <caret line="52" column="24" selection-start-line="52" selection-start-column="24" selection-end-line="52" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -808,7 +736,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.95043373">
           <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -816,47 +743,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.6604709">
           <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ListView/ListView.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45229244">
-          <caret line="144" column="27" selection-start-line="144" selection-start-column="27" selection-end-line="144" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/CourseDetail/CourseDetail.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4361834">
-          <caret line="50" column="12" selection-start-line="50" selection-start-column="12" selection-end-line="50" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/redux/reducers/listviewReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3482032">
-          <caret line="290" column="46" selection-start-line="290" selection-start-column="46" selection-end-line="290" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/redux/listview-actions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.016109046">
-          <caret line="218" column="12" selection-start-line="218" selection-start-column="12" selection-end-line="218" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/redux/fake-data.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.51672864">
-          <caret line="376" column="10" selection-start-line="376" selection-start-column="10" selection-end-line="376" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -890,14 +776,257 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.61214375">
           <caret line="38" column="70" selection-start-line="38" selection-start-column="70" selection-end-line="38" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/CourseDetail/CourseDetail.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.61214375">
+          <caret line="57" column="39" selection-start-line="57" selection-start-column="39" selection-end-line="57" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/CourseDetail/MainPanel/MainPanel.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.57992566">
+          <caret line="36" column="27" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5960347">
+          <caret line="39" column="22" selection-start-line="39" selection-start-column="22" selection-end-line="39" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/ListView/JobCard/VocationalPathwaysModal.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30607188">
+          <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/ListView/QualificationCard/FullQualificationCardDescriptionModal.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37050804">
+          <caret line="25" column="16" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/redux/fake-data.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42007434">
+          <caret line="1113" column="40" selection-start-line="1113" selection-start-column="40" selection-end-line="1113" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/subcomponents/Sticky/Sticky.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.89462364">
-          <caret line="153" column="0" selection-start-line="153" selection-start-column="0" selection-end-line="153" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.7422553">
+          <caret line="199" column="0" selection-start-line="199" selection-start-column="0" selection-end-line="199" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/libs/helpers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.06443618">
+          <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Questionnaire/InputTypeAhead/InputTypeAhead.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17180617">
+          <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Questionnaire/MultipleChoice/MultipleChoice.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1431718">
+          <caret line="7" column="62" selection-start-line="7" selection-start-column="62" selection-end-line="7" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Questionnaire/SingleChoice/SingleChoice.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.11453745">
+          <caret line="6" column="62" selection-start-line="6" selection-start-column="62" selection-end-line="6" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Questionnaire/TextInput/TextInput.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.11453745">
+          <caret line="6" column="62" selection-start-line="6" selection-start-column="62" selection-end-line="6" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.888412">
+          <caret line="63" column="21" selection-start-line="63" selection-start-column="21" selection-end-line="63" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/redux/reducers/questionnaireReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18711276">
+          <caret line="170" column="31" selection-start-line="170" selection-start-column="31" selection-end-line="170" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Questionnaire/YesNo/YesNo.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.08054523">
+          <caret line="7" column="62" selection-start-line="7" selection-start-column="62" selection-end-line="7" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/ListView/ListViewHeader/ListViewHeader.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4832714">
+          <caret line="32" column="7" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/CourseDetail/JobsPanel/JobCard.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.1771995">
+          <caret line="29" column="12" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Header/Header.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.5726872">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Modals/EditSkills.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/App/App.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28996283">
+          <caret line="18" column="33" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/styles/screen.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.50577664">
+          <caret line="1255" column="0" selection-start-line="1255" selection-start-column="0" selection-end-line="1255" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/libs/scrollTo/raf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.54906833">
+          <caret line="34" column="2" selection-start-line="34" selection-start-column="2" selection-end-line="34" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/libs/scrollTo/scrollTo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30683228">
+          <caret line="21" column="3" selection-start-line="21" selection-start-column="3" selection-end-line="21" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Questionnaire/TagCloud/TagCloud.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.72670805">
+          <caret line="81" column="43" selection-start-line="81" selection-start-column="37" selection-end-line="81" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/ListView/QualificationsPanel/QualificationsPanel.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.48447204">
+          <caret line="41" column="21" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/ListView/JobCard/JobCard.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.531677">
+          <caret line="177" column="58" selection-start-line="177" selection-start-column="58" selection-end-line="177" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/ListView/QualificationCard/QualificationCard.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.48322982">
+          <caret line="164" column="51" selection-start-line="164" selection-start-column="51" selection-end-line="164" selection-end-column="61" />
+          <folding>
+            <marker date="1449546501000" expanded="true" signature="3354:3708" placeholder="..." />
+            <marker date="1449546501000" expanded="true" signature="3458:3517" placeholder="..." />
+            <marker date="1449546501000" expanded="true" signature="3623:3688" placeholder="..." />
+            <marker date="1449546501000" expanded="true" signature="3760:5292" placeholder="..." />
+            <marker date="1449546501000" expanded="true" signature="3794:4904" placeholder="..." />
+            <marker date="1449546501000" expanded="true" signature="3815:4234" placeholder="..." />
+            <marker date="1449546501000" expanded="true" signature="3859:3866" placeholder="..." />
+            <marker date="1449546501000" expanded="true" signature="4311:4372" placeholder="..." />
+            <marker date="1449546501000" expanded="true" signature="4726:4887" placeholder="..." />
+            <marker date="1449546501000" expanded="true" signature="4923:5277" placeholder="..." />
+            <marker date="1449546501000" expanded="true" signature="5027:5086" placeholder="..." />
+            <marker date="1449546501000" expanded="true" signature="5192:5257" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/redux/listview-actions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.66086954">
+          <caret line="359" column="12" selection-start-line="359" selection-start-column="12" selection-end-line="359" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/redux/reducers/listviewReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.66086954">
+          <caret line="325" column="46" selection-start-line="325" selection-start-column="46" selection-end-line="325" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/ListView/ListView.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.48447204">
+          <caret line="148" column="42" selection-start-line="148" selection-start-column="42" selection-end-line="148" selection-end-column="42" />
           <folding />
         </state>
       </provider>

@@ -35,6 +35,9 @@ function mapStateToProps(state) {
   return {
     ListType: state._listViewData.data.ListType,
     loaded: state._listViewData.loaded,
+
+    mainPanelSplitIndexPoint: state._listViewData.MainPanelSplitIndexCard,
+
     qualificationsPanelLoaded: state._listViewData.QualificationsPanelLoaded,
     institutionsPanelLoaded: state._listViewData.InstitutionsPanelLoaded,
     showMatchSkillsModal: state._listViewData.ShowMatchSkillsModal,
@@ -103,16 +106,19 @@ class Content extends React.Component {
 
   render() {
     const { jobsCards, showQualificationsPanel, showInstitutionsPanel, qualificationsPanel, ListType,
-        paginationLimit} = this.props;
+        paginationLimit, jobCardSelectedID, mainPanelSplitIndexPoint} = this.props;
     const cards = (ListType === 'Job') ? jobsCards : qualificationsPanel.Courses;
     const areVisibleCards = this.checkAreVisibleCards(cards);
     const areHiddenCards = this.areHiddenCards();
     const visibleCardsCount = this.getVisibleCardsCount(cards);
-    cards.lastShownCardIndex = this.getLastPaginationIndex(cards, paginationLimit);
+    const lastShownCardIndex = this.getLastPaginationIndex(cards, paginationLimit);
+    const countCardsShown = (lastShownCardIndex === -1) ? cards.length : lastShownCardIndex + 1;
+    const splitPointMainCards = (mainPanelSplitIndexPoint !== -1) ? mainPanelSplitIndexPoint + 1: countCardsShown;
 
     return (
       <div>
         <ListViewHeader {...this.props}/>
+
         <div className="page-maincontent">
           <div className="page-wrapper">
             <div className="careers-card-wrapper">
@@ -127,23 +133,47 @@ class Content extends React.Component {
                 }}
                 >
                 {
-                  cards.map(this.renderCards)
+                  _.map(_.take(cards, splitPointMainCards), (card, idx, arr) => this.renderCards(card, idx, arr))
                 }
               </ReactCSSTransitionGroup >
             </div>
           </div>
         </div>
+
         {(areVisibleCards) ? '' : <NoResultsPanel /> }
         <div id="qualifications-panel-scroll-point" />
         {(showQualificationsPanel) ? <QualificationsPanel {...this.props} /> : '' }
-        {(showQualificationsPanel) ? <EntryRequirementsModal {...this.props} /> : '' }
         <div id="institutions-panel-scroll-point" />
         {(showInstitutionsPanel) ? <InstitutionsPanel {...this.props} /> : '' }
+
+        <div className="page-maincontent">
+          <div className="page-wrapper">
+            <div className="careers-card-wrapper">
+              <ReactCSSTransitionGroup
+                transitionEnterTimeout={500}
+                transitionLeaveTimeout={500}
+                transitionName={{
+                enter: 'animated',
+                enterActive: 'fadeIn',
+                leave: 'animated',
+                leaveActive: 'fadeOut'
+                }}
+              >
+                {
+                  _.map(_.slice(cards, splitPointMainCards, countCardsShown),
+                    (card, idx, arr) => this.renderCards(card, idx + splitPointMainCards, arr))
+                  }
+              </ReactCSSTransitionGroup >
+            </div>
+          </div>
+        </div>
+
         {(areVisibleCards) ? <Pagination {...this.props} visibleCardsCount={visibleCardsCount} /> : '' }
         <Preferences {...this.props} />
         {(areHiddenCards) ? <HiddenCards {...this.props} /> : '' }
         <ActionPlanDrawer/>
         <Footer />
+        {(showQualificationsPanel) ? <EntryRequirementsModal {...this.props} /> : '' }
         {(areVisibleCards && (ListType === 'Job')) ? <MatchSkillsModal {...this.props}/> : '' }
         {(areVisibleCards && (ListType === 'Job')) ? <RemoveJobCardModal {...this.props}/> : '' }
         {(areVisibleCards) ? <RemoveQualificationCardModal {...this.props}/> : '' }
@@ -154,7 +184,7 @@ class Content extends React.Component {
   }
 
   renderCards = (card, idx, arr) => {
-    if(this.isVisibleCard(card) && (idx <= arr.lastShownCardIndex || arr.lastShownCardIndex === -1)) {
+    if(this.isVisibleCard(card)) {
       return (
         (this.props.ListType === 'Job') ?
           <JobCard key={idx} id={idx} {...this.props} />

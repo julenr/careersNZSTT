@@ -4,11 +4,18 @@
 
 import React from 'react';
 import classNames from 'classnames';
+import scrollTo from '../../../libs/scrollTo/scrollTo.js';
 
 import QualificationCard from '../QualificationCard';
 import TextSelect from '../../subcomponents/TextSelect';
 
 class QualificationsPanel extends React.Component {
+
+  componentDidUpdate = () => {
+    scrollTo('qualifications-panel-scroll-point', -220);
+    return true;
+  }
+
 
   render() {
     let { qualificationsPanel, qualificationsPanelLoaded, regions, regionFilter } = this.props;
@@ -18,20 +25,24 @@ class QualificationsPanel extends React.Component {
           <div className="page-wrapper">
             <header className="panel-header">
               <h2 className="panel-title">{qualificationsPanel.Title}</h2>
+              <div className="panel-intro"/>
+              <strong>What to consider in choosing your course:</strong>&nbsp;
+              <span dangerouslySetInnerHTML={{__html: qualificationsPanel.EntryRequirementsSummary}} />
+              <a href="javascript: void 0" onClick={this.showEntryRequirementsModal}>
+                More details <span className="icon-plus"></span>
+              </a>
               <div className="panel-filter">Showing courses in&nbsp;
                 <div className="select-menu">
                   <TextSelect options={regions} active={regionFilter}
                               onChange={(region) => this.applyRegionChange(region)}/>
                 </div>
-                  {
-                    (this.areVisibleQualificationsCards()) ?
-                      ''
-                      :
-                      <div>{qualificationsPanel.FilteredResultsMessage}</div>
+                {
+                  (this.areVisibleQualificationsCards()) ?
+                    ''
+                    :
+                  <div>{qualificationsPanel.FilteredResultsMessage}</div>
                   }
               </div>
-              <div className="panel-intro" dangerouslySetInnerHTML={{__html: qualificationsPanel.EntryRequirementsSummary}} />
-              <a href="javascript: void 0" onClick={this.showEntryRequirementsModal}> More details <span className="icon-plus"></span></a>
               <a href="javascript: void 0" className="icon-cross panel-close"
                  onClick={this.closePanel}>&nbsp;</a>
             </header>
@@ -45,7 +56,9 @@ class QualificationsPanel extends React.Component {
         return (
           <div className="page-maincontent course-options-panel jobs">
             <div className="page-wrapper">
-              <div className="spinner"></div>
+              <header className="panel-header">
+                <div className="spinner inline"></div>
+              </header>
             </div>
           </div>
         )

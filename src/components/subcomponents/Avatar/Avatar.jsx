@@ -10,7 +10,7 @@ class Avatar extends React.Component {
   render() {
     return (
       <span>
-        <img className="avatar" src={require('../../../assets/images/placeholders/action-plan-help-avatar-1.jpg')}  width="153" height="199" alt="John"/>
+        <img className="avatar" src={require('../../../assets/images/placeholders/action-plan-help-avatar-2.jpg')}  width="153" height="199" alt="John"/>
       </span>
     );
   }

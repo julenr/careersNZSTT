@@ -19,14 +19,14 @@ const VocationalPathwaysModal = (props) => {
       </div></div></div>
     </Modal>
   );
-}
+};
 
 const renderPathways = (colour, title) => {
   return (<li key={colour} className={`sector-${colour}`}>{title}</li>);
-}
+};
 
 const closeModal = (props) => {
   props.closeVocationalPathwaysModal();
-}
+};
 
 export default VocationalPathwaysModal;

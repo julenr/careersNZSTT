@@ -43,16 +43,16 @@
 body, .mullerlight, .results-title .select-menu-trigger, .course-detail h1 .location, .modal h3, .results-title, .action-plan .plan-content h3 .provider, .questions .tag { font-family:'MullerLight', Arial, sans-serif; font-weight:normal; font-style:normal; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
 
 /* Muller Extra Bold */
-.mullerextrabold, .careers-card.qualification .provider, .questions .help strong, .results-subtitle strong, .careers-card.qualification dd, .header-tools li.tool-edit, .header-tools li.tool-save, .header-tools li.tool-login, .action-card-button, .careers-card .back dd, .careers-card .action-skills-match, .careers-card .action-skills-match em { font-family:'MullerExtraBold', Arial, sans-serif; font-weight:bold; font-style:normal; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+.mullerextrabold, .questions .help strong, .results-subtitle strong, .header-tools li.tool-edit, .header-tools li.tool-save, .header-tools li.tool-login, .action-card-button { font-family:'MullerExtraBold', Arial, sans-serif; font-weight:bold; font-style:normal; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
 
 /* Muller Extra Bold Italic */
 .mullerextraboldttalic, blockquote cite { font-family:'MullerExtraBoldItalic', Arial, sans-serif; font-weight:bold; font-style:italic; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
 
 /* Muller Black */
-.mullerblack, h1, .h1, h2, .h2, h3, .h3, h4, .h4, .modal .form label, .modal .tag, .select-menu-trigger, .pagination .summary, .course-options-panel.filters .tag, .button-solid, .sector-simple-list li:before, .nav-link-back, .action-plan .plan-title, strong { font-family:'MullerBlack', Arial, sans-serif; font-weight:bold; font-style:normal; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+.mullerblack, h1, .h1, h2, .h2, h3, .h3, h4, .h4, .modal .form label, .modal .tag, .select-menu-trigger, .Select--multi .Select-value-label, .Select-control .Select-placeholder, .pagination .summary, .course-options-panel.filters .tag, .button-solid, .sector-simple-list li:before, .nav-link-back, .action-plan .plan-title, strong { font-family:'MullerBlack', Arial, sans-serif; font-weight:bold; font-style:normal; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
 
 /* Font icons */
-[class^="icon-"]:before, [class*=" icon-"]:before, .header-tools .tool-edit a:after, .spinner:before, .nav-link-back a:after, .modal-skills-match .tag.complete:before { font-family:'skills-tool-icons'; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; font-style:normal; font-weight:normal; speak:none; text-align:center; text-transform:none; line-height:1; display:inline-block; font-variant:normal; }
+[class^="icon-"]:before, [class*=" icon-"]:before, .header-tools .tool-edit a:after, .modal-vocation-pathways p a:after, .spinner:before, .nav-link-back a:after, .modal-skills-match .tag.complete:before, .Select--multi .Select-value-icon:before, .Select-arrow:before, .Select-clear:before { font-family:'skills-tool-icons'; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; font-style:normal; font-weight:normal; speak:none; text-align:center; text-transform:none; line-height:1; display:inline-block; font-variant:normal; }
 
 
 /* 
@@ -393,7 +393,7 @@ a:hover .button, a:active .button, a:focus .button, .button:hover, .button:activ
 .qtip { position:absolute; left:-28000px; top:-28000px; display:none; min-height:em(88); max-width:em(304); min-width:em(200); direction:ltr; padding:0; z-index:10; }
 .qtip-content { font-size:em(17); line-height:lh(22,17); position:relative; padding:em(17,17) em(20,17) em(21,17) em(92,17); overflow:hidden; text-align:left; word-wrap:break-word; }
 .qtip-default { background-color:$skillstool_blue_1; color:#fff; }
-.qtip:before { content:""; position:absolute; left:em(17); top:em(15); width:em(54); height:em(54); background:url(../assets/images/placeholders/action-plan-help-avatar-1.jpg) no-repeat; @include background-size(contain); @include border-radius(50%); border:2px solid #fff; }
+.qtip:before { content:""; position:absolute; left:em(17); top:em(15); width:em(54); height:em(54); background:url(../assets/images/placeholders/action-plan-help-avatar-2.jpg) no-repeat; @include background-size(contain); @include border-radius(50%); border:2px solid #fff; }
 .qtip:after { content:""; position:absolute; left:em(41); top:em(-13); width:0; height:0; border-style:solid; border-width:0 em(13) em(13) em(13); border-color:transparent transparent $skillstool_blue_1; }
 
 /* 
@@ -509,7 +509,7 @@ a:hover .button, a:active .button, a:focus .button, .button:hover, .button:activ
 /* Submit/Buttons */
 .questions .submit { margin:em(10) 0 em(30); position:absolute; opacity:0; left:-999em; }
 .questions .submit.active, .questions .last .submit { position:static; opacity:1; left:auto; } 
-.questions .button { min-width:auto; font-size:em(26); padding:em(7,26) em(24,26); @include border-radius(em(21,26)); }
+.questions .button { min-width:inherit; font-size:em(26); padding:em(7,26) em(24,26); @include border-radius(em(21,26)); }
 .questions .button span { margin-left:0.1em; }
 
 @media only screen and (min-width:600px) {
@@ -773,7 +773,9 @@ a:hover .button, a:active .button, a:focus .button, .button:hover, .button:activ
 .ReactModal__Content .modal-add-interest .tags { margin-bottom:em(30); }
 .ReactModal__Content .modal-add-skills .form .field { margin-top:em(23); margin-bottom:em(29); }
 .ReactModal__Content .modal-job-entry-requirements { text-align:left; }
-.ReactModal__Content .modal .sector-simple-list { max-width:em(300); margin:0 auto 2em; }
+.ReactModal__Content .modal .sector-simple-list { max-width:em(300); margin:0 0 2em 2em; }
+.ReactModal__Content .modal-vocation-pathways p { text-align:left; }
+.ReactModal__Content .modal-vocation-pathways p a:after { content:'\e800'; margin-left:0.5em; }
 
 @media only screen and (max-width:599px) {
   .ReactModal__Content .modal-skills-match .submit { border-top:none; margin-top:0; }
@@ -788,7 +790,7 @@ a:hover .button, a:active .button, a:focus .button, .button:hover, .button:activ
   .ReactModal__Content .modal ul { font-size:em(18); line-height:lh(24,18); margin-bottom:em(17,18); max-width:em(560,18); margin-left:auto; margin-right:auto; }
   .ReactModal__Content .modal li { margin-bottom:0.75em; }
   .ReactModal__Content .modal .layout-col .tags { overflow:hidden; } 
-  .ReactModal__Content .modal .layout-col .add-more { min-width:auto; margin-top:0.75em; }
+  .ReactModal__Content .modal .layout-col .add-more { min-width:inherit; margin-top:0.75em; }
   .ReactModal__Content .modal .layout-col p { text-align:left; }
   .ReactModal__Content .modal .submit { padding:em(42) 0 em(18); margin:em(40) 0 0; }
   .ReactModal__Content .modal .submit .button-simple { font-size:em(18); padding:em(8,18); }
@@ -799,6 +801,7 @@ a:hover .button, a:active .button, a:focus .button, .button:hover, .button:activ
   .ReactModal__Content .modal-add-skills .form input.text { margin-left:auto; margin-right:auto; }
   .ReactModal__Content .modal-email-plan .form input.text, .ReactModal__Content .modal-email-plan .form textarea { max-width:em(580); }
   .ReactModal__Content .modal-login .form .field { max-width:em(458); }
+  .ReactModal__Content .modal .sector-simple-list { margin:0 auto 2em; }
 }
 @media only screen and (min-width:799px) {
   .ReactModal__Content .modal .layout-col .tag, .ReactModal__Content .modal .layout-col .add-more { float:left; width:43%; margin-right:14%; @include box-sizing(border-box); }
@@ -848,7 +851,7 @@ a:hover .button, a:active .button, a:focus .button, .button:hover, .button:activ
 .course-options-panel .panel-header { text-align:center; padding:em(41) em(25) 0; }
 .course-options-panel .panel-title { font-size:em(28); line-height:lh(31,28); letter-spacing:-0.025em; }
 .course-options-panel .panel-filter { font-size:em(21); line-height:1em; margin:em(18,21) 0 em(5,21); letter-spacing:-0.025em; }
-.course-options-panel .panel-filter .select-menu { display:inline-block; }
+.course-options-panel .panel-filter .select-menu { display:block; width:300px; font-size:65%; margin:0 auto; }
 .course-options-panel .panel-filter .select-menu-trigger { padding:0; margin:0; }
 .course-options-panel .panel-filter .select-menu .ui-menu { font-size:75%; }
 .course-options-panel .panel-filter .select-menu li { text-align:left; color:$skillstool_body; }
@@ -857,7 +860,7 @@ a:hover .button, a:active .button, a:focus .button, .button:hover, .button:activ
 .course-options-panel .panel-close:hover, .course-options-panel .panel-close:active, .course-options-panel .panel-close:focus { color:$skillstool_gray_8 !important; text-decoration:none; }
 
 /* Panel top chevron */
-.course-options-panel .page-wrapper:before { content:""; width:em(68); height:em(68); position:absolute; left:202px; margin-left:em(-34); top:em(-34); z-index:2; @include transform-rotate(45deg); @include box-shadow-inset(3px, 3px, 3px, 0, rgba(0,0,0,0.15)); } 
+.course-options-panel .page-wrapper:before { font-size:85%; content:""; width:em(68); height:em(68); position:absolute; left:202px; margin-left:em(-34); top:em(-34); z-index:2; @include transform-rotate(45deg); @include box-shadow-inset(3px, 3px, 3px, 0, rgba(0,0,0,0.15)); }
 
 @media only screen and (min-width:1201px) {
   .course-options-panel.position-0 .page-wrapper:before { left:202px; }
@@ -876,7 +879,8 @@ a:hover .button, a:active .button, a:focus .button, .button:hover, .button:activ
 
 /* Courses panel */
 .course-options-panel.courses { background:$skillstool_green_1; }
-.course-options-panel.courses .panel-header, .course-options-panel.courses .panel-header a { color:#fff; }
+.course-options-panel.courses .panel-header, .course-options-panel.courses .panel-header a, .course-options-panel.courses .Select--multi .Select-value-label, .course-options-panel.courses .Select-placeholder, .course-options-panel.courses .Select-arrow:before, .course-options-panel.courses .Select-clear:before { color:#fff; }
+.course-options-panel.courses .Select-control { border-color:#fff; }
 .course-options-panel.courses .panel-filter { margin-bottom:0; }
 .course-options-panel.courses .panel-filter a, .course-options-panel.courses .select-menu .text-select a { border-color:#fff; }
 .course-options-panel.courses .panel-header .panel-close { color:$skillstool_green_5; }
@@ -888,7 +892,7 @@ a:hover .button, a:active .button, a:focus .button, .button:hover, .button:activ
   .course-options-panel .panel-filter { font-size:em(26); margin:em(12,26) 0 em(24,26); }
   .course-options-panel .panel-intro { font-size:em(26); line-height:lh(34,26); text-align:left; }
   .course-options-panel .panel-close { font-size:em(28); position:absolute; top:em(48,28); right:0; }
-  .course-options-panel .page-wrapper:before { font-size:85%; }
+  .course-options-panel .page-wrapper:before { left:202px; }
 }
 
 /* Filters/preferences panel */
@@ -913,7 +917,7 @@ a:hover .button, a:active .button, a:focus .button, .button:hover, .button:activ
   .course-options-panel.filters .layout-col.last { margin-right:0 !important; }
   .course-options-panel.filters .title { font-size:em(26); line-height:lh(29,26); text-align:left; margin:em(32,26) 0 0; }
   .course-options-panel.filters .help { font-size:em(18); line-height:lh(24,18); margin-top:em(3,18); }
-  .course-options-panel.filters .tags .button { margin:em(17,18) 0; width:100%; min-width:auto; }
+  .course-options-panel.filters .tags .button { margin:em(17,18) 0; width:100%; min-width:inherit; }
 }
 @media only screen and (min-width:600px) and (max-width:999px) {
   .course-options-panel.filters .layout-col { margin:0 5% 0 0; width:30%; }
@@ -955,82 +959,81 @@ a:hover .button, a:active .button, a:focus .button, .button:hover, .button:activ
 */
 
 /* Shared styles */
-.careers-card-wrapper { overflow:hidden; padding:em(42) 0 em(13); } /*29*/
+.careers-card-wrapper { overflow:hidden; padding:em(42) 0 em(2); margin-right:em(-30); } 
 .careers-card-wrapper:after { content:""; display:block; clear:both; width:100%; height:0; } /* don't use overflow:hidden, due to 3d animation effects */ 
-.careers-card { position:relative; max-width:em(367); margin-bottom:em(41); }  
-.careers-card .liner { background:#fff; padding:0 em(20) 0 em(28); height:em(603); @include border-radius(0 em(28) 0 0); @include box-shadow(0, 2px, 1px, 0, rgba(0,0,0,0.2)); @include box-sizing(border-box); }
+.careers-card { position:relative; margin:0 em(30) em(38) 0; float:left; width:em(367);  @extend .mullerregular; }  
+.careers-card .liner { background:#fff; padding:0 em(20) 0 em(28); @include border-radius(0 em(28) 0 0); @include box-shadow(0, 2px, 1px, 0, rgba(0,0,0,0.2)); @include box-sizing(border-box); }
 
 .careers-card p { font-size:1em; margin:0; padding:0; }
-.careers-card .title { font-size:em(28); line-height:lh(28,28); color:$skillstool_green_2; padding:em(40,28) em(30,28) em(33,28) 0; }
-.careers-card .image { margin:0 em(10) em(17) 0; }
-.careers-card .description { font-size:em(14); line-height:lh(19,14); }
-.careers-card dl { font-size:em(14); line-height:lh(17,14); margin:0; overflow:hidden; }
-.careers-card dt, .careers-card dd { margin:em(5,14) 0 0; padding:em(6,14) 0 0; float:left; border-top:1px solid $skillstool_beige_1; @include box-sizing(border-box); text-align:left; }
-.careers-card dt { width:50%; clear:both; }
-.careers-card dd { width:34%; }
-.careers-card .front dt:first-child, .careers-card .front dd:nth-child(2) { border:none; }
-.careers-card .front dd.nthchild-2 { border:none; }
-.careers-card .action-flip { font-size:em(14); line-height:lh(17,14); display:block; float:left; width:34%; padding:em(50,14) 0 0; letter-spacing:-0.025em; outline:none; }
-.careers-card .action-remove, .careers-card .action-reinstate { font-size:em(17); position:absolute; top:em(14,17); right:em(15,17); width:em(30,17); height:em(25,17); padding-top:em(5,17); color:$skillstool_gray_4 !important; overflow:hidden; }
+.careers-card .title { font-size:em(39); line-height:lh(40,39); color:$skillstool_green_2; overflow:hidden; }
+.careers-card .action-flip { font-size:em(17); line-height:lh(23,17); display:block; letter-spacing:-0.025em; outline:none; }
+.careers-card .action-remove, .careers-card .action-reinstate { font-size:em(18); position:absolute; top:em(17,18); right:em(17,18); width:em(30,18); height:em(25,18); padding-top:em(4,18); color:$skillstool_gray_4 !important; overflow:hidden; }  
 .careers-card .action-remove:hover, .careers-card .action-remove:active, .careers-card .action-remove:focus { text-decoration:none; color:#fff !important; background:$skillstool_gray_4; @include border-radius(50%); }
 .careers-card .action-remove .icon-cross { display:block; text-align:center; } 
-.careers-card .sectors { top:em(71); }
+.careers-card .sectors { top:em(155); }
+.careers-card .icon-help { color:$skillstool_gray_3; }
 
 /* Card actions */
-.careers-card .card-actions { font-size:em(17); line-height:lh(29,17); display:block; background:$skillstool_green_1; color:#fff !important; text-align:center; padding:em(14,17) 0 em(13,17); @include border-radius(0 0 em(28,17) em(28,17)); @include box-shadow(0, 2px, 1px, 0, rgba(0,0,0,0.2)); letter-spacing:-0.025em; position:relative; }
+.careers-card .card-actions { font-size:em(22); line-height:lh(37,22); display:block; background:$skillstool_green_1; color:#fff !important; text-align:center; padding:em(16,22) 0 em(20,22); @include border-radius(0 0 em(28,22) em(28,22)); @include box-shadow(0, 2px, 1px, 0, rgba(0,0,0,0.2)); letter-spacing:-0.025em; position:relative; }
 .careers-card .card-actions:hover, .careers-card .card-actions:active, .careers-card .card-actions:focus { background:$skillstool_blue_1; text-decoration:none; }
 
 /* Card back/rear variation */
-.careers-card .back .liner { background:$skillstool_body; color:#fff; @include border-radius(em(28) 0 0 0); }
-.careers-card .back .title { font-size:em(22); line-height:lh(21,22); color:#fff; padding:em(29,22) em(30,22) em(5,22) 0; }
-.careers-card .back .description { color:$skillstool_gray_4; }
-.careers-card .action-skills-match { font-size:em(14); line-height:lh(19,14); display:block; padding:em(12,14) 0 em(6,14); margin:em(12,14) 0 0; text-align:center; }
-.careers-card .action-skills-match em { text-decoration:underline; }
-.careers-card .back dl { padding-bottom:em(8); }
-.careers-card .back dt, .careers-card .back dd { border-top-color:$skillstool_gray_6; }
-.careers-card .back dt { font-size:em(15,14); line-height:lh(18,15); color:$skillstool_gray_4; width:33.25%; margin:em(5,15) 0 0; padding:em(8,15) 0 0; }
-.careers-card .back dd { width:63%; padding-top:em(8,14); padding-bottom:em(4,14); }
-.careers-card .back dt .icon-help { clear:left; display:block; }
+.careers-card .back .liner { padding:0 em(20) 0 em(34); background:$skillstool_body; color:#fff; @include border-radius(em(28) 0 0 0); }
+.careers-card .back .title { color:#fff; }
+.careers-card .back .description { color:#fff; }
 .careers-card .back a { color:$skillstool_blue_3; }
-.careers-card .divider { border-top:2px dotted $skillstool_gray_4; }
-.careers-card .back .action-joblink-external { font-size:em(15); line-height:lh(18,15); padding:em(11,15) 0 em(10,14); display:block; float:left; width:60%; }
-.careers-card .back .action-flip { padding:em(22,14) 0 em(10,14); float:left; width:36%; text-align:right; }
-.careers-card .back .action-flip .icon-refresh { margin-left:em(4,14); } 
 
 /* Job card variation */
 .careers-card.job { height:em(677); }
-.careers-card.job dl, .careers-card.qualification dl { float:left; width:66%; }
-.careers-card.job .back dl, .careers-card.qualification .back dl { float:none; width:auto; }
-.careers-card.job header { height:em(171); overflow:hidden; } /* This is the height that the title needs toi be squashed into */ 
-.careers-card.job .back header { height:em(91); overflow:hidden; }
-.careers-card.job .front .liner { padding-bottom:em(10); }
-.careers-card.job .back .description { height:em(70,17); overflow:hidden; }
-.careers-card.job .back dl { height:em(263,17); overflow:hidden; }
+.careers-card.job .liner { height:em(603); }
+.careers-card.job .front .title { padding:31px 30px 0 2px; height:120px; } /* MUST use px */
+.careers-card.job .front .maori-title { font-size:em(14); line-height:lh(18,14); height:em(36,14); overflow:hidden; margin:em(7,14) 0 0; color:$skillstool_green_2; }
+.careers-card.job .front .image { position:absolute; top:em(213); left:em(29); right:em(29); }
+.careers-card.job .front .image img { width:100%; } 
+.careers-card.job .front .layout-row { position:absolute; top:em(417); left:0; right:0; }
+.careers-card.job .front dl { margin:0 0 0 em(34); width:em(183); }
+.careers-card.job .front dt, .careers-card.job .front dd { font-size:em(17); line-height:lh(22,17); margin:em(9,17) 0 0; padding:em(10,17) 0 0; float:left; width:41%; border-top:1px solid $skillstool_beige_1; @include box-sizing(border-box); }
+.careers-card.job .front dt { clear:left; width:59%; }
+.careers-card.job .front dt:first-child, .careers-card.job .front dd:nth-child(2) { border:none; }
+.careers-card.job .front dt.pay {width:30%; }
+.careers-card.job .front dd.pay {width:70%; }
+.careers-card.job .front .action-flip { position:absolute; top:em(67,17); right:em(5,17); width:em(115,17); }
+/* back */
+.careers-card.job .back .title { font-size:em(22); line-height:lh(28,22); padding:30px 30px 0 0; height:56px; } /* MUST use px */
+.careers-card.job .back .maori-title { font-size:em(16); line-height:lh(20); margin:em(5) 0 em(13); color:$skillstool_gray_4; height:em(40); overflow:hidden; }
+.careers-card.job .back .description { font-size:em(16); line-height:lh(21); padding:em(12) 0 0; margin-bottom:em(12); border-top:2px dotted $skillstool_gray_4; height:em(243); overflow:hidden; position:relative; border-bottom:1px solid $skillstool_gray_4; }
+.careers-card.job .back .description .overflow { margin-bottom:em(60); height:em(183); overflow:hidden; }
+.careers-card.job .back .description .action-skills-match { position:absolute; left:0; bottom:em(15); }
+.careers-card.job .back dl { border-bottom:2px dotted $skillstool_gray_4; height:em(94); overflow:hidden; padding-bottom:em(15); margin-bottom:em(14); }
+.careers-card.job .back dt { color:$skillstool_gray_4; margin-bottom:em(4); }
+.careers-card.job .back .sector-simple-list li { padding-left:em(11); }
+.careers-card.job .back .sector-simple-list li:before { font-size:em(20); top:em(-2,20); left:0; }
+.careers-card.job .back .action-joblink-external { float:left; width:60%; }
+.careers-card.job .back .action-flip { float:right; width:30%; margin-top:em(12); }
 
 /* Qualification card variation */
-.careers-card.qualification { height:em(564); }
-.careers-card.qualification .liner { height:em(493); }
-.careers-card.qualification .front header { height:em(221); } /* This is the height that the title needs toi be squashed into */
-.careers-card.qualification .title { padding:em(30,28) em(30,28) em(23,28) 0; }
-.careers-card.qualification .back header { height:em(106); overflow:hidden; }
-.careers-card.qualification .back .title { font-size:em(18) !important; line-height:lh(19,18); color:#fff; padding:em(29,18) em(30,18) em(5,18) 0; }
-.careers-card.qualification .provider { padding-bottom:em(16); }
-.careers-card.qualification .description { padding:em(16,14) 0; max-height:em(210,14); overflow:hidden; }
-.careers-card.qualification .full-details { margin:em(10) 0 0; padding:em(10,14) 0; }
-.careers-card.qualification dl { padding-bottom:em(10,14); }
-.careers-card.qualification dt { width:35%; color:$skillstool_gray_6; }
-.careers-card.qualification dd { width:65%; }
-.careers-card.qualification .back .action-flip { text-align:left; width:auto; }
-.careers-card.qualification .course-leads-to { width:65%; float:left; border-top:1px solid $skillstool_beige_1; }
-.careers-card.qualification .course-leads-to p { padding:em(15) em(15) 0 0; }
-
+.careers-card.qualification { height:em(628); } 
+.careers-card.qualification .liner { height:em(555); padding-left:em(33); }
+.careers-card.qualification .card-actions { padding:em(13,22) 0 em(16,22); }
+.careers-card.qualification .front .title { font-size:em(29); line-height:em(34,29); padding:27px 30px 9px 0; height:170px; } /* MUST use px */
+.careers-card.qualification .front .provider { font-size:em(18); padding-bottom:em(23,18); height:em(50,18); @extend .mullerblack; }
+.careers-card.qualification .front .divider { border-top:2px dotted $skillstool_gray_4; border-bottom:2px dotted $skillstool_gray_4; padding:em(19) 0; position:relative; }
+.careers-card.qualification .front .panel { width:30%; }
+.careers-card.qualification .front .action-flip { position:absolute; top:em(19,17); right:0; width:70%; text-align:right; }
+.careers-card.qualification .front .course-leads-to { font-size:em(17); line-height:lh(22,17); line-height:lh(22,17); margin-top:em(22,17); height:em(183,17); overflow:hidden; }
+/* back */
+.careers-card.qualification .back .title { font-size:em(22); line-height:lh(24,22); color:#fff; padding:27px 30px 9px 0; height:115px; } 
+.careers-card.qualification .back .description { font-size:em(16); line-height:lh(21); padding:em(19) 0 0; margin-bottom:em(12); border-top:2px dotted $skillstool_gray_4; height:em(296); overflow:hidden; }
+.careers-card.qualification .back .divider { border-top:2px dotted $skillstool_gray_4; padding:em(19) 0; position:relative; }
+.careers-card.qualification .back .action-flip { position:absolute; top:em(19,17); right:0; width:30%; text-align:right; }
 
 /* Course card variation */
+.careers-card.course { width:em(267); }
 .careers-card.course .liner { height:em(314); padding:0 em(21); }
 .careers-card.course .title { font-size:em(22); line-height:lh(24,22); color:$skillstool_blue_1; padding:em(43,22) em(30,22) em(13,22) 0; }
 .careers-card.course dt { width:35%; color:$skillstool_gray_7; }
 .careers-card.course dd { width:65%; }
-.careers-card.course .button { font-size:em(18); display:block; position:absolute; left:em(21,18); right:em(21,18); min-width:auto; bottom:2em; margin:0 auto; padding:em(12,18) 0; white-space:nowrap; }
+.careers-card.course .button { font-size:em(18); display:block; position:absolute; left:em(21,18); right:em(21,18); min-width:inherit; bottom:2em; margin:0 auto; padding:em(12,18) 0; white-space:nowrap; }
 .careers-card.course .button .icon-arrow-right { font-size:em(21,19); margin-left:0.15em; } 
 
 /* Hidden card variation */
@@ -1041,60 +1044,24 @@ a:hover .button, a:active .button, a:focus .button, .button:hover, .button:activ
 .results-hidden .careers-card .action-reinstate, .results-hidden .careers-card .reinstate-card, .results-hidden .careers-card.course .reinstate-card { display:block; }
 
 /* Card Animation */
-.careers-card.job, .careers-card.qualification { width:100%; @include transform-perspective(1000px); @include transform-style(preserve-3d); position:relative; left:0; z-index:2; }
+.careers-card.job, .careers-card.qualification { @include transform-perspective(1000px); @include transform-style(preserve-3d); position:relative; left:0; z-index:2; }
 .careers-card.job .card, .careers-card.qualification .card { @include transform-style(preserve-3d); @include transition(all, .6s, ease); @include backface-visibility(hidden); @include transform-rotateY(0deg); position:absolute; width:100%; height:100%; }
 .careers-card.job .back, .careers-card.qualification .back { @include transform-rotateY(179deg); }
 .careers-card.flip .front { @include transform-rotateY(-180deg); }
 .careers-card.flip .back { @include transform-rotateY(0deg); }
-.careers-card.removed { opacity:0; /* position:absolute; left:-999px; */}
-
-/* @media only screen and (min-width:600px) { */
-/* Media query has been disabled due to the fact that the mixed length content
-   was overflowing the boxes at various breakpoints - decision was made to fix the heights
-   of the cards entirely - the code below should be moved up, but time didn't allow it. */
-  .careers-card-wrapper { margin-right:em(-30); padding-bottom:em(2); }
-  .careers-card { float:left; margin-right:em(30); margin-bottom:em(38); width:em(367); }
-  .careers-card.course { width:em(267); }
-  .careers-card .image { margin:0 em(5) em(26) 0; }
-  .careers-card .card-actions { font-size:em(22); line-height:lh(37,22); padding:em(16,22) 0 em(20,22); @include border-radius(0 0 em(28,22) em(28,22)); }
-  .careers-card.qualification .card-actions { padding:em(12,22) 0; }
-  .careers-card .action-remove { font-size:em(18); position:absolute; top:em(17,18); right:em(17,18); width:em(30,18); height:em(30,18); height:em(25,18); padding-top:em(4,18); }
-
-  /* Front */
-  .careers-card.job .front .liner { padding-bottom:0; }
-  .careers-card .title { font-size:em(39); line-height:lh(40,39); padding:em(50,39) em(30,39) em(41,39) em(4,39); }
-  .careers-card .front dl { font-size:em(17); line-height:lh(22,17); padding-left:1.5%; }
-  .careers-card.job .front dl, .careers-card.qualification .front dl { width:68%; }
-  .careers-card .front dt, .careers-card .front dd { margin:0; padding:em(9,17) 0; }
-  .careers-card .front .action-flip { padding-top:em(59,17); width:30%; }
-  .careers-card .sectors { top:em(128); }
-  .careers-card.qualification .front header { height:em(189); } /* This is the height that the title needs toi be squashed into */
-  .careers-card.qualification .description { font-size:em(16); padding:em(16) 0; max-height:em(210); }
-  .careers-card.qualification .front .action-flip { padding-top:em(39,17); width:35%; }
-
-  /* Back */
-  .careers-card .back .liner { padding:0 em(20) 0 em(31); }
-  .careers-card .back .title { font-size:em(27); line-height:lh(28,27); padding:em(32,27) em(15,27) em(3,27) em(2,27);  }
-  .careers-card .back .description, .careers-card .action-skills-match, .careers-card .back dl, .careers-card .back .action-joblink-external, .careers-card .action-flip { font-size:em(17); line-height:lh(23,17); }
-  .careers-card .action-skills-match { padding:em(10,17) 0 em(4,17); margin:em(28,17) 0 0; }
-  .careers-card .back dl { line-height:lh(22,17); padding-bottom:em(29); }
-  .careers-card .back dt { font-size:inherit; line-height:lh(23,17); width:34.25%; margin:em(5,17) 0 0; padding:em(12,17) 0 0; }
-  .careers-card .back dd { width:64%; line-height:lh(23,17); margin:em(5,17) 0 0; padding:em(12,17) 0 0; }
-  .careers-card .back .action-joblink-external { padding-top:em(15,17); }
-  .careers-card .back .action-flip { width:39%; }
-
-  /* Qualification card variation */
-  .careers-card.qualification .front dl { font-size:em(14); }
-  .careers-card.qualification .front dt, .careers-card.qualification .front dd { margin:em(5,14) 0 0; padding:em(9,14) 0; }
-  .careers-card.qualification .back .title { font-size:em(22) !important; line-height:lh(24,22); color:#fff; padding:em(29,22) em(30,22) em(5,22) 0; }
-
-/* } */
+.careers-card.removed { opacity:0; }
 
 @media only screen and (min-width:360px) and (max-width:400px) { 
   .careers-card { font-size:90%; }
+  .course-options-panel .page-wrapper:before { left:179px; font-size:75%; }
 }
 @media only screen and (max-width:359px) { 
   .careers-card { font-size:80%; }
+  .course-options-panel .page-wrapper:before { left:162px; font-size:65%; }
+  .careers-card.job .front .title { height:100px; }
+  .careers-card.job .back .description { height:14em; }
+  .careers-card.qualification .front .title { height:120px; }
+  .careers-card.qualification .back .description { height:16.5em; }
 }
 
 /* Card sectors (pie icon) */
@@ -1113,6 +1080,7 @@ a:hover .button, a:active .button, a:focus .button, .button:hover, .button:activ
 /* Simpler list version */
 .sector-simple-list li { position:relative; } 
 .sector-simple-list li:before { font-size:18px; content:"•"; position:absolute; left:-0.9em; top:0.1em; } 
+.modal .sector-simple-list li:before { font-size:24px; top:em(-4,24); }
 .sector-simple-list .sector-yellow:before { color:$sector_yellow; }
 .sector-simple-list .sector-green:before { color:$sector_green; }
 .sector-simple-list .sector-blue:before { color:$sector_blue; }
@@ -1412,7 +1380,7 @@ a:hover .button, a:active .button, a:focus .button, .button:hover, .button:activ
   .desktop { visibility:visible; position:inherit; left:inherit; width:inherit; overflow:inherit; opacity:1; }
 }
 
-
+@import "react-select";
 
 /* 
  TEMPORARY (DURING DEVELOPMENT)

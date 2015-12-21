@@ -4,11 +4,12 @@
 
 import React from 'react';
 import Tooltip from 'rc-tooltip';
+import scrollTo from '../../../libs/scrollTo/scrollTo.js';
 
 class MainPanel extends React.Component {
 
   render() {
-    const { CourseTitle, ProviderName, Intro, Blurb, Summary } = this.props.course.CourseDetails;
+    const { CourseTitle, ProviderName, Intro, Blurb, Summary, Link } = this.props.course.CourseDetails;
 
     return (
       <article className="course-detail">
@@ -20,9 +21,21 @@ class MainPanel extends React.Component {
             <div className="course-intro" dangerouslySetInnerHTML={{__html: Intro}}/>
             <figure className="intro-image" dangerouslySetInnerHTML={{__html: Blurb}} />
             <ul className="course-links">
-              <li><a href="#panel-next-steps"><strong>Take the next step</strong> <span className="icon-arrow-down"></span></a></li>
-              <li><a href="#panel-worried-about">I'm worried about something <span className="icon-arrow-down"></span></a></li>
-              <li><a href="#panel-jobs">Which jobs can I get with this course?<span className="icon-arrow-down"></span></a></li>
+              <li>
+                <a href="javascript:void 0" onClick={() => scrollTo('panel-next-steps', 0)}>
+                  <strong>Take the next step</strong> <span className="icon-arrow-down"></span>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:void 0" onClick={() => scrollTo('panel-worried-about', 0)}>
+                  I'm worried about something <span className="icon-arrow-down"></span>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:void 0" onClick={() => scrollTo('panel-jobs', 0)}>
+                  Which jobs can I get with this course?<span className="icon-arrow-down"></span>
+                </a>
+              </li>
             </ul>
           </div>
           <div className="layout-col-5 layout-col">
@@ -67,7 +80,7 @@ class MainPanel extends React.Component {
               </dd>
             </dl>
             <ul className="course-links">
-              <li><a href="#">More information on the Careers NZ website <span className="icon-arrow-right"></span></a></li>
+              <li><a href={Link}>More information on the Careers NZ website <span className="icon-arrow-right"></span></a></li>
             </ul>
           </div>
         </div>

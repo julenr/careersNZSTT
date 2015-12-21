@@ -3,21 +3,19 @@
  */
 import uuid from 'node-uuid';
 import _ from 'lodash';
-import logLite from '../../libs/logLite';
 import * as paginationConstants from '../../constants/pagination-constants'
 
-let logger = logLite.getLogger('list view reducer');
+const cardsIncrement = 9;
 
 const listViewInitialState = {
   loaded: false,
   MainPanelSplitIndexCard: -1,  //This index value specifies which index Job/Qualification card is the point to split to insert the second panel
-  SecondPanelSplitIndexCard: -1, //This index value specifies which index Qualification card is the point to insert Provider Panel
+  QualificationsPanelSplitIndexCard: -1, //This index value specifies which index Qualification card is the point to insert Provider Panel
   QualificationsPanelLoaded: false,
   InstitutionsPanelLoaded: false,
   ShowMatchSkillsModal: false,
   CheckSkillsID: 0,
   ShowRemoveJobCardModal: false,
-  ShowVocationalPathwaysModal: false,
   ShowRemoveQualificationCardModal: false,
   RemoveQualificationCardModalID: -1,
   ShowRemoveInstitutionCardModal: false,
@@ -28,6 +26,7 @@ const listViewInitialState = {
   JobCardSelectedID: -1,
   QualificationCardSelectedID: 0,
   ShowInstitutionsPanel: false,
+  QualificationsCardsShown: 9,
   PaginationLimit: paginationConstants.paginationInitialLimit,
   data: {
     'refresh': false,
@@ -39,7 +38,7 @@ const listViewInitialState = {
       'QualificationCards': [],
       'QualificationCardsFiltered': 0,
       'ShowAddPreferenceModal': false,
-      'Region': 'All'
+      'Region': 'Anywhere'
     },
     'JobsCards': [],
     'QualificationsPanel': {},
@@ -118,7 +117,7 @@ export function _listViewData(state = listViewInitialState, action = {}) {
             card.Filtered = true;
             count += 1;
           } else { // If card is not affected by any filter check if the current region must be applied
-            if( newState.data.Filters.Region !== 'All' &&
+            if( newState.data.Filters.Region.search('Anywhere') === -1 &&
                 _.findIndex(card.Regions, (region) => region === newState.data.Filters.Region) === -1
             ) {
               card.Filtered = true;
@@ -216,12 +215,6 @@ export function _listViewData(state = listViewInitialState, action = {}) {
     case 'OPEN_REMOVE_JOB_CARD_MODAL':
       newState.ShowRemoveJobCardModal = true;
       return newState;
-    case 'CLOSE_VOCATIONAL_PATHWAYS_MODAL':
-      newState.ShowVocationalPathwaysModal = false;
-      return newState;
-    case 'OPEN_VOCATIONAL_PATHWAYS_MODAL':
-      newState.ShowVocationalPathwaysModal = true;
-      return newState;
 
     case 'SHOW_MATCH_SKILLS_MODAL':
       newState.CheckSkillsID = action.idJobCard;
@@ -251,6 +244,7 @@ export function _listViewData(state = listViewInitialState, action = {}) {
       return newState;
     case 'OPEN_QUALIFICATIONS_PANEL':
       newState.ShowQualificationsPanel = true;
+      newState.QualificationsCardsShown = 9;
       return newState;
     case 'CLOSE_QUALIFICATION_CARD':
       newState.data.QualificationsPanel.Courses[action.qualificationID].Closed = true;
@@ -323,7 +317,7 @@ export function _listViewData(state = listViewInitialState, action = {}) {
       newState.ShowFullQualificationCardDescriptionModal = false;
       newState.PaginationLimit = paginationConstants.paginationInitialLimit;
       newState.MainPanelSplitIndexCard = -1;
-      newState.SecondPanelSplitIndexCard = -1;
+      newState.QualificationsPanelSplitIndexCard = -1;
       return newState;
     }
     case 'TOGGLE_LIST_TYPE_OPTIONS': {
@@ -332,11 +326,15 @@ export function _listViewData(state = listViewInitialState, action = {}) {
       return newState;
     }
     case 'SET_SPLIT_INDEX_CARD_POINT': {
-      if(newState.ListType === action.listType){
-        newState.SecondPanelSplitIndexCard = action.indexCard;
-      } else {
+      if(newState.data.ListType === action.listType){ //Check which panel to split
         newState.MainPanelSplitIndexCard = action.indexCard;
+      } else {
+        newState.QualificationsPanelSplitIndexCard = action.indexCard;
       }
+      return newState;
+    }
+    case 'INCREASE_QUALIFICATIONS_CARDS_SHOWN': {
+      newState.QualificationsCardsShown += cardsIncrement;
       return newState;
     }
     default:

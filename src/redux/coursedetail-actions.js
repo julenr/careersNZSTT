@@ -1,8 +1,6 @@
 import axios from 'axios';
 import _ from 'lodash';
-import logLite from '../libs/logLite';
 
-let logger = logLite.getLogger('general actions');
 const appID = document.getElementsByTagName('body')[0].getAttribute('data-application-id');
 
 if (__DEV__){
@@ -18,9 +16,9 @@ export function getCourseDetails(courseID) {
           return {data: response.data};
         })
         .catch(function (response) {
-          logger.log(response);
+          console.log(response);
           if (__DEV__) {
-            logger.log('Using fake data');
+            console.log('Using fake data');
             return {data: _.cloneDeep(fakeData.courseDetail)};
           }
         });
@@ -33,6 +31,17 @@ export function flipJobCard(jobID) {
   return {
     type: 'FLIP_COURSE_DETAIL_JOB_CARD',
     jobID
+  }
+}
+
+export function closeVocationalPathwaysModal() {
+  return {
+    type: 'CLOSE_VOCATIONAL_PATHWAYS_MODAL'
+  }
+}
+export function openVocationalPathwaysModal() {
+  return {
+    type: 'OPEN_VOCATIONAL_PATHWAYS_MODAL'
   }
 }
 
@@ -71,5 +80,17 @@ export function removeBarrierActionFromPlan(actionID, barrierID, course, Title) 
     course: course,
     courseID: course.CourseDetails.ID,
     title: Title
+  }
+}
+
+export function openMatchSkillsModal(idJobCard) {
+  return {
+    type: 'SHOW_MATCH_SKILLS_MODAL_COURSE_DETAIL',
+    idJobCard
+  }
+}
+export function closeMatchSkillsModal() {
+  return {
+    type: 'CLOSE_MATCH_SKILLS_MODAL_COURSE_DETAIL'
   }
 }

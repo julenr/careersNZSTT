@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 
 import * as actionCreators from '../../redux/coursedetail-actions';
 import { setCurrentRoute } from '../../redux/general-actions';
+import { openMatchSkillsModal } from '../../redux/listview-actions';
 
 import Footer from '../Footer/Footer';
 import ActionPlanDrawer from '../ActionPlanDrawer/ActionPlanDrawer';
@@ -22,7 +23,11 @@ function mapStateToProps(state) {
     loaded: state._courseDetail.loaded,
     refresh: state._courseDetail.refresh,
     course: state._courseDetail.data,
-    tooltips: state._footerData.data.Tooltips
+    tooltips: state._footerData.data.Tooltips,
+    vocationalPathways: state._footerData.data.VocationalPathways,
+    showMatchSkillsModalCourseDetail: state._courseDetail.ShowMatchSkillsModalCourseDetail,
+    checkSkillsIDCourseDetail: state._courseDetail.CheckSkillsIDCourseDetail,
+    selectedSkills: state._questionnaire.data.Skills.Selected
   };
 }
 
@@ -41,7 +46,6 @@ class CourseDetail extends React.Component {
   }
 }
 
-
 class Content extends React.Component {
 
   componentDidMount() {
@@ -56,10 +60,13 @@ class Content extends React.Component {
             <Link to="list-view">Back to job/course suggestions</Link>
           </div>
           <MainPanel {...this.props} />
+          <div id="panel-next-steps" />
           <NextStepsPanel {...this.props} />
+          <div id="panel-worried-about" />
           <BarriersPanel {...this.props} />
-          <JobsPanel {...this.props} />
-          <CoursePanel />
+          <div id="panel-jobs" />
+          {(this.props.course.Jobs.JobsCards.length) ? <JobsPanel {...this.props} /> : ''}
+          {(this.props.course.Courses.Institutions.length) ? <CoursePanel {...this.props} /> : ''}
         </div>
         <ActionPlanDrawer />
         <Footer />
@@ -72,7 +79,8 @@ export default connect(
   mapStateToProps,
   {
     ...actionCreators,
-    setCurrentRoute
+    setCurrentRoute,
+    openMatchSkillsModal
   }
 )(CourseDetail);
 

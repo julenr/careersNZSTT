@@ -8,6 +8,7 @@ import Modal from 'react-modal';
 const FullQualificationCardDescriptionModal = (props) => {
   const { qualificationCardSelectedID } = props;
   const qualificationCard = props.qualificationsPanel.Courses[qualificationCardSelectedID];
+
   return (
     <Modal isOpen={props.showFullQualificationCardDescriptionModal} onRequestClose={() => closeModal(props)}>
       <div className="modal-table">
@@ -17,7 +18,7 @@ const FullQualificationCardDescriptionModal = (props) => {
               (qualificationCard) ?
                 [
                   <h2 key="0" className="modal-title">{qualificationCard.Title}</h2>,
-                  <div key="1" dangerouslySetInnerHTML={{__html: qualificationCard.DescriptionText}} />
+                  <div key="1" dangerouslySetInnerHTML={{__html: qualificationCard.Description}} />
                   ]
                 :
                 <span/>

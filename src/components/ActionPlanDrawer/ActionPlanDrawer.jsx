@@ -39,13 +39,16 @@ function isUserAddedActionsEmpty(userAddedActions) {
 
 class ActionPlanDrawer extends React.Component {
 
-
   componentDidMount() {
-    window.addEventListener('resize', this.closeActionPlan);
+    if (window.addEventListener) {
+      window.addEventListener('resize', this.closeActionPlan, false);
+    }
+    else {
+      window.attachEvent('resize', this.closeActionPlan);
+    }
   }
 
   render () {
-
     const { actionPlanOpen, suggestedActions, userAddedActions,
             isUserAddedActionsEmpty, noResultsTitle,
             noResultsText
@@ -88,7 +91,7 @@ class ActionPlanDrawer extends React.Component {
                         <ul>
                           <li><a href={this.props.helpPopup.Link1Link} target={this.props.helpPopup.Link1OpenInNewTab ? '_blank':'_self'} className="help-panel-button">{this.props.helpPopup.Link1Text}</a></li>
                           <li><a href={this.props.helpPopup.Link2Link} target={this.props.helpPopup.Link2OpenInNewTab ? '_blank':'_self'} className="help-panel-button">{this.props.helpPopup.Link2Text}</a></li>
-                          <li><a href={this.props.helpPopup.Link2Link} target={this.props.helpPopup.Link3OpenInNewTab ? '_blank':'_self'} className="help-panel-button">{this.props.helpPopup.Link3Text}</a></li>
+                          <li><a href={this.props.helpPopup.Link3Link} target={this.props.helpPopup.Link3OpenInNewTab ? '_blank':'_self'} className="help-panel-button">{this.props.helpPopup.Link3Text}</a></li>
                         </ul>
                       </div>
                     </div>
@@ -97,7 +100,7 @@ class ActionPlanDrawer extends React.Component {
                 >
                 <div className="plan-help-popup" onClick={this.dismissFirstTimeHelpPopup}>
                   <a href="javascript: void 0;" className="help-trigger">
-                    <img className="avatar" src={require('../../assets/images/placeholders/action-plan-help-avatar-1.jpg')} alt="Help assistant. " width="54" height="54" />
+                    <img className="avatar" src={require('../../assets/images/placeholders/action-plan-help-avatar-2.jpg')} alt="Help assistant. " width="54" height="54" />
                     <span className="text">Need help?</span>
                   </a>
                 </div>
@@ -130,26 +133,19 @@ class ActionPlanDrawer extends React.Component {
             </div>
           </header>
           <div className="plan-liner" style={linerStyle}>
-
             <section className="plan-content">
               <div className="page-wrapper" style={{'maxHeight': '625px'}}>
-
                 <h2 className="access">Action plans</h2>
-
                   <ActionPlanList isSuggestedActions {...this.props} title={suggestedActionsTitle}
                                 actions={suggestedActions}/>
-
                 {
                   (isUserAddedActionsEmpty) ?
                     <section className="layout-col-4 layout-col plan-suggestion-actions"><h3>{noResultsTitle}</h3>
                     <div dangerouslySetInnerHTML={{__html:noResultsText}}/></section>
                     : userAddedActions.map(this.renderUserAddedAction)
                 }
-
-
               </div>
             </section>
-
             <footer className="plan-footer" style={{display: 'none'}}>
               <div className="page-wrapper">
 
@@ -161,7 +157,6 @@ class ActionPlanDrawer extends React.Component {
 
               </div>
             </footer>
-
           </div>
           <RemoveActionModal {...this.props}/>
         </section>

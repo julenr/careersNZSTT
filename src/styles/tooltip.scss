@@ -29,7 +29,7 @@
             max-width:em(304);
         }
 
-        .rc-tooltip-inner:before { content:""; position:absolute; left:em(20); top:em(15); width:em(54); height:em(54); background:url(../assets/images/placeholders/action-plan-help-avatar-1.jpg) no-repeat; @include background-size(contain); @include border-radius(50%); border:2px solid #fff; }
+        .rc-tooltip-inner:before { content:""; position:absolute; left:em(20); top:em(15); width:em(54); height:em(54); background:url(../assets/images/placeholders/action-plan-help-avatar-2.jpg) no-repeat; @include background-size(contain); @include border-radius(50%); border:2px solid #fff; }
     }
 
     &.no-arrow {
@@ -208,7 +208,7 @@
 }
 
 //This class is for avoid the modals to scroll the underlying page
-.ReactCustonModal {
+.ReactCustomModal {
     overflow-y: hidden;
 }
 

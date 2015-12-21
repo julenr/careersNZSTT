@@ -29,15 +29,29 @@
     <meta name="theme-color" content="#ffffff">
 
     {% for (var css in o.htmlWebpackPlugin.files.css) { %}
-    <link href="{%=o.htmlWebpackPlugin.files.css[css] %}" rel="stylesheet">
+      <link href="{%=o.htmlWebpackPlugin.files.css[css] %}" rel="stylesheet">
     {% } %}
+
+    <script>
+      (function(){
+        var ef = function(){};
+        window.console = window.console || {log:ef,warn:ef,error:ef,dir:ef};
+      }());
+    </script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv-printshiv.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/es5-shim/3.4.0/es5-shim.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/es5-shim/3.4.0/es5-sham.js"></script>
+
     <!--[if lte IE 8]>
-    <link rel="stylesheet" href="./css/browser/ie8.css" media="all" />
-    <script src="./ie8/respond.min.js"></script>
+      <link rel="stylesheet" href="./css/browser/ie8.css" media="all" />
+      <script src="./ie8/respond.min.js"></script>
     <![endif]-->
+
     <!--[if IE 9]>
-    <link rel="stylesheet" href="./css/browser/ie9.css" media="all" />
+      <link rel="stylesheet" href="./css/browser/ie9.css" media="all" />
     <![endif]-->
+
     <!-- Scripts -->
 
     <!-- Hide Unsuported Browser or JavaScript disabled message before checking -->

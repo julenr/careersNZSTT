@@ -9,6 +9,7 @@ import _ from 'lodash';
 
 const footerInitialState = {
   loaded: false,
+  ShowVocationalPathwaysModal: false,
     data: {
     PopularJobs: {
       Jobs: [],
@@ -35,22 +36,25 @@ export function _footerData(state = footerInitialState, action = {}) {
     case 'GET_FOOTER_DATA_SUCCESS':
       newState.data = action.result.data;
       newState.data.PopularJobs.Skills = [];
-      newState.data.Regions.push('All');
-      newState.loaded =  true;
+      newState.data.Regions.push('Anywhere');
+      newState.loaded = true;
       newState.showSkillsModal = false;
       newState.showAddSkillsModal = false;
       newState.addSkillsToQuestionID = null;
       newState.showCheckSkillsModal = false;
       newState.showResetToolModal = false;
+      newState.ShowVocationalPathwaysModal = false;
       return newState;
     case 'GET_FOOTER_DATA_FAILURE':
       newState.data = action.result.data;
       newState.data.PopularJobs.Skills = [];
-      newState.loaded =  true;
+      newState.data.Regions.push('Anywhere');
+      newState.loaded = true;
       newState.showSkillsModal = false;
       newState.showAddSkillsModal = false;
       newState.showCheckSkillsModal = false;
       newState.showResetToolModal = false;
+      newState.ShowVocationalPathwaysModal = false;
       return newState;
 
     case 'SHOW_SKILLS_MODAL':
@@ -64,6 +68,14 @@ export function _footerData(state = footerInitialState, action = {}) {
         ...state,
         showSkillsModal: false
       };
+
+    case 'CLOSE_VOCATIONAL_PATHWAYS_MODAL':
+      newState.ShowVocationalPathwaysModal = false;
+      return newState;
+    case 'OPEN_VOCATIONAL_PATHWAYS_MODAL':
+      newState.ShowVocationalPathwaysModal = true;
+      return newState;
+
 
     case 'SHOW_ADD_SKILLS_MODAL':
       return {

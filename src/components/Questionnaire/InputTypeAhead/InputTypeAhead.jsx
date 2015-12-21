@@ -6,7 +6,6 @@ import ReactDOM from 'react-dom';
 import _ from 'lodash';
 import classNames from 'classnames';
 import scrollTo from '../../../libs/scrollTo/scrollTo.js';
-import uuid from 'node-uuid';
 
 import Typeahead from '../../subcomponents/Autocomplete/Autocomplete';
 import Avatar from '../../subcomponents/Avatar';
@@ -50,7 +49,7 @@ class InputTypeAhead extends React.Component {
         background: '#fff',
         border: '1px solid #a3a3a3',
         position: 'static',
-        zIndex: '1',
+        zIndex: '2',
         WebkitBorderRadius: '1.3125em 1.3125em 0 0',
         borderRadius: '1.3125em 1.3125em 0 0',
         padding: '0.75em 0 0.5EM',
@@ -78,16 +77,11 @@ class InputTypeAhead extends React.Component {
               onChange={ (event, value) => this.valueChanged(event, value, question.Endpoint) }
               onSelect={ (value) => this.itemSelected(value) }
               renderItem={(item, isHighlighted) => (
-                  <div
-                    style={isHighlighted ? styles.highlightedItem : styles.item}
-                    key={uuid.v1()}
-                    id={uuid.v1()}
-                    >
+                  <div style={isHighlighted ? styles.highlightedItem : styles.item}>
                     {item.Title}
                   </div>
                 )}
               menuStyle={styles.menu}
-              callback={(a) => this.callback(a, question.Endpoint)}
               />
               <br/>
             {
@@ -115,10 +109,6 @@ class InputTypeAhead extends React.Component {
         <span id={this.scrollElementID}></span>
       </div>
     );
-  }
-
-  callback = (value) => {
-    this.props.setTypeAheadText(this.props.id, value);
   }
 
   valueChanged = (event, value, endPoint) => {

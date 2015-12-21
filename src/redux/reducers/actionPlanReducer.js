@@ -31,33 +31,25 @@ export function _actionPlanData(state = actionPlanInitialState, action = {}) {
 
 
     case 'MARK_SUGGESTED_ACTION_COMPLETED': {
-      if(Number.isInteger(action.cardIndex)) {
-        newState.data.SuggestedActions = newState.data.SuggestedActions.slice();
-        newState.data.SuggestedActions[action.cardIndex].completed = true;
-        newState.data.DrawerActionCompletionInProgress = true;
-      }
+      newState.data.SuggestedActions = newState.data.SuggestedActions.slice();
+      newState.data.SuggestedActions[action.cardIndex].completed = true;
+      newState.data.DrawerActionCompletionInProgress = true;
       return newState;
     }
     case 'UNMARK_SUGGESTED_ACTION_COMPLETED': {
-      if(Number.isInteger(action.cardIndex)) {
-        newState.data.SuggestedActions = newState.data.SuggestedActions.slice();
-        newState.data.SuggestedActions[action.cardIndex].completed = false;
-        newState.data.DrawerActionCompletionInProgress = true;
-      }
+      newState.data.SuggestedActions = newState.data.SuggestedActions.slice();
+      newState.data.SuggestedActions[action.cardIndex].completed = false;
+      newState.data.DrawerActionCompletionInProgress = true;
       return newState;
     }
     case 'MARK_SUGGESTED_ACTION_MINIMISED': {
-      if(Number.isInteger(action.cardIndex)) {
-        newState.data.SuggestedActions = newState.data.SuggestedActions.slice();
-        newState.data.SuggestedActions[action.cardIndex].minimised = true;
-      }
+      newState.data.SuggestedActions = newState.data.SuggestedActions.slice();
+      newState.data.SuggestedActions[action.cardIndex].minimised = true;
       return newState;
     }
     case 'UNMARK_SUGGESTED_ACTION_MINIMISED':{
-      if(Number.isInteger(action.cardIndex)) {
-        newState.data.SuggestedActions = newState.data.SuggestedActions.slice();
-        newState.data.SuggestedActions[action.cardIndex].minimised = false;
-      }
+      newState.data.SuggestedActions = newState.data.SuggestedActions.slice();
+      newState.data.SuggestedActions[action.cardIndex].minimised = false;
       return newState;
     }
     case 'MARK_USER_ADDED_ACTION_COMPLETE':{
@@ -113,30 +105,24 @@ export function _actionPlanData(state = actionPlanInitialState, action = {}) {
       return newState;
     }
     case 'MOVE_SUGGESTED_ACTION_LAST': {
-      if(Number.isInteger(action.cardIndex)) {
-        newState.data.SuggestedActions = newState.data.SuggestedActions.slice();
-        let actionCard = newState.data.SuggestedActions.splice(action.cardIndex, 1)[0];
-        newState.data.SuggestedActions.push(actionCard);
-        newState.data.DrawerActionCompletionInProgress = false;
-      }
+      newState.data.SuggestedActions = newState.data.SuggestedActions.slice();
+      let actionCard = newState.data.SuggestedActions.splice(action.cardIndex, 1)[0];
+      newState.data.SuggestedActions.push(actionCard);
+      newState.data.DrawerActionCompletionInProgress = false;
       return newState;
     }
     case 'MOVE_SUGGESTED_ACTION_FIRST': {
-      if(Number.isInteger(action.cardIndex)) {
-        newState.data.SuggestedActions = newState.data.SuggestedActions.slice();
-        let actionCard = newState.data.SuggestedActions.splice(action.cardIndex, 1)[0];
-        newState.data.SuggestedActions.unshift(actionCard);
-        newState.data.DrawerActionCompletionInProgress = false;
-      }
+      newState.data.SuggestedActions = newState.data.SuggestedActions.slice();
+      let actionCard = newState.data.SuggestedActions.splice(action.cardIndex, 1)[0];
+      newState.data.SuggestedActions.unshift(actionCard);
+      newState.data.DrawerActionCompletionInProgress = false;
       return newState;
     }
 
 
     case 'REMOVE_SUGGESTED_ACTION':
-      if(Number.isInteger(action.cardIndex)) {
-        newState.data.SuggestedActions = newState.data.SuggestedActions.slice();
-        newState.data.SuggestedActions.splice(action.cardIndex, 1);
-      }
+      newState.data.SuggestedActions = newState.data.SuggestedActions.slice();
+      newState.data.SuggestedActions.splice(action.cardIndex, 1);
       return newState;
     case 'SHOW_REMOVE_ACTION_MODAL':
       newState.data.IsRemoveActionModalShown = true;
@@ -158,7 +144,11 @@ export function _actionPlanData(state = actionPlanInitialState, action = {}) {
     case 'ADD_BARRIER_ACTION_TO_PLAN':
     case 'ADD_ACTION_TO_PLAN':
       newState.data.UserAddedActions = newState.data.UserAddedActions.slice();
-      let courseId = action.course.CourseDetails.ID || -1;
+
+      console.log('ACTION', action);
+      console.log('USER ADDED ACTIONS:', newState.data.UserAddedActions);
+
+      let courseId = action.course.CourseDetails.CourseID || -1;
       let course = findOrAddUserAddedActionsCourse(newState.data.UserAddedActions, courseId,
         action.course.CourseDetails.CourseTitle);
 
@@ -173,7 +163,7 @@ export function _actionPlanData(state = actionPlanInitialState, action = {}) {
     case 'REMOVE_ACTION_FROM_PLAN':
     case 'REMOVE_BARRIER_ACTION_FROM_PLAN':
       newState.data.UserAddedActions = newState.data.UserAddedActions.slice();
-      let removeCourseId = action.courseID|| -1;
+      let removeCourseId = action.courseID || -1;
       let removeCourse = findUserAddedActionsCourse(newState.data.UserAddedActions, removeCourseId);
       if(removeCourse) {
         _.remove(removeCourse.actions, (courseAction) => courseAction.actionId === action.actionID);

@@ -2,12 +2,8 @@
  * Created by jr1500 on 9/09/15.
  */
 
-import logLite from './libs/logLite';
-
-let logger = logLite.getLogger('index');
-
 if (__DEV__) {
-  logger.log('DEVELOPMENT ENVIRONMENT ACTIVATED');
+  console.log('DEVELOPMENT ENVIRONMENT ACTIVATED');
 }
 
 // SASS Stylesheets
@@ -36,7 +32,7 @@ import Questionnaire from './components/Questionnaire/Questionnaire.jsx';
 import ListView from './components/ListView/ListView.jsx';
 import CourseDetail from './components/CourseDetail/CourseDetail.jsx';
 
-//Polifill Promise for axios
+//Polifill ES6 Promise for axios and any other modules
 es6Promise.polyfill();
 
 // Element to attach React-DOM

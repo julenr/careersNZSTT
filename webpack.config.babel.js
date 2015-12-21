@@ -3,7 +3,6 @@
  */
 
 import fs from 'fs';
-import React from 'react';
 import path from 'path';
 import webpack from 'webpack';
 import HtmlwebpackPlugin from 'html-webpack-plugin';
@@ -16,7 +15,7 @@ import pkg from './package.json';
 
 const TARGET = process.env.npm_lifecycle_event;
 const ROOT_PATH = path.resolve(__dirname);
-const APP_TITLE = 'Skills Transition Tool - Careers New Zealand';
+const APP_TITLE = 'Skills Builder Tool - Careers New Zealand';
 
 process.env.BABEL_ENV = TARGET;
 
@@ -42,7 +41,7 @@ const common = {
 
 if(TARGET === 'start' || !TARGET) {
   module.exports = merge(common, {
-    devtool: 'eval-source-map',
+    devtool: '#eval-source-map',
     module: {
       loaders: [
         {
@@ -84,7 +83,7 @@ if(TARGET === 'start' || !TARGET) {
       watchOptions: {
         poll: 1000
       },
-      host: "0.0.0.0"
+      host: '0.0.0.0'
     },
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
@@ -97,7 +96,8 @@ if(TARGET === 'start' || !TARGET) {
       }),
       new CopyWebpackPlugin([
         { from: './src/assets/images/favicon', to: './images/favicon' },
-        { from: './src/styles/browser', to: './css/browser' }
+        { from: './src/styles/browser', to: './css/browser' },
+        { from: './src/assets/ie8', to: './ie8' }
       ])
     ]
   });
@@ -160,11 +160,11 @@ if(TARGET === 'build') {
         },
         '__DEV__': JSON.stringify(JSON.parse('false'))
       }),
-      new webpack.optimize.UglifyJsPlugin({
-        compress: {
-          warnings: false
-        }
-      }),
+      //new webpack.optimize.UglifyJsPlugin({
+      //  compress: {
+      //    warnings: false
+      //  }
+      //}),
       new HtmlwebpackPlugin({
         title: APP_TITLE,
         template: './templates/index-production.tpl'

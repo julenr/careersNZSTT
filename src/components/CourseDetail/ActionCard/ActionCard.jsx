@@ -17,10 +17,6 @@ const ActionCard = (props) => {
   return (
     <div className="action-card">
       <div dangerouslySetInnerHTML={{__html: Title}} />
-      <p className="title">
-        <a href="javascript: void 0"> get started</a>
-        <a className="print" href="javascript: void 0">http://shorturl/xyz</a>
-      </p>
       <a href="javascript: void 0" className={ classes } onClick={() => toggleCardInActionPlan(ActionID, props)}>
         <span className="text-1">Add to plan</span>
         <span className="text-2">Added</span>

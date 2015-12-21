@@ -27,13 +27,13 @@ class LoginModal extends React.Component {
     return (
       <Modal isOpen={this.props.showLoginModal} onRequestClose={this.closeModal}>
           <div className="modal-table"><div className="modal-liner"><div className="modal modal-login" onKeyUp={(e) =>{
-                      if(e.key === 'Enter') {
-                        this.login(email.value, password.value, remember_me.checked);
-                      } else {
-                        this.resetTooltip(e);
-                      }
-                    }
-                  }>
+                if(e.key === 'Enter') {
+                  this.login(email.value, password.value, remember_me.checked);
+                } else {
+                  this.resetTooltip(e);
+                }
+              }
+            }>
             <h2 className="modal-title">Log in to load your details</h2>
             <div className="form">
               <div className="fieldset">
@@ -105,9 +105,9 @@ class LoginModal extends React.Component {
               </Tooltip>
 
               <br/>
-              <a href="javascript: void 0" className="button-simple">Don't have a MyCareerPortfolio
+              <a href={this.props.loginForm.RegisterLink} className="button-simple">Don't have a MyCareerPortfolio
                 account? Create one</a><br/>
-              <a href="javascript: void 0" className="button-simple">Forgotten your password?</a>
+              <a href={this.props.loginForm.LostPasswordLink} className="button-simple">Forgotten your password?</a>
             </div>
             <a className="action-close icon-cross" href="javascript: void 0"
                onClick={this.closeModal}>&nbsp;</a>

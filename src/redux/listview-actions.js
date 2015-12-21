@@ -5,9 +5,7 @@
 import axios from 'axios';
 import store from './create-store';
 import _ from 'lodash';
-import logLite from '../libs/logLite';
 
-let logger = logLite.getLogger('listview actions');
 const appID = document.getElementsByTagName('body')[0].getAttribute('data-application-id');
 
 if (__DEV__){
@@ -144,10 +142,10 @@ export function setCurrentJobID(jobCardID) {
   }
 }
 
-export function setCurrentQualificationID(qualificationID) {
+export function setCurrentQualificationID(qualificationCardID) {
   return {
-    type: 'SET_CURRENT_QUALIFICATION_ID',
-    qualificationID
+    type: 'SET_CURRENT_QUALIFICATION_CARD_ID',
+    qualificationCardID
   }
 }
 
@@ -182,6 +180,12 @@ export function closeHelpPanel(panelID) {
   }
 }
 
+export function increaseQualificationsCardsShown() {
+  return {
+    type: 'INCREASE_QUALIFICATIONS_CARDS_SHOWN'
+  }
+}
+
 export function getQualificationsByJob(jobID) {
   return {
     types: ['GET_QUALIFICATIONS_BY_JOB_REQUEST', 'GET_QUALIFICATIONS_BY_JOB_SUCCESS', 'GET_QUALIFICATIONS_BY_JOB_FAILURE'],
@@ -191,9 +195,9 @@ export function getQualificationsByJob(jobID) {
             return {data: response.data};
           })
           .catch(function (response) {
-            logger.log(response);
+            console.log(response);
             if (__DEV__) {
-              logger.log('Using fake data');
+              console.log('Using fake data');
               let fakeCourses = {
                 EntryRequirements: '\n<p>To become a conservator you need a tertiary qualification in conservation studies. Employers increasingly prefer candidates with a Master of Arts in conservation studies. This degree is only available overseas, in countries such as Australia, the United Kingdom and Canada.<\/p><h3>Qualifications available in Australia<\/h3>\n<ul>\n<li>The nearest university offering\u00a0a relevant\u00a0Master of Arts is the University of Melbourne, Australia. An undergraduates degree in subjects such as cultural heritage studies, archaeology, art anthropology, organic chemistry, science, art history, or fine arts is\u00a0needed to enter postgraduate training.<\/li>\n<li>The nearest\u00a0university offering a Bachelor of Cultural Heritage\u00a0Conservation is the University of Canberra, Australia.<\/li>\n<\/ul>\n<ul>\n<li><a title=\"Information on the Bachelor of Heritage, Museum and Conservation at Canberra University.\" href=\"http:\/\/www.canberra.edu.au\/coursesandunits\/course?course_cd=215JA\">University of Canberra website - information on the Bachelor of Heritage, Museums and Conservation<\/a><\/li>\n<li><a class=\"external\" href=\"http:\/\/www.victoria.ac.nz\/scps\/study\/postgraduate-study\/heritage-materials-science\/default.aspx\" target=\"_blank\">Victoria University of Wellington website - information on postgraduate programmes in heritage materials<\/a><\/li>\n<li><a class=\"external\" href=\"http:\/\/cultural-conservation.unimelb.edu.au\/students\/courses\/masters-coursework.html\" target=\"_blank\">University of Melbourne website - information on the Master of Cultural Material Conservation<\/a><\/li>\n<\/ul>\n',
                 EntryRequirementsSummary: '<p>To become a conservator you need a tertiary qualification in conservation studies. Employers increasingly prefer candidates with a Master of Arts in conservation studies. This degree is only available overseas, in countries such as Australia, the United Kingdom and Canada.<\/p>',
@@ -217,9 +221,9 @@ export function getInstitutionByID(qualificationID) {
             return {data: response.data.CourseCards};
           })
           .catch(function (response) {
-            logger.log(response);
+            console.log(response);
             if (__DEV__) {
-              logger.log('Using fake data');
+              console.log('Using fake data');
               return {data: _.clone(fakeData.listViewData.InstitutionsPanel.CourseCards, true)};
             }
           });
@@ -298,11 +302,7 @@ export function openRemoveJobCardModal() {
     type: 'OPEN_REMOVE_JOB_CARD_MODAL'
   }
 }
-export function closeVocationalPathwaysModal() {
-  return {
-    type: 'CLOSE_VOCATIONAL_PATHWAYS_MODAL'
-  }
-}
+
 export function openVocationalPathwaysModal() {
   return {
     type: 'OPEN_VOCATIONAL_PATHWAYS_MODAL'

@@ -17,7 +17,6 @@ import ActionPlanDrawer from '../ActionPlanDrawer/ActionPlanDrawer';
 import JobCard from './JobCard/JobCard';
 import QualificationCard from './QualificationCard/QualificationCard';
 import RemoveJobCardModal from './JobCard/RemoveJobCardModal';
-import VocationalPathwaysModal from './JobCard/VocationalPathwaysModal';
 import ListViewHeader from './ListViewHeader/ListViewHeader';
 import QualificationsPanel from './QualificationsPanel/QualificationsPanel';
 import EntryRequirementsModal from './QualificationsPanel/EntryRequirementsModal';
@@ -35,9 +34,8 @@ function mapStateToProps(state) {
   return {
     ListType: state._listViewData.data.ListType,
     loaded: state._listViewData.loaded,
-
     mainPanelSplitIndexPoint: state._listViewData.MainPanelSplitIndexCard,
-
+    qualificationsPanelSplitIndexCard: state._listViewData.QualificationsPanelSplitIndexCard,
     qualificationsPanelLoaded: state._listViewData.QualificationsPanelLoaded,
     institutionsPanelLoaded: state._listViewData.InstitutionsPanelLoaded,
     showMatchSkillsModal: state._listViewData.ShowMatchSkillsModal,
@@ -46,6 +44,7 @@ function mapStateToProps(state) {
     helpPanels: state._listViewData.data.HelpPanels,
     undoPanel: state._listViewData.data.UndoPanel,
     qualificationsPanel: state._listViewData.data.QualificationsPanel,
+    qualificationsCardsShown: state._listViewData.QualificationsCardsShown,
     showQualificationsPanel: state._listViewData.ShowQualificationsPanel,
     showEntryRequirementsModal: state._listViewData.ShowEntryRequirementsModal,
     institutionsPanel: state._listViewData.data.InstitutionsPanel,
@@ -66,8 +65,7 @@ function mapStateToProps(state) {
     removeInstitutionCardModalID: state._listViewData.RemoveInstitutionCardModalID,
     paginationLimit: state._listViewData.PaginationLimit,
     hiddenPanel: state._listViewData.data.HiddenPanel,
-    showVocationalPathwaysModal: state._listViewData.ShowVocationalPathwaysModal,
-    vocationalPathwaysModal: state._footerData.data.VocationalPathwaysModal,
+    intro: state._questionnaire.data.Intro,
     vocationalPathways: state._footerData.data.VocationalPathways,
     refresh: state._listViewData.data.refresh // This value if changed somewhere triggers the component render method
   };
@@ -106,19 +104,35 @@ class Content extends React.Component {
 
   render() {
     const { jobsCards, showQualificationsPanel, showInstitutionsPanel, qualificationsPanel, ListType,
-        paginationLimit, jobCardSelectedID, mainPanelSplitIndexPoint} = this.props;
+        paginationLimit, mainPanelSplitIndexPoint, qualificationsPanelSplitIndexCard, qualificationsCardsShown
+      } = this.props;
     const cards = (ListType === 'Job') ? jobsCards : qualificationsPanel.Courses;
     const areVisibleCards = this.checkAreVisibleCards(cards);
     const areHiddenCards = this.areHiddenCards();
     const visibleCardsCount = this.getVisibleCardsCount(cards);
     const lastShownCardIndex = this.getLastPaginationIndex(cards, paginationLimit);
     const countCardsShown = (lastShownCardIndex === -1) ? cards.length : lastShownCardIndex + 1;
-    const splitPointMainCards = (mainPanelSplitIndexPoint !== -1) ? mainPanelSplitIndexPoint + 1: countCardsShown;
+
+    /*
+    //Compute the split point for Job/Course Cards when Qualification/Institution Panel is shown in the middle
+    const nColumns = this.numberOfColums();
+    let splitPointMainCards = (mainPanelSplitIndexPoint !== -1) ? mainPanelSplitIndexPoint + 1: countCardsShown;
+    let modulus = this.getVisibleCardsCount(_.take(cards, splitPointMainCards)) % nColumns;
+    const firstPanelArrowPosition = (modulus === 0) ? nColumns - 1 : (modulus) - 1;
+    const visibleCardsToCompleteRow = (modulus === 0) ? 0 : this.countCardsToCompleteRow(_.slice(cards, splitPointMainCards, countCardsShown), nColumns - modulus);
+    splitPointMainCards += visibleCardsToCompleteRow;
+
+    //Calculate arrow position for Institutions panel
+    let splitPointCards = (qualificationsPanelSplitIndexCard !== -1) ? qualificationsPanelSplitIndexCard + 1: qualificationsCardsShown;
+    modulus = splitPointCards % nColumns;
+    const secondPanelArrowPosition = (modulus === 0) ? nColumns - 1 : (modulus) - 1;
+*/
+    const firstPanelArrowPosition = 0;
+    const secondPanelArrowPosition = 0;
 
     return (
       <div>
         <ListViewHeader {...this.props}/>
-
         <div className="page-maincontent">
           <div className="page-wrapper">
             <div className="careers-card-wrapper">
@@ -133,7 +147,8 @@ class Content extends React.Component {
                 }}
                 >
                 {
-                  _.map(_.take(cards, splitPointMainCards), (card, idx, arr) => this.renderCards(card, idx, arr))
+                  //_.map(_.take(cards, splitPointMainCards), this.renderCards) //Uncomment for split behaviour
+                  _.map(cards, this.renderCards)
                 }
               </ReactCSSTransitionGroup >
             </div>
@@ -141,11 +156,26 @@ class Content extends React.Component {
         </div>
 
         {(areVisibleCards) ? '' : <NoResultsPanel /> }
-        <div id="qualifications-panel-scroll-point" />
-        {(showQualificationsPanel) ? <QualificationsPanel {...this.props} /> : '' }
-        <div id="institutions-panel-scroll-point" />
-        {(showInstitutionsPanel) ? <InstitutionsPanel {...this.props} /> : '' }
-
+        <div id="first-panel-scroll-point" />
+        {(showQualificationsPanel) ?
+          <QualificationsPanel {...this.props} arrowPositionClass={firstPanelArrowPosition} split="main"/>
+          :
+          ''
+        }
+        <div id="second-panel-scroll-point" />
+        {(showInstitutionsPanel) ?
+          <InstitutionsPanel {...this.props} arrowPositionClass={secondPanelArrowPosition} />
+          :
+          ''
+        }
+        {
+          /* (showQualificationsPanel && (qualificationsPanelSplitIndexCard !== -1)) ?
+          <QualificationsPanel {...this.props} arrowPositionClass="4" split="second"/>
+          :
+          ''
+          */
+        }
+        {/*
         <div className="page-maincontent">
           <div className="page-wrapper">
             <div className="careers-card-wrapper">
@@ -161,12 +191,13 @@ class Content extends React.Component {
               >
                 {
                   _.map(_.slice(cards, splitPointMainCards, countCardsShown),
-                    (card, idx, arr) => this.renderCards(card, idx + splitPointMainCards, arr))
+                    (card, idx) => this.renderCards(card, idx + splitPointMainCards))
                   }
               </ReactCSSTransitionGroup >
             </div>
           </div>
         </div>
+        */}
 
         {(areVisibleCards) ? <Pagination {...this.props} visibleCardsCount={visibleCardsCount} /> : '' }
         <Preferences {...this.props} />
@@ -178,12 +209,11 @@ class Content extends React.Component {
         {(areVisibleCards && (ListType === 'Job')) ? <RemoveJobCardModal {...this.props}/> : '' }
         {(areVisibleCards) ? <RemoveQualificationCardModal {...this.props}/> : '' }
         {(areVisibleCards) ? <FullQualificationCardDescriptionModal {...this.props}/> : '' }
-        <VocationalPathwaysModal {...this.props} />
       </div>
     )
   }
 
-  renderCards = (card, idx, arr) => {
+  renderCards = (card, idx) => {
     if(this.isVisibleCard(card)) {
       return (
         (this.props.ListType === 'Job') ?
@@ -252,6 +282,20 @@ class Content extends React.Component {
     return !card.Closed && !card.Filtered;
   };
 
+  countCardsToCompleteRow = (cards = [], howMany = 1) => {
+    const visibleCards = _.reduce(cards, (result, card, idx) => {
+      if(this.isVisibleCard(card)) {
+        result.push(idx+1);
+      }
+      return result;
+    }, []);
+    return (visibleCards.length) ? visibleCards[howMany-1] : 0;
+  }
+
+  numberOfColums = () => {
+    const hWidth  = window.innerWidth || document.documentElement.clientWidth;
+    return (hWidth > 1200) ? 3 : (hWidth < 804) ? 1 : 2;
+  }
 }
 
 export default connect(

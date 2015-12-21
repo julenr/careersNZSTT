@@ -18,23 +18,35 @@ class AddSkillsModal extends React.Component {
     let typeAheadItemsContainer = this.props.typeAheadItemsContainer;
     const styles = {
       item: {
-        padding: '2px 6px',
-        cursor: 'default',
+        fontSize: '1.3125em',
+        lineHeight: '1.28571',
+        padding: '0.35714em 1.42857em',
+        cursor: 'pointer',
+        fontFamily: 'MullerLight, Arial, sans-serif',
+        fontWeight: 'bold',
+        fontStyle: 'normal',
+        WebkitFontSmoothing: 'antialiased'
       },
 
       highlightedItem: {
-        color: 'white',
-        background: 'hsl(200, 50%, 50%)',
-        padding: '2px 6px',
-        cursor: 'default'
+        fontSize: '1.3125em',
+        lineHeight: '1.28571',
+        padding: '0.35714em 1.42857em',
+        cursor: 'pointer',
+        color: '#01b9ee',
+        fontWeight: 'bold',
+        fontStyle: 'normal',
+        WebkitFontSmoothing: 'antialiased'
       },
 
       menu: {
-        border: 'solid 1px #ccc',
-        background: 'rgba(255, 255, 255, 0.9)',
-        zIndex: 2,
+        background: '#fff',
+        border: '1px solid #a3a3a3',
         position: 'fixed',
-        font: 'inherit',
+        zIndex: '2',
+        WebkitBorderRadius: '1.3125em 1.3125em 0 0',
+        borderRadius: '1.3125em 1.3125em 0 0',
+        padding: '0.75em 0 0.5EM',
         textAlign: 'left'
       }
 
@@ -68,7 +80,7 @@ class AddSkillsModal extends React.Component {
                         </div>
                         )}
                       menuStyle={styles.menu}
-                      callback={this.addSkill}
+                      callback={(a) => this.addSkill(a)}
                       />
 
                   </div>
@@ -93,7 +105,8 @@ class AddSkillsModal extends React.Component {
   }
 
   addSkill = (value) => {
-    var questionID = this.props.addSkillsToQuestionID;
+    const questionID = this.props.addSkillsToQuestionID;
+    console.log(questionID);
     this.props.addSkillToQuestion(questionID, value);
     this.cancelModal();
   }

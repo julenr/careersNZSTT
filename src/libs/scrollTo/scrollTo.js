@@ -6,9 +6,11 @@ import Tween from 'component-tween';
 import raf from './raf.js';
 
 export default function scrollToElemente(element, offset = 0) {
-  const bodyScrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-  const elementY = document.getElementById(element).getBoundingClientRect().top;
+  const DOMElement = document.getElementById(element);
+  if(DOMElement === null){return;}
 
+  const bodyScrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+  const elementY = DOMElement.getBoundingClientRect().top;
   scrollTo(0, bodyScrollTop + elementY + offset);
 }
 

@@ -5,8 +5,8 @@
 import React from 'react';
 import classNames from 'classnames';
 import Tooltip from 'rc-tooltip';
-import scrollTo from '../../../libs/scrollTo/scrollTo.js';
 import { connect } from 'react-redux';
+import scrollTo from '../../../libs/scrollTo/scrollTo.js';
 
 import { textFitToContainer } from '../../../libs/helpers.js';
 
@@ -34,16 +34,20 @@ class QualificationCard extends React.Component {
       'careers-card qualification': true,
       'careers-card qualification flip': flipped
     } );
-    const style = {
-      fontSize: textFitToContainer(qualification.Title) + 'px'
+    const stylefront = {
+      fontSize: textFitToContainer(qualification.Title, 17, 39, 31)
     }
+    const styleback = {
+      fontSize: textFitToContainer(qualification.Title, 19, 30, 41)
+    }
+    
 
     return (
       <article className={ classes }>
         <div className="card front">
           <div className="liner">
             <header>
-              <h3 className="title" style={style}>{qualification.Title}</h3>
+              <h3 className="title" style={stylefront}>{qualification.Title}</h3>
               <a href="javascript: void 0" className="action-remove" onClick={this.closeCard}><span className="icon-cross"></span></a>
               <a href="javascript: void 0" className="action-reinstate" onClick={this.openCard} title="Show this course in my list again"><span className="icon-plus-circle"></span></a>
               <div className="sectors">
@@ -55,14 +59,17 @@ class QualificationCard extends React.Component {
                 </a>
               </div>
             </header>
-            <p className="provider">
-              {qualification.Institution}
+            <p className="provider">at&nbsp;
+              {
+                (qualification.Institutions.length > 1) ?
+                  `${qualification.Institutions.length} providers`
+                  :
+                  qualification.Institutions[0]
+              }
             </p>
             <div className="layout-row divider">
-              <dl>
-                <dt>Level:</dt>
-                <dd>{qualification.Level}&nbsp;
-
+              <div className="level">
+                Level: {qualification.Level}&nbsp;
                   <Tooltip
                     animation="zoom"
                     trigger="click"
@@ -75,18 +82,16 @@ class QualificationCard extends React.Component {
                   >
                     <span className="icon-help tooltip" title={tooltips.QualificationCardLevel} />
                   </Tooltip>
-
-                </dd>
-              </dl>
-              <div className="course-leads-to">
-                <p>
-                  {
-                    this.leadsToTruncated(qualification.LeadsTo)
-                    }
-                </p>
               </div>
               <a className="action-flip" href="javascript: void 0" onClick={this.flipCard}>More about this course <span className="icon-refresh"></span></a>
             </div>
+            <div className="course-leads-to">
+              <p>
+                {
+                  this.leadsToTruncated(qualification.LeadsTo)
+                  }
+              </p>
+            </div>            
           </div>
           <footer>
             <a className="card-actions" href="javascript: void 0" onClick={this.showInstitutionsPanel}>
@@ -101,23 +106,23 @@ class QualificationCard extends React.Component {
         <div className="card back">
           <div className="liner">
             <header>
-              <h3 className="title" style={style}>{qualification.Title}</h3>
+              <h3 className="title" style={styleback}>{qualification.Title}</h3>
               <a href="javascript: void 0" className="action-remove" onClick={this.closeCard}><span className="icon-cross"></span></a>
               <a href="javascript: void 0" className="action-reinstate" onClick={this.openCard} title="Show this course in my list again"><span className="icon-plus-circle"></span></a>
             </header>
             <div className="description" id={`description${this.props.id}`}>
-              {qualification.Description}
+              {qualification.DescriptionText}
             </div>
-            <span>
+            <div className="layout-row divider">
+              <a className="action-flip" href="javascript: void 0" onClick={this.flipCard}>Go back <span className="icon-refresh"></span></a>
+              <span>
               {
                 (qualification.DescriptionOverflow) ?
-                <a className="action-flip" href="javascript: void 0" onClick={this.showFullDescription}>View full course description</a>
+                <a className="action-view-description" href="javascript: void 0" onClick={this.showFullDescription}>View full course description</a>
                   :
                   ''
                 }
-            </span>
-            <div className="layout-row divider">
-              <a className="action-flip" href="javascript: void 0" onClick={this.flipCard}>Go back <span className="icon-refresh"></span></a>
+              </span>
             </div>
           </div>
           <footer>

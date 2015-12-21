@@ -39,7 +39,7 @@ class QuestionnaireHeader extends React.Component {
                   />
                     :
                     <img src={this.props.intro.Image.Medium.Src} width="347" height="347"
-              alt="John" id="intro-video-placeholder" onClick={() => this.showVideo()}/>
+              alt="Skills Builder Video" id="intro-video-placeholder" onClick={() => this.showVideo()}/>
             }
             <div dangerouslySetInnerHTML={{__html: introTitle}} />
             <div className="clear"></div>

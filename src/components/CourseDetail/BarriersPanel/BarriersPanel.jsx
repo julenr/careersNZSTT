@@ -10,7 +10,7 @@ const BarriersPanel = (props) => {
   const { Title, Barriers } = props.course.BarriersPanel;
 
   return (
-    <div className="course-panel worried-about" id="panel-worried-about">
+    <div className="course-panel worried-about">
       <h2>{ Title }</h2>
       <div className="layout-row">
         {Barriers.map((barrier, idx) => renderBarriers(barrier, idx, props))}

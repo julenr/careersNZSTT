@@ -5,9 +5,7 @@ import axios from 'axios';
 import store from './create-store';
 import _ from 'lodash';
 
-import logLite from '../libs/logLite';
 
-let logger = logLite.getLogger('questionnaire actions');
 const appID = document.getElementsByTagName('body')[0].getAttribute('data-application-id');
 
 if (__DEV__){
@@ -157,9 +155,9 @@ export function loadTypeAhead(text, endpoint) {
           return {data: response.data.Results};
         })
         .catch(function (response) {
-          logger.log(response);
+          console.log(response);
           if (__DEV__) {
-            logger.log('Using fake data for Type Ahead');
+            console.log('Using fake data for Type Ahead');
             return {data: _.clone(fakeData.typeAheadData.Results, true)};
           }
         });
@@ -232,9 +230,9 @@ export function nextQuestion(questionID, nextQuestionID) {
             return {count: response.data.Count};
           })
           .catch(function (response) {
-            logger.log(response);
+            console.log(response);
             if (__DEV__) {
-              logger.log('Using fake data');
+              console.log('Using fake data');
               return {count: 10};
             }
           });
@@ -257,16 +255,19 @@ export function getListViewData() {
       return axios.post(`/api/skills-transition-tool/listview/${appID}/${listType}`, state._questionnaire.data)
         .then(function (response) {
           response.data.Filters = _.clone(state._listViewData.data.Filters, true); //Keep the original Filters
-          response.data.Filters.Region = (state._questionnaire.data.Regions.Current === null) ? 'All': state._questionnaire.data.Regions.Current;
+
+          //TODO: This line needs to be removed when Darren fix it changing Institutions for CourseCards !!!!
+          response.data.InstitutionsPanel.CourseCards = [];
+
+          response.data.Filters.Region = (state._questionnaire.data.Regions.Current === null) ? 'Anywhere': state._questionnaire.data.Regions.Current;
           return {data: response.data};
         })
         .catch(function (response) {
-          logger.log(response);
+          console.log(response);
           if (__DEV__) {
-            logger.log('Using fake data');
+            console.log('Using fake data');
             fakeData.listViewData.ListType = listType;
             fakeData.listViewData.Filters = _.clone(state._listViewData.data.Filters, true); //Keep the original Filters
-            console.log(state);
             return {data: _.clone(fakeData.listViewData, true)};
           }
         });
@@ -294,7 +295,7 @@ export function logIn(Email, Password, Remember) {
           return {data: response.data.Member};
         })
         .catch(function (response) {
-          logger.log(response);
+          console.log(response);
           if (__DEV__) {
             if(Email === 'admin@admin.com' && Password === 'admin') {
               return {
@@ -327,7 +328,7 @@ export function logOut() {
           return {data: 'ok'};
         })
         .catch(function (response) {
-          logger.log(response);
+          console.log(response);
           if (__DEV__) {
             return {true};
           } else {

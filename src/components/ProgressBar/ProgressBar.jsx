@@ -51,7 +51,7 @@ class ProgressBar extends React.Component {
               >
               <div className="plan-help-popup">
                 <a href="javascript: void 0;" className="help-trigger">
-                  <img className="avatar" src={require('../../assets/images/placeholders/action-plan-help-avatar-1.jpg')} alt="Help assistant. " width="54" height="54" />
+                  <img className="avatar" src={require('../../assets/images/placeholders/action-plan-help-avatar-2.jpg')} alt="Help assistant. " width="54" height="54" />
                   <span className="text">Need help?</span>
                 </a>
               </div>

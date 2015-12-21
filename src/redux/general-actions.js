@@ -1,8 +1,6 @@
 import axios from 'axios';
 import _ from 'lodash';
-import logLite from '../libs/logLite';
 
-let logger = logLite.getLogger('general actions');
 const appID = document.getElementsByTagName('body')[0].getAttribute('data-application-id');
 
 if (__DEV__){
@@ -20,9 +18,9 @@ export function getQuestionnaire() {
           return {data: response.data};
         })
         .catch(function (response) {
-          logger.log(response);
+          console.log(response);
           if (__DEV__) {
-            logger.log('Using fake data');
+            console.log('Using fake data');
             let data = _.clone(fakeData.questionnaire, true);
             data.Skills.Loading = false;
             data.Skills.SkillsTags = [];
@@ -44,7 +42,7 @@ export function loadSavedState() {
           return response;
         })
         .catch(function (response) {
-          logger.log(response);
+          console.log(response);
           throw error(response);
         });
     }
@@ -66,9 +64,9 @@ export function getLinkedPagesHTML(URLSegment) {
           return {data: response.data};
         })
         .catch(function (response) {
-          logger.log(response);
+          console.log(response);
           if (__DEV__) {
-            logger.log('Using fake data');
+            console.log('Using fake data');
             return {data: _.clone(fakeData.mainContentHTML, true)};
           } else {
             throw error(response);
@@ -87,9 +85,9 @@ export function getFooterData() {
           return {data: response.data};
         })
         .catch(function (response) {
-          logger.log(response);
+          console.log(response);
           if (__DEV__) {
-            logger.log('Using fake data');
+            console.log('Using fake data');
             return {data: _.clone(fakeData.footerData, true)};
           } else {
             throw error(response);
@@ -108,9 +106,9 @@ export function currentJobChanged(newJob) {
           return {data: response.data.Results};
         })
         .catch(function (response) {
-          logger.log(response);
+          console.log(response);
           if (__DEV__) {
-            logger.log('Using fake data');
+            console.log('Using fake data');
             return {data: _.clone(fakeData.jobSkills.Results, true)};
           } else {
             throw error(response);
@@ -172,9 +170,9 @@ export function getJobSkills(jobSelected) {
           return {data: response.data.Results};
         })
         .catch(function (response) {
-          logger.log(response);
+          console.log(response);
           if (__DEV__) {
-            logger.log('Using fake data');
+            console.log('Using fake data');
             return {data: _.clone(fakeData.jobSkills.Results.slice(), true)};
           } else {
             throw error(response);
@@ -194,9 +192,9 @@ export function loadTypeAheadModal(text) {
           return {data: response.data.Results};
         })
         .catch(function (response) {
-          logger.log(response);
+          console.log(response);
           if (__DEV__) {
-            logger.log('Using fake data for Type Ahead');
+            console.log('Using fake data for Type Ahead');
             return {data: _.clone(fakeData.typeAheadData.Results, true)};
           } else {
             throw error(response);
@@ -275,3 +273,8 @@ export function resetTool() {
   }
 }
 
+export function closeVocationalPathwaysModal() {
+  return {
+    type: 'CLOSE_VOCATIONAL_PATHWAYS_MODAL'
+  }
+}

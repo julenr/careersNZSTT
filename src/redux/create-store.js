@@ -35,7 +35,13 @@ function handleJobChange() {
 
 // Save the state into the session storage and server
 const saveToSessionStorage = _.debounce((currentState) => {
-  sessionStorage.setItem('careers', JSON.stringify(currentState));
+  try {
+    sessionStorage.setItem('careers', JSON.stringify(currentState));
+  }
+  catch(e) {
+    console.log(e.message);
+  }
+
 }, 500);
 
 const saveToServer = _.debounce((currentState) => {

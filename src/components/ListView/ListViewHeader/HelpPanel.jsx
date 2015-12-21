@@ -13,13 +13,13 @@ class HelpPanel extends React.Component {
       <div className="panel-help" id="help-panel">
         <div className="layout-row">
           <div className="layout-col layout-col-2">
-            <img className="avatar" src={require('../../../assets/images/placeholders/intro-avatar-1.png')} width="153" height="199" alt="John" />
+            <img src={this.props.intro.Image.Small.Src} width="153" height="199" alt="Skills Builder Avatar Image" title="Help panel" />
           </div>
           <div className="layout-col layout-col-2">
             <p className="title">{helpPanel.Text}</p>
           </div>
           <div className="layout-col layout-col-4">
-            <img src={require('../../../assets/images/placeholders/placeholder-632x430.gif')} width="316" height="215" alt="" />
+            <img src={helpPanel.Image} width="316" height="215" alt="" />
           </div>
           <div className="layout-col layout-col-3">
             <div dangerouslySetInnerHTML={{__html: helpPanel.Tips}} />

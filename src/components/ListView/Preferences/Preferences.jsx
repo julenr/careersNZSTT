@@ -5,12 +5,11 @@
 import React from 'react';
 import classNames from 'classnames';
 import Tooltip from 'rc-tooltip';
+import Select from 'react-select';
 
 import AddPreferenceModal from './AddPreferenceModal';
-import TextSelect from '../../subcomponents/TextSelect';
 
 class Pagination extends React.Component {
-
   render() {
     const { ListType, regions, filters, regionFilter, tooltips } = this.props;
     const cards = (ListType === 'Job') ? this.props.filters.JobCards : this.props.filters.QualificationCards;
@@ -51,26 +50,33 @@ class Pagination extends React.Component {
               </div>
               <p className="help">Use the <span className="icon-cancel-circle"></span> to hide job/courses you don't want to use in the future.</p>
             </div>
-            {/*<div className="layout-col layout-col-4">
-              <p className="title">You have asked to <strong>prioritise</strong> {ListType}s that are:</p>
-              <div className="tags" data-type="tag">
-                {/!*<span className="tag">No shift work<span className="icon-cancel-circle"></span></span>
-                <span className="tag">Night shift<span className="icon-cancel-circle"></span></span>
-                <span className="tag">A thing I hate that may run to two lines<span className="icon-cancel-circle"></span></span>*!/}
-                <span className="button add-more"><span className="icon-plus-circle"></span> Add interest</span>
-              </div>
-              <p className="help">Use the <span className="icon-cancel-circle"></span> to remove skills you don't have or don't want to use in the future.</p>
-            </div>*/}
             <div className="layout-col layout-col-4">
-              <p className="title">You are interested in Couses in this <strong>region</strong>:</p>
-              <TextSelect options={regions} active={regionFilter} onChange={(region) => this.setAndApplyRegionFilter(region)}/>
+              <p className="title">You are interested in Courses in this <strong>region</strong>:</p>
+
+              <Select
+                multi
+                simpleValue
+                value={regionFilter}
+                delimiter=", "
+                searchable={false}
+                placeholder="Select region(s)"
+                options={this.selectOptions(regions)}
+                onChange={(value) => {this.setAndApplyRegionFilter(value)} }
+              />
+
               <p className="help">Distance and online courses will also be shown.</p>
+              <div style={ {height: '150px'} }></div>
             </div>
           </div>
         </div>
-        <AddPreferenceModal {...this.props}/>
+        <AddPreferenceModal {...this.props} />
       </div>
     );
+  }
+
+  selectOptions(regions) {
+    let result = _.map(regions, (region, idx) => { return({'value': `${region}`, 'label': `${region}`}) })
+    return result;
   }
 
   renderCards = (condition, idx) => {
@@ -100,7 +106,8 @@ class Pagination extends React.Component {
   }
 
   setAndApplyRegionFilter = (region) => {
-    this.props.setRegionFilter(region);
+    const value = (region) ? region : ''; //It seems a bug from react Select that returns null instead ''
+    this.props.setRegionFilter(value);
     this.props.filterQualificationCardsByCondition();
   }
 

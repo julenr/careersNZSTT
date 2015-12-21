@@ -7,6 +7,7 @@ import classNames from 'classnames';
 import { connect } from 'react-redux';
 import Tooltip from 'rc-tooltip';
 import { textFitToContainer } from '../../../libs/helpers.js';
+import scrollTo from '../../../libs/scrollTo/scrollTo.js';
 
 function mapStateToProps(state, ownProps) {
   return {
@@ -24,16 +25,21 @@ class JobCard extends React.Component {
       'careers-card job': true,
       'careers-card job flip': flipped
     } );
-    const style = flipped ? {} : {
-      fontSize: textFitToContainer(jobCard.Title) + 'px'
+    const stylefront = {
+      fontSize: textFitToContainer(jobCard.Title, 20, 39, 25)
     }
+    const styleback = {
+      fontSize: textFitToContainer(jobCard.Title, 13, 22, 45)
+    }
+
     return (
       <div>
         <article className={ classes }>
           <div className="card front">
             <div className="liner">
               <header>
-                <h3 className="title" style={style}>{jobCard.Title}</h3>
+                <h3 className="title" style={stylefront}>{this.splitStringWithZeroWithCharacter(jobCard.Title, '/')}</h3>
+                <div className="maori-title">{jobCard.MaoriTitle}</div>
                 <a href="javascript: void 0" className="action-remove" onClick={this.closeCard}><span
                   className="icon-cross"></span></a>
                 <a href="javascript: void 0" className="action-reinstate" onClick={this.openCard}
@@ -58,15 +64,11 @@ class JobCard extends React.Component {
                   <dd><span
                     className={`progress-bar-status amount-${this.roundProgressBarValues(jobCard.SkillsMatch)}`}>{jobCard.SkillsMatch}%</span>
                   </dd>
-                  <dt>Interests:</dt>
-                  <dd><span
-                    className={`progress-bar-status amount-${this.roundProgressBarValues(jobCard.Interest)}`}>{jobCard.Interest}%</span>
-                  </dd>
                   <dt>Demand:</dt>
                   <dd><span
                     className={`progress-bar-status amount-${this.roundProgressBarValues(jobCard.Demand)}`}>{jobCard.Demand}%</span>
                   </dd>
-                  <dt>Pay:</dt>
+                  <dt className="pay">Pay:</dt>
                   {
                     this.renderPay(jobCard)
                     }
@@ -88,22 +90,21 @@ class JobCard extends React.Component {
           <div className="card back">
             <div className="liner">
               <header>
-                <h3 className="title" >{jobCard.Title}</h3>
+                <h3 className="title" style={styleback}>{this.splitStringWithZeroWithCharacter(jobCard.Title, '/')}</h3>
+                <div className="maori-title">{jobCard.MaoriTitle}</div>
                 <a href="javascript: void 0" className="action-remove" onClick={this.closeCard}><span
                   className="icon-cross"></span></a>
               </header>
-              <div className="description">{jobCard.Description}</div>
-              <a className="action-skills-match divider"
-                 href="javascript: void 0"
-                 onClick={() => this.props.openMatchSkillsModal(this.props.id)}
-                >
-                See your <em>skills match</em> for this job
-              </a>
+              <div className="description">
+                <div className="overflow">
+                  {jobCard.Description}
+                </div>
+                <a className="action-skills-match divider"
+                  href="javascript: void 0"
+                  onClick={() => this.props.openMatchSkillsModal(this.props.id)}
+                >Compare the skills you have with the skills you need for this job.</a>
+              </div>
               <dl>
-                <dt>Interests:</dt>
-                <dd>{jobCard.Interests}</dd>
-                <dt>Work conditions:</dt>
-                <dd>{jobCard.WorkConditions}</dd>
                 <dt>Vocational pathways:&nbsp;
                   <Tooltip
                     animation="zoom"
@@ -143,14 +144,12 @@ class JobCard extends React.Component {
 
   renderPay = (jobCard) => {
     switch (jobCard.PerTime.toLowerCase()){
-      case 'per year': {
-        return <dd>{jobCard.Pay}<br/>{jobCard.PerTime.toLowerCase()}</dd>
-      }
+      case 'per year':
       case 'per hour': {
-        return <dd>{jobCard.Pay}<br/>{jobCard.PerTime.toLowerCase()}</dd>
+        return <dd className="pay">{jobCard.Pay}<br/>{jobCard.PerTime.toLowerCase()}</dd>
       }
       default:
-        return <dd>Varied</dd>
+        return <dd className="pay">Varied</dd>
 
     }
   }
@@ -158,18 +157,6 @@ class JobCard extends React.Component {
   renderPathwaySwatch = (title, idx) => {
     return (<li title={title} key={idx} className={`sector-${this.props.vocationalPathways[title]}`}>{title}</li>);
   }
-
-  preventDefault = (e) => {
-    e.preventDefault();
-  }
-
-  show = {
-    visible: false
-  };
-
-  handleVisibleChange = (visible) => {
-    this.show = { visible: visible }
-  };
 
   showQualificationsPanel = () => {
     this.props.closeInstitutionsPanel();
@@ -195,6 +182,11 @@ class JobCard extends React.Component {
   roundProgressBarValues = (Value) => {
     return (Math.round(Value/10)*10);
   }
+
+  splitStringWithZeroWithCharacter = (string = '', character = ' ') => {
+    return string.replace(character, '/\u200B');
+  }
+
 }
 
 export default connect(

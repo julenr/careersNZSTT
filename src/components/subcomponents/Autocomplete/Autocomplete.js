@@ -72,6 +72,7 @@ let Autocomplete = React.createClass({
   maybeScrollItemIntoView () {
     if (this.state.isOpen === true && this.state.highlightedIndex !== null) {
       var itemNode = ReactDOM.findDOMNode(this.refs[`item-${this.state.highlightedIndex}`])
+      if(!this.refs.menu){return;} //In case the container is not defined
       var menuNode = ReactDOM.findDOMNode(this.refs.menu)
       scrollIntoView(itemNode, menuNode, { onlyScrollIfNeeded: true })
     }
@@ -158,9 +159,6 @@ let Autocomplete = React.createClass({
             this.state.value.length
           )
           this.props.onSelect(this.state.value, item)
-          if (typeof this.props.callback === 'function') {
-            this.props.callback(this.state.value)
-          }
         })
       }
     },
@@ -244,9 +242,6 @@ let Autocomplete = React.createClass({
       this.props.onSelect(this.state.value, item)
       ReactDOM.findDOMNode(this.refs.input).focus()
       this.setIgnoreBlur(false)
-      if (typeof this.props.callback === 'function') {
-        this.props.callback(this.state.value)
-      }
     })
   },
 

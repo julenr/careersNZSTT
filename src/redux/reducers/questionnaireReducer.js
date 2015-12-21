@@ -5,9 +5,6 @@
 import _ from 'lodash';
 import uuid from 'node-uuid';
 import { replaceStrValues } from '../../libs/helpers';
-import logLite from '../../libs/logLite';
-
-let logger = logLite.getLogger('questionnaire reducer');
 
 const initialData = {
   loaded: false,
@@ -52,14 +49,14 @@ export function _questionnaire(state = initialData, action = {}) {
       } else {
         newState.ToChangeResponse = undefined;
       }
-    document.body.classList.add('ReactCustonModal');
+      document.body.classList.add('ReactCustomModal');
       newState.ChangeQuestionnaireModal = true;
       return newState;
   }
 
   switch (action.type) {
     case 'CLOSE_QUESTIONNAIRE_MODAL':
-      document.body.classList.remove('ReactCustonModal');
+      document.body.classList.remove('ReactCustomModal');
       newState.ChangeQuestionnaireModal = false;
       return newState;
 
@@ -76,6 +73,12 @@ export function _questionnaire(state = initialData, action = {}) {
     case 'GET_QUESTIONNAIRE_SUCCESS':
       action.result.data.Questionnaire = []; // Initialize the questionnaire array
       action.result.data.Questionnaire.push( _.cloneDeep(action.result.data.Questions[0]));
+      try {
+        sessionStorage.clear();
+      }
+      catch(e) {
+        console.log(e.message);
+      }
       return {
         ...state,
         data: action.result.data,
@@ -172,19 +175,25 @@ export function _questionnaire(state = initialData, action = {}) {
       newState.data.Skills.Selected.splice(idxSelectedSkill, 1);
       newState.data.refresh = uuid.v1();
       return newState;
-
     }
     case 'ADD_SKILLS_INTO_TAG_CLOUD': {
-      let question = _.find(newState.data.Questionnaire, (question) => {return question.ID === action.questionID});
-      question.QuestionResponses.push({
-        Title: action.value,
-        Selected: true
-      })
+      if(action.questionID) { // Only if Add Skill has been called from a tag cloud question
+        let question = _.find(newState.data.Questionnaire, (question) => {return question.ID === action.questionID});
+        question.QuestionResponses.push({
+          Title: action.value,
+          Selected: true
+        })
+      }
+      newState.data.Skills.Selected.push(action.value);
+      newState.data.Skills.Current = action.value;
       newState.data.refresh = uuid.v1();
       return newState;
     }
-    case 'DUMP_SKILLS_INTO_TAG_CLOUD_REQUEST':
+    case 'DUMP_SKILLS_INTO_TAG_CLOUD_REQUEST': {
+      const questionID = newState.data.Questionnaire.length-1;
+      newState.data.Questionnaire[questionID].Loaded = false;
       return newState;
+    }
     case 'DUMP_SKILLS_INTO_TAG_CLOUD_SUCCESS': {
       const questionID = newState.data.Questionnaire.length-1;
       newState.data.Questionnaire[questionID].QuestionResponses = newState.data.Skills.SkillsTags.slice(0);
@@ -331,13 +340,13 @@ export function _questionnaire(state = initialData, action = {}) {
       newState.data.refresh = uuid.v1();
       return newState;
     case 'SHOW_LOGIN_MODAL':
-      document.body.classList.add('ReactCustonModal');
+      document.body.classList.add('ReactCustomModal');
       return {
         ...state,
         showLoginModal: true
       };
     case 'CLOSE_LOGIN_MODAL':
-      document.body.classList.remove('ReactCustonModal');
+      document.body.classList.remove('ReactCustomModal');
       newState.showLoginModal = false;
       newState.data.Member.UserID = null;
       return newState;
@@ -357,7 +366,7 @@ export function _questionnaire(state = initialData, action = {}) {
       return newState;
 
     case 'GET_SAVED_STATE_REQUEST':
-      document.body.classList.remove('ReactCustonModal');
+      document.body.classList.remove('ReactCustomModal');
       newState.loaded = false;
       return newState;
     case 'GET_SAVED_STATE_SUCCESS':
@@ -370,6 +379,7 @@ export function _questionnaire(state = initialData, action = {}) {
       newState.showDetailsSavedModal = false;
       return newState;
     case 'CLOSE_DETAILS_SAVED_MODAL':
+      document.body.classList.remove('ReactCustomModal');
       newState.showDetailsSavedModal = false;
       return newState;
     default:

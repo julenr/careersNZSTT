@@ -10,7 +10,7 @@ const NextStepsPanel = (props) => {
   const { Title, Actions } = props.course.NextSteps;
 
   return (
-    <div className="course-panel next-steps" id="panel-next-steps">
+    <div className="course-panel next-steps">
       <h2>{Title}</h2>
       <div className="layout-row">
         {Actions.map((action, idx) => renderActions(action, idx, props))}

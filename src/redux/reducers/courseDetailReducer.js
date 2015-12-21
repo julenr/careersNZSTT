@@ -4,6 +4,8 @@ import uuid from 'node-uuid';
 const initialState = {
   loaded: false,
   refresh: 0,
+  ShowMatchSkillsModalCourseDetail: false,
+  CheckSkillsIDCourseDetail: 0,
   data: {
     'CourseDetails': {
       'CourseTitle': '',
@@ -75,6 +77,15 @@ export function _courseDetail(state = initialState, action = {}) {
       newState.refresh = uuid.v1();
       return newState;
     }
+
+    case 'SHOW_MATCH_SKILLS_MODAL_COURSE_DETAIL':
+      newState.CheckSkillsIDCourseDetail = action.idJobCard;
+      newState.ShowMatchSkillsModalCourseDetail = true;
+      return newState;
+    case 'CLOSE_MATCH_SKILLS_MODAL_COURSE_DETAIL':
+      newState.ShowMatchSkillsModalCourseDetail = false;
+      return newState;
+
     default:
       return state;
 

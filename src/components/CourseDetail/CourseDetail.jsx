@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { Link } from 'react-router';
-import { connect } from 'react-redux';
+import { connect } from '../../libs/react-redux';
 
 import * as actionCreators from '../../redux/coursedetail-actions';
 import { setCurrentRoute } from '../../redux/general-actions';

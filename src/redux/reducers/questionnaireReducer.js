@@ -49,14 +49,12 @@ export function _questionnaire(state = initialData, action = {}) {
       } else {
         newState.ToChangeResponse = undefined;
       }
-      document.body.classList.add('ReactCustomModal');
       newState.ChangeQuestionnaireModal = true;
       return newState;
   }
 
   switch (action.type) {
     case 'CLOSE_QUESTIONNAIRE_MODAL':
-      document.body.classList.remove('ReactCustomModal');
       newState.ChangeQuestionnaireModal = false;
       return newState;
 
@@ -340,13 +338,11 @@ export function _questionnaire(state = initialData, action = {}) {
       newState.data.refresh = uuid.v1();
       return newState;
     case 'SHOW_LOGIN_MODAL':
-      document.body.classList.add('ReactCustomModal');
       return {
         ...state,
         showLoginModal: true
       };
     case 'CLOSE_LOGIN_MODAL':
-      document.body.classList.remove('ReactCustomModal');
       newState.showLoginModal = false;
       newState.data.Member.UserID = null;
       return newState;
@@ -366,7 +362,6 @@ export function _questionnaire(state = initialData, action = {}) {
       return newState;
 
     case 'GET_SAVED_STATE_REQUEST':
-      document.body.classList.remove('ReactCustomModal');
       newState.loaded = false;
       return newState;
     case 'GET_SAVED_STATE_SUCCESS':
@@ -379,7 +374,6 @@ export function _questionnaire(state = initialData, action = {}) {
       newState.showDetailsSavedModal = false;
       return newState;
     case 'CLOSE_DETAILS_SAVED_MODAL':
-      document.body.classList.remove('ReactCustomModal');
       newState.showDetailsSavedModal = false;
       return newState;
     default:

@@ -5,7 +5,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import Tooltip from 'rc-tooltip';
-import { connect } from 'react-redux';
+import { connect } from '../../../libs/react-redux';
 import scrollTo from '../../../libs/scrollTo/scrollTo.js';
 
 import { textFitToContainer } from '../../../libs/helpers.js';

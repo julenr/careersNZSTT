@@ -18,7 +18,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import es6Promise from 'es6-promise';
 import { Router, Route, Link, IndexRoute } from 'react-router';
-import { Provider } from 'react-redux';
+import { Provider } from './libs/react-redux';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
 
 // REDUX STORE
@@ -33,6 +33,7 @@ import ListView from './components/ListView/ListView.jsx';
 import CourseDetail from './components/CourseDetail/CourseDetail.jsx';
 
 //Polifill ES6 Promise for axios and any other modules
+//TODO: Polyfill with Babel-core and get rid of ES5 shims and shams from HTML template
 es6Promise.polyfill();
 
 // Element to attach React-DOM
@@ -43,7 +44,7 @@ document.body.appendChild(app);
 
 // Retrieve initial Data from the server
 if(!sessionStorage.getItem('careers')) {
-  if(userID !== '') {
+  if(userID) {
     store.dispatch(actionCreators.loadSavedState());
   } else {
     store.dispatch(actionCreators.getFooterData());
@@ -52,9 +53,9 @@ if(!sessionStorage.getItem('careers')) {
 }
 
 // Render the DOM when the data is allready stored
+let spinnerRendered = false;
 const interval = setInterval(() => {
     const state = store.getState();
-    let spinnerRendered = false;
     if(state._footerData.loaded) { //Check if everything is loaded before render App
       ReactDOM.render((
         <Provider store={ store }>

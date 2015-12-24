@@ -6,7 +6,7 @@ import React from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import _ from 'lodash';
 import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux';
+import { connect } from '../../libs/react-redux';
 import * as actionCreators from '../../redux/listview-actions';
 import { setCurrentRoute } from '../../redux/general-actions';
 import { getCourseDetails } from '../../redux/coursedetail-actions';

@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { Link } from 'react-router';
-import { connect } from 'react-redux';
+import { connect } from '../../libs/react-redux';
 import uuid from 'node-uuid';
 import * as actionCreators from '../../redux/general-actions';
 import { logOut } from '../../redux/questionnaire-actions';

@@ -5,7 +5,7 @@
 import React from 'react';
 import { Router, Route, Link } from 'react-router'
 
-import { connect } from 'react-redux';
+import { connect } from '../../libs/react-redux';
 import * as actionCreators from '../../redux/questionnaire-actions';
 import { openAddSkillsModal } from '../../redux/general-actions';
 import { resetListViewLoaderFlag } from '../../redux/listview-actions';

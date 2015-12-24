@@ -3,10 +3,9 @@
  */
 
 import React from 'react';
-import { Provider } from 'react-redux';
+import { connect } from '../../libs/react-redux';
 import { Router, Route, Link } from 'react-router';
 
-import { connect } from 'react-redux';
 import * as actionCreators from '../../redux/general-actions';
 import { getListViewData, addSkillToQuestion, closeLoginModal, logIn, resetLoginUserID } from '../../redux/questionnaire-actions.js';
 import { resetListViewState } from '../../redux/listview-actions.js';

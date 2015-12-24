@@ -89,7 +89,7 @@ if(TARGET === 'start' || !TARGET) {
       new webpack.HotModuleReplacementPlugin(),
       new HtmlwebpackPlugin({
         title: APP_TITLE,
-        template: './templates/index-develop.tpl'
+        template: './templates/index-webpackdevserver.tpl'
       }),
       new webpack.DefinePlugin({
         '__DEV__': JSON.stringify(JSON.parse('true'))
@@ -160,14 +160,89 @@ if(TARGET === 'build') {
         },
         '__DEV__': JSON.stringify(JSON.parse('false'))
       }),
-      //new webpack.optimize.UglifyJsPlugin({
-      //  compress: {
-      //    warnings: false
-      //  }
-      //}),
+      new webpack.optimize.UglifyJsPlugin({
+        compress: {
+          warnings: false
+        }
+      }),
       new HtmlwebpackPlugin({
         title: APP_TITLE,
         template: './templates/index-production.tpl'
+      }),
+      new CopyWebpackPlugin([
+        { from: './src/assets/images/favicon', to: './images/favicon' },
+        { from: './src/styles/browser', to: './css/browser' },
+        { from: './src/assets/ie8', to: './ie8' }
+      ])
+    ]
+  });
+}
+
+if(TARGET === 'develop') {
+  module.exports = merge(common, {
+    entry: {
+      app: path.resolve(ROOT_PATH, 'src'),
+      vendor: Object.keys(pkg.dependencies)
+    },
+    output: {
+      path: path.resolve(ROOT_PATH, 'build-develop'),
+      filename: '[name].js?[chunkhash]'
+    },
+    devtool: '#eval-source-map',
+    module: {
+      loaders: [
+        {
+          test: /\.jsx?$/,
+          loaders: ['babel'],
+          include: path.resolve(ROOT_PATH, 'src')
+        },
+        {
+          test: /\.scss$/,
+          loader: ExtractTextPlugin.extract('style', 'css!sass'),
+          include: path.resolve(ROOT_PATH, 'src')
+        },
+        {
+          test: /\.css$/,
+          loaders: ['style', 'css'],
+          include: path.resolve(ROOT_PATH, 'src')
+        },
+        {
+          test: /\.(png|jpg|gif)$/,
+          loaders: ['file-loader?name=images/[name].[ext]'],
+          include: path.resolve(ROOT_PATH, 'src')
+        },
+        {
+          test: /\.woff$/,
+          loaders: ['file-loader?name=fonts/[name].[ext]'],
+          include: path.resolve(ROOT_PATH, 'src')
+        },
+        { test: /\.(ttf|eot|svg|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+          loader: 'file-loader?name=fonts/[name].[ext]',
+          include: path.resolve(ROOT_PATH, 'src')
+        }
+      ]
+    },
+    plugins: [
+      new Clean(['build-develop']),
+      new ExtractTextPlugin('styles.css?[chunkhash]'),
+      new webpack.optimize.CommonsChunkPlugin(
+        'vendor',
+        '[name].js?[chunkhash]'
+      ),
+      new webpack.DefinePlugin({
+        'process.env': {
+          'NODE_ENV': JSON.stringify('production')
+        },
+        '__DEV__': JSON.stringify(JSON.parse('true'))
+      }),
+      new webpack.optimize.UglifyJsPlugin({
+        compress: {
+          warnings: false
+        }
+      }),
+      new HtmlwebpackPlugin({
+        title: APP_TITLE,
+        template: './templates/index-develop.tpl'
       }),
       new CopyWebpackPlugin([
         { from: './src/assets/images/favicon', to: './images/favicon' },

@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import { connect } from 'react-redux';
+import { connect } from '../../../libs/react-redux';
 import YouTube from 'react-youtube';
 
 function mapStateToProps(state) {

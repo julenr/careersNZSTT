@@ -6,7 +6,7 @@ import React from 'react';
 import Sticky from '../subcomponents/Sticky/Sticky.jsx';
 import Tooltip from 'rc-tooltip';
 import { Link } from 'react-router';
-import { connect } from 'react-redux';
+import { connect } from '../../libs/react-redux';
 
 function mapStateToProps(state) {
   return {
@@ -22,7 +22,7 @@ class ProgressBar extends React.Component {
       bottom: 0,
       left: 0,
       right: 0
-    }
+    };
     const minResults = this.props.ListViewLinkMinResults < this.props.Results;
     const maxResults = this.props.ListViewLinkMaxResults > this.props.Results;
     return (
@@ -42,7 +42,7 @@ class ProgressBar extends React.Component {
                     <ul>
                       <li><a href={this.props.helpPopup.Link1Link} target={this.props.helpPopup.Link1OpenInNewTab ? '_blank':'_self'} className="help-panel-button">{this.props.helpPopup.Link1Text}</a></li>
                       <li><a href={this.props.helpPopup.Link2Link} target={this.props.helpPopup.Link2OpenInNewTab ? '_blank':'_self'} className="help-panel-button">{this.props.helpPopup.Link2Text}</a></li>
-                      <li><a href={this.props.helpPopup.Link2Link} target={this.props.helpPopup.Link3OpenInNewTab ? '_blank':'_self'} className="help-panel-button">{this.props.helpPopup.Link3Text}</a></li>
+                      <li><a href={this.props.helpPopup.Link3Link} target={this.props.helpPopup.Link3OpenInNewTab ? '_blank':'_self'} className="help-panel-button">{this.props.helpPopup.Link3Text}</a></li>
                     </ul>
                   </div>
                 </div>

@@ -5,9 +5,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
-import scrollTo from '../../../libs/scrollTo/scrollTo.js';
 
-import { connect } from 'react-redux';
+import scrollTo from '../../../libs/scrollTo/scrollTo.js';
+import { connect } from '../../../libs/react-redux';
 import * as actionCreators from '../../../redux/questionnaire-actions';
 import store from '../../../redux/create-store';
 

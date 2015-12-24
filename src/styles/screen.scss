@@ -1202,7 +1202,7 @@ a:hover .button, a:active .button, a:focus .button, .button:hover, .button:activ
 .action-card { background:#fff; border:1px solid $skillstool_blue_1; padding:em(12) em(10) em(13) em(20); max-width:em(341); margin-bottom:em(13); overflow:hidden; @include border-radius(em(20) 0 em(20) em(20)); @include box-sizing(border-box); @include box-shadow(0, 2px, 1px, 0, rgba(0,0,0,0.2)); position:relative; }  
 .action-card .title { font-size:em(18); line-height:lh(23,18); float:left; width:70%; margin:em(3,18) 0 0; padding:0; letter-spacing:-0.025em; }
 .action-card .action-card-button { font-size:em(12); background:#fff; @include border-radius(50%); border:1px solid $skillstool_blue_1; text-align:center; float:right; width:em(60,12); height:em(60,12); @include box-sizing(border-box); line-height:1; overflow:hidden; }
-.action-card .action-card-button:hover, .action-card .action-card-button:active, .action-card .action-card-button:focus { text-decoration:none; background:$skillstool_blue_1; color:#fff; }
+.action-card .action-card-button:hover, .action-card .action-card-button:active { text-decoration:none; background:$skillstool_blue_1; color:#fff; }
 .action-card .action-card-button.added { background:$skillstool_blue_1; color:#fff; }
 .action-card .action-card-button.added .text-1, .action-card .action-card-button .text-2 { display:none; }
 .action-card .action-card-button .text-1, .action-card .action-card-button.added .text-2 { display:block; text-align:center; }
@@ -1212,9 +1212,9 @@ a:hover .button, a:active .button, a:focus .button, .button:hover, .button:activ
 .action-card .icon-cross:before { margin-top:em(4,10); display:block; }
 .action-card .action-card-remove:hover, .action-card .action-card-remove:active, .action-card .action-card-remove:focus { text-decoration:none; background:$skillstool_gray_8; }
 .action-card .action-card-status { float:left; width:em(30); height:em(30); margin:em(10) em(16) 0 0; background:#fff; @include border-radius(50%); border:1px solid $skillstool_blue_1; text-align:center; @include box-sizing(border-box); line-height:1; overflow:hidden; }
-.action-card .action-card-status:hover, .action-card .action-card-status:active, .action-card .action-card-status:focus { background:$skillstool_blue_1; text-decoration:none; }
+.action-card .action-card-status:hover, .action-card .action-card-status:active { background:$skillstool_blue_1; text-decoration:none; }
 .action-card .action-card-status .icon-tick { display:none; color:#fff; margin:em(5) 0 0 em(4); }
-.action-card .action-card-status:hover .icon-tick, .action-card .action-card-status:active .icon-tick , .action-card .action-card-status:focus .icon-tick { display:block; }
+.action-card .action-card-status:hover .icon-tick, .action-card .action-card-status:active .icon-tick , .action-card .icon-tick { display:block; }
 .action-card.completed { background:$skillstool_blue_1; }
 .action-card.minimised { font-size:70%; @include border-radius(em(20,11.2) 0 em(20,11.2) em(20,11.2)); }
 .action-card.completed .action-card-status { background:$skillstool_blue_1; border-color:#fff; }

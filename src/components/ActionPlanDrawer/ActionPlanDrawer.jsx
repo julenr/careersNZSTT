@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { Router, Route, Link } from 'react-router';
-import { connect } from 'react-redux';
+import { connect } from '../../libs/react-redux';
 import * as actionPlanActions from '../../redux/actionplan-actions';
 import ActionPlanList from './ActionPlanList'
 import RemoveActionModal from '../Modals/RemoveActionModal'

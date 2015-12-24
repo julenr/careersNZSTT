@@ -7,7 +7,7 @@ import classNames from 'classnames';
 import uuid from 'node-uuid';
 import Modal from 'react-modal';
 
-import { connect } from 'react-redux';
+import { connect } from '../../libs/react-redux';
 import { addSkillToQuestion } from '../../redux/questionnaire-actions.js';
 
 import Typeahead from '../subcomponents/Autocomplete/Autocomplete';

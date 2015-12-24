@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { connect } from '../../libs/react-redux';
 import ActionPlanCard from './ActionPlanCard'
 
 class ActionPlanList extends React.Component {

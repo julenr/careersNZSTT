@@ -10,7 +10,7 @@ import UndoPanel from './UndoPanel';
 import HelpPanel from './HelpPanel';
 import Tooltip from 'rc-tooltip';
 import {toggleListTypeOptions} from '../../../redux/listview-actions';
-import { connect } from 'react-redux';
+import { connect } from '../../../libs/react-redux';
 
 function mapStateToProps(state) {
   return {
